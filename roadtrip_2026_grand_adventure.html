@@ -219,7 +219,7 @@
             <span id="map-indicator" class="text-xs font-serif font-bold text-white bg-gold/10 px-3 py-1 rounded-full border border-gold/20">全体ルート</span>
           </div>
           <!-- Google Maps Embed Container - Stable and responsive non-API-key route query (No fixed scale z parameter to allow auto-zoom) -->
-          <div class="relative w-full rounded-2xl overflow-hidden border border-white/10 h-[360px] map-container">
+          <div class="relative w-full rounded-2xl overflow-hidden border border-white/10 h-[320px] map-container">
             <iframe 
               id="google-maps-iframe"
               src="https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=横須賀港&waypoints=有馬温泉+月光園+游月山荘|星野リゾート+BEB5門司港|阿蘇大観峰|高千穂峡|星野リゾート+界+別府|天神&t=m" 
@@ -254,11 +254,11 @@
               <a id="prev-link-1" href="https://www.city.himeji.lg.jp/castle/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
                 <img id="prev-img-1" src="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80" alt="姫路城" class="w-full h-full object-cover">
               </a>
-              <a id="prev-link-2" href="https://www.gekkoen.co.jp/yugetsu/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
-                <img id="prev-img-2" src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80" alt="有馬温泉" class="w-full h-full object-cover">
+              <a id="prev-link-2" href="https://arima-onsen.com/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
+                <img id="prev-img-2" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80" alt="有馬温泉" class="w-full h-full object-cover">
               </a>
               <a id="prev-link-3" href="https://hoshinoresorts.com/ja/hotels/beb5mojiko/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
-                <img id="prev-img-3" src="https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80" alt="門司港" class="w-full h-full object-cover">
+                <img id="prev-img-3" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="門司港" class="w-full h-full object-cover">
               </a>
               <a id="prev-link-4" href="https://owners-inn.com/?p=18939" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
                 <img id="prev-img-4" src="https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=300&q=80" alt="阿蘇コテージ" class="w-full h-full object-cover">
@@ -428,14 +428,30 @@
 
   <!-- INTERACTIVE DETAILED ITINERARY MODAL -->
   <div id="itinerary-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="glass w-full max-w-2xl rounded-3xl overflow-hidden border border-gold/30 shadow-2xl max-h-[85vh] flex flex-col transform scale-95 transition-transform duration-300" id="itinerary-modal-content">
+    <!-- Sliding/Fading Modal Frame supporting swipe and desktop arrow navigations -->
+    <div class="glass w-full max-w-2xl rounded-3xl overflow-hidden border border-gold/30 shadow-2xl max-h-[85vh] flex flex-col transform scale-95 transition-all duration-300 relative" id="itinerary-modal-content">
+      
+      <!-- FLOATING DESKTOP/BUTTON PREV NAVIGATION ARROW -->
+      <button id="modal-nav-prev" onclick="navigateItinerary(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/75 border border-gold/30 text-gold flex items-center justify-center hover:bg-gold hover:text-luxury-dark transition-all duration-200 z-30 shadow-lg">
+        <i class="fa-solid fa-chevron-left text-lg"></i>
+      </button>
+
+      <!-- FLOATING DESKTOP/BUTTON NEXT NAVIGATION ARROW -->
+      <button id="modal-nav-next" onclick="navigateItinerary(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/75 border border-gold/30 text-gold flex items-center justify-center hover:bg-gold hover:text-luxury-dark transition-all duration-200 z-30 shadow-lg">
+        <i class="fa-solid fa-chevron-right text-lg"></i>
+      </button>
+
       <!-- Modal Header -->
-      <div class="relative h-44 bg-cover bg-center flex items-end p-6" id="modal-header-img" style="background-image: url('https://images.unsplash.com/photo-1542640244-7e672d6cef21?auto=format&fit=crop&w=800&q=80');">
+      <div class="relative h-44 bg-cover bg-center flex items-end p-6 select-none" id="modal-header-img" style="background-image: url('https://images.unsplash.com/photo-1542640244-7e672d6cef21?auto=format&fit=crop&w=800&q=80');">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-        <button onclick="closeDetailedItinerary()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 border border-gold/30 text-gold flex items-center justify-center hover:bg-gold hover:text-luxury-dark transition-colors"><i class="fa-solid fa-xmark"></i></button>
-        <div class="relative z-10">
+        <button onclick="closeDetailedItinerary()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 border border-gold/30 text-gold flex items-center justify-center hover:bg-gold hover:text-luxury-dark transition-colors z-30"><i class="fa-solid fa-xmark"></i></button>
+        <div class="relative z-10 w-full pr-8">
           <div class="text-[10px] text-gold font-bold tracking-widest uppercase mb-1" id="modal-day-label">DAY 1</div>
           <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight" id="modal-day-title">国宝「姫路城」と有馬温泉</h3>
+          <!-- SWIPE GUIDE GRAPHIC -->
+          <div class="text-[9px] text-gold/60 font-semibold tracking-wider mt-1 flex items-center gap-1">
+            <i class="fa-solid fa-hand-pointer animate-pulse"></i> ◀ 左右スワイプで前後の日程に移動 ▶
+          </div>
         </div>
       </div>
 
@@ -538,7 +554,7 @@
         meta: "全行程一覧",
         desc: "三鷹を出発し、姫路城、有馬温泉、門司港、南阿蘇、高千穂、由布院、別府温泉を駆け抜け、最後は太平洋を豪華クルーズフェリーで渡って横須賀から帰還する大周遊ロードトリップ！",
         img1: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80", link1: "https://www.city.himeji.lg.jp/castle/",
-        img2: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", link2: "https://www.gekkoen.co.jp/yugetsu/",
+        img2: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80", link2: "https://www.gekkoen.co.jp/yugetsu/",
         img3: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80", link3: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
         img4: "https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=300&q=80", link4: "https://owners-inn.com/?p=18939",
         img5: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", link5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
@@ -567,7 +583,7 @@
         img2: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=400&q=80", link2: "https://www.gekkoen.co.jp/yugetsu/",
         img3: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", link3: "https://www.gekkoen.co.jp/yugetsu/dish/",
         img4: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=300&q=80", link4: "https://www.gekkoen.co.jp/yugetsu/spa/",
-        img5: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=300&q=80", link5: "https://arima-onsen.com/",
+        img5: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=300&q=80", link5: "https://arima-onsen.com/",
         img6: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=300&q=80", link6: "https://www.gekkoen.co.jp/yugetsu/rooms/",
         embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=有馬温泉+月光園+游月山荘&waypoints=姫路城&t=m",
         btnHref: "https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉+月光園+游月山荘&waypoints=姫路城",
@@ -628,7 +644,7 @@
         timeline: [
           { time: "09:30", text: "BEB5門司港をチェックアウト。大観峰へ向け高原ドライブ！" },
           { time: "11:30", text: "大観峰に到着。阿蘇カルデラ360度パノラマと、草千里ヶ浜の大草原を満喫。" },
-          { time: "15:00", text: "CAN LI ASSO Eにチェックイン。貸し切りコテージの設備に大興奮！" },
+          { time: "15:00", text: "CAN LI ASSO Eにチェックイン。貸し切りコテージ of 設備に大興奮！" },
           { time: "16:30", text: "天然日帰り温泉「火の山温泉 どんどこ湯」で、迫力の庭園露天風呂を愉しむ。" },
           { time: "18:30", text: "炭火焼「白水乃蔵」にて名物あか牛と山の恵みに舌鼓。" }
         ]
@@ -644,7 +660,7 @@
         img5: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80", link5: "https://tabelog.com/kumamoto/A4302/A430202/43015494/",
         img6: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=300&q=80", link6: "https://takachiho-jinja.or.jp/",
         embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=CAN+LI+ASSO+E&daddr=CAN+LI+ASSO+E&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森|旨乃蔵&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=旨乃蔵&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森",
+        btnHref: "https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=CAN+LI+ASSO+E&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森|旨乃蔵",
         btnText: "Googleマップでナビを開く (DAY 4)",
         hotelName: "一棟貸しコンテナ別荘 CAN LI ASSO E",
         hotelDesc: "阿蘇と宮崎・高千穂エリアの中間に位置する抜群のロケーション。2泊目の夜、コテージでのんびりボードゲームや旅トークを愉しめます。",
@@ -663,7 +679,7 @@
         meta: "8.26 水",
         desc: "やまなみハイウェイの大草原をドライブし、湯布院「金鱗湖」周辺でお買い物や食べ歩きを満喫。別府温泉の海沿いに立つ隈研吾氏デザインの界別府へ。夕方から湯の坪や宿を愉しみ、温泉とお洒落な夕会席に癒やされます。",
         img1: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80", link1: "https://yufuin.gr.jp/",
-        img2: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80", link2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
+        img2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/", link2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
         img3: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80", link3: "https://yufuin.gr.jp/",
         img4: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=300&q=80", link4: "https://hoshinoresorts.com/ja/hotels/kaibeppu/rooms/",
         img5: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", link5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/spa/",
@@ -685,7 +701,7 @@
       6: {
         title: "別府ゆっくり発 ➔ 博多天神お土産 ➔ 屋台夕食 ➔ クルーズフェリー",
         meta: "8.27〜28",
-        desc: "界別府をゆっくりチェックアウトした後は博多へ。デパ地下やセレクトショップでお土産を購入し、夕飯は天神・中洲 of 屋台へ！極上屋台を愉しんだのち、新門司港から東京九州フェリーで優雅に帰京します。",
+        desc: "界別府をゆっくりチェックアウトした後は博多へ。デパ地下やセレクトショップでお土産を購入し、夕飯は天神・中洲 of 屋台へ！出航3時間前の20:50には新門司港に到着し、乗船手続きを済ませ、東京九州フェリーで優雅に帰京します。",
         img1: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=400&q=80", link1: "https://tqf.co.jp/",
         img2: "https://images.unsplash.com/photo-1511316695145-4992006ffddb?auto=format&fit=crop&w=400&q=80", link2: "https://tqf.co.jp/facilities/",
         img3: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", link3: "https://yokanavi.com/yatai/",
@@ -701,9 +717,11 @@
         hotelHp: "https://tqf.co.jp/",
         timeline: [
           { time: "DAY6 10:00", text: "界別府をゆっくりチェックアウト。大分道経由で福岡・天神方面へ。" },
-          { time: "DAY6 13:00", text: "天神に到着。デパ地下やセレクトショップでお土産ショッピング＆ランチ。" },
-          { time: "DAY6 18:00", text: "博多・天神の屋台街エリアでお好みの屋台に入り、博多ラーメンや焼き鳥を！" },
-          { time: "DAY6 22:00", text: "新門司港へ（約1時間15分）。車ごと巨大な最新フェリーへ乗船、23:55に夜間出港！" },
+          { time: "DAY6 12:30", text: "天神に到着。デパ地下やセレクトショップでお土産ショッピング＆ランチ。" },
+          { time: "DAY6 17:30", text: "博多・天神の屋台街エリアでお好みの屋台に入り、博多ラーメンや焼き鳥を！" },
+          { time: "DAY6 19:30", text: "福岡・天神を出発。九州自動車道で新門司港へ向けて余裕のドライブ。" },
+          { time: "DAY6 20:50", text: "★出航3時間前！新門司港フェリーターミナルに到着。乗用車の乗船手続きと積込待機を余裕をもいおこないます。" },
+          { time: "DAY6 23:55", text: "車ごと巨大な最新フェリーへ乗船、夜間出港！" },
           { time: "DAY7 22:30", text: "太平洋をクルージング。横須賀港へ 20:45 接岸後、首都高を走って三鷹へ無事帰還！" }
         ]
       }
@@ -758,7 +776,7 @@
       }
     }
 
-    // Modal Operations
+    // Modal Operations & Navigation
     function openDetailedItinerary() {
       const data = previewData[currentPreviewDay];
       if (!data || currentPreviewDay === 'all') return;
@@ -793,6 +811,22 @@
         </a>
       `;
 
+      // Render Floating navigation buttons visibility based on current day limits
+      const prevNav = document.getElementById('modal-nav-prev');
+      const nextNav = document.getElementById('modal-nav-next');
+      
+      if (currentPreviewDay === '1' || currentPreviewDay === 1) {
+        prevNav.classList.add('hidden');
+      } else {
+        prevNav.classList.remove('hidden');
+      }
+      
+      if (currentPreviewDay === '6' || currentPreviewDay === 6) {
+        nextNav.classList.add('hidden');
+      } else {
+        nextNav.classList.remove('hidden');
+      }
+
       // Show Modal
       const modal = document.getElementById('itinerary-modal');
       const content = document.getElementById('itinerary-modal-content');
@@ -801,13 +835,66 @@
       content.classList.add('scale-100');
     }
 
-    // Close Modal
+    // Modal Swipe/Button Navigation Engine
+    function navigateItinerary(direction) {
+      if (currentPreviewDay === 'all') return;
+      
+      let dayInt = parseInt(currentPreviewDay);
+      let targetDay = dayInt + direction;
+      
+      // Guard boundaries
+      if (targetDay >= 1 && targetDay <= 6) {
+        // Apply subtle exit transition
+        const content = document.getElementById('itinerary-modal-content');
+        content.style.opacity = '0.3';
+        content.style.transform = `translateX(${direction * -20}px) scale(0.98)`;
+        
+        setTimeout(() => {
+          currentPreviewDay = String(targetDay);
+          // Sync behind preview tab automatically
+          selectPreviewTab(currentPreviewDay);
+          openDetailedItinerary();
+          
+          // Re-enter transition
+          content.style.opacity = '1';
+          content.style.transform = 'translateX(0) scale(1)';
+        }, 150);
+      }
+    }
+
     function closeDetailedItinerary() {
       const modal = document.getElementById('itinerary-modal');
       const content = document.getElementById('itinerary-modal-content');
       modal.classList.add('opacity-0', 'pointer-events-none');
       content.classList.remove('scale-100');
       content.classList.add('scale-95');
+    }
+
+    // Touch Event Swiping Handling Setup
+    let touchstartX = 0;
+    let touchendX = 0;
+    
+    const modalContent = document.getElementById('itinerary-modal-content');
+    
+    modalContent.addEventListener('touchstart', function(e) {
+      touchstartX = e.changedTouches[0].screenX;
+    }, false);
+    
+    modalContent.addEventListener('touchend', function(e) {
+      touchendX = e.changedTouches[0].screenX;
+      handleSwipeGesture();
+    }, false);
+    
+    function handleSwipeGesture() {
+      const threshold = 60; // minimum swipe distance
+      if (touchendX < touchstartX - threshold) {
+        // Swiped Left -> Load Next Day
+        navigateItinerary(1);
+      }
+      if (touchendX > touchstartX + threshold) {
+        // Swiped Right -> Load Prev Day
+        navigateItinerary(-1);
+      }
     }
 
     // Auto load DAY 1 tab on load
@@ -889,96 +976,7 @@
       if (progressLabel) progressLabel.innerText = `${percent}% Done`;
     }
 
-    // --- GEMINI 2.5 FLASH LIVE AI CONCIERGE INTEGRATION ---
-    const apiKey = ""; // Runtime automatically injects this
-    
-    async function askLiveAI() {
-      const daySelected = document.getElementById('ai-day').value;
-      const catSelected = document.getElementById('ai-category').value;
-      const responseBox = document.getElementById('ai-response-box');
-      const loader = document.getElementById('ai-loader');
-      const textContent = document.getElementById('ai-text-content');
-      const sourcesBox = document.getElementById('ai-sources');
-      const queryBtn = document.getElementById('ai-query-btn');
-
-      // Setup UI state
-      responseBox.classList.remove('hidden');
-      loader.classList.remove('hidden');
-      textContent.innerHTML = '';
-      sourcesBox.innerHTML = '';
-      queryBtn.disabled = true;
-      queryBtn.classList.add('opacity-50');
-
-      const systemPrompt = "あなたは2026年夏の家族旅行しおりアプリに常駐する、最高にスマートでユーモアあふれるスバル・レガシィアウトバック乗りのAIトラベルコンシェルジュ「スバール」です。家族旅行のスケジュール（有馬温泉月光園游月山荘、門司港レトロBEB5、南阿蘇CAN LI ASSO Eコテージ連泊、どんどこ湯、高千穂峡ボート、四季の森温泉、界別府、博多天神屋台）に沿って、お盆明けのリアルタイムでおすすめの周辺グルメ、絶景スポット、ティーンの娘・息子が大喜びする最新カフェやお土産、現地の混雑・道路情報を提案してください。レスポンスは親しみやすい日本語で、箇ため書きや絵文字を使ってリッチで見やすく構成してください。最後には「スバールおすすめ周辺情報」として、具体的な場所名、理由、公式サイト直通を促す案内を簡潔に付与してください。";
-      const userPrompt = `DAY ${daySelected} のルート近辺について、次のテーマで最新おすすめプランを提案して：【${catSelected}】`;
-
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-      const payload = {
-        contents: [{ parts: [{ text: userPrompt }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        tools: [{ "google_search": {} }] // Enable Google Search Grounding for fresh, real-time results
-      };
-
-      let textResult = "";
-      let groundingSources = [];
-
-      // Retry up to 5 times with exponential backoff
-      let delay = 1000;
-      let success = false;
-      for (let i = 0; i < 5; i++) {
-        try {
-          const response = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          const data = await response.json();
-          
-          textResult = data.candidates?.[0]?.content?.parts?.[0]?.text || "申し訳ありません。情報マッピングシステムが一時的に混雑しています。再度スキャンを行ってください！";
-          groundingSources = data.candidates?.[0]?.groundingMetadata?.groundingAttributions || [];
-          success = true;
-          break;
-        } catch (e) {
-          if (i === 4) {
-            textResult = "アウトバック車載通信エラー：AI情報のマッピングに失敗しました。少し時間をおいて再度お試しください。";
-          }
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2;
-        }
-      }
-
-      // Render AI Output
-      loader.classList.add('hidden');
-      queryBtn.disabled = false;
-      queryBtn.classList.remove('opacity-50');
-
-      // Convert Markdown to rich HTML list format elegantly
-      const formattedText = textResult
-        .replace(/\n/g, '<br>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gold">$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em class="text-gray-300">$1</em>');
-
-      textContent.innerHTML = `<p class="text-xs leading-relaxed text-gray-200">${formattedText}</p>`;
-
-      // Render Grounding Sources
-      if (groundingSources.length > 0) {
-        let sourcesHTML = `<span class="font-bold flex items-center gap-1 text-cyan-400"><i class="fa-solid fa-circle-check"></i> スバールLIVEサーチ情報源:</span>`;
-        const mappedSources = groundingSources.slice(0, 3).map(src => {
-          return `<a href="${src.web?.uri}" target="_blank" class="underline hover:text-white text-gray-400 font-medium">${src.web?.title || '外部サイト'}</a>`;
-        });
-        sourcesBox.innerHTML = sourcesHTML + mappedSources.join(' ／ ');
-      } else {
-        sourcesBox.innerHTML = `<span class="text-gray-600"><i class="fa-solid fa-database"></i> スバール標準トラベルデータベースより出力</span>`;
-      }
-
-      // Add a nice confetty spark
-      triggerConfetti();
-    }
-
-    // Initialize packing & previews
     loadPack();
-    selectPreviewTab('all');
   </script>
 </body>
 </html>
