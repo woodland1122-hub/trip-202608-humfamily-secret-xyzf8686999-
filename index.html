@@ -181,7 +181,7 @@
 
       <!-- MAIN GATEWAY BUTTONS -->
       <div class="flex flex-col sm:flex-row gap-4 w-full max-w-xl justify-center">
-        <a href="roadtrip_2026_grand_adventure.html" class="flex-1 px-8 py-5 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-sm tracking-[0.25em] rounded-full shadow-[0_10px_30px_rgba(223,186,107,0.3)] hover:shadow-[0_15px_40px_rgba(223,186,107,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+        <a href="roadtrip_2026_grand_cruise.html" class="flex-1 px-8 py-5 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-sm tracking-[0.25em] rounded-full shadow-[0_10px_30px_rgba(223,186,107,0.3)] hover:shadow-[0_15px_40px_rgba(223,186,107,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
           <i class="fa-solid fa-map-location-dot text-base"></i>
           <span>しおり本編を開く</span>
         </a>
@@ -340,6 +340,66 @@
       </div>
     </section>
 
+    <!-- ✨ FAMILY CAR RIDE FUN: GEMINI TRIVIA QUIZ -->
+    <section class="glass rounded-3xl p-6 border border-gold/20 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center pb-2 border-b border-white/10">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-gamepad text-gold animate-bounce"></i> ✨車内のお楽しみ！Geminiご当地クイズ
+        </h3>
+        <span class="text-[9px] text-gold tracking-widest uppercase">Family Car Game</span>
+      </div>
+      <p class="text-xs text-gray-400">長時間のドライブやフェリー移動を最高に盛り上げる、ご当地3択クイズをGeminiがリアルタイムに出題！</p>
+      
+      <div class="flex flex-wrap gap-4 items-center text-xs">
+        <div>
+          <span class="text-gray-300 font-bold">クイズのテーマ（日程）：</span>
+          <select id="quiz-day" class="bg-white/5 border border-white/15 rounded-lg px-3 py-1.5 text-white focus:outline-none focus:border-gold">
+            <option value="1">DAY 1 (姫路城と有馬温泉)</option>
+            <option value="2">DAY 2 (山陽道と門司港レトロ)</option>
+            <option value="3">DAY 3 (阿蘇大観峰・どんどこ湯)</option>
+            <option value="4">DAY 4 (高千穂峡ボート・天岩戸)</option>
+            <option value="5">DAY 5 (やまなみハイウェイ・界別府)</option>
+            <option value="6">DAY 6/7 (博多屋台・東京九州フェリー)</option>
+          </select>
+        </div>
+        <button onclick="generateGeminiQuiz()" id="quiz-gen-btn" class="px-5 py-2.5 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-black text-xs tracking-widest rounded-xl transition-all shadow-lg flex items-center gap-1.5">
+          <i class="fa-solid fa-brain"></i> クイズを出題する
+        </button>
+      </div>
+
+      <!-- Quiz Stage Container -->
+      <div id="quiz-box" class="hidden p-5 rounded-2xl bg-black/60 border border-white/10 space-y-4">
+        <div id="quiz-loader" class="flex items-center gap-2 py-4 justify-center">
+          <div class="w-2.5 h-2.5 rounded-full bg-gold typing-dot"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-gold typing-dot"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-gold typing-dot"></div>
+          <span class="text-gray-400 ml-2 animate-pulse">Geminiがご当地の歴史と豆知識をマッピング中...</span>
+        </div>
+        
+        <div id="quiz-content" class="space-y-4 hidden">
+          <!-- Question -->
+          <div class="text-sm font-bold text-white flex gap-2 items-start">
+            <span class="px-2 py-0.5 bg-gold/20 text-gold rounded text-xs font-black">Q</span>
+            <p id="quiz-question" class="leading-relaxed"></p>
+          </div>
+          
+          <!-- Choices (3 Options) -->
+          <div class="grid grid-cols-1 gap-2" id="quiz-options-container">
+            <!-- Dynamic Buttons -->
+          </div>
+
+          <!-- Answer & Explanation -->
+          <div id="quiz-answer-box" class="hidden p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
+            <div class="flex items-center gap-2 text-sm font-bold" id="quiz-result-header">
+              <!-- Result Icon -->
+            </div>
+            <p id="quiz-explanation" class="text-xs text-gray-300 leading-relaxed"></p>
+            <button onclick="closeQuizBox()" class="px-4 py-1.5 bg-white/10 hover:bg-white/15 text-white text-xs font-bold rounded-lg border border-white/5 mt-2 transition-all">クイズを閉じる</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- LIVE FAMILY MEMO CHAT BOARD (INTERACTIVE) -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Chatboard -->
@@ -377,27 +437,27 @@
           </div>
           <p class="text-xs text-gray-400 mb-4">お盆明けハイシーズンのお仕度進捗状況。チェックを入れると全員のブラウザに保存されます！</p>
           
-          <div class="space-y-2">
-            <label class="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 cursor-pointer text-xs select-none">
-              <input type="checkbox" id="pack-etc" onchange="updatePack()" class="accent-gold">
-              <div><strong>ETCカードの期限確認 ＆ 車載器テスト</strong></div>
-            </label>
-            <label class="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 cursor-pointer text-xs select-none">
-              <input type="checkbox" id="pack-yukata" onchange="updatePack()" class="accent-gold">
-              <div><strong>お祭り用おめかし（浴衣や歩きやすいサンダル）</strong></div>
-            </label>
-            <label class="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 cursor-pointer text-xs select-none">
-              <input type="checkbox" id="pack-insurance" onchange="updatePack()" class="accent-gold">
-              <div><strong>健康保険証、ロードサービス（JAF等）の確認</strong></div>
-            </label>
-            <label class="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 cursor-pointer text-xs select-none">
-              <input type="checkbox" id="pack-ferry" onchange="updatePack()" class="accent-gold">
-              <div><strong>東京九州フェリー・ボート・夜神楽のQRコード/予約票</strong></div>
-            </label>
+          <!-- Checklist items render container -->
+          <div id="checklist-container" class="space-y-2">
+             <!-- Rendered dynamically -->
+          </div>
+
+          <!-- ✨ AI Personalized Packing Assistant -->
+          <div class="mt-4 pt-4 border-t border-white/10 space-y-2">
+            <span class="text-[10px] text-gold font-bold tracking-widest uppercase block"><i class="fa-solid fa-wand-magic-sparkles"></i> ✨ AI荷造りパーソナライズメーカー</span>
+            <p class="text-[10px] text-gray-400">こだわりや状況（例：「写真撮影が趣味」「中学生の娘がコスメ好き」「暑さ対策」など）を入力して、旅行用の持ち物アイデアを追加しましょう！</p>
+            <div class="flex gap-2">
+              <input type="text" id="ai-pack-input" placeholder="例：お盆の猛暑対策、写真が趣味、等..." class="flex-1 bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold">
+              <button onclick="generateAIPacking()" id="ai-pack-btn" class="px-3 py-2 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-bold text-xs rounded-xl hover:scale-105 transition-all">✨提案</button>
+            </div>
+            <div id="ai-pack-feedback" class="text-[10px] text-cyan-400 hidden animate-pulse">Geminiが最適な持ち物をセレクト中...</div>
           </div>
         </div>
-        <div class="w-full bg-white/5 rounded-full h-1.5 overflow-hidden mt-4">
-          <div id="pack-bar" class="bg-gradient-to-r from-gold-dark to-gold h-full transition-all duration-300" style="width:0%"></div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="w-[70%] bg-white/5 rounded-full h-1.5 overflow-hidden">
+            <div id="pack-bar" class="bg-gradient-to-r from-gold-dark to-gold h-full transition-all duration-300" style="width:0%"></div>
+          </div>
+          <button onclick="resetPackList()" class="text-[10px] text-red-400/80 hover:text-red-400 transition-colors flex items-center gap-1"><i class="fa-solid fa-trash-can"></i> リストをリセット</button>
         </div>
       </div>
     </section>
@@ -495,6 +555,8 @@
   <script>
     // Global tracking of currently selected preview day
     let currentPreviewDay = 'all';
+    let currentQuizAnswer = "";
+    let currentQuizExplanation = "";
 
     // 1. COUNTDOWN CLOCK TO DEPARTURE
     // 月は0始まりなので、8月は7を指定。100%ブラウザ不依存でパース可能な数値指定を採用
@@ -581,7 +643,7 @@
           { 
             time: "05:00", 
             title: "三鷹を出発 ── 暁の東名高速ハック！", 
-            desc: "東京ICから一路、東名高速へ。早朝スタートを徹底することで、海老名SA付近やお盆明けの定番自然渋滞ポイントを完全にハックします。", 
+            desc: "東京ICから一路, 東名高速へ。早朝スタートを徹底することで、海老名SA付近やお盆明けの定番自然渋滞ポイントを完全にハックします。", 
             img: "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=400&q=80",
             tip: "💡 Geminiのアドバイス：足柄SAで最初の休憩を。富士山を眺めながら愛車の燃料チェック＆朝の美味しいコーヒーを補給するのがパパの流儀！",
             link: "https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"
@@ -589,7 +651,7 @@
           { 
             time: "12:00", 
             title: "世界遺産・国宝「姫路城」大天守閣を制覇", 
-            desc: "白鷺（しらさぎ）城の名にふさわしい美しい白漆喰の天守へ。戦国時代の名残を残す石垣や急な木造の階段を上り、最上階の絶景を愉しみます。（所要：約2時間）", 
+            desc: "白鷺（しらさぎ）城の名にふさわしい美しい白漆喰の天守へ。戦国時代の名残を残す石垣や急な木造の階段を上り, 最上階の絶景を愉しみます。（所要：約2時間）", 
             img: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80",
             tip: "💡 観光アドバイス：大天守の階段はとても急で、靴を脱いで歩くので「滑り止め付きの靴下」を用意しておくと歩きやすくて安全です！",
             link: "https://www.city.himeji.lg.jp/castle/"
@@ -597,7 +659,7 @@
           { 
             time: "15:00", 
             title: "有馬温泉街のレトロそぞろ歩き", 
-            desc: "有馬の名物「太閤通り」や「ねね橋」周辺を散策。創業明治の『三ツ森』で、賞味期限わずか5秒の、焼き立てでフニャッと柔らかい生炭酸せんべいを食べ歩き！", 
+            desc: "有馬の名物「太閤通り」や「ねね橋」周辺を散策。創業明治の『三ツ森』で, 賞味期限わずか5秒の, 焼き立てでフニャッと柔らかい生炭酸せんべいを食べ歩き！", 
             img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80",
             tip: "💡 グルメお役立ち：温泉神社や古民家カフェも多数。お土産の『炭酸フレーク』はアイスにかけると絶品でお子様へのおすすめ品です！",
             link: "https://arima-onsen.com/"
@@ -605,17 +667,17 @@
           { 
             time: "16:30", 
             title: "月光園 游月山荘へ。滝川沿いの別世界露天", 
-            desc: "滝川に架かる赤い架け橋を渡って游月山荘へ。まずは有馬が誇る「金泉」を贅沢に100%源泉掛け流しで愉しめる川音露天風呂に浸かり、長距離ドライブの疲れをリリース！", 
+            desc: "滝川に架かる赤い架け橋を渡って游月山荘へ。まずは有馬が誇る「金泉」を贅沢に100%源泉掛け流しで愉しめる川音露天風呂に浸かり, 長距離ドライブの疲れをリリース！", 
             img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 お宿の楽しみ：数寄屋造りの情緒に囲まれたロビーでいただくお茶は絶品。夕方,川沿いの太鼓橋の上で愛車ドライブ初日の素晴らしい家族記念写真を撮りましょう！",
+            tip: "💡 お宿の楽しみ：数寄屋造りの情緒に囲まれたロビーでいただくお茶は絶品。夕方, 川沿いの太鼓橋の上で愛車ドライブ初日の素晴らしい家族記念写真を撮りましょう！",
             link: "https://www.gekkoen.co.jp/yugetsu/"
           },
           { 
             time: "18:30", 
             title: "極上の「神戸牛会席」を和の空間でお部屋食", 
-            desc: "有馬最古の温泉宿ならではの、伝統的かつお洒落な本格会席。口の中で一瞬でとろける最高峰「神戸牛」の陶板焼きなど、初日の大成功を祝した極上ディナーを満喫します。", 
+            desc: "有馬最古の温泉宿ならではの, 伝統的かつお洒落な本格会席。口の中で一瞬でとろける最高峰「神戸牛」の陶板焼きなど, 初日の大成功を祝した極上ディナーを満喫します。", 
             img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 旅メモ：夕食はお部屋食なので、移動の服からすぐに浴衣に着替えてリラックスしたまま、家族で美味しいお酒とおしゃべりを心ゆくまで愉しめます。",
+            tip: "💡 旅メモ：夕食はお部屋食なので, 移動の服からすぐに浴衣に着替えてリラックスしたまま, 家族で美味しいお酒とおしゃべりを心ゆくまで愉しめます。",
             link: "https://www.gekkoen.co.jp/yugetsu/dish/"
           }
         ]
@@ -637,9 +699,9 @@
           { 
             time: "09:00", 
             title: "有馬温泉を快走出発 ── 約430km大西征ドライブ", 
-            desc: "名残惜しいですが游月山荘をチェックアウト。本日は観光を一切しない、移動に完全特化したスマートドライブ日！中国自動車道から山陽自動車道へ入り、西へとひたすら快走します。", 
+            desc: "名残惜しいですが游月山荘をチェックアウト。本日は観光を一切しない, 移動に完全特化したスマートドライブ日！中国自動車道から山陽自動車道へ入り, 西へとひたすら快走します。", 
             img: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 ドライブハック：山陽道は道幅が広く愛車のアクティブレーンキープアシストが最高に活きます。お好みのYouTube Musicプレイリストを流し、助手席・後部座席のみんなで歌いながら行きましょう！",
+            tip: "💡 ドライブハック：山陽道は道幅が広く愛車のアクティブレーンキープアシストが最高に活きます。お好みのYouTube Musicプレイリストを流し, 助手席・後部座席のみんなで歌いながら行きましょう！",
             link: "https://sapa.c-nexco.co.jp/"
           },
           { 
@@ -647,21 +709,21 @@
             title: "吉備SA（岡山）または小谷SAでご当地SAランチ", 
             desc: "岡山や広島を代表する大型SAで適宜給油＆ランチ休憩。お盆明けで賑わう名物の吉備だんごや和風尾道ラーメンをお好みのままカジュアルに！", 
             img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 グルメアドバイス：岡山名物『デミカツ丼』は濃厚で食べ応え抜群。ドライバーを交代し、しっかりストレッチして疲れをリフレッシュしましょう。",
+            tip: "💡 グルメアドバイス：岡山名物『デミカツ丼』は濃厚で食べ応え抜群。ドライバーを交代し, しっかりストレッチして疲れをリフレッシュしましょう。",
             link: "https://sapa.c-nexco.co.jp/"
           },
           { 
             time: "15:00", 
             title: "関門大橋を渡り、感動の「九州上陸」！", 
-            desc: "本州の最西端・下関を通り、関門海峡を跨ぐ全長1,068mの大吊橋「関門橋」を爽快に走破！海を隔てた九州の大パノラマを目撃しながら、感動の九州入りを果たします。", 
+            desc: "本州の最西端・下関を通り, 関門海峡を跨ぐ全長1,068mの大吊橋「関門橋」を爽快に走破！海を隔てた九州の大パノラマを目撃しながら, 感動の九州入りを果たします。", 
             img: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 撮影スポット：関門大橋を渡る手前の『壇之浦PA』に立ち寄ると、真上を通り過ぎるダイナミックな関門橋と行き交う巨大船の姿が120%の画角で写真に収まります！",
+            tip: "💡 撮影スポット：関門大橋を渡る手前の『壇之浦PA』に立ち寄ると, 真上を通り過ぎるダイナミックな関門橋と行き交う巨大船の姿が120%の画角で写真に収まります！",
             link: "https://www.w-holdings.co.jp/sapa/2583.html"
           },
           { 
             time: "15:30", 
             title: "星野リゾート「BEB5門司港」チェックイン", 
-            desc: "門司港駅のすぐ近くに佇む、カジュアルでお洒落な星野リゾート。24時間使えるパブリックスペース「TAMARIBA」など、お菓子を囲んでいつでも家族でだらだらお喋りできる今風コックピット空間に到着！", 
+            desc: "門司港駅のすぐ近くに佇む, カジュアルでお洒落な星野リゾート。24時間使えるパブリックスペース「TAMARIBA」など, お菓子を囲んでいつでも家族でだらだらお喋りできる今風コックピット空間に到着！", 
             img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80",
             tip: "💡 ホテルの遊び方：ロビーに用意されたボードゲームやこだわりのDJプレイセットを触って楽しめます。ティーンのお子様が絶対笑顔になるお洒落アジトです！",
             link: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/"
@@ -669,9 +731,9 @@
           { 
             time: "18:00", 
             title: "門司港レトロの夜景散策 ＆ 名物「焼きカレー」外食", 
-            desc: "夜になると、大正ロマン漂う近代赤煉瓦建築群が息をのむ美しさで幻想的にライトアップ。夕食は門司港発祥の『焼きカレー』！チーズがふつふつと泡立つ熱々を頬張ります。", 
+            desc: "夜になると, 大正ロマン漂う近代赤煉瓦建築群が息をのむ美しさで幻想的にライトアップ。夕食は門司港発祥の『焼きカレー』！チーズがふつふつと泡立つ熱々を頬張ります。", 
             img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300&q=80",
-            tip: "💡 グルメ極意：大人気店『伽哩本舗』や『こがねむし』などが点在。素泊まりプランなので、家族会議で今夜食べたいものを自由に探すのも極上のアドベンチャーです！",
+            tip: "💡 グルメ極意：大人気店『伽哩本舗』や『こがねむし』などが点在。素泊まりプランなので, 家族会議で今夜食べたいものを自由に探すのも極上のアドベンチャーです！",
             link: "https://www.mojiko.info/"
           }
         ]
@@ -693,33 +755,33 @@
           { 
             time: "09:30", 
             title: "門司港のんびり発 ── 前日のハックが活きる高原へ！", 
-            desc: "前日すでに門司港までアプローチ完了しているため、本日は約150kmのハーフドライブ。ドライバーの体力を完全に温存した状態で、大分自動車道を抜けて阿蘇へと南下します。", 
+            desc: "前日すでに門司港までアプローチ完了しているため, 本日は約150kmのハーフドライブ。ドライバーの体力を完全に温存した状態で, 大分自動車道を抜けて阿蘇へと南下します。", 
             img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 ドライブハック：湯布院ICあたりから見え始める由布岳の姿は言葉を失う美しさ。阿蘇のミルクロードに入ると、一気に緑きらめく大平原ドライブが始まります！",
+            tip: "💡 ドライブハック：湯布院ICあたりから見え始める由布岳の姿は言葉を失う美しさ。阿蘇のミルクロードに入ると, 一気に緑きらめく大平原ドライブが始まります！",
             link: "https://www.asocity-kanko.jp/"
           },
           { 
             time: "11:30", 
             title: "阿蘇「大観峰」360度カルデラの圧倒的別世界", 
-            desc: "阿蘇五岳がまるでお釈迦様が寝そべっている「涅槃像」に見える一大景勝地。眼下に広がる広大な阿蘇カルデラ盆地は、まるで外国のグランドキャニオンのよう！", 
+            desc: "阿蘇五岳がまるでお釈迦様が寝そべっている「涅槃像」に見える一大景勝地。眼下に広がる広大な阿蘇カルデラ盆地は, まるで外国のグランドキャニオンのよう！", 
             img: "https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 ご当地おやつ：大観峰茶店のあつあつ『あか牛の串焼き』と、非常に濃厚な『阿蘇ジャージー牛乳ソフトクリーム』をその場で食べましょう！",
+            tip: "💡 ご当地おやつ：大観峰茶店のあつあつ『あか牛の串焼き』と, 非常に濃厚な『阿蘇ジャージー牛乳ソフトクリーム』をその場で食べましょう！",
             link: "https://www.asocity-kanko.jp/spot/daikanbo/"
           },
           { 
             time: "13:00", 
             title: "草千里ヶ浜の大草原散策 ＆ 馬とふれあい", 
-            desc: "阿蘇中岳の火口を望む、広大な緑の草原と２つの美しい雨水池。悠々と歩く馬たちの姿に心が洗われます。大空の下でのんびりとリトリート散歩を愉しみます（お昼頃）。", 
+            desc: "阿蘇中岳の火口を望む, 広大な緑の草原と２つの美しい雨水池。悠々と歩く馬たちの姿に心が洗われます。大空の下でのんびりとリトリート散歩を愉しみます（お昼頃）。", 
             img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 ファミリーおすすめ：お好みで『引き馬乗馬体験（1人1,500円〜）』も可能。風を切って草原を少し乗馬するだけで、最高のアドベンチャーになります！",
+            tip: "💡 ファミリーおすすめ：お好みで『引き馬乗馬体験（1人1,500円〜）』も可能。風を切って草原を少し乗馬するだけで, 最高のアドベンチャーになります！",
             link: "https://www.asocity-kanko.jp/"
           },
           { 
             time: "15:00", 
             title: "デザイナーズコテージ「CAN LI ASSO E」チェックイン", 
-            desc: "お盆明けの極上秘密基地！阿蘇の大自然の中に忽然と姿を現すコンテナスタイルのお洒落な一棟貸し別荘。広々としたウッドテラス、お洒落なキッチンに家族全員テンションMAX！", 
+            desc: "お盆明けの極上秘密基地！阿蘇の大自然の中に忽然と姿を現すコンテナスタイルのお洒落な一棟貸し別荘。広々としたウッドテラス, お洒落なキッチンに家族全員テンションMAX！", 
             img: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 コテージの愉しみ：誰にも邪魔されない貸切プライベートスペース。お気に入りの音楽をかけて、冷蔵庫にご当地ソーダやお茶をたっぷり詰め込み、まるで我が家のように連泊ステイを楽しんで！",
+            tip: "💡 コテージの愉しみ：誰にも邪魔されない貸切プライベートスペース。お気に入りの音楽をかけて, 冷蔵庫にご当地ソーダやお茶をたっぷり詰め込み, まるで我が家のように連泊ステイを楽しんで！",
             link: "https://owners-inn.com/?p=18939"
           },
           { 
@@ -727,13 +789,13 @@
             title: "「火の山温泉 どんどこ湯」豪快巨石の源泉掛け流し", 
             desc: "コテージからすぐそば。1000坪もの広大な日本庭園に配された豪快な大巨石露天風呂！極上の乳緑色の掛け流し源泉をたっぷり堪能します。", 
             img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80",
-            tip: "💡 ととのい：阿蘇の澄んだ高原風を浴びながらのサウナと、冷たい阿蘇伏流水の水風呂での『ととのい』は別格です。（大人：670円）",
+            tip: "💡 ととのい：阿蘇の澄んだ高原風を浴びながらのサウナと, 冷たい阿蘇伏流水の水風呂での『ととのい』は別格です。（大人：670円）",
             link: "https://www.dondokoyu.jp/"
           },
           { 
             time: "18:30", 
             title: "あか牛炭火焼「白水乃蔵」古民家で極上しゃぶしゃぶ・焼肉", 
-            desc: "築150年の歴史を誇る南阿蘇の古民家食事処。お洒落な囲炉裏の炭火であぶる「あか牛」の蔵焼き！脂っこくなく、赤身肉の濃厚な旨味が口いっぱいに広がります。", 
+            desc: "築150年の歴史を誇る南阿蘇の古民家食事処。お洒落な囲炉裏の炭火であぶる「あか牛」の蔵焼き！脂っこくなく, 赤身肉の濃厚な旨味が口いっぱいに広がります。", 
             img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80",
             tip: "💡 グルメアドバイス：お米は南阿蘇名水仕込みの絶品ごはん。人気店のためお盆明けも事前ネット確認または席キープ（18:30）がマストの安心安全ハックです！",
             link: "https://tabelog.com/kumamoto/A4302/A430202/43000913/"
@@ -757,41 +819,41 @@
           { 
             time: "09:00", 
             title: "午前：神話の郷「天安河原」＆「天岩戸神社」へ", 
-            desc: "八百万（やおよろず）の神々が集まり会議をおこなったと伝わる巨大な洞窟「天安河原」。周辺に積まれた数千の石積みが織りなす空気は、まさに別格の神聖さです。", 
+            desc: "八百万（やおよろず）の神々が集まり会議をおこなったと伝わる巨大な洞窟「天安河原」。周辺に積まれた数千の石積みが織りなす空気は, まさに別格の神聖さです。", 
             img: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 パワーポット：何重にも重ねられた石を崩さないよう、そっと見上げるのが神社のマナー。宮崎ならではの静まり返った渓流のマイナスイオンに癒やされます。",
+            tip: "💡 パワーポット：何重にも重ねられた石を崩さないよう, そっと見上げるのが神社のマナー。宮崎ならではの静まり返った渓流のマイナスイオンに癒やされます。",
             link: "https://takachiho-kanko.info/sightseeing/detail.php?id=7"
           },
           { 
             time: "10:30", 
             title: "🛶 本日のハイライト！「高千穂峡」手漕ぎ貸しボート", 
-            desc: "【完全Web先着予約必須！】柱状節理の切り立つ大渓谷。日本の滝百選に数えられる「真名井の滝」のすぐ側を、手漕ぎボートでゆっくり滑走！滝しぶきを見上げて大はしゃぎ！", 
+            desc: "【完全Web先着予約必須！】柱状節理の切り立つ大渓谷。日本の滝百選に数えられる「真名井の滝」のすぐ側を, 手漕ぎボートでゆっくり滑走！滝しぶきを見上げて大はしゃぎ！", 
             img: "https://images.unsplash.com/photo-1624564287413-eb163f458cb5?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 ボートハック：滝のすぐ横を通るので、必ず「着替え用タオル」を持参して！ボートを漕ぐパパのテクニックの見せ所です！",
+            tip: "💡 ボートハック：滝のすぐ横を通るので, 必ず「着替え用タオル」を持参して！ボートを漕ぐパパのテクニックの見せ所です！",
             link: "https://takachiho-kanko.info/sightseeing/detail.php?id=3"
           },
           { 
             time: "13:00", 
             title: "13時お昼ごはん：宮崎本場のジューシー「チキン南蛮」", 
-            desc: "高千穂レトロ街のローカル食堂『ともえまる』等にて。甘酢にサッと潜らせた唐揚げに、たっぷりの特製手作りタルタルソースがこれでもかと乗った極上チキン南蛮！", 
+            desc: "高千穂レトロ街のローカル食堂『ともえまる』等にて。甘酢にサッと潜らせた唐揚げに, たっぷりの特製手作りタルタルソースがこれでもかと乗った極上チキン南蛮！", 
             img: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 グルメお役立ち：甘くてコクのある本場宮崎のチキン南蛮は、お子様たちも大喜びで一瞬で完食してしまう美味しさです！",
+            tip: "💡 グルメお役立ち：甘くてコクのある本場宮崎のチキン南蛮は, お子様たちも大喜びで一瞬で完食してしまう美味しさです！",
             link: "https://takachiho-kanko.info/gourmet/4/"
           },
           { 
             time: "17:30", 
             title: "南阿蘇久木野温泉「四季の森」阿蘇五岳を一望", 
-            desc: "コテージへ戻る途中で、南阿蘇の代表する絶景かけ流し温泉へ。露天風呂からは、夕暮れに染まる壮大な阿蘇五岳が壁紙のようにワイドに広がります。", 
+            desc: "コテージへ戻る途中で, 南阿蘇の代表する絶景かけ流し温泉へ。露天風呂からは, 夕暮れに染まる壮大な阿蘇五岳が壁紙のようにワイドに広がります。", 
             img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80",
-            tip: "💡 ととのいアドバイス：こちらの温泉はサウナと、南阿蘇の純水掛け流し天然水風呂が自慢！サウナ上がりの肌を包む阿蘇の水は極上です。（大人：500円）",
+            tip: "💡 ととのいアドバイス：こちらの温泉はサウナと, 南阿蘇の純水掛け流し天然水風呂が自慢！サウナ上がりの肌を包む阿蘇の水は極上です。（大人：500円）",
             link: "http://www.shikinonomori.co.jp/"
           },
           { 
             time: "19:00", 
             title: "19時夕食：南阿蘇「旨乃蔵」で絶品の炭火七輪地鶏焼き", 
-            desc: "南阿蘇の人気食事処『旨乃蔵（うまのくら）』。網の上でモクモクと煙をたたせながら、噛めば噛むほどジュワッと特有の濃厚な脂が染み出す地鶏焼きを満喫！", 
+            desc: "南阿蘇の人気食事処『旨乃蔵（うまのくら）』。網の上でモクモクと煙をたたせながら, 噛めば噛むほどジュワッと特有の濃厚な脂が染み出す地鶏焼きを満喫！", 
             img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80",
-            tip: "💡 連泊の極意：今夜も「CAN LI ASSO E」に戻るだけなので、ゆっくりお好みの熊本麦焼酎をパパも一緒に愉しめます！最高の夜の締めくくり。",
+            tip: "💡 連泊の極意：今夜も「CAN LI ASSO E」に戻るだけなので, ゆっくりお好みの熊本麦焼酎をパパも一緒に愉しめます！最高の夜の締めくくり。",
             link: "https://tabelog.com/kumamoto/A4302/A430202/43015494/"
           }
         ]
@@ -799,7 +861,7 @@
       5: {
         title: "やまなみハイウェイ ➔ 由布岳散策 ➔ 星野リゾート「界 別府」",
         meta: "8.26 水",
-        desc: "やまなみハイウェイの大草原をドライブし、湯布院「金鱗湖」周辺でお買い物や食べ歩きを満喫。別府温泉の海沿いに立つ隈研吾氏デザインの界別府へ。夕方から湯の坪や宿を愉しみ、温泉とお洒落な夕会席に癒やされます。",
+        desc: "やまなみハイウェイの大草原をドライブし、湯布院「金鱗湖」周辺でお買い物や食べ歩きを満喫。別府温泉の海沿いに立つ隈研吾氏デザイン의界別府へ。夕方から湯の坪や宿を愉しみ、温泉とお洒落な夕会席に癒やされます。",
         img1: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80", link1: "https://yufuin.gr.jp/",
         img2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/", link2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
         img3: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80", link3: "https://yufuin.gr.jp/",
@@ -813,23 +875,23 @@
           { 
             time: "10:00", 
             title: "日本一の山脈道路「やまなみハイウェイ」を爽快ドライブ", 
-            desc: "九重連山の雄大な裾野をまっすぐに切り裂く日本一 of ドライブ道路。窓を全開にして、吹き抜ける爽快な高原の風と一体になります。愛車アウトバックのAWD性能がフルに引き出される最高に楽しいコース！", 
+            desc: "九重連山の雄大な裾野をまっすぐに切り裂く日本一 of ドライブ道路。窓を全開にして, 吹き抜ける爽快な高原の風と一体になります。愛車アウトバックのAWD性能がフルに引き出される最高に楽しいコース！", 
             img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 立ち寄りポイント：途中の『長者原（ちょうじゃばる）』の駐車場に停め,やまなみ道路が真っ直ぐ硫黄山へ吸い込まれる有名なスポットで大迫力の愛車記念写真を！",
+            tip: "💡 立ち寄りポイント：途中の『長者原（ちょうじゃばる）』の駐車場に停め, やまなみ道路が真っ直ぐ硫黄山へ吸い込まれる有名なスポットで大迫力の愛車記念写真を！",
             link: "https://yufuin.gr.jp/"
           },
           { 
             time: "11:30", 
             title: "湯布院「金鱗湖」＆「湯の坪街道」お洒落食べ歩き", 
-            desc: "温泉水が半分湧き出る神秘的な金鱗湖。湖面を揺らす湯気を見つめながらお散歩した後は、湯の坪街道へ。お洒落なスイーツやセレクトショップがぎっしり並びます。", 
+            desc: "温泉水が半分湧き出る神秘的な金鱗湖。湖面を揺らす湯気を見つめながらお散歩した後は, 湯の坪街道へ。お洒落なスイーツやセレクトショップがぎっしり並びます。", 
             img: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80",
-            tip: "💡 お土産ハック：超大人気のフワフワロールケーキ『B-speak』。お盆明けも大行列ですが、予約分をテイクアウトして、今日の高級宿「界」のお部屋でおやつに食べるのも通の楽しみ方！",
+            tip: "💡 お土産ハック：超大人気のフワフワロールケーキ『B-speak』。お盆明けも大行列ですが, 予約分をテイクアウトして, 今日の高級宿「界」のお部屋でおやつに食べるのも通の楽しみ方！",
             link: "https://yufuin.gr.jp/"
           },
           { 
             time: "15:00", 
             title: "隈研吾氏デザイン。星野リゾート「界 別府」チェックイン", 
-            desc: "別府湾を見渡す全室オーシャンビュー。エントランスを一歩入ると、隈研吾氏プロデュース of ドラマチックな和モダン空間が広がります。ご当地の藍染めを配した『別府温泉絵巻』のようなお部屋へアサイン。", 
+            desc: "別府湾を見渡す全室オーシャンビュー。エントランスを一歩入ると, 隈研吾氏プロデュース of ドラマチックな和モダン空間が広がります。ご当地の藍染めを配した『別府温泉絵巻』のようなお部屋へアサイン。", 
             img: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=400&q=80",
             tip: "💡 館内の愉しみ：足湯をしながら寛げるロビーテラス。夕方からは伝統の温泉を使ったお洒落な夜店の風情やご当地ゲームをお子様と一緒にたっぷり愉しめます。",
             link: "https://hoshinoresorts.com/ja/hotels/kaibeppu/"
@@ -837,7 +899,7 @@
           { 
             time: "16:30", 
             title: "別府湾に直結する海の「界・大浴場」を堪能", 
-            desc: "湯けむりの街別府が誇る,美肌を促す豊かな源泉。別府湾と一体になれるインフィニティ仕様の極上大浴場で、これまでのドライブのご褒美湯浴みを堪能します。", 
+            desc: "湯けむりの街別府が誇る, 美肌を促す豊かな源泉。別府湾と一体になれるインフィニティ仕様の極上大浴場で, これまでのドライブのご褒美湯浴みを堪能します。", 
             img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80",
             tip: "💡 無料アクティビティ：界ならではのオリジナル地獄温泉巡り風の冷たいご当地ドリンクやミストサービスなどもすべてフリーで愉しめます！",
             link: "https://hoshinoresorts.com/ja/hotels/kaibeppu/spa/"
@@ -845,9 +907,9 @@
           { 
             time: "18:30", 
             title: "大分の美食が集う「豊後お洒落創作会席」夕食", 
-            desc: "美しく仕切られた和モダンの半個室お食事処にて。大分名産のかぼす、豊後牛 of しゃぶしゃぶ、関あじなど、匠の技が光る見た目にも鮮やかな逆鱗創作会席料理をお洒落にペアリング酒と共にいただきます。", 
+            desc: "美しく仕切られた和モダンの半個室お食事処にて。大分名産のかぼす, 豊後牛 of しゃぶしゃぶ, 関あじなど, 匠の技が光る見た目にも鮮やかな逆鱗創作会席料理をお洒落にペアリング酒と共にいただきます。", 
             img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=300&q=80",
-            tip: "💡 メモ：旅の最後の宿食。今夜はこれまでの冒険を振り返り、ご家族で最高の笑顔で語り合う、記念すべき極上ファミリーアワードナイトです！",
+            tip: "💡 メモ：旅の最後の宿食。今夜はこれまでの冒険を振り返り, ご家族で最高の笑顔で語り合う, 記念すべき極上ファミリーアワードナイトです！",
             link: "https://hoshinoresorts.com/ja/hotels/kaibeppu/activities/"
           }
         ]
@@ -885,7 +947,7 @@
           { 
             time: "17:30", 
             title: "混雑ハック！開店と同時に「天神・博多屋台メシ」をさくっと満喫", 
-            desc: "17:30の開店直後を狙うのが最大の渋滞・大行列ハック！屋台の暖簾をくぐり,博多ラーメンや焼き鳥,明太餃子などをノンストレスかつ超アツアツで頬張る最高のディナータイム！", 
+            desc: "17:30の開店直後を狙うのが最大の渋滞・大行列ハック！屋台の暖簾をくぐり, 博多ラーメンや焼き鳥, 明太餃子などをノンストレスかつ超アツアツで頬張る最高のディナータイム！", 
             img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80",
             tip: "💡 屋台マナー：屋台は開店直後が一番並ばずに入れます。天神三越裏や渡辺通り、中洲川端周辺 of 福岡市公認ネオ屋台が安心して入れて超おすすめです！",
             link: "https://yokanavi.com/yatai/"
@@ -909,7 +971,7 @@
           { 
             time: "23:55", 
             title: "東京九州フェリー出港！太平洋を優雅に進む洋上ホテルへ", 
-            desc: "23:55、ゆっくりと新門司港を離岸。2021年就航 of 最新豪華船内へ！映画上映シアターや、波しぶきと風を感じる自慢の太平洋一望『洋上露天風呂』サウナを愉しんだのち、ステートA個室ベッドで心地よい揺れと共に快眠へ。", 
+            desc: "23:55、ゆっくりと新門司港を離岸。2021年就航 of 最新豪華船内へ！映画上映シアターや、波しぶきと風を感じる自慢の太平洋一望『洋上露天風呂』サウナを愉しんだのち, ステートA個室ベッドで心地よい揺れと共に快眠へ。", 
             img: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=300&q=80",
             tip: "💡 洋上の楽しみ：夜行便のため、夜食の『焼き立てパン』や『洋上バー』も稼働。お風呂あがりに家族でデッキに出て、満天の天の川星空を見上げるのが一生モノの思い出になります！",
             link: "https://tqf.co.jp/facilities/"
@@ -993,7 +1055,7 @@
         const cardDiv = document.createElement('div');
         cardDiv.className = 'p-5 rounded-2xl bg-white/[0.04] border border-white/5 space-y-4 shadow-xl hover:border-gold/30 transition-all duration-300';
         
-        // エスケープバグ「\${}」を完全に根絶し、クリーンに結合
+        // エスケープバグを完全に除去して安全にクリーン結合
         let buttonHTML = '';
         if (item.link) {
           buttonHTML = '<a href="' + item.link + '" target="_blank" class="text-[10px] text-gold font-bold hover:underline flex items-center gap-1"><i class="fa-solid fa-arrow-up-right-from-square"></i> スポット詳細</a>';
@@ -1175,39 +1237,77 @@
       triggerConfetti();
     }
 
-    // 5. PACKING CHECKLIST MANAGER (LOCALSTORAGE)
-    const packItems = ['pack-etc', 'pack-yukata', 'pack-insurance', 'pack-ferry'];
-
-    function loadPack() {
-      packItems.forEach(id => {
-        const checked = localStorage.getItem(id) === 'true';
-        const checkbox = document.getElementById(id);
-        if (checkbox) checkbox.checked = checked;
+    // 5. PERSONALIZED PACKING LIST MANAGER (LOCALSTORAGE)
+    function initPackList() {
+      const storedCustom = localStorage.getItem('roadtrip_2026_custom_packs');
+      const customItems = storedCustom ? JSON.parse(storedCustom) : [];
+      
+      const defaultItems = [
+        { id: 'pack-etc', label: 'ETCカードの期限確認 ＆ 車載器テスト', reason: '料金所のスムーズ通過用' },
+        { id: 'pack-yukata', label: 'お祭り用おめかし（浴衣や歩きやすいサンダル）', reason: '温泉街・夏祭りの散策用' },
+        { id: 'pack-insurance', label: '健康保険証、ロードサービス（JAF等）の確認', reason: '長距離ドライブのトラブル対策' },
+        { id: 'pack-ferry', label: '東京九州フェリー・ボート・夜神楽のQRコード/予約票', reason: '各種アクティビティの乗船・入場用' }
+      ];
+      
+      packItems = [...defaultItems, ...customItems];
+      
+      packItems.forEach(item => {
+        const checked = localStorage.getItem('checked-' + item.id) === 'true';
+        item.checked = checked;
       });
+      
+      renderPackList();
+    }
+
+    function renderPackList() {
+      const container = document.getElementById('checklist-container');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      packItems.forEach(item => {
+        const label = document.createElement('label');
+        label.className = 'flex items-start gap-3 p-2 rounded-lg bg-white/5 border border-white/5 cursor-pointer text-xs select-none hover:bg-white/10 transition-colors';
+        
+        label.innerHTML = 
+          '<input type="checkbox" id="' + item.id + '" onchange="togglePackItem(\'' + item.id + '\')" class="accent-gold mt-0.5" ' + (item.checked ? 'checked' : '') + '>' +
+          '<div>' +
+            '<strong>' + item.label + '</strong>' +
+            (item.reason ? '<span class="block text-[10px] text-gray-400 mt-0.5">' + item.reason + '</span>' : '') +
+          '</div>';
+          
+        container.appendChild(label);
+      });
+      
       calculatePackProgress();
     }
 
-    function updatePack() {
-      packItems.forEach(id => {
-        const checkbox = document.getElementById(id);
-        if (checkbox) {
-          localStorage.setItem(id, checkbox.checked);
-        }
-      });
+    function togglePackItem(id) {
+      const item = packItems.find(p => p.id === id);
+      if (item) {
+        item.checked = !item.checked;
+        localStorage.setItem('checked-' + id, item.checked);
+      }
       calculatePackProgress();
     }
 
     function calculatePackProgress() {
-      let count = 0;
-      packItems.forEach(id => {
-        const checkbox = document.getElementById(id);
-        if (checkbox && checkbox.checked) count++;
-      });
-      const percent = Math.round((count / packItems.length) * 100);
+      if (packItems.length === 0) return;
+      const checkedCount = packItems.filter(p => p.checked).length;
+      const percent = Math.round((checkedCount / packItems.length) * 100);
+      
       const bar = document.getElementById('pack-bar');
       const progressLabel = document.getElementById('pack-progress');
       if (bar) bar.style.width = percent + '%';
       if (progressLabel) progressLabel.innerText = percent + '% Done';
+    }
+
+    function resetPackList() {
+      localStorage.removeItem('roadtrip_2026_custom_packs');
+      packItems.forEach(item => {
+        localStorage.removeItem('checked-' + item.id);
+      });
+      initPackList();
+      triggerConfetti();
     }
 
     // --- GEMINI 2.5 FLASH LIVE AI CONCIERGE INTEGRATION ---
@@ -1306,6 +1406,242 @@
       triggerConfetti();
     }
 
+    // --- GEMINI 2.5 FLASH DYNAMIC PACKING LIST GENERATION ---
+    async function generateAIPacking() {
+      const inputEl = document.getElementById('ai-pack-input');
+      const feedbackEl = document.getElementById('ai-pack-feedback');
+      const btnEl = document.getElementById('ai-pack-btn');
+      if (!inputEl || !feedbackEl || !btnEl) return;
+      
+      const userInput = inputEl.value.trim();
+      if (!userInput) return;
+      
+      feedbackEl.classList.remove('hidden');
+      btnEl.disabled = true;
+      btnEl.classList.add('opacity-50');
+      
+      const systemPrompt = "あなたは家族旅行の荷造りアドバイザーです。ユーザーが入力したこだわりや旅の状況（例：「写真撮影が趣味」「お盆の猛暑」「中学生の娘がメイク好き」など）に合わせ、8月下旬の有馬温泉・阿蘇・別府を巡る6泊7日のロードトリップへ持っていくべきパーソナライズされた便利アイテム・持ち物を3つ提案してください。必ず指定されたJSONフォーマットのみで出力してください。他の説明やマークダウン記法(```json等)は一切含めないプレーンなJSONオブジェクトで出力してください。\n" +
+                           "出力スキーマ:\n" +
+                           "{\n" +
+                           "  \"items\": [\n" +
+                           "    { \"name\": \"アイテム名（15文字以内）\", \"reason\": \"推奨理由・使い道（短い一言説明）\" }\n" +
+                           "  ]\n" +
+                           "}";
+                           
+      const url = "[https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=](https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=)" + apiKey;
+      const payload = {
+        contents: [{ parts: [{ text: "こだわり・旅の状況: " + userInput }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: "OBJECT",
+            properties: {
+              items: {
+                type: "ARRAY",
+                items: {
+                  type: "OBJECT",
+                  properties: {
+                    name: { type: "STRING" },
+                    reason: { type: "STRING" }
+                  },
+                  required: ["name", "reason"]
+                }
+              }
+            },
+            required: ["items"]
+          }
+        }
+      };
+      
+      let responseJson = null;
+      let delay = 1000;
+      for (let i = 0; i < 5; i++) {
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error("HTTP error! status: " + response.status);
+          const data = await response.json();
+          const textResult = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          responseJson = JSON.parse(textResult);
+          break;
+        } catch (e) {
+          await new Promise(resolve => setTimeout(resolve, delay));
+          delay *= 2;
+        }
+      }
+      
+      feedbackEl.classList.add('hidden');
+      btnEl.disabled = false;
+      btnEl.classList.remove('opacity-50');
+      
+      if (responseJson && responseJson.items) {
+        const storedCustom = localStorage.getItem('roadtrip_2026_custom_packs');
+        let customItems = storedCustom ? JSON.parse(storedCustom) : [];
+        
+        responseJson.items.forEach(newItem => {
+          const uniqueId = 'custom-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+          customItems.push({
+            id: uniqueId,
+            label: newItem.name,
+            reason: newItem.reason
+          });
+        });
+        
+        localStorage.setItem('roadtrip_2026_custom_packs', JSON.stringify(customItems));
+        inputEl.value = '';
+        initPackList(); // Reload and re-render checklist with new items
+        triggerConfetti();
+      } else {
+        const errorLabel = document.createElement('div');
+        errorLabel.className = 'text-[10px] text-red-400 mt-1';
+        errorLabel.innerText = "アイテムの提案取得に失敗しました。もう一度お試しください。";
+        feedbackEl.parentNode.appendChild(errorLabel);
+        setTimeout(() => errorLabel.remove(), 3000);
+      }
+    }
+
+    // --- GEMINI 2.5 FLASH DYNAMIC QUIZ GENERATION ---
+    async function generateGeminiQuiz() {
+      const quizDaySelect = document.getElementById('quiz-day');
+      if (!quizDaySelect) return;
+      const dayVal = quizDaySelect.value;
+
+      const quizBox = document.getElementById('quiz-box');
+      const quizLoader = document.getElementById('quiz-loader');
+      const quizContent = document.getElementById('quiz-content');
+      const quizGenBtn = document.getElementById('quiz-gen-btn');
+      const quizAnswerBox = document.getElementById('quiz-answer-box');
+
+      if (!quizBox || !quizLoader || !quizContent || !quizGenBtn || !quizAnswerBox) return;
+
+      quizBox.classList.remove('hidden');
+      quizLoader.classList.remove('hidden');
+      quizContent.classList.add('hidden');
+      quizAnswerBox.classList.add('hidden');
+      quizGenBtn.disabled = true;
+      quizGenBtn.classList.add('opacity-50');
+
+      const systemPrompt = "あなたは家族旅行を盛り上げる、天才クイズマスター「Gemini」です。旅程に基づき、DAY " + dayVal + " の目的地や名物（姫路城、有馬温泉、門司港、阿蘇、高千穂、別府、フェリーなど）に関する、ためになって家族（中高生のお子様も含む）全員が「えー！そうなんだ！」と大興奮するようなおもしろい3択クイズを1問作成してください。回答用の選択肢（A, B, C）を3つ提示し、正解と解説を提供してください。必ず指定されたJSONフォーマットのみで出力してください。Markdown表記(```json)や不要なテキストは含めず、プレーンなJSONテキストだけを返してください。\n" +
+                           "出力形式:\n" +
+                           "{\n" +
+                           "  \"question\": \"クイズの設問。旅立ちのワクワク感をあおるような楽しい文体で！\",\n" +
+                           "  \"optionA\": \"選択肢A\",\n" +
+                           "  \"optionB\": \"選択肢B\",\n" +
+                           "  \"optionC\": \"選択肢C\",\n" +
+                           "  \"answer\": \"A\" または \"B\" または \"C\" のいずれか1文字,\n" +
+                           "  \"explanation\": \"正解の理由と、ご当地に関する誰もが驚く楽しい追加豆知識。家族が絶対行きたくなるように熱く語ってください！\"\n" +
+                           "}";
+
+      const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=" + apiKey;
+      const payload = {
+        contents: [{ parts: [{ text: "DAY " + dayVal + " のルートに基づく極上の3択クイズを1問作って！" }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: "OBJECT",
+            properties: {
+              question: { type: "STRING" },
+              optionA: { type: "STRING" },
+              optionB: { type: "STRING" },
+              optionC: { type: "STRING" },
+              answer: { type: "STRING" },
+              explanation: { type: "STRING" }
+            },
+            required: ["question", "optionA", "optionB", "optionC", "answer", "explanation"]
+          }
+        }
+      };
+
+      let quizData = null;
+      let delay = 1000;
+      for (let i = 0; i < 5; i++) {
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error("HTTP error! status: " + response.status);
+          const data = await response.json();
+          const textResult = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          quizData = JSON.parse(textResult);
+          break;
+        } catch (e) {
+          await new Promise(resolve => setTimeout(resolve, delay));
+          delay *= 2;
+        }
+      }
+
+      quizLoader.classList.add('hidden');
+      quizGenBtn.disabled = false;
+      quizGenBtn.classList.remove('opacity-50');
+
+      if (quizData && quizData.question) {
+        document.getElementById('quiz-question').innerText = quizData.question;
+        
+        currentQuizAnswer = quizData.answer;
+        currentQuizExplanation = quizData.explanation;
+
+        const optionsContainer = document.getElementById('quiz-options-container');
+        optionsContainer.innerHTML = `
+          <button onclick="checkQuizAnswer('A')" id="btn-opt-A" class="w-full text-left p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/50 text-xs text-gray-200 transition-all font-medium flex items-center justify-between">
+            <span>A: ${quizData.optionA}</span>
+            <i class="fa-solid fa-chevron-right text-gold text-[10px]"></i>
+          </button>
+          <button onclick="checkQuizAnswer('B')" id="btn-opt-B" class="w-full text-left p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/50 text-xs text-gray-200 transition-all font-medium flex items-center justify-between">
+            <span>B: ${quizData.optionB}</span>
+            <i class="fa-solid fa-chevron-right text-gold text-[10px]"></i>
+          </button>
+          <button onclick="checkQuizAnswer('C')" id="btn-opt-C" class="w-full text-left p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/50 text-xs text-gray-200 transition-all font-medium flex items-center justify-between">
+            <span>C: ${quizData.optionC}</span>
+            <i class="fa-solid fa-chevron-right text-gold text-[10px]"></i>
+          </button>
+        `;
+
+        quizContent.classList.remove('hidden');
+        triggerConfetti();
+      } else {
+        alert("クイズの作成に失敗しました。もう一度お試しください。");
+        quizBox.classList.add('hidden');
+      }
+    }
+
+    function checkQuizAnswer(selected) {
+      const resultHeader = document.getElementById('quiz-result-header');
+      const explanationEl = document.getElementById('quiz-explanation');
+      const answerBox = document.getElementById('quiz-answer-box');
+
+      if (!resultHeader || !explanationEl || !answerBox) return;
+
+      const btnA = document.getElementById('btn-opt-A');
+      const btnB = document.getElementById('btn-opt-B');
+      const btnC = document.getElementById('btn-opt-C');
+
+      if (btnA) btnA.disabled = true;
+      if (btnB) btnB.disabled = true;
+      if (btnC) btnC.disabled = true;
+
+      if (selected === currentQuizAnswer) {
+        resultHeader.innerHTML = '<span class="text-green-400 flex items-center gap-1"><i class="fa-solid fa-circle-check text-base"></i> ✨ 大正解！！さすがファミリー！</span>';
+        triggerConfetti();
+      } else {
+        resultHeader.innerHTML = '<span class="text-red-400 flex items-center gap-1"><i class="fa-solid fa-circle-xmark text-base"></i> 惜しい！ 正解は 「' + currentQuizAnswer + '」でした！</span>';
+      }
+
+      explanationEl.innerText = currentQuizExplanation;
+      answerBox.classList.remove('hidden');
+    }
+
+    function closeQuizBox() {
+      const quizBox = document.getElementById('quiz-box');
+      if (quizBox) quizBox.classList.add('hidden');
+    }
+
     // DOMContentLoaded setup
     window.addEventListener('DOMContentLoaded', () => {
       // 1. Initial Setup for Countdown timer
@@ -1315,7 +1651,7 @@
       // 2. Initial Setup for Previews & Local Storage States
       selectPreviewTab('all');
       loadMemos();
-      loadPack();
+      initPackList(); // Standard & AI dynamic packing list initialization
     });
   </script>
 </body>
