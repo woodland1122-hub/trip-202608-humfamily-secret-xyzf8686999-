@@ -76,7 +76,7 @@
     cursor: pointer;
   }
   .visual-link::after {
-    content: "公式サイトへ ➔";
+    content: "詳細サイトへ ➔";
     position: absolute;
     inset: 0;
     background: rgba(3, 5, 8, 0.75);
@@ -104,6 +104,17 @@
   .map-container iframe {
     transition: opacity 0.5s ease;
   }
+
+  /* Typing loader */
+  .typing-dot {
+    animation: typingBounce 1.4s infinite ease-in-out both;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+  }
 </style>
 </head>
 <body class="font-sans antialiased text-gray-200">
@@ -114,7 +125,7 @@
     <div class="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0d131a] via-[#030508] to-black opacity-95"></div>
     <div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black/80 to-transparent z-0"></div>
     
-    <!-- Epical Adventurous Wildroad Background Image (First Premium Edition) -->
+    <!-- Epical Adventurous Wildroad Background Image -->
     <div class="absolute inset-0 z-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center"></div>
 
     <!-- Animated golden sparkles over hero -->
@@ -159,7 +170,7 @@
 
       <!-- MAIN GATEWAY BUTTONS -->
       <div class="flex flex-col sm:flex-row gap-4 w-full max-w-xl justify-center">
-        <a href="roadtrip_2026_grand_adventure.html" class="flex-1 px-8 py-5 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-sm tracking-[0.25em] rounded-full shadow-[0_10px_30px_rgba(223,186,107,0.3)] hover:shadow-[0_15px_40px_rgba(223,186,107,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+        <a href="roadtrip_2026_grand_cruise.html" class="flex-1 px-8 py-5 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-sm tracking-[0.25em] rounded-full shadow-[0_10px_30px_rgba(223,186,107,0.3)] hover:shadow-[0_15px_40px_rgba(223,186,107,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
           <i class="fa-solid fa-map-location-dot text-base"></i>
           <span>しおり本編を開く</span>
         </a>
@@ -189,6 +200,7 @@
 
       <!-- Day Tabs Header -->
       <div class="flex gap-2 overflow-x-auto pb-4 justify-start md:justify-center">
+        <button onclick="selectPreviewTab('all')" id="prev-tab-btn-all" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300 active-day-tab">全体鳥瞰</button>
         <button onclick="selectPreviewTab(1)" id="prev-tab-btn-1" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 1</button>
         <button onclick="selectPreviewTab(2)" id="prev-tab-btn-2" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 2</button>
         <button onclick="selectPreviewTab(3)" id="prev-tab-btn-3" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 3</button>
@@ -201,16 +213,16 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
         <!-- Map Column (Left) -->
-        <div class="lg:col-span-6 glass rounded-3xl p-6 border border-gold/20 flex flex-col justify-between shadow-2xl">
+        <div class="lg:col-span-7 glass rounded-3xl p-6 border border-gold/20 flex flex-col justify-between shadow-2xl relative">
           <div class="mb-4 flex justify-between items-center">
             <span class="text-[10px] text-gold font-bold tracking-widest uppercase"><i class="fa-solid fa-map-location-dot"></i> ROUTE MAP (ドライブルート表示)</span>
-            <span id="map-indicator" class="text-xs font-serif font-bold text-white bg-gold/10 px-3 py-1 rounded-full border border-gold/20">DAY 1</span>
+            <span id="map-indicator" class="text-xs font-serif font-bold text-white bg-gold/10 px-3 py-1 rounded-full border border-gold/20">全体ルート</span>
           </div>
-          <!-- Google Maps Embed Container - Stable and responsive non-API-key route query -->
-          <div class="relative w-full rounded-2xl overflow-hidden border border-white/10 h-[320px] map-container">
+          <!-- Google Maps Embed Container - Stable and responsive non-API-key route query (No fixed scale z parameter to allow auto-zoom) -->
+          <div class="relative w-full rounded-2xl overflow-hidden border border-white/10 h-[360px] map-container">
             <iframe 
               id="google-maps-iframe"
-              src="https://maps.google.co.jp/maps?output=embed&saddr=三鷹市&daddr=姫路城+to:有馬温泉&t=m&z=7" 
+              src="https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=横須賀港&waypoints=有馬温泉+月光園+游月山荘|星野リゾート+BEB5門司港|阿蘇大観峰|高千穂峡|星野リゾート+界+別府|天神&t=m" 
               width="100%" 
               height="100%" 
               style="border:0; filter: grayscale(80%) invert(92%) contrast(108%);" 
@@ -221,51 +233,99 @@
           </div>
           <div class="mt-4 flex justify-between items-center gap-2">
             <span class="text-[10px] sm:text-xs text-gray-400"><i class="fa-solid fa-location-arrow text-gold mr-1"></i>スマホ用連動GPSナビ対応</span>
-            <a id="google-maps-btn" href="https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉&waypoints=姫路城" target="_blank" class="px-4 py-2 rounded-xl bg-gold/10 hover:bg-gold/20 border border-gold/30 text-gold text-xs font-bold flex items-center gap-2 transition-all">
-              <i class="fa-solid fa-route"></i><span id="map-btn-text">Googleマップでナビを開く</span>
+            <a id="google-maps-btn" href="https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=有馬温泉|門司港|阿蘇|高千穂|別府|天神" target="_blank" class="px-4 py-2 rounded-xl bg-gold/10 hover:bg-gold/20 border border-gold/30 text-gold text-xs font-bold flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-route"></i><span id="map-btn-text">Googleマップで全ルートを開く</span>
             </a>
           </div>
         </div>
 
         <!-- Details Column (Right) -->
-        <div id="preview-details-container" class="lg:col-span-6 glass rounded-3xl p-6 border border-gold/20 flex flex-col justify-between shadow-2xl">
+        <div id="preview-details-container" class="lg:col-span-5 glass rounded-3xl p-6 border border-gold/20 flex flex-col justify-between shadow-2xl">
           <div>
             <div class="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
-              <h3 id="prev-title" class="text-base sm:text-lg font-bold text-white">国宝「姫路城」と有馬温泉</h3>
-              <span id="prev-meta" class="text-xs text-gold font-bold">8.22 土</span>
+              <h3 id="prev-title" class="text-base sm:text-lg font-bold text-white">GRAND CRUISE ROAD TRIP 2026</h3>
+              <span id="prev-meta" class="text-xs text-gold font-bold">全行程一覧</span>
             </div>
-            <p id="prev-desc" class="text-xs text-gray-300 leading-relaxed mb-6">三鷹を出発し、白鷺城と称される白亜の名城へ。有馬最古の宿「兵衛向陽閣」の極上神戸牛と名湯・金の湯に癒やされる最初の夜。</p>
+            <p id="prev-desc" class="text-xs text-gray-300 leading-relaxed mb-6">三鷹を出発し、姫路城、有馬温泉、門司港、南阿蘇、高千穂、由布院、別府温泉を駆け抜け、最後は太平洋を豪華クルーズフェリーで渡って横須賀から帰還する大周遊ロードトリップ！</p>
             
             <h4 class="text-xs text-gold tracking-widest uppercase mb-3"><i class="fa-regular fa-image"></i> 特選フォトギャラリー (タップで公式サイトへ)</h4>
             <!-- Expanded Photos Grid - Shows 6 highly relevant, curated photo cards -->
             <div class="grid grid-cols-3 gap-2" id="prev-photos-grid">
-              <a id="prev-link-1" href="https://www.city.himeji.lg.jp/castle/" target="_blank" class="visual-link rounded-2xl overflow-hidden h-24 shadow-lg">
+              <a id="prev-link-1" href="https://www.city.himeji.lg.jp/castle/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
                 <img id="prev-img-1" src="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80" alt="姫路城" class="w-full h-full object-cover">
               </a>
-              <a id="prev-link-2" href="https://arima-onsen.com/" target="_blank" class="visual-link rounded-2xl overflow-hidden h-24 shadow-lg">
-                <img id="prev-img-2" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80" alt="有馬温泉" class="w-full h-full object-cover">
+              <a id="prev-link-2" href="https://www.gekkoen.co.jp/yugetsu/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
+                <img id="prev-img-2" src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80" alt="有馬温泉" class="w-full h-full object-cover">
               </a>
-              <a id="prev-link-3" href="https://www.hyoe.co.jp/dish/" target="_blank" class="visual-link rounded-2xl overflow-hidden h-24 shadow-lg">
-                <img id="prev-img-3" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" alt="神戸牛" class="w-full h-full object-cover">
+              <a id="prev-link-3" href="https://hoshinoresorts.com/ja/hotels/beb5mojiko/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
+                <img id="prev-img-3" src="https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80" alt="門司港" class="w-full h-full object-cover">
               </a>
-              <a id="prev-link-4" href="https://www.hyoe.co.jp/spa/" target="_blank" class="visual-link rounded-2xl overflow-hidden h-24 shadow-lg">
-                <img id="prev-img-4" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80" alt="有馬風呂" class="w-full h-full object-cover">
+              <a id="prev-link-4" href="https://owners-inn.com/?p=18939" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
+                <img id="prev-img-4" src="https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=300&q=80" alt="阿蘇コテージ" class="w-full h-full object-cover">
               </a>
-              <a id="prev-link-5" href="https://arima-onsen.com/" target="_blank" class="visual-link rounded-2xl overflow-hidden h-24 shadow-lg">
-                <img id="prev-img-5" src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=300&q=80" alt="温泉街" class="w-full h-full object-cover">
+              <a id="prev-link-5" href="https://hoshinoresorts.com/ja/hotels/kaibeppu/" target="_blank" class="visual-link rounded-xl overflow-hidden h-24 shadow-lg">
+                <img id="prev-img-5" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80" alt="別府" class="w-full h-full object-cover">
               </a>
-              <a id="prev-link-6" href="https://www.hyoe.co.jp/" target="_blank" class="visual-link rounded-2xl overflow-hidden h-24 shadow-lg">
-                <img id="prev-img-6" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=300&q=80" alt="和おもてなし" class="w-full h-full object-cover">
+              <a id="prev-link-6" href="https://tqf.co.jp/" target="_blank" class="visual-link rounded-2xl overflow-hidden h-24 shadow-lg">
+                <img id="prev-img-6" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=300&q=80" alt="フェリー" class="w-full h-full object-cover">
               </a>
             </div>
           </div>
 
           <!-- Dynamic schedule trigger inside index.html portal itself -->
-          <button onclick="openDetailedItinerary()" class="mt-6 w-full py-3.5 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-black text-center text-xs tracking-widest rounded-xl hover:scale-[1.02] transition-all block shadow-lg">
+          <button id="detail-trigger-btn" onclick="openDetailedItinerary()" class="mt-6 w-full py-3.5 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-black text-center text-xs tracking-widest rounded-xl hover:scale-[1.02] transition-all block shadow-lg">
             この日の詳細スケジュールを見る ➔
           </button>
         </div>
 
+      </div>
+    </section>
+
+    <!-- LIVE TRIP AI CONCIERGE (Gemini 2.5 Flash Integration) -->
+    <section class="glass rounded-3xl p-6 border border-gold/20 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center pb-2 border-b border-white/10">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-robot text-gold animate-bounce"></i> AIトラベルアシスタント「スバール」
+        </h3>
+        <span class="text-[9px] text-gold tracking-widest uppercase">Live AI Assistant</span>
+      </div>
+      <p class="text-xs text-gray-400">現在地や日程に合わせた最新の現地グルメ情報、周辺の知る人ぞ知る絶景スポット、ティーンが喜ぶ最新カフェやお土産情報をAIがリアルタイムに検索して回答します！</p>
+      
+      <div class="flex flex-wrap gap-2 items-center text-xs">
+        <span class="text-gray-300 font-bold">知りたいスポットの曜日：</span>
+        <select id="ai-day" class="bg-white/5 border border-white/15 rounded-lg px-2 py-1 text-white focus:outline-none focus:border-gold">
+          <option value="1">DAY 1 (有馬温泉街/姫路)</option>
+          <option value="2">DAY 2 (門司港レトロ)</option>
+          <option value="3">DAY 3 (阿蘇大観峰/草千里/どんどこ湯)</option>
+          <option value="4">DAY 4 (高千穂峡/南阿蘇)</option>
+          <option value="5">DAY 5 (由布院/別府)</option>
+          <option value="6">DAY 6/7 (福岡天神/屋台/フェリー)</option>
+        </select>
+        
+        <span class="text-gray-300 font-bold ml-2">知りたいカテゴリー：</span>
+        <select id="ai-category" class="bg-white/5 border border-white/15 rounded-lg px-2 py-1 text-white focus:outline-none focus:border-gold">
+          <option value="お盆期間の道路混雑・渋滞ハック">🚗 道路混雑・渋滞ハック</option>
+          <option value="地元ライター厳選 of ティーン向け最新お土産・スイーツカフェ">🛍 ティーン向け最新カフェ・お土産</option>
+          <option value="現地でしか食べられない幻 of ローカルB級グルメ">🍜 local B級グルメ</option>
+          <option value="大人も感動する穴場のフォトジェニック絶景スポット">📸 穴場絶景フォトスポット</option>
+        </select>
+      </div>
+
+      <!-- AI Action button -->
+      <button onclick="askLiveAI()" id="ai-query-btn" class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-black text-xs tracking-widest rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> リアルタイム周辺状況をAI検索
+      </button>
+
+      <!-- AI Response Container -->
+      <div id="ai-response-box" class="hidden p-4 rounded-2xl bg-black/60 border border-white/10 text-xs text-gray-300 space-y-3 leading-relaxed">
+        <div id="ai-loader" class="flex items-center gap-2 py-4 justify-center">
+          <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 typing-dot"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 typing-dot"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 typing-dot"></div>
+          <span class="text-gray-400 ml-2 animate-pulse">EyeSightセンサーと周辺情報をマッピング中...</span>
+        </div>
+        <div id="ai-text-content"></div>
+        <div id="ai-sources" class="text-[9px] text-gray-500 border-t border-white/5 pt-2 flex items-center gap-2"></div>
       </div>
     </section>
 
@@ -336,7 +396,7 @@
       <a href="https://music.youtube.com/playlist?list=RDCLAK5uy_m988Msz8pY5p4-1293uVOfW7qPq_dD79w" target="_blank" class="glass rounded-3xl p-6 shadow-2xl border border-gold/15 hover:border-gold/50 transition-all duration-300 group block">
         <div class="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
           <h3 class="text-base font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-music text-gold animate-pulse"></i> ドライブBGMプレイリスト
+            <i class="fa-solid fa-music text-gold animate-pulse"></i> ドライブBGM BGMプレイヤー
           </h3>
           <span class="text-[9px] text-gold tracking-widest uppercase">ROAD TUNES</span>
         </div>
@@ -398,7 +458,7 @@
             </div>
             <span class="px-2.5 py-1 bg-gold text-luxury-dark rounded-md text-[10px] font-bold" id="modal-hotel-badge">2食付き</span>
           </div>
-          <p class="text-xs text-gray-400 mb-3" id="modal-hotel-desc">創業700年の名宿。最高峰の金泉めぐりと絶品会席。</p>
+          <p class="text-xs text-gray-400 mb-3" id="modal-hotel-desc">創業700年の名宿。最高峰の金泉めぐりと逆鱗会席。</p>
           <div class="flex gap-2" id="modal-hotel-actions">
             <!-- Populated dynamically -->
           </div>
@@ -407,7 +467,7 @@
 
       <!-- Modal Footer -->
       <div class="p-4 border-t border-white/5 bg-black/60 flex gap-2">
-        <a href="roadtrip_2026_grand_adventure.html" class="flex-1 py-3 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-center text-xs tracking-widest rounded-xl transition-all hover:shadow-[0_0_15px_rgba(223,186,107,0.3)]">
+        <a href="roadtrip_2026_grand_cruise.html" class="flex-1 py-3 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-center text-xs tracking-widest rounded-xl transition-all hover:shadow-[0_0_15px_rgba(223,186,107,0.3)]">
           <i class="fa-solid fa-book-open mr-1"></i> 全体しおり本編を開く
         </a>
         <button onclick="closeDetailedItinerary()" class="px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs rounded-xl border border-white/15">閉じる</button>
@@ -422,10 +482,10 @@
     <p class="text-[10px] text-gray-500 mt-6 tracking-wide">© 2026 Family Road Trip Project. Safe Drive & Beautiful Cruise!</p>
   </footer>
 
-  <!-- DYNAMIC JAVASCRIPT FOR ENGINE INTERACTION -->
+  <!-- JAVASCRIPT FOR ENGINE INTERACTION -->
   <script>
     // Global tracking of currently selected preview day
-    let currentPreviewDay = 1;
+    let currentPreviewDay = 'all';
 
     // 1. COUNTDOWN CLOCK TO DEPARTURE
     const targetDate = new Date('August 22, 2026 05:00:00').getTime();
@@ -473,42 +533,67 @@
 
     // 3. FULL PREVIEW DATA AND PHOTO RELINKING
     const previewData = {
-      1: {
-        title: "国宝「姫路城」と有馬温泉",
-        meta: "8.22 土",
-        desc: "三鷹を出発し、白鷺城と称される白亜の名城へ。有馬最古の宿「兵衛向陽閣」の極上神戸牛と名湯・金の湯に癒やされる最初の夜。",
-        // 6 Curated high-res photos mapped with correct active official links
+      all: {
+        title: "GRAND CRUISE ROAD TRIP 2026",
+        meta: "全行程一覧",
+        desc: "三鷹を出発し、姫路城、有馬温泉、門司港、南阿蘇、高千穂、由布院、別府温泉を駆け抜け、最後は太平洋を豪華クルーズフェリーで渡って横須賀から帰還する大周遊ロードトリップ！",
         img1: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80", link1: "https://www.city.himeji.lg.jp/castle/",
-        img2: "https://arima-onsen.com/", link2: "https://arima-onsen.com/",
-        img3: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", link3: "https://www.hyoe.co.jp/dish/",
-        img4: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", link4: "https://www.hyoe.co.jp/spa/",
+        img2: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", link2: "https://www.gekkoen.co.jp/yugetsu/",
+        img3: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80", link3: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
+        img4: "https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=300&q=80", link4: "https://owners-inn.com/?p=18939",
+        img5: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", link5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
+        img6: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=300&q=80", link6: "https://tqf.co.jp/",
+        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=横須賀港&waypoints=有馬温泉+月光園+游月山荘|星野リゾート+BEB5門司港|阿蘇大観峰|高千穂峡|星野リゾート+界+別府|天神&t=m",
+        btnHref: "https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=有馬温泉|門司港|阿蘇|高千穂|別府|天神",
+        btnText: "Googleマップで全ルートを開く",
+        hotelName: "月光園 / BEB5 / CAN LI ASSO E / 界 別府",
+        hotelDesc: "家族の一生モノの思い出を作る、洗練されたお洒落なお宿・コテージ・温泉リゾートを完全踏破。",
+        hotelBadge: "極上の宿泊ラインナップ",
+        hotelHp: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
+        timeline: [
+          { time: "DAY 1", text: "国宝・姫路城を巡り、有馬温泉「月光園 游月山荘」で極上の会席料理と金泉を。" },
+          { time: "DAY 2", text: "関門橋を一気に越えて門司港へ。星野リゾート「BEB5門司港」にチェックイン。" },
+          { time: "DAY 3", text: "阿蘇大観峰・草千里を巡り、コテージ別荘「CAN LI ASSO E」へチェックイン＆あか牛炭火焼。" },
+          { time: "DAY 4", text: "神秘の高千穂峡ボート、四季の森サウナ、割烹旨乃蔵で地鶏焼き。" },
+          { time: "DAY 5", text: "やまなみハイウェイを抜け、由布院散策から、隈研吾デザインの最高峰「界 別府」へ。" },
+          { time: "DAY 6", text: "博多天神でお買い物＆本場の屋台巡り。夜間に東京九州フェリーへ乗船出港！" }
+        ]
+      },
+      1: {
+        title: "国宝「姫路城」と有馬温泉 月光園",
+        meta: "8.22 土",
+        desc: "三鷹を出発し、白鷺城と称される白亜の名城へ。有馬川沿いに佇む「月光園 游月山荘」にて、贅沢な夕朝会席と風情溢れる金泉掛け流しを堪能する記念すべき第1夜。",
+        img1: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80", link1: "https://www.city.himeji.lg.jp/castle/",
+        img2: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=400&q=80", link2: "https://www.gekkoen.co.jp/yugetsu/",
+        img3: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", link3: "https://www.gekkoen.co.jp/yugetsu/dish/",
+        img4: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=300&q=80", link4: "https://www.gekkoen.co.jp/yugetsu/spa/",
         img5: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=300&q=80", link5: "https://arima-onsen.com/",
-        img6: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=300&q=80", link6: "https://www.hyoe.co.jp/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=三鷹市&daddr=姫路城+to:有馬温泉&t=m&z=7",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉&waypoints=姫路城",
+        img6: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=300&q=80", link6: "https://www.gekkoen.co.jp/yugetsu/rooms/",
+        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=有馬温泉+月光園+游月山荘&waypoints=姫路城&t=m",
+        btnHref: "https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉+月光園+游月山荘&waypoints=姫路城",
         btnText: "Googleマップでナビを開く (DAY 1)",
-        hotelName: "兵衛向陽閣",
-        hotelDesc: "創業700年の名宿。神戸牛づくしの美食会席と、3つの広大な大浴場で「金泉」を贅沢に湯めぐり。",
+        hotelName: "有馬温泉 月光園 游月山荘",
+        hotelDesc: "創業当時の面影を残す、滝川のほとりに佇む数寄屋造りの情緒温泉旅館。贅沢な神戸牛や旬魚の会席料理をお部屋にて堪能。",
         hotelBadge: "1泊2食付き",
-        hotelHp: "https://www.hyoe.co.jp/",
+        hotelHp: "https://www.gekkoen.co.jp/yugetsu/",
         timeline: [
           { time: "05:00", text: "三鷹を出発。渋滞ハックのため早朝東京ICから東名高速へ！" },
           { time: "12:00", text: "国宝・世界遺産「姫路城」観光。白漆喰の大天守閣を約2時間で満喫します。" },
-          { time: "15:00", text: "有馬温泉に到着。太閤通り散策、金の湯外湯で疲れをリフレッシュ。" },
-          { time: "16:00", text: "兵衛向陽閣にチェックイン。夕食前,宿 of 風呂や金泉めぐりへ。" }
+          { time: "15:00", text: "有馬温泉に到着。游月山荘にチェックイン後、レトロな有馬温泉街の散策。" },
+          { time: "18:30", text: "お部屋（または個室）にて極上の夕食会席に舌鼓。" }
         ]
       },
       2: {
         title: "有馬発 ➔ 門司港直行 ➔ 星野リゾート『BEB5門司港』",
         meta: "8.23 日",
-        desc: "有馬温泉をチェックアウト後、関門海峡を越えて門司港へ直行ロングドライブ！長距離移動のため途中の観光は一切挟まず、15:00過ぎに星野リゾート『BEB5門司港』へ快適にチェックイン。レトロな港町の夜風を満喫します。",
+        desc: "有馬温泉をチェックアウト後、関門海峡を越えて門司港へ直行ロングドライブ！長距離移動のため途中の観光は一切挟まず、15:30頃に星野リゾート『BEB5門司港』へ快適にチェックイン。レトロな港町の夜風を浴びながらお好きな屋台やレストランで外食ディナー！",
         img1: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80", link1: "https://www.mojiko.info/",
-        img2: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/", link2: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
+        img2: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80", link2: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
         img3: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=400&q=80", link3: "https://www.mojiko.info/",
-        img4: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", link4: "https://www.mojiko.info/",
+        img4: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=300&q=80", link4: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
         img5: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", link5: "https://www.mojiko.info/",
-        img6: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=300&q=80", link6: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=有馬温泉&daddr=星野リゾート+BEB5門司港&t=m&z=8",
+        img6: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=300&q=80", link6: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
+        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=有馬温泉+月光園+游月山荘&daddr=星野リゾート+BEB5門司港&t=m",
         btnHref: "https://www.google.com/maps/dir/?api=1&origin=有馬温泉&destination=星野リゾートBEB5門司港",
         btnText: "Googleマップでナビを開く (DAY 2)",
         hotelName: "星野リゾート BEB5門司港",
@@ -520,95 +605,95 @@
           { time: "11:30", text: "途中のSAで適宜休憩＆ランチを取りながら、高速道路を快走します。" },
           { time: "15:00", text: "関門大橋を車で渡る素晴らしい車窓を楽しみながら九州入り、門司港へ。" },
           { time: "15:30", text: "星野リゾート「BEB5門司港」にチェックイン。お洒落空間「TAMARIBA」を満喫。" },
-          { time: "18:00", text: "門司港レトロを夜のお散歩。夕食は名物の絶品焼きカレーなどをお好みの店で！" }
+          { time: "18:00", text: "門司港レトロを夜のお散歩。夕食は名物の絶品焼きカレーなどをお好みの店で外食！" }
         ]
       },
       3: {
-        title: "門司港のんびり発 ➔ 阿蘇大観峰 ➔ 阿蘇内牧温泉",
+        title: "大観峰・草千里 ➔ CAN LI ASSO Eコテージ ➔ どんどこ湯 ➔ あか牛白水乃蔵",
         meta: "8.24 月",
-        desc: "門司港をのんびり遅めにチェックアウト。昨日門司港まで移動を完了しているため、本日のドライブは超短縮の150km。非常にゆとりを持ちながら、雄大な阿蘇五岳を見渡す「大観峰」へとアプローチ。夜は古民家で極上馬刺し会席。",
+        desc: "お昼頃に阿蘇へ到着。大観峰や草千里ヶ浜の大パノラマに感動。15:00にコンテナデザインが映える一棟貸し「CAN LI ASSO E」にチェックイン。16:30からは名湯どんどこ湯でととのい、18:30からは白水乃蔵であか牛炭火焼をいただきます！",
         img1: "https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=400&q=80", link1: "https://www.asocity-kanko.jp/spot/daikanbo/",
-        img2: "https://tabelog.com/kumamoto/A4302/A430201/43012060/", link2: "https://tabelog.com/kumamoto/A4302/A430201/43012060/",
-        img3: "https://kamenoi-hotels.com/aso/", link3: "https://kamenoi-hotels.com/aso/",
-        img4: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=400&q=80", link4: "https://tabelog.com/kumamoto/A4302/A430201/43012060/",
-        img5: "https://images.unsplash.com/photo-1628126235206-5260b9ea6441?auto=format&fit=crop&w=300&q=80", link5: "https://kamenoi-hotels.com/aso/",
-        img6: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=300&q=80", link6: "https://kamenoi-hotels.com/aso/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=星野リゾート+BEB5門司港&daddr=大観峰+to:阿蘇内牧温泉&t=m&z=10",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=星野リゾートBEB5門司港&destination=阿蘇内牧温泉&waypoints=大観峰",
+        img2: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400&q=80", link2: "https://owners-inn.com/?p=18939",
+        img3: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", link3: "https://tabelog.com/kumamoto/A4302/A430202/43000913/",
+        img4: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=80", link4: "https://www.asocity-kanko.jp/",
+        img5: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", link5: "https://www.dondokoyu.jp/",
+        img6: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=300&q=80", link6: "https://owners-inn.com/?p=18939",
+        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=星野リゾート+BEB5門司港&daddr=CAN+LI+ASSO+E&waypoints=大観峰|草千里ヶ浜&t=m",
+        btnHref: "https://www.google.com/maps/dir/?api=1&origin=星野リゾートBEB5門司港&destination=CAN+LI+ASSO+E&waypoints=大観峰|草千里ヶ浜",
         btnText: "Googleマップでナビを開く (DAY 3)",
-        hotelName: "亀の井ホテル阿蘇 / 阿蘇プラザホテル望蘇閣",
-        hotelDesc: "阿蘇五岳を見渡す絶景ロケーション。100%源泉掛け流し湯でドライブの疲れをリリース。",
-        hotelBadge: "素泊まり/朝食のみ",
-        hotelHp: "https://kamenoi-hotels.com/aso/",
+        hotelName: "一棟貸しコンテナ別荘 CAN LI ASSO E",
+        hotelDesc: "阿蘇の大自然に溶け込む上質なコンテナコテージ。お洒落なテラスデッキとBBQスペースを備えた、自分たちだけのプライベート秘密基地。2連泊 of 極上体験。",
+        hotelBadge: "素泊まり/2連泊・中日",
+        hotelHp: "https://owners-inn.com/?p=18939",
         timeline: [
-          { time: "09:30", text: "BEB5門司港をチェックアウト。のんびりドライブを開始！" },
-          { time: "12:00", text: "阿蘇エリアに到着。雄大な大観峰のふもとでオシャレな山脈ランチ。" },
-          { time: "13:30", text: "阿蘇「大観峰」到着。息をのむような広大な大カルデラの絶景観賞。" },
-          { time: "15:00", text: "阿蘇内牧温泉へチェックイン。のんびり源泉掛け流しの湯を愉しむ。" },
-          { time: "18:00", text: "🍴 夜ご飯外食。古民家『阿蘇はなびし』にて名物・熊本霜降り馬刺し！" }
+          { time: "09:30", text: "BEB5門司港をチェックアウト。大観峰へ向け高原ドライブ！" },
+          { time: "11:30", text: "大観峰に到着。阿蘇カルデラ360度パノラマと、草千里ヶ浜の大草原を満喫。" },
+          { time: "15:00", text: "CAN LI ASSO Eにチェックイン。貸し切りコテージの設備に大興奮！" },
+          { time: "16:30", text: "天然日帰り温泉「火の山温泉 どんどこ湯」で、迫力の庭園露天風呂を愉しむ。" },
+          { time: "18:30", text: "炭火焼「白水乃蔵」にて名物あか牛と山の恵みに舌鼓。" }
         ]
       },
       4: {
-        title: "高千穂峡ボート ＆ 神秘 of 夜神楽",
+        title: "高千穂ボート＆天岩戸 ➔ チキン南蛮 ➔ 四季の森温泉 ➔ 旨乃蔵地鶏",
         meta: "8.25 火",
-        desc: "真名井の滝をボートから見上げる大興奮の一瞬！神々が集う天安河原ののち、高千穂神社に響く伝統的な夜神楽を。宿はエリア最高峰の『神仙』。",
-        img1: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80", link1: "https://www.aso-geopark.jp/",
-        img2: "https://images.unsplash.com/photo-1624564287413-eb163f458cb5?auto=format&fit=crop&w=400&q=80", link2: "https://takachiho-kanko.info/sightseeing/detail.php?id=3",
+        desc: "午前中に神話の郷「高千穂峡ボート」と天岩戸神社を巡り、13:00に本場のチキン南蛮ランチ。17:30からは南阿蘇久木野温泉「四季の森」で極上ととのい、19:00は「旨乃蔵」で激ウマ地鶏料理！コテージ連泊の極意。",
+        img1: "https://images.unsplash.com/photo-1624564287413-eb163f458cb5?auto=format&fit=crop&w=400&q=80", link1: "https://takachiho-kanko.info/sightseeing/detail.php?id=3",
+        img2: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80", link2: "https://takachiho-kanko.info/sightseeing/detail.php?id=7",
         img3: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=400&q=80", link3: "https://takachiho-kanko.info/gourmet/4/",
-        img4: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=400&q=80", link4: "https://takachiho-jinja.or.jp/",
-        img5: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80", link5: "https://www.takachiho-shinsen.co.jp/",
-        img6: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80", link6: "https://takachiho-kanko.info/sightseeing/detail.php?id=7",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&q=高千穂峡&z=12",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=阿蘇内牧温泉&destination=高千穂峡&waypoints=草千里ヶ浜",
+        img4: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", link4: "http://www.shikinonomori.co.jp/",
+        img5: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80", link5: "https://tabelog.com/kumamoto/A4302/A430202/43015494/",
+        img6: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=300&q=80", link6: "https://takachiho-jinja.or.jp/",
+        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=CAN+LI+ASSO+E&daddr=CAN+LI+ASSO+E&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森|旨乃蔵&t=m",
+        btnHref: "https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=旨乃蔵&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森",
         btnText: "Googleマップでナビを開く (DAY 4)",
-        hotelName: "高千穂 旅館 神仙",
-        hotelDesc: "高千穂神社に一番近く、夜神楽アクセス最優秀。洗練された伝統美を五感で味う極上の高級宿。",
-        hotelBadge: "朝食のみプラン",
-        hotelHp: "https://www.takachiho-shinsen.co.jp/",
+        hotelName: "一棟貸しコンテナ別荘 CAN LI ASSO E",
+        hotelDesc: "阿蘇と宮崎・高千穂エリアの中間に位置する抜群のロケーション。2泊目の夜、コテージでのんびりボードゲームや旅トークを愉しめます。",
+        hotelBadge: "素泊まり/連泊2泊目",
+        hotelHp: "https://owners-inn.com/?p=18939",
         timeline: [
-          { time: "09:00", text: "阿蘇「草千里ヶ浜」に立ち寄り、煙あがる火口展望所までお散歩。" },
-          { time: "13:30", text: "ボートで高千穂峡を巡る。真名井の滝をすぐ真下から見上げ大興奮！" },
-          { time: "15:00", text: "八百万の神が集まった天岩戸神社、重ね石が並ぶ神秘の天安河原参拝。" },
-          { time: "17:30", text: "🍴 夜ご飯外食。『ともえまる食堂』で宮崎本場の激ウマチキン南蛮！" },
-          { time: "20:00", text: "⛩ 毎晩境内で開催。伝統の「高千穂夜神楽」をおめかしして観賞。" }
+          { time: "08:30", text: "午前中の高千穂峽ボート予約に向けて、神話の国宮崎・高千穂へ。" },
+          { time: "10:00", text: "真名井の滝をボートから見上げる大アドベンチャー！天岩戸神社も参拝。" },
+          { time: "13:00", text: "高千穂町内または「ともえまる」等で本場のチキン南蛮をランチに。" },
+          { time: "17:30", text: "日帰り温泉「南阿蘇久木野温泉 四季の森」へ。阿蘇五岳を見渡すサウナと温泉。" },
+          { time: "19:00", text: "南阿蘇の食事処「旨乃蔵」にて、煙たつ本場の炭火焼き地鶏料理に舌鼓。" }
         ]
       },
       5: {
-        title: "やまなみハイウェイ ＆ 星野リゾート「界 別府」",
+        title: "やまなみハイウェイ ➔ 由布岳散策 ➔ 星野リゾート「界 別府」",
         meta: "8.26 水",
-        desc: "九重を貫く大絶景ハイウェイを快走。湯布院散策を満喫した後は別府へ。隈研吾氏デザインの界別府で足湯を愉しみ、夕食は極上「関サバ姿造り」を。",
+        desc: "やまなみハイウェイの大草原をドライブし、湯布院「金鱗湖」周辺でお買い物や食べ歩きを満喫。別府温泉の海沿いに立つ隈研吾氏デザインの界別府へ。夕方から湯の坪や宿を愉しみ、温泉とお洒落な夕会席に癒やされます。",
         img1: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80", link1: "https://yufuin.gr.jp/",
-        img2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/", link2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
-        img3: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80", link3: "https://heike.jp/",
-        img4: "https://hoshinoresorts.com/ja/hotels/kaibeppu/rooms/", link4: "https://hoshinoresorts.com/ja/hotels/kaibeppu/rooms/",
-        img5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/spa/", link5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/spa/",
-        img6: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80", link6: "https://yufuin.gr.jp/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=高千穂峡&daddr=湯布院+to:いけす割烹平家+to:星野リゾート界別府&t=m&z=9",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=高千穂峡&destination=界別府&waypoints=やまなみハイウェイ|いけす割烹平家",
+        img2: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80", link2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
+        img3: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80", link3: "https://yufuin.gr.jp/",
+        img4: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=300&q=80", link4: "https://hoshinoresorts.com/ja/hotels/kaibeppu/rooms/",
+        img5: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", link5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/spa/",
+        img6: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=300&q=80", link6: "https://hoshinoresorts.com/ja/hotels/kaibeppu/activities/",
+        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=CAN+LI+ASSO+E&daddr=星野リゾート+界+別府&waypoints=由布院&t=m",
+        btnHref: "https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=星野リゾート界別府&waypoints=由布院",
         btnText: "Googleマップでナビを開く (DAY 5)",
         hotelName: "星野リゾート 界 別府",
         hotelDesc: "別府湾を見渡す全室オーシャンビュー。伝統工芸やレトロな夜店の風情が漂う隈研吾氏プロデュース of 贅沢温泉リゾート。",
-        hotelBadge: "朝食のみプラン",
+        hotelBadge: "1泊2食付き",
         hotelHp: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
         timeline: [
-          { time: "10:00", text: "九重連山を真っ直ぐ貫く、日本最高峰のやまなみハイウェイを快適走行！" },
-          { time: "12:00", text: "湯布院に到着。金鱗湖をお散歩、湯の坪街道のスイーツを食べ歩き。" },
-          { time: "15:30", text: "界別府にチェックイン。別府湾のドラマチックな景色と足湯を堪能。" },
-          { time: "18:00", text: "🍴 夜ご飯外食。別府の『平家』で捌きたての極上関サバ姿造り！" }
+          { time: "10:00", text: "Canllyを出発。やまなみハイウェイを大疾走、由布院盆地へ。" },
+          { time: "12:00", text: "湯布院に到着。金鱗湖をお散歩、湯の坪街道 of スイーツをお土産に。" },
+          { time: "15:30", text: "「界別府」にチェックイン。別府湾 of ドラマチックな景色と足湯を堪能。" },
+          { time: "18:30", text: "豊後の旬素材が輝くお洒落なオリジナル夕会席を愉しみます。" }
         ]
       },
       6: {
         title: "別府ゆっくり発 ➔ 博多天神お土産 ➔ 屋台夕食 ➔ クルーズフェリー",
         meta: "8.27〜28",
-        desc: "界別府をゆっくりチェックアウトした後は博多へ。デパ地下やセレクトショップでお土産を購入し、夕飯は天神・中洲の屋台へ！極上屋台を愉しんだのち、新門司港から東京九州フェリーで優雅に帰京します。",
+        desc: "界別府をゆっくりチェックアウトした後は博多へ。デパ地下やセレクトショップでお土産を購入し、夕飯は天神・中洲 of 屋台へ！極上屋台を愉しんだのち、新門司港から東京九州フェリーで優雅に帰京します。",
         img1: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=400&q=80", link1: "https://tqf.co.jp/",
         img2: "https://images.unsplash.com/photo-1511316695145-4992006ffddb?auto=format&fit=crop&w=400&q=80", link2: "https://tqf.co.jp/facilities/",
         img3: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", link3: "https://yokanavi.com/yatai/",
-        img4: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", link4: "https://yokanavi.com/",
-        img5: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80", link5: "https://tqf.co.jp/facilities/",
-        img6: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=400&q=80", link6: "https://tqf.co.jp/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=星野リゾート界別府&daddr=天神（福岡）+to:新門司港フェリーターミナル&t=m&z=9",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=界別府&destination=横須賀港&waypoints=天神|小倉駅|新門司港",
+        img4: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=300&q=80", link4: "https://yokanavi.com/yatai/",
+        img5: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=300&q=80", link5: "https://yokanavi.com/",
+        img6: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=300&q=80", link6: "https://tqf.co.jp/facilities/",
+        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=星野リゾート+界+別府&daddr=新門司港フェリーターミナル&waypoints=天神（福岡）&t=m",
+        btnHref: "https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=天神",
         btnText: "Googleマップでナビを開く (DAY 6/7)",
         hotelName: "東京九州フェリー 「はまゆう / それいゆ」",
         hotelDesc: "2021年就車。サウナ、映画シアター完備の動く巨大ラグジュアリーホテル。ステートA個室。",
@@ -619,7 +704,7 @@
           { time: "DAY6 13:00", text: "天神に到着。デパ地下やセレクトショップでお土産ショッピング＆ランチ。" },
           { time: "DAY6 18:00", text: "博多・天神の屋台街エリアでお好みの屋台に入り、博多ラーメンや焼き鳥を！" },
           { time: "DAY6 22:00", text: "新門司港へ（約1時間15分）。車ごと巨大な最新フェリーへ乗船、23:55に夜間出港！" },
-          { time: "DAY7 22:30", text: "太平洋をクルージング。横須賀港へ20:45接岸後,首都高を走って三鷹へ無事帰還！" }
+          { time: "DAY7 22:30", text: "太平洋をクルージング。横須賀港へ 20:45 接岸後、首都高を走って三鷹へ無事帰還！" }
         ]
       }
     };
@@ -628,10 +713,11 @@
       currentPreviewDay = dayNum; // update global tracking
 
       // 1. Update active tab buttons styles
-      for (let i = 1; i <= 6; i++) {
-        const btn = document.getElementById(`prev-tab-btn-${i}`);
+      const tabs = ['all', '1', '2', '3', '4', '5', '6'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`prev-tab-btn-${t}`);
         if (btn) btn.classList.remove('active-day-tab');
-      }
+      });
       const activeBtn = document.getElementById(`prev-tab-btn-${dayNum}`);
       if (activeBtn) activeBtn.classList.add('active-day-tab');
 
@@ -647,7 +733,7 @@
           iframe.src = previewData[dayNum].embedSrc;
           navBtn.href = previewData[dayNum].btnHref;
           navBtnText.innerText = previewData[dayNum].btnText;
-          mapIndicator.innerText = dayNum === 6 ? "DAY 6 & 7" : `DAY ${dayNum}`;
+          mapIndicator.innerText = dayNum === 'all' ? "全体ルート" : `DAY ${dayNum}`;
           iframe.style.opacity = '1';
         }, 300);
       }
@@ -662,15 +748,23 @@
         document.getElementById(`prev-img-${j}`).src = previewData[dayNum][`img${j}`];
         document.getElementById(`prev-link-${j}`).href = previewData[dayNum][`link${j}`];
       }
+
+      // Hide detail trigger button for 'all' tab as it doesn't represent single day
+      const triggerBtn = document.getElementById('detail-trigger-btn');
+      if (dayNum === 'all') {
+        triggerBtn.style.display = 'none';
+      } else {
+        triggerBtn.style.display = 'block';
+      }
     }
 
     // Modal Operations
     function openDetailedItinerary() {
       const data = previewData[currentPreviewDay];
-      if (!data) return;
+      if (!data || currentPreviewDay === 'all') return;
 
       // Set modal title, labels and header image
-      document.getElementById('modal-day-label').innerText = currentPreviewDay === 6 ? "DAY 6 & 7" : `DAY ${currentPreviewDay}`;
+      document.getElementById('modal-day-label').innerText = currentPreviewDay === '6' ? "DAY 6 & 7" : `DAY ${currentPreviewDay}`;
       document.getElementById('modal-day-title').innerText = data.title;
       document.getElementById('modal-header-img').style.backgroundImage = `url('${data.img1}')`;
 
@@ -717,13 +811,13 @@
     }
 
     // Auto load DAY 1 tab on load
-    selectPreviewTab(1);
+    selectPreviewTab('all');
 
     // 4. INTERACTIVE MEMO BOARD (LOCALSTORAGE)
     let defaultMemos = [
       { author: "パパ", text: "新日本海フェリーで露天風呂から見る太平洋、マジで楽しみにしてる！♨️" },
       { author: "ママ", text: "博多・天神の屋台でラーメンや焼きラーメン食べるのがすっごく楽しみ！" },
-      { author: "子ども達", text: "BEB5門司港で夜まで遊び尽くして、門司港レトロものんびり満喫する！🍿" }
+      { author: "子ども達", text: "CAN LI ASSO Eのコンテナ別荘で夜にボードゲームするのヤバい楽しみ！" }
     ];
 
     function loadMemos() {
@@ -795,7 +889,96 @@
       if (progressLabel) progressLabel.innerText = `${percent}% Done`;
     }
 
+    // --- GEMINI 2.5 FLASH LIVE AI CONCIERGE INTEGRATION ---
+    const apiKey = ""; // Runtime automatically injects this
+    
+    async function askLiveAI() {
+      const daySelected = document.getElementById('ai-day').value;
+      const catSelected = document.getElementById('ai-category').value;
+      const responseBox = document.getElementById('ai-response-box');
+      const loader = document.getElementById('ai-loader');
+      const textContent = document.getElementById('ai-text-content');
+      const sourcesBox = document.getElementById('ai-sources');
+      const queryBtn = document.getElementById('ai-query-btn');
+
+      // Setup UI state
+      responseBox.classList.remove('hidden');
+      loader.classList.remove('hidden');
+      textContent.innerHTML = '';
+      sourcesBox.innerHTML = '';
+      queryBtn.disabled = true;
+      queryBtn.classList.add('opacity-50');
+
+      const systemPrompt = "あなたは2026年夏の家族旅行しおりアプリに常駐する、最高にスマートでユーモアあふれるスバル・レガシィアウトバック乗りのAIトラベルコンシェルジュ「スバール」です。家族旅行のスケジュール（有馬温泉月光園游月山荘、門司港レトロBEB5、南阿蘇CAN LI ASSO Eコテージ連泊、どんどこ湯、高千穂峡ボート、四季の森温泉、界別府、博多天神屋台）に沿って、お盆明けのリアルタイムでおすすめの周辺グルメ、絶景スポット、ティーンの娘・息子が大喜びする最新カフェやお土産、現地の混雑・道路情報を提案してください。レスポンスは親しみやすい日本語で、箇ため書きや絵文字を使ってリッチで見やすく構成してください。最後には「スバールおすすめ周辺情報」として、具体的な場所名、理由、公式サイト直通を促す案内を簡潔に付与してください。";
+      const userPrompt = `DAY ${daySelected} のルート近辺について、次のテーマで最新おすすめプランを提案して：【${catSelected}】`;
+
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      const payload = {
+        contents: [{ parts: [{ text: userPrompt }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        tools: [{ "google_search": {} }] // Enable Google Search Grounding for fresh, real-time results
+      };
+
+      let textResult = "";
+      let groundingSources = [];
+
+      // Retry up to 5 times with exponential backoff
+      let delay = 1000;
+      let success = false;
+      for (let i = 0; i < 5; i++) {
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          const data = await response.json();
+          
+          textResult = data.candidates?.[0]?.content?.parts?.[0]?.text || "申し訳ありません。情報マッピングシステムが一時的に混雑しています。再度スキャンを行ってください！";
+          groundingSources = data.candidates?.[0]?.groundingMetadata?.groundingAttributions || [];
+          success = true;
+          break;
+        } catch (e) {
+          if (i === 4) {
+            textResult = "アウトバック車載通信エラー：AI情報のマッピングに失敗しました。少し時間をおいて再度お試しください。";
+          }
+          await new Promise(resolve => setTimeout(resolve, delay));
+          delay *= 2;
+        }
+      }
+
+      // Render AI Output
+      loader.classList.add('hidden');
+      queryBtn.disabled = false;
+      queryBtn.classList.remove('opacity-50');
+
+      // Convert Markdown to rich HTML list format elegantly
+      const formattedText = textResult
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gold">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="text-gray-300">$1</em>');
+
+      textContent.innerHTML = `<p class="text-xs leading-relaxed text-gray-200">${formattedText}</p>`;
+
+      // Render Grounding Sources
+      if (groundingSources.length > 0) {
+        let sourcesHTML = `<span class="font-bold flex items-center gap-1 text-cyan-400"><i class="fa-solid fa-circle-check"></i> スバールLIVEサーチ情報源:</span>`;
+        const mappedSources = groundingSources.slice(0, 3).map(src => {
+          return `<a href="${src.web?.uri}" target="_blank" class="underline hover:text-white text-gray-400 font-medium">${src.web?.title || '外部サイト'}</a>`;
+        });
+        sourcesBox.innerHTML = sourcesHTML + mappedSources.join(' ／ ');
+      } else {
+        sourcesBox.innerHTML = `<span class="text-gray-600"><i class="fa-solid fa-database"></i> スバール標準トラベルデータベースより出力</span>`;
+      }
+
+      // Add a nice confetty spark
+      triggerConfetti();
+    }
+
+    // Initialize packing & previews
     loadPack();
+    selectPreviewTab('all');
   </script>
 </body>
 </html>
