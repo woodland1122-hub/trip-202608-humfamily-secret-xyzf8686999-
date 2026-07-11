@@ -2,1510 +2,940 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRAND CRUISE Summer Vacation 2026 - Ultra Portal</title>
-<!-- Tailwind CSS & Google Fonts & FontAwesome -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Canvas Confetti -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          serif: ['Cinzel', 'Playfair Display', 'serif'],
-          sans: ['Noto Sans JP', 'sans-serif'],
-        },
-        colors: {
-          gold: {
-            light: '#f9e7b9',
-            DEFAULT: '#dfba6b',
-            dark: '#b5893d',
-            premium: '#cbb279'
-          },
-          luxury: {
-            dark: '#030508',
-            card: '#0a0f14',
-            lightcard: '#12181f',
-            border: 'rgba(203, 178, 121, 0.2)',
-          }
-        }
-      }
-    }
-  }
-</script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<title>GRAND CRUISE 2026｜夏の家族旅行しおり</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  body {
-    background-color: #030508;
-    color: #f5f6f7;
-    overflow-x: hidden;
-  }
-  .glass {
-    background: rgba(10, 15, 20, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(203, 178, 121, 0.15);
-  }
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #030508;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #dfba6b;
-    border-radius: 10px;
-  }
-  .active-day-tab {
-    background: linear-gradient(135deg, #dfba6b 0%, #b5893d 100%);
-    color: #030508 !important;
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(223, 186, 107, 0.4);
-  }
-  .active-nav-btn {
-    border-bottom: 2px solid #dfba6b;
-    color: #dfba6b !important;
-  }
-  /* Hover effects for official website link on photos */
-  .visual-link {
-    position: relative;
-    overflow: hidden;
-    display: block;
-    cursor: pointer;
-  }
-  .visual-link::after {
-    content: "詳細サイトへ ➔";
-    position: absolute;
-    inset: 0;
-    background: rgba(3, 5, 8, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #dfba6b;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    opacity: 0;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(223, 175, 55, 0.3);
-    border-radius: 0.75rem;
-  }
-  .visual-link:hover::after {
-    opacity: 1;
-  }
-  .visual-link img {
-    transition: transform 0.5s ease;
-  }
-  .visual-link:hover img {
-    transform: scale(1.05);
-  }
-  .map-container iframe {
-    transition: opacity 0.5s ease;
-  }
+:root{
+  --ink:#0a1220; --ink2:#0f1a2c; --card:#131f33; --card2:#182640;
+  --line:rgba(217,181,110,.22); --line2:rgba(255,255,255,.08);
+  --gold:#d9b56e; --gold-l:#f3ddad; --gold-d:#a8813f;
+  --sea:#67c6d8; --coral:#ff8a6b; --green:#8fd0a2;
+  --tx:#f2f4f7; --tx2:#aeb9c9; --tx3:#7c8899;
+  --rad:20px; --maxw:1060px;
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink); color:var(--tx);
+  font-family:'Zen Kaku Gothic New',system-ui,sans-serif;
+  font-feature-settings:"palt"; line-height:1.75; overflow-x:hidden;
+}
+::selection{background:rgba(217,181,110,.35)}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:var(--gold-d);border-radius:3px}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea,select{font-family:inherit}
 
-  /* Timeline Segment */
-  .timeline {
-    position: relative;
-    border-left: 2px solid rgba(223, 186, 107, 0.2);
-    margin-left: 12px;
-    padding-left: 24px;
-  }
-  .timeline-item {
-    position: relative;
-    margin-bottom: 25px;
-  }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -31px;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #dfba6b;
-    border: 3px solid #030508;
-    box-shadow: 0 0 0 2px #dfba6b;
-  }
+/* ---------- typography ---------- */
+.en{font-family:'Cormorant Garamond',serif;letter-spacing:.14em}
+.mincho{font-family:'Shippori Mincho B1',serif}
+.kicker{font-size:11px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;font-weight:700}
+.h2{font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(24px,5.4vw,40px);line-height:1.3}
+.lead{color:var(--tx2);font-size:clamp(13px,3.4vw,15px)}
 
-  /* Typing loader */
-  .typing-dot {
-    animation: typingBounce 1.4s infinite ease-in-out both;
-  }
-  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typingBounce {
-    0%, 80%, 100% { transform: scale(0); }
-    40% { transform: scale(1); }
-  }
+/* ---------- shared ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+.card{background:linear-gradient(160deg,var(--card),var(--ink2));border:1px solid var(--line);border-radius:var(--rad);}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 11px;border-radius:99px;border:1px solid var(--line);color:var(--gold-l);background:rgba(217,181,110,.08)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-radius:14px;transition:.25s;text-decoration:none}
+.btn-gold{background:linear-gradient(135deg,var(--gold-l),var(--gold),var(--gold-d));color:#241a08;padding:13px 26px;font-size:14px;box-shadow:0 8px 28px -8px rgba(217,181,110,.55)}
+.btn-gold:active{transform:scale(.97)}
+.btn-ghost{border:1px solid var(--line);color:var(--gold-l);padding:11px 22px;font-size:13px;background:rgba(255,255,255,.03)}
+.btn-ghost:active{background:rgba(217,181,110,.12)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+
+/* ---------- header / nav ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:60;transition:.3s;padding-top:env(safe-area-inset-top,0px)}
+header .bar{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:14px clamp(16px,4vw,28px)}
+header.scrolled{background:rgba(10,18,32,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line2)}
+.logo{display:flex;flex-direction:column;line-height:1.2;text-decoration:none}
+.logo b{font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.22em;color:var(--gold-l)}
+.logo span{font-size:9px;letter-spacing:.34em;color:var(--tx3)}
+.top-tabs{display:none;gap:4px}
+.top-tabs button{padding:9px 16px;border-radius:99px;font-size:13px;font-weight:700;color:var(--tx2)}
+.top-tabs button.act{background:rgba(217,181,110,.14);color:var(--gold-l)}
+@media(min-width:820px){.top-tabs{display:flex}}
+/* bottom tab bar (mobile) */
+nav.dock{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(12,20,35,.92);backdrop-filter:blur(20px);border-top:1px solid var(--line2);padding-bottom:var(--safe-b)}
+nav.dock .in{display:grid;grid-template-columns:repeat(5,1fr);max-width:560px;margin:0 auto}
+nav.dock button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0 7px;font-size:10px;font-weight:700;color:var(--tx3);transition:.2s}
+nav.dock button .ic{font-size:19px;line-height:1;filter:grayscale(1) opacity(.6);transition:.2s}
+nav.dock button.act{color:var(--gold-l)}
+nav.dock button.act .ic{filter:none;transform:translateY(-2px)}
+@media(min-width:820px){nav.dock{display:none}}
+main{padding-bottom:calc(84px + var(--safe-b))}
+@media(min-width:820px){main{padding-bottom:60px}}
+.view{display:none;animation:fadeIn .45s ease}
+.view.act{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Takachiho-kyo%28Gorge%29_-_River_-_%E5%B7%9D.jpg/960px-Takachiho-kyo%28Gorge%29_-_River_-_%E5%B7%9D.jpg') center 35%/cover no-repeat;transform:scale(1.08);animation:heroDrift 24s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1.08) translateY(0)}to{transform:scale(1.16) translateY(-16px)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,32,.62) 0%,rgba(10,18,32,.45) 40%,var(--ink) 96%)}
+.hero-in{position:relative;z-index:2;padding:110px 20px 90px;width:100%}
+.hero .dates{font-size:12px;letter-spacing:.5em;color:var(--gold-l);font-weight:700}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(44px,11vw,104px);line-height:1.02;letter-spacing:.06em;margin:14px 0 6px;
+  background:linear-gradient(180deg,#fff 20%,var(--gold-l) 60%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 6px 30px rgba(0,0,0,.5))}
+.hero .sub{font-family:'Shippori Mincho B1',serif;font-size:clamp(14px,3.8vw,19px);color:#fff;letter-spacing:.28em;font-weight:600}
+.hero .route-line{margin:22px auto 0;font-size:clamp(10px,2.8vw,12px);color:var(--tx2);letter-spacing:.12em;max-width:640px}
+.hero .route-line b{color:var(--gold-l)}
+/* countdown */
+.cd{display:flex;gap:clamp(8px,2.4vw,16px);justify-content:center;margin:34px 0 30px}
+.cd .cell{min-width:clamp(64px,17vw,96px);padding:14px 6px 12px;border-radius:18px;background:rgba(15,26,44,.72);border:1px solid var(--line);backdrop-filter:blur(10px)}
+.cd .num{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,8vw,52px);font-weight:700;color:var(--gold-l);line-height:1}
+.cd .lab{font-size:9px;letter-spacing:.3em;color:var(--tx3);margin-top:6px;text-transform:uppercase}
+.cd-msg{font-family:'Shippori Mincho B1',serif;font-size:clamp(16px,4.4vw,22px);color:var(--gold-l);margin:30px 0}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--tx3);font-size:10px;letter-spacing:.3em;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ---------- journey ribbon ---------- */
+.ribbon{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:8px 0 4px}
+.ribbon::-webkit-scrollbar{display:none}
+.ribbon-in{display:flex;gap:0;min-width:max-content;padding:0 6px}
+.rb-node{position:relative;display:flex;flex-direction:column;align-items:center;width:112px;cursor:pointer}
+.rb-node::before{content:'';position:absolute;top:21px;left:-50%;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--gold-d));opacity:.6}
+.rb-node:first-child::before{display:none}
+.rb-dot{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:17px;background:var(--card2);border:1px solid var(--line);transition:.25s;position:relative;z-index:1}
+.rb-node.here .rb-dot{background:linear-gradient(135deg,var(--gold-l),var(--gold-d));box-shadow:0 0 0 5px rgba(217,181,110,.18),0 6px 20px -4px rgba(217,181,110,.6)}
+.rb-day{font-size:9px;letter-spacing:.2em;color:var(--gold);font-weight:700;margin-top:8px}
+.rb-name{font-size:11px;font-weight:700;color:var(--tx2);text-align:center;line-height:1.4;margin-top:2px}
+.rb-node.here .rb-name{color:#fff}
+
+/* ---------- section ---------- */
+section.blk{padding:clamp(44px,9vw,86px) 0 0}
+.sec-head{margin-bottom:clamp(20px,4vw,34px)}
+.sec-head p.d{color:var(--tx3);font-size:12.5px;margin-top:8px}
+
+/* ---------- stay cards ---------- */
+.stay-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.stay{position:relative;border-radius:var(--rad);overflow:hidden;border:1px solid var(--line);min-height:170px;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
+.stay img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .6s}
+.stay:hover img{transform:scale(1.06)}
+.stay::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 20%,rgba(8,13,24,.92))}
+.stay .in{padding:16px}
+.stay .n{font-size:10px;letter-spacing:.28em;color:var(--gold-l);font-weight:700}
+.stay .t{font-family:'Shippori Mincho B1',serif;font-size:16.5px;font-weight:700;color:#fff;line-height:1.4}
+.stay .s{font-size:11px;color:var(--tx2)}
+
+/* ---------- day tabs & itinerary ---------- */
+.day-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 14px;position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:40;background:linear-gradient(180deg,var(--ink) 78%,transparent);margin:0 -4px}
+.day-tabs::-webkit-scrollbar{display:none}
+.dt{flex-shrink:0;padding:9px 17px;border-radius:99px;border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--tx2);background:var(--card);transition:.22s;white-space:nowrap}
+.dt small{display:block;font-size:9px;letter-spacing:.12em;color:var(--tx3);font-weight:500}
+.dt.act{background:linear-gradient(135deg,var(--gold-l),var(--gold-d));color:#241a08;border-color:transparent;box-shadow:0 6px 22px -6px rgba(217,181,110,.55)}
+.dt.act small{color:#5c4614}
+.dt.today-mark::after{content:'●';color:var(--coral);font-size:8px;margin-left:5px;vertical-align:middle}
+/* day hero */
+.dayhero{position:relative;border-radius:calc(var(--rad) + 4px);overflow:hidden;border:1px solid var(--line);min-height:min(52vw,330px);display:flex;align-items:flex-end;isolation:isolate}
+.dayhero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.dayhero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,13,24,.15) 30%,rgba(8,13,24,.94))}
+.dayhero .in{padding:clamp(18px,4vw,30px);width:100%}
+.dayhero .date{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.3em;color:var(--gold-l);font-weight:700}
+.dayhero h3{font-family:'Shippori Mincho B1',serif;font-size:clamp(19px,4.8vw,30px);font-weight:800;color:#fff;line-height:1.45;margin:6px 0 8px}
+.dayhero .d{font-size:12.5px;color:var(--tx2);max-width:640px}
+.day-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 26px}
+/* timeline */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:'';position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),rgba(217,181,110,.06))}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:'';position:absolute;left:-27px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--ink);border:3px solid var(--gold);box-shadow:0 0 0 4px rgba(217,181,110,.14)}
+.tl-card{border:1px solid var(--line2);border-radius:16px;background:var(--card);overflow:hidden;transition:border-color .25s}
+.tl-card:hover{border-color:var(--line)}
+.tl-main{display:flex;gap:0;align-items:stretch}
+.tl-body{padding:15px 17px;flex:1;min-width:0}
+.tl-time{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--gold);letter-spacing:.1em}
+.tl-tt{font-weight:900;font-size:15px;color:#fff;line-height:1.5;margin:3px 0 5px}
+.tl-d{font-size:12.5px;color:var(--tx2)}
+.tl-th{width:104px;flex-shrink:0;position:relative;display:none}
+.tl-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tl-th .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;background:linear-gradient(150deg,var(--card2),var(--ink2))}
+@media(min-width:480px){.tl-th{display:block}}
+.tl-tip{margin:10px 0 0;padding:10px 13px;border-radius:12px;background:rgba(217,181,110,.07);border:1px dashed rgba(217,181,110,.3);font-size:12px;color:var(--gold-l)}
+.tl-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--sea);text-decoration:none}
+.tl-link:hover{text-decoration:underline}
+/* ---------- detour (寄り道) ---------- */
+.det-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.df{padding:7px 15px;border-radius:99px;border:1px solid var(--line2);font-size:12px;font-weight:700;color:var(--tx2);background:var(--card);transition:.2s}
+.df.act{border-color:var(--gold);color:var(--gold-l);background:rgba(217,181,110,.1)}
+.det-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.det{border:1px solid var(--line2);border-radius:18px;background:var(--card);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.det:hover{transform:translateY(-3px);border-color:var(--line)}
+.det-ph{height:130px;position:relative;background:linear-gradient(150deg,var(--card2),var(--ink2))}
+.det-ph img{width:100%;height:100%;object-fit:cover}
+.det-ph .emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:40px}
+.det-ph .day-b{position:absolute;top:10px;left:10px;font-size:10px;font-weight:900;letter-spacing:.14em;padding:3px 10px;border-radius:99px;background:rgba(10,18,32,.82);color:var(--gold-l);border:1px solid var(--line)}
+.det-ph .cat-b{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:rgba(10,18,32,.82);color:var(--sea)}
+.det-in{padding:14px 16px 15px;flex:1;display:flex;flex-direction:column;gap:7px}
+.det-tt{font-weight:900;font-size:14.5px;color:#fff;line-height:1.5}
+.det-d{font-size:12px;color:var(--tx2);flex:1}
+.det-meta{font-size:10.5px;color:var(--tx3)}
+.det-foot{display:flex;align-items:center;gap:8px;margin-top:4px}
+.heart{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--tx3);padding:6px 13px;border-radius:99px;border:1px solid var(--line2);transition:.2s}
+.heart.on{color:var(--coral);border-color:rgba(255,138,107,.5);background:rgba(255,138,107,.1)}
+.det-map{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--sea);text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.det.custom{border-style:dashed;border-color:rgba(103,198,216,.35)}
+.det-del{font-size:10px;color:var(--tx3)}
+.det-del:hover{color:var(--coral)}
+/* add idea form */
+.idea-form{border:1px solid var(--line);border-radius:20px;padding:clamp(18px,4vw,26px);background:linear-gradient(150deg,rgba(103,198,216,.06),var(--card));margin-bottom:26px}
+.idea-form h4{font-family:'Shippori Mincho B1',serif;font-size:16px;color:#fff;margin-bottom:4px}
+.idea-form p{font-size:12px;color:var(--tx2);margin-bottom:14px}
+.f-row{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-bottom:10px}
+.f-row.full{grid-template-columns:1fr}
+.f-in{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line2);border-radius:12px;padding:11px 14px;font-size:13px;color:var(--tx);outline:none;transition:.2s}
+.f-in:focus{border-color:var(--gold)}
+.f-in::placeholder{color:var(--tx3)}
+select.f-in{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23d9b56e'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+select.f-in option{background:var(--ink2)}
+
+/* ---------- quiz ---------- */
+.quiz-shell{border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,var(--card2),var(--ink2));padding:clamp(20px,5vw,34px);position:relative;overflow:hidden}
+.quiz-shell::before{content:'Q';position:absolute;right:-14px;top:-40px;font-family:'Cormorant Garamond',serif;font-size:200px;color:rgba(217,181,110,.05);font-weight:700}
+.q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;position:relative}
+.q-no{font-size:11px;letter-spacing:.26em;color:var(--gold);font-weight:700}
+.q-score{font-size:12px;font-weight:700;color:var(--tx2)}
+.q-text{font-family:'Shippori Mincho B1',serif;font-size:clamp(16px,4.4vw,20px);font-weight:700;color:#fff;line-height:1.7;margin-bottom:20px;position:relative;min-height:66px}
+.q-opts{display:grid;gap:10px;position:relative}
+.q-opt{text-align:left;padding:14px 18px;border-radius:14px;border:1px solid var(--line2);background:rgba(255,255,255,.03);font-size:14px;font-weight:700;color:var(--tx);transition:.2s;display:flex;gap:10px;align-items:center}
+.q-opt .k{width:26px;height:26px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;font-size:12px;background:rgba(217,181,110,.14);color:var(--gold-l)}
+.q-opt:not(:disabled):hover{border-color:var(--gold)}
+.q-opt.correct{border-color:var(--green);background:rgba(143,208,162,.12)}
+.q-opt.wrong{border-color:var(--coral);background:rgba(255,138,107,.1);opacity:.75}
+.q-exp{margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(143,208,162,.08);border:1px solid rgba(143,208,162,.25);font-size:12.5px;color:var(--tx2);display:none}
+.q-exp.show{display:block;animation:fadeIn .4s}
+.q-exp b{color:var(--green)}
+.q-next{margin-top:16px;display:none;width:100%}
+.q-next.show{display:inline-flex}
+.game-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:26px}
+.game{border:1px solid var(--line2);border-radius:16px;background:var(--card);padding:18px}
+.game .e{font-size:26px}
+.game .t{font-weight:900;font-size:14px;color:#fff;margin:8px 0 4px}
+.game .d{font-size:12px;color:var(--tx2)}
+
+/* ---------- checklist / memo ---------- */
+.two-col{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:820px){.two-col{grid-template-columns:1fr 1fr}}
+.panel{border:1px solid var(--line);border-radius:20px;background:var(--card);padding:clamp(18px,4vw,24px);display:flex;flex-direction:column}
+.panel h4{font-family:'Shippori Mincho B1',serif;font-size:16px;color:#fff;display:flex;align-items:center;gap:8px}
+.panel .note{font-size:11px;color:var(--tx3);margin:4px 0 14px}
+.ck-list{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto;padding-right:4px}
+.ck{display:flex;align-items:flex-start;gap:11px;padding:11px 13px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line2);cursor:pointer;transition:.2s}
+.ck:hover{border-color:var(--line)}
+.ck.on{opacity:.55}
+.ck .box{width:20px;height:20px;flex-shrink:0;margin-top:2px;border-radius:6px;border:2px solid var(--gold-d);display:grid;place-items:center;font-size:12px;color:#241a08;transition:.2s}
+.ck.on .box{background:linear-gradient(135deg,var(--gold-l),var(--gold-d));border-color:transparent}
+.ck .l{font-size:13px;font-weight:700;color:var(--tx);line-height:1.5}
+.ck.on .l{text-decoration:line-through}
+.ck .r{font-size:10.5px;color:var(--tx3)}
+.ck .del{margin-left:auto;color:var(--tx3);font-size:11px;padding:2px 4px}
+.ck .del:hover{color:var(--coral)}
+.prog-wrap{display:flex;align-items:center;gap:12px;margin:14px 0 4px}
+.prog{flex:1;height:6px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-d),var(--gold-l));transition:width .4s}
+.prog-t{font-size:12px;font-weight:700;color:var(--gold-l);min-width:64px;text-align:right}
+.pack-themes{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pt{font-size:11px;font-weight:700;padding:7px 13px;border-radius:99px;border:1px solid rgba(103,198,216,.35);color:var(--sea);background:rgba(103,198,216,.07);transition:.2s}
+.pt:active{transform:scale(.95)}
+.pt.used{opacity:.4;pointer-events:none}
+/* memo */
+.memo-list{display:flex;flex-direction:column;gap:9px;max-height:300px;overflow-y:auto;margin-bottom:12px;padding-right:4px}
+.memo{padding:11px 14px;border-radius:13px;background:rgba(103,198,216,.06);border:1px solid rgba(103,198,216,.18);font-size:13px;position:relative}
+.memo .m{color:var(--tx)}
+.memo .who{font-size:10px;color:var(--tx3);margin-top:3px}
+.memo .del{position:absolute;top:8px;right:10px;font-size:10px;color:var(--tx3)}
+.memo-form{display:flex;gap:8px}
+.empty{font-size:12px;color:var(--tx3);text-align:center;padding:22px 0}
+
+/* ---------- info / footer ---------- */
+.info-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.info{border:1px solid var(--line2);border-radius:16px;background:var(--card);padding:18px}
+.info .t{font-weight:900;font-size:13.5px;color:var(--gold-l);display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.info .d{font-size:12.5px;color:var(--tx2)}
+.info a{color:var(--sea);font-weight:700;text-decoration:none}
+footer{margin-top:clamp(50px,10vw,90px);border-top:1px solid var(--line2);padding:34px 0 26px;text-align:center}
+footer .f1{font-family:'Cormorant Garamond',serif;letter-spacing:.3em;color:var(--gold);font-size:14px}
+footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
+.toast{position:fixed;left:50%;bottom:calc(96px + var(--safe-b));transform:translate(-50%,20px);background:var(--gold-l);color:#241a08;font-size:13px;font-weight:900;padding:11px 22px;border-radius:99px;opacity:0;pointer-events:none;transition:.35s;z-index:80;box-shadow:0 10px 30px -8px rgba(0,0,0,.6)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media print{
+  header,nav.dock,.scroll-hint,.idea-form,.memo-form,.pack-themes,.q-next,.day-actions .btn-ghost{display:none!important}
+  body{background:#fff;color:#111}
+  .view{display:block!important}
+  .card,.panel,.tl-card,.det,.quiz-shell{background:#fff;border-color:#ddd}
+  .hero{min-height:auto}.hero-bg{display:none}
+  .hero h1,.dayhero h3,.tl-tt,.det-tt,.panel h4{color:#111;-webkit-text-fill-color:#111}
+}
 </style>
 </head>
-<body class="font-sans antialiased text-gray-200">
+<body>
 
-  <!-- TOP IMMERSIVE CONSOLE NAVIGATION BAR -->
-  <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-gold/10 px-4 py-3">
-    <div class="max-w-5xl mx-auto flex justify-between items-center">
-      <div class="font-serif text-sm tracking-[0.2em] text-white flex items-center gap-2">
-        <i class="fa-solid fa-compass text-gold animate-spin [animation-duration:15s]"></i>
-        <span>GRAND CRUISE 2026</span>
+<header id="hd">
+  <div class="bar">
+    <a class="logo" href="#" onclick="go('home');return false;">
+      <b>GRAND CRUISE</b><span>SUMMER 2026</span>
+    </a>
+    <div class="top-tabs">
+      <button id="tt-home" onclick="go('home')">ホーム</button>
+      <button id="tt-days" onclick="go('days')">旅程</button>
+      <button id="tt-detour" onclick="go('detour')">寄り道</button>
+      <button id="tt-play" onclick="go('play')">あそぶ</button>
+      <button id="tt-prep" onclick="go('prep')">準備</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= HOME ================= -->
+<div class="view act" id="view-home">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-in wrap">
+      <p class="dates en">2026.08.22 SAT — 08.28 FRI</p>
+      <h1>GRAND<br>CRUISE</h1>
+      <p class="sub">夏 の 家 族 大 周 遊</p>
+      <p class="route-line">三鷹 → <b>姫路城</b> → <b>有馬温泉</b> → <b>門司港</b> → <b>阿蘇</b> → <b>高千穂</b> → <b>由布院・別府</b> → <b>博多</b> → 太平洋フェリー → 横須賀</p>
+      <div class="cd" id="cd">
+        <div class="cell"><div class="num" id="cd-d">--</div><div class="lab">Days</div></div>
+        <div class="cell"><div class="num" id="cd-h">--</div><div class="lab">Hours</div></div>
+        <div class="cell"><div class="num" id="cd-m">--</div><div class="lab">Min</div></div>
+        <div class="cell"><div class="num" id="cd-s">--</div><div class="lab">Sec</div></div>
       </div>
-      <!-- View Controller Tabs -->
-      <div class="flex gap-4 sm:gap-6 text-xs font-bold tracking-widest text-gray-400">
-        <button onclick="switchView('portal')" id="nav-btn-portal" class="py-1 active-nav-btn transition-all duration-300">PORTAL</button>
-        <button onclick="switchView('itinerary')" id="nav-btn-itinerary" class="py-1 transition-all duration-300">ITINERARY (旅程本編)</button>
-        <button onclick="switchView('concierge')" id="nav-btn-concierge" class="py-1 transition-all duration-300">GEMINI CONSOLE</button>
+      <p class="cd-msg" id="cd-msg" style="display:none"></p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-gold" onclick="go('days')">しおり本編を開く</button>
+        <button class="btn btn-ghost" onclick="celebrate()">テンションを上げる ✨</button>
       </div>
     </div>
-  </nav>
+    <div class="scroll-hint">SCROLL</div>
+  </div>
 
-  <!-- ================= VIEW 1: PORTAL VIEW ================= -->
-  <div id="view-portal" class="view-pane pt-20">
-    <header class="relative min-h-[90vh] flex flex-col justify-between items-center py-16 px-4 text-center overflow-hidden">
-      <!-- background simulation -->
-      <div class="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0d131a] via-[#030508] to-black opacity-95"></div>
-      <div class="absolute inset-0 z-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center"></div>
-      <div class="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(#dfba6b_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
-
-      <div class="relative z-10 w-full max-w-4xl mx-auto my-auto flex flex-col items-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/40 bg-gold/5 text-gold text-xs font-bold tracking-[0.3em] uppercase mb-8">
-          <i class="fa-solid fa-plane-departure text-gold animate-bounce"></i> Summer Vacation 2026
-        </div>
-        
-        <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[0.1em] text-white leading-tight mb-4 drop-shadow-[0_8px_25px_rgba(0,0,0,0.9)]">
-          GRAND CRUISE<br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">SUMMER VACATION</span>
-        </h1>
-        
-        <p class="text-gold-light tracking-[0.25em] text-xs sm:text-sm md:text-base mb-12 font-medium bg-black/40 px-6 py-2 rounded-full border border-gold/10">
-          旅立ちの瞬間まで、あと...
-        </p>
-
-        <!-- LIVE COUNTDOWN -->
-        <div class="glass p-6 sm:p-8 rounded-3xl w-full max-w-xl mb-12 flex justify-around items-center shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-gold/20">
-          <div>
-            <span id="cd-days" class="font-serif text-4xl sm:text-6xl font-black text-white tracking-tight">--</span>
-            <span class="block text-[10px] text-gold tracking-widest mt-1">DAYS</span>
-          </div>
-          <div class="text-gold text-3xl font-light animate-pulse">:</div>
-          <div>
-            <span id="cd-hours" class="font-serif text-4xl sm:text-6xl font-black text-white tracking-tight">--</span>
-            <span class="block text-[10px] text-gold tracking-widest mt-1">HOURS</span>
-          </div>
-          <div class="text-gold text-3xl font-light animate-pulse">:</div>
-          <div>
-            <span id="cd-mins" class="font-serif text-4xl sm:text-6xl font-black text-white tracking-tight">--</span>
-            <span class="block text-[10px] text-gold tracking-widest mt-1">MINUTES</span>
-          </div>
-          <div class="text-gold text-3xl font-light animate-pulse">:</div>
-          <div>
-            <span id="cd-secs" class="font-serif text-4xl sm:text-6xl font-black text-gold tracking-tight animate-pulse">--</span>
-            <span class="block text-[10px] text-gold tracking-widest mt-1">SECONDS</span>
-          </div>
-        </div>
-
-        <!-- MAIN GATEWAY BUTTONS -->
-        <div class="flex flex-col sm:flex-row gap-4 w-full max-w-xl justify-center">
-          <button onclick="switchView('itinerary')" class="flex-1 px-8 py-5 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-sm tracking-[0.25em] rounded-full shadow-[0_10px_30px_rgba(223,186,107,0.3)] hover:shadow-[0_15px_40px_rgba(223,186,107,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-            <i class="fa-solid fa-map-location-dot text-base"></i>
-            <span>しおり本編を開く</span>
-          </button>
-          <button onclick="triggerConfetti()" class="px-8 py-5 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-bold text-sm tracking-[0.15em] rounded-full transition-all duration-300 flex items-center justify-center gap-2">
-            <i class="fa-solid fa-face-laugh-beam text-gold"></i>
-            <span>テンションをあげる</span>
-          </button>
-        </div>
+  <div class="wrap">
+    <section class="blk reveal">
+      <div class="sec-head">
+        <p class="kicker">Journey Map</p>
+        <h2 class="h2">7日間・約2,000kmの大航路</h2>
+        <p class="d lead">停泊地をタップするとその日の旅程へジャンプします。</p>
       </div>
-    </header>
-
-    <!-- DYNAMIC MAPS & GRAPHIC INTERFACE (THE CORE PREVIEW PANEL) -->
-    <section class="max-w-5xl mx-auto px-4 py-12 space-y-12">
-      <div class="text-center">
-        <h2 class="section-title">TRIP PREVIEW & MAPS</h2>
-        <p class="text-xs text-gray-400 mt-2 font-medium">日程タブをタップすると、マップの走破ルートと特選フォトが瞬時に100%シンクロ連動します</p>
+      <div class="ribbon"><div class="ribbon-in" id="ribbon"></div></div>
+      <div style="text-align:center;margin-top:18px">
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=姫路城|有馬温泉|門司港レトロ|阿蘇市|高千穂町|由布院温泉|別府市|福岡市天神">🗺 Googleマップで全ルートを見る</a>
       </div>
+    </section>
 
-      <!-- Day Selector Switcher -->
-      <div class="flex gap-2 overflow-x-auto pb-4 justify-start md:justify-center">
-        <button onclick="selectPreviewTab('all')" id="prev-tab-btn-all" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300 active-day-tab">全体鳥瞰</button>
-        <button onclick="selectPreviewTab(1)" id="prev-tab-btn-1" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 1</button>
-        <button onclick="selectPreviewTab(2)" id="prev-tab-btn-2" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 2</button>
-        <button onclick="selectPreviewTab(3)" id="prev-tab-btn-3" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 3</button>
-        <button onclick="selectPreviewTab(4)" id="prev-tab-btn-4" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 4</button>
-        <button onclick="selectPreviewTab(5)" id="prev-tab-btn-5" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 5</button>
-        <button onclick="selectPreviewTab(6)" id="prev-tab-btn-6" class="day-tab px-6 py-3 rounded-xl glass border border-gold/10 text-gray-400 text-xs font-bold tracking-widest whitespace-nowrap transition-all duration-300">DAY 6/7</button>
+    <section class="blk reveal">
+      <div class="sec-head">
+        <p class="kicker">Stays</p>
+        <h2 class="h2">今宵の宿</h2>
       </div>
+      <div class="stay-grid" id="stay-grid"></div>
+    </section>
 
-      <!-- Left-Right Console Split -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        <!-- Route Map Display Box -->
-        <div class="lg:col-span-7 glass rounded-3xl p-6 border border-gold/20 flex flex-col justify-between shadow-2xl relative overflow-hidden">
-          <div class="mb-4 flex justify-between items-center">
-            <span class="text-[10px] text-gold font-bold tracking-widest uppercase"><i class="fa-solid fa-map-location-dot"></i> ROADWAY COMPASS (ドライブルート案内)</span>
-            <span id="map-indicator" class="text-xs font-serif font-bold text-white bg-gold/10 px-3 py-1 rounded-full border border-gold/20">全体ルート</span>
-          </div>
-          <!-- Google Maps Embed Stage -->
-          <div class="relative w-full rounded-2xl overflow-hidden border border-white/10 h-[340px] map-container bg-luxury-dark">
-            <iframe 
-              id="google-maps-iframe"
-              src="https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=横須賀港&waypoints=有馬温泉+月光園+游月山荘|星野リゾート+BEB5門司港|阿蘇大観峰|高千穂峡|星野リゾート+界+別府|天神&t=m" 
-              width="100%" 
-              height="100%" 
-              style="border:0; filter: grayscale(80%) invert(92%) contrast(108%);" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
-          <div class="mt-4 flex justify-between items-center gap-2">
-            <span class="text-[10px] sm:text-xs text-gray-400"><i class="fa-solid fa-location-arrow text-gold mr-1"></i>スマホナビ連動起動対応</span>
-            <a id="google-maps-btn" href="https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=有馬温泉|門司港|阿蘇|高千穂|別府|天神" target="_blank" class="px-4 py-2.5 rounded-xl bg-gold/10 hover:bg-gold/20 border border-gold/30 text-gold text-xs font-bold flex items-center gap-2 transition-all">
-              <i class="fa-solid fa-route"></i><span id="map-btn-text">Googleマップで全ルートを開く</span>
-            </a>
-          </div>
+    <section class="blk reveal">
+      <div class="sec-head">
+        <p class="kicker">Family Board</p>
+        <h2 class="h2">家族メモボード</h2>
+        <p class="d lead">買いたい物・食べたい物・行きたい場所を自由にメモ。<b style="color:var(--gold-l)">この端末に保存されます</b>（まとめてコピーしてLINEで共有できます）。</p>
+      </div>
+      <div class="panel">
+        <div class="memo-list" id="memo-list"></div>
+        <div class="memo-form">
+          <input class="f-in" id="memo-in" placeholder="例：門司港でバナナのたたき売りを見る！" maxlength="120">
+          <button class="btn btn-gold" style="padding:11px 18px;font-size:13px;flex-shrink:0" onclick="addMemo()">投稿</button>
         </div>
-
-        <!-- Photos & Interactive Highlight Details Box (GUARANTEED IMAGE LOAD WITH FALLBACKS) -->
-        <div id="preview-details-container" class="lg:col-span-5 glass rounded-3xl p-6 border border-gold/20 flex flex-col justify-between shadow-2xl relative">
-          <div>
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
-              <h3 id="prev-title" class="text-base sm:text-lg font-bold text-white">GRAND CRUISE 2026</h3>
-              <span id="prev-meta" class="text-xs text-gold font-bold">全行程一覧</span>
-            </div>
-            <p id="prev-desc" class="text-xs text-gray-300 leading-relaxed mb-6">三鷹を出発し、姫路城、有馬温泉、門司港、南阿蘇、高千穂、由布院、別府温泉を駆け抜け、最後は太平洋を豪華クルーズフェリーで渡って横須賀から帰還する大周遊ロードトリップ！</p>
-            
-            <h4 class="text-xs text-gold tracking-widest uppercase mb-3"><i class="fa-regular fa-image"></i> 特選フォトギャラリー (タップで公式サイトへ)</h4>
-            <!-- Photos Grid (6 Cards with fallback handlers) -->
-            <div class="grid grid-cols-3 gap-2" id="prev-photos-grid">
-              <div class="relative rounded-xl overflow-hidden h-20 shadow-lg group bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center border border-white/5">
-                <a id="prev-link-1" href="" target="_blank" class="visual-link absolute inset-0 z-10">
-                  <img id="prev-img-1" src="" alt="Photo 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-0" onload="this.style.opacity='1'" onerror="handleImageError(this, 'fort-awesome')">
-                </a>
-                <i class="fa-solid fa-fort-awesome text-gold/40 text-xl absolute"></i>
-              </div>
-              <div class="relative rounded-xl overflow-hidden h-20 shadow-lg group bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center border border-white/5">
-                <a id="prev-link-2" href="" target="_blank" class="visual-link absolute inset-0 z-10">
-                  <img id="prev-img-2" src="" alt="Photo 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-0" onload="this.style.opacity='1'" onerror="handleImageError(this, 'hot-tub-person')">
-                </a>
-                <i class="fa-solid fa-hot-tub-person text-gold/40 text-xl absolute"></i>
-              </div>
-              <div class="relative rounded-xl overflow-hidden h-20 shadow-lg group bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center border border-white/5">
-                <a id="prev-link-3" href="" target="_blank" class="visual-link absolute inset-0 z-10">
-                  <img id="prev-img-3" src="" alt="Photo 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-0" onload="this.style.opacity='1'" onerror="handleImageError(this, 'anchor')">
-                </a>
-                <i class="fa-solid fa-anchor text-gold/40 text-xl absolute"></i>
-              </div>
-              <div class="relative rounded-xl overflow-hidden h-20 shadow-lg group bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center border border-white/5">
-                <a id="prev-link-4" href="" target="_blank" class="visual-link absolute inset-0 z-10">
-                  <img id="prev-img-4" src="" alt="Photo 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-0" onload="this.style.opacity='1'" onerror="handleImageError(this, 'mountain-sun')">
-                </a>
-                <i class="fa-solid fa-mountain-sun text-gold/40 text-xl absolute"></i>
-              </div>
-              <div class="relative rounded-xl overflow-hidden h-20 shadow-lg group bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center border border-white/5">
-                <a id="prev-link-5" href="" target="_blank" class="visual-link absolute inset-0 z-10">
-                  <img id="prev-img-5" src="" alt="Photo 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-0" onload="this.style.opacity='1'" onerror="handleImageError(this, 'spa')">
-                </a>
-                <i class="fa-solid fa-spa text-gold/40 text-xl absolute"></i>
-              </div>
-              <div class="relative rounded-xl overflow-hidden h-20 shadow-lg group bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center border border-white/5">
-                <a id="prev-link-6" href="" target="_blank" class="visual-link absolute inset-0 z-10">
-                  <img id="prev-img-6" src="" alt="Photo 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-0" onload="this.style.opacity='1'" onerror="handleImageError(this, 'ship')">
-                </a>
-                <i class="fa-solid fa-ship text-gold/40 text-xl absolute"></i>
-              </div>
-            </div>
-          </div>
-
-          <!-- Dynamic Action Button -->
-          <button id="detail-trigger-btn" onclick="openDetailedItinerary()" class="mt-6 w-full py-4 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-black text-center text-xs tracking-widest rounded-xl hover:scale-[1.02] transition-all block shadow-lg">
-            この日の詳細スケジュールを見る ➔
-          </button>
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <button class="btn btn-ghost" style="font-size:11.5px;padding:8px 16px" onclick="copyMemos()">📋 まとめてコピー（LINE共有用）</button>
         </div>
       </div>
     </section>
 
-    <!-- MEMO BOARD & SMART PACKING SECTION -->
-    <section class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Memo Chat board -->
-      <div class="glass rounded-3xl p-6 shadow-2xl border border-gold/15 flex flex-col justify-between">
-        <div>
-          <div class="flex justify-between items-center mb-4 pb-2 border-b border-white/10">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-comments text-gold animate-bounce"></i> 家族専用メッセージボード
-            </h3>
-            <span class="text-[9px] text-gold tracking-widest uppercase">Family Chat</span>
-          </div>
-          <p class="text-xs text-gray-400 mb-4">買いたい物、食べたい物、行きたい場所を自由に書いて共有しよう！</p>
-          
-          <div id="memo-board-container" class="space-y-3 max-h-56 overflow-y-auto mb-4 pr-1">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-
-        <form onsubmit="postMemo(event)" class="flex gap-2">
-          <input type="text" id="memo-author" placeholder="名前" class="w-20 bg-white/5 border border-white/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-gold" required>
-          <input type="text" id="memo-text" placeholder="メッセージを入力..." class="flex-1 bg-white/5 border border-white/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-gold" required>
-          <button type="submit" class="px-4 py-2 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-bold text-xs rounded-xl hover:scale-105 transition-all"><i class="fa-solid fa-paper-plane"></i></button>
-        </form>
+    <section class="blk reveal">
+      <div class="sec-head">
+        <p class="kicker">Information</p>
+        <h2 class="h2">旅のキーインフォ</h2>
       </div>
-
-      <!-- Smart packing list with Gemini generator -->
-      <div class="glass rounded-3xl p-6 shadow-2xl border border-gold/15 flex flex-col justify-between">
-        <div>
-          <div class="flex justify-between items-center mb-4 pb-2 border-b border-white/10">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-clipboard-list text-gold"></i> スマートお仕度チェックリスト
-            </h3>
-            <span id="pack-progress" class="text-xs font-bold text-gold">0% Done</span>
-          </div>
-          <p class="text-xs text-gray-400 mb-4">チェックを入れると全員のブラウザに状態が保存されます！</p>
-          
-          <div id="checklist-container" class="space-y-2 max-h-52 overflow-y-auto pr-1">
-             <!-- Rendered dynamically -->
-          </div>
-
-          <!-- ✨ AI Personalized Packing Generator -->
-          <div class="mt-4 pt-4 border-t border-white/10 space-y-2">
-            <span class="text-[10px] text-gold font-bold tracking-widest uppercase block"><i class="fa-solid fa-wand-magic-sparkles"></i> ✨ AI荷造りパーソナライズメーカー</span>
-            <p class="text-[10px] text-gray-400">状況（例：「写真撮影が趣味」「中学生の娘がコスメ好き」「猛暑対策」など）を入力して、旅行用の持ち物アイデアを追加しましょう！</p>
-            <div class="flex gap-2">
-              <input type="text" id="ai-pack-input" placeholder="例：お盆の猛暑対策、写真が趣味、等..." class="flex-1 bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold">
-              <button onclick="generateAIPacking()" id="ai-pack-btn" class="px-3 py-2 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-bold text-xs rounded-xl hover:scale-105 transition-all">✨提案</button>
-            </div>
-            <div id="ai-pack-feedback" class="text-[10px] text-cyan-400 hidden animate-pulse">Geminiが最適な持ち物をセレクト中...</div>
-          </div>
-        </div>
-        <div class="flex items-center justify-between mt-4">
-          <div class="w-[70%] bg-white/5 rounded-full h-1.5 overflow-hidden">
-            <div id="pack-bar" class="bg-gradient-to-r from-gold-dark to-gold h-full transition-all duration-300" style="width:0%"></div>
-          </div>
-          <button onclick="resetPackList()" class="text-[10px] text-red-400/80 hover:text-red-400 transition-colors flex items-center gap-1"><i class="fa-solid fa-trash-can"></i> リセット</button>
-        </div>
+      <div class="info-grid">
+        <div class="info"><p class="t">⛴ 帰りのフェリー（最重要）</p><p class="d">東京九州フェリー「それいゆ／はまゆう」<br>8/27（木）23:55 新門司港 出港 → 8/28（金）夜 横須賀港 着（約21時間）。<br><b>車両乗船は出航3時間前・20:50港着が鉄則。</b><br><a target="_blank" rel="noopener" href="https://tqf.co.jp/">公式サイト ↗</a></p></div>
+        <div class="info"><p class="t">🏯 予約・チケット</p><p class="d">姫路城 大人1,000円／高千穂峡 貸しボート／夜神楽。QRコード・予約票は「準備」タブのチェックリストで最終確認を。</p></div>
+        <div class="info"><p class="t">🚗 ドライブ心得</p><p class="d">DAY1は5:00発で渋滞回避。大分道は霧に注意。お盆明けでも夕方の都市部は混みます。休憩は2時間毎に。</p></div>
+        <div class="info"><p class="t">🆘 もしもの時</p><p class="d">道路緊急ダイヤル <b>#9910</b>／JAF <b>#8139</b>／救急相談 <b>#7119</b>。健康保険証を忘れずに。</p></div>
       </div>
     </section>
   </div>
+</div>
 
+<!-- ================= DAYS ================= -->
+<div class="view" id="view-days">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">Itinerary</p>
+      <h2 class="h2">旅程しおり本編</h2>
+    </div>
+    <div class="day-tabs" id="day-tabs"></div>
+    <div id="day-body"></div>
+  </div>
+</div>
 
-  <!-- ================= VIEW 2: ITINERARY MAIN VIEW (しおり本編詳細) ================= -->
-  <div id="view-itinerary" class="view-pane pt-20 hidden">
-    <div class="max-w-4xl mx-auto px-4 py-8 space-y-12">
-      <div class="text-center space-y-2">
-        <span class="text-gold text-xs font-bold tracking-[0.3em] uppercase block">Itinerary</span>
-        <h2 class="font-serif text-3xl sm:text-5xl font-black text-white">GRAND CRUISE JOURNEY</h2>
-        <p class="text-xs text-gray-400">各DAYをタップすると、タイムラインの詳細スケジュールが開きます。</p>
+<!-- ================= DETOUR ================= -->
+<div class="view" id="view-detour">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">Detour Ideas</p>
+      <h2 class="h2">寄り道アイデア帳</h2>
+      <p class="d lead">ルート沿いの「行けたら行きたい」候補地。♡を押して家族の人気投票に。思いついたら自分で追加もできます。</p>
+    </div>
+
+    <div class="idea-form">
+      <h4>💡 アイデアを追加する</h4>
+      <p>ドライブ中に見つけたお店、SNSで見た場所、なんでもOK。地図リンクは自動で付きます。</p>
+      <div class="f-row">
+        <select class="f-in" id="idea-day">
+          <option value="1">DAY 1（東名〜姫路〜有馬）</option>
+          <option value="2">DAY 2（山陽道〜門司港）</option>
+          <option value="3">DAY 3（門司港〜阿蘇）</option>
+          <option value="4">DAY 4（高千穂〜南阿蘇）</option>
+          <option value="5">DAY 5（やまなみ〜別府）</option>
+          <option value="6">DAY 6/7（博多〜フェリー）</option>
+        </select>
+        <select class="f-in" id="idea-cat">
+          <option>📸 絶景</option><option>🍜 グルメ</option><option>🛍 買い物</option><option>🎡 体験</option><option>☕ 休憩</option>
+        </select>
       </div>
+      <div class="f-row full"><input class="f-in" id="idea-name" placeholder="スポット名（例：めかりPA 展望台）" maxlength="40"></div>
+      <div class="f-row full"><input class="f-in" id="idea-memo" placeholder="ひとことメモ（例：関門海峡ビューのPA。ふぐバーガーが気になる）" maxlength="90"></div>
+      <button class="btn btn-gold" style="width:100%" onclick="addIdea()">アイデア帳に追加する</button>
+    </div>
 
-      <!-- Day list cards -->
-      <div class="space-y-6" id="itinerary-cards-container">
-        <!-- Rendered dynamically via javascript -->
+    <div class="det-filters" id="det-filters"></div>
+    <div class="det-grid" id="det-grid"></div>
+  </div>
+</div>
+
+<!-- ================= PLAY ================= -->
+<div class="view" id="view-play">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">Car Entertainment</p>
+      <h2 class="h2">車内であそぶ</h2>
+      <p class="d lead">通信圏外でも動くご当地3択クイズ全24問。ネタバレ厳禁、ドライバーも口頭参加OK。</p>
+    </div>
+    <div class="det-filters" id="quiz-day-filters"></div>
+    <div class="quiz-shell">
+      <div class="q-meta">
+        <span class="q-no" id="q-no">QUESTION 1</span>
+        <span class="q-score" id="q-score">正解 0 / 挑戦 0</span>
+      </div>
+      <p class="q-text" id="q-text"></p>
+      <div class="q-opts" id="q-opts"></div>
+      <div class="q-exp" id="q-exp"></div>
+      <button class="btn btn-gold q-next" id="q-next" onclick="nextQuiz()">次の問題へ →</button>
+    </div>
+    <div class="game-grid">
+      <div class="game"><div class="e">🚗</div><p class="t">ナンバープレート県つなぎ</p><p class="d">見つけたナンバーの地名でしりとり。「熊本→とちぎ→…」振り出しは出発地・多摩！</p></div>
+      <div class="game"><div class="e">🎤</div><p class="t">ご当地イントロクイズ</p><p class="d">通過中の県にゆかりのある曲を1人が流して早押し。DJはパパの隣の人。</p></div>
+      <div class="game"><div class="e">🔍</div><p class="t">高速道路ビンゴ</p><p class="d">「白いトラック」「観覧車」「海」「トンネル3連続」など9マスを決めて先に揃えた人が勝ち。</p></div>
+      <div class="game"><div class="e">⛴</div><p class="t">フェリー星空ミッション</p><p class="d">帰りの洋上デッキで夏の大三角を全員で探す。見つけた人が翌朝の席を最初に選べる。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PREP ================= -->
+<div class="view" id="view-prep">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">Packing & Check</p>
+      <h2 class="h2">お仕度チェック</h2>
+      <p class="d lead">チェック状態は<b style="color:var(--gold-l)">この端末に保存</b>されます。テーマボタンでおすすめの持ち物を一括追加できます。</p>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <h4>🧳 チェックリスト</h4>
+        <p class="note">タップで完了。自分の持ち物も追加できます。</p>
+        <div class="ck-list" id="ck-list"></div>
+        <div class="prog-wrap">
+          <div class="prog"><i id="prog-bar"></i></div>
+          <span class="prog-t" id="prog-t">0% 完了</span>
+        </div>
+        <div class="memo-form" style="margin-top:12px">
+          <input class="f-in" id="ck-in" placeholder="持ち物を追加（例：ポータブル扇風機）" maxlength="50">
+          <button class="btn btn-gold" style="padding:11px 18px;font-size:13px;flex-shrink:0" onclick="addCk()">追加</button>
+        </div>
+        <div style="margin-top:12px;text-align:right"><button class="det-del" onclick="resetCk()">↺ チェックを全部リセット</button></div>
+      </div>
+      <div class="panel">
+        <h4>✨ テーマ別おすすめセット</h4>
+        <p class="note">当てはまるテーマをタップすると、リストに一括追加されます。</p>
+        <div class="pack-themes" id="pack-themes"></div>
+        <h4 style="margin-top:26px">🖨 紙のしおり</h4>
+        <p class="note">おじいちゃんおばあちゃん用・車内保管用に。</p>
+        <button class="btn btn-ghost" onclick="window.print()">このしおりを印刷する</button>
       </div>
     </div>
   </div>
+</div>
+</main>
 
-
-  <!-- ================= VIEW 3: GEMINI CONSOLE VIEW (AI CONCIERGE & GAME) ================= -->
-  <div id="view-concierge" class="view-pane pt-20 hidden">
-    <div class="max-w-4xl mx-auto px-4 py-8 space-y-12">
-      <div class="text-center space-y-2">
-        <span class="text-gold text-xs font-bold tracking-[0.3em] uppercase block">Interactive AI Console</span>
-        <h2 class="font-serif text-3xl sm:text-5xl font-black text-white">GEMINI CONSOLE</h2>
-        <p class="text-xs text-gray-400">Geminiの最先端AIが、ドライブ中の退屈を120%解消します！</p>
-      </div>
-
-      <!-- Grid layout for AI Concierge and Game -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        
-        <!-- Part A: Live AI Concierge -->
-        <div class="glass rounded-3xl p-6 border border-gold/20 shadow-2xl space-y-4">
-          <div class="flex justify-between items-center pb-2 border-b border-white/10">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-comments-pie text-gold"></i> AIコンシェルジュに相談
-            </h3>
-            <span class="text-[9px] text-gold tracking-widest uppercase">Live Search</span>
-          </div>
-          <p class="text-xs text-gray-400">現在地や日程に合わせた最新の現地グルメ情報や渋滞ハック、お土産スポットをGeminiがリアルタイムに検索して回答します！</p>
-          
-          <div class="space-y-3 text-xs">
-            <div>
-              <span class="text-gray-300 font-bold block mb-1">スポット・曜日：</span>
-              <select id="ai-day" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-gold">
-                <option value="1">DAY 1 (有馬温泉街/姫路)</option>
-                <option value="2">DAY 2 (門司港レトロ)</option>
-                <option value="3">DAY 3 (阿蘇大観峰/草千里/どんどこ湯)</option>
-                <option value="4">DAY 4 (高千穂峡/南阿蘇)</option>
-                <option value="5">DAY 5 (由布院/別府)</option>
-                <option value="6">DAY 6/7 (福岡天神/屋台/フェリー)</option>
-              </select>
-            </div>
-            
-            <div>
-              <span class="text-gray-300 font-bold block mb-1">カテゴリー：</span>
-              <select id="ai-category" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-gold">
-                <option value="お盆期間の道路混雑・渋滞ハック">🚗 道路混雑・渋滞ハック</option>
-                <option value="地元ライター厳選のティーン向け最新お土産・スイーツカフェ">🛍 ティーン向け最新カフェ・お土産</option>
-                <option value="現地でしか食べられない幻のローカルB級グルメ">🍜 local B級グルメ</option>
-                <option value="大人も感動する穴場のフォトジェニック絶景スポット">📸 穴場絶景フォトスポット</option>
-              </select>
-            </div>
-          </div>
-
-          <button onclick="askLiveAI()" id="ai-query-btn" class="w-full px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-black text-xs tracking-widest rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> リアルタイム周辺状況をAI検索
-          </button>
-
-          <!-- AI Response Container -->
-          <div id="ai-response-box" class="hidden p-4 rounded-2xl bg-black/60 border border-white/10 text-xs text-gray-300 space-y-3 leading-relaxed">
-            <div id="ai-loader" class="flex items-center gap-2 py-4 justify-center">
-              <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 typing-dot"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 typing-dot"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 typing-dot"></div>
-              <span class="text-gray-400 ml-2 animate-pulse">Geminiが周辺情報をマッピング中...</span>
-            </div>
-            <div id="ai-text-content"></div>
-            <div id="ai-sources" class="text-[9px] text-gray-500 border-t border-white/5 pt-2 flex flex-wrap gap-1"></div>
-          </div>
-        </div>
-
-        <!-- Part B: Geminiご当地クイズ -->
-        <div class="glass rounded-3xl p-6 border border-gold/20 shadow-2xl space-y-4">
-          <div class="flex justify-between items-center pb-2 border-b border-white/10">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-gamepad text-gold animate-bounce"></i> ✨車内のお楽しみ！Geminiご当地クイズ
-            </h3>
-            <span class="text-[9px] text-gold tracking-widest uppercase">Trivia Game</span>
-          </div>
-          <p class="text-xs text-gray-400">長時間のドライブやフェリー移動を最高に盛り上げる、ご当地3択クイズをGeminiがリアルタイムに出題！</p>
-          
-          <div class="space-y-3 text-xs">
-            <div>
-              <span class="text-gray-300 font-bold block mb-1">クイズのテーマ（日程）：</span>
-              <select id="quiz-day" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-gold">
-                <option value="1">DAY 1 (姫路城と有馬温泉)</option>
-                <option value="2">DAY 2 (山陽道と門司港レトロ)</option>
-                <option value="3">DAY 3 (阿蘇大観峰・どんどこ湯)</option>
-                <option value="4">DAY 4 (高千穂峡ボート・天岩戸)</option>
-                <option value="5">DAY 5 (やまなみハイウェイ・界別府)</option>
-                <option value="6">DAY 6/7 (博多屋台・東京九州フェリー)</option>
-              </select>
-            </div>
-          </div>
-
-          <button onclick="generateGeminiQuiz()" id="quiz-gen-btn" class="w-full px-5 py-3 bg-gradient-to-r from-gold-dark to-gold text-luxury-dark font-black text-xs tracking-widest rounded-xl transition-all shadow-lg flex items-center justify-center gap-1.5">
-            <i class="fa-solid fa-brain"></i> クイズを出題する
-          </button>
-
-          <!-- Quiz Stage Container -->
-          <div id="quiz-box" class="hidden p-5 rounded-2xl bg-black/60 border border-white/10 space-y-4">
-            <div id="quiz-loader" class="flex items-center gap-2 py-4 justify-center">
-              <div class="w-2.5 h-2.5 rounded-full bg-gold typing-dot"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-gold typing-dot"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-gold typing-dot"></div>
-              <span class="text-gray-400 ml-2 animate-pulse">Geminiがご当地の歴史と豆知識をマッピング中...</span>
-            </div>
-            
-            <div id="quiz-content" class="space-y-4 hidden">
-              <!-- Question -->
-              <div class="text-sm font-bold text-white flex gap-2 items-start">
-                <span class="px-2 py-0.5 bg-gold/20 text-gold rounded text-xs font-black">Q</span>
-                <p id="quiz-question" class="leading-relaxed"></p>
-              </div>
-              
-              <!-- Choices (3 Options) -->
-              <div class="grid grid-cols-1 gap-2" id="quiz-options-container">
-                <!-- Dynamic Buttons -->
-              </div>
-
-              <!-- Answer & Explanation -->
-              <div id="quiz-answer-box" class="hidden p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
-                <div class="flex items-center gap-2 text-sm font-bold" id="quiz-result-header">
-                  <!-- Result Icon -->
-                </div>
-                <p id="quiz-explanation" class="text-xs text-gray-300 leading-relaxed"></p>
-                <button onclick="closeQuizBox()" class="px-4 py-1.5 bg-white/10 hover:bg-white/15 text-white text-xs font-bold rounded-lg border border-white/5 mt-2 transition-all">クイズを閉じる</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
+<nav class="dock">
+  <div class="in">
+    <button id="bt-home" onclick="go('home')"><span class="ic">⛵</span>ホーム</button>
+    <button id="bt-days" onclick="go('days')"><span class="ic">📖</span>旅程</button>
+    <button id="bt-detour" onclick="go('detour')"><span class="ic">📍</span>寄り道</button>
+    <button id="bt-play" onclick="go('play')"><span class="ic">🎲</span>あそぶ</button>
+    <button id="bt-prep" onclick="go('prep')"><span class="ic">🧳</span>準備</button>
   </div>
-
-
-  <!-- ================= VIEW 4: ITINERARY SLIDING OVERLAY (MODAL DETAILED TIMELINE) ================= -->
-  <div id="itinerary-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="glass w-full max-w-2xl rounded-3xl overflow-hidden border border-gold/30 shadow-2xl max-h-[85vh] flex flex-col transform scale-95 transition-all duration-300 relative" id="itinerary-modal-content">
-      
-      <!-- FLOATING PREV NAVIGATION ARROW -->
-      <button id="modal-nav-prev" onclick="navigateItinerary(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/75 border border-gold/30 text-gold flex items-center justify-center hover:bg-gold hover:text-luxury-dark transition-all duration-200 z-30 shadow-lg">
-        <i class="fa-solid fa-chevron-left text-lg"></i>
-      </button>
-
-      <!-- FLOATING NEXT NAVIGATION ARROW -->
-      <button id="modal-nav-next" onclick="navigateItinerary(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/75 border border-gold/30 text-gold flex items-center justify-center hover:bg-gold hover:text-luxury-dark transition-all duration-200 z-30 shadow-lg">
-        <i class="fa-solid fa-chevron-right text-lg"></i>
-      </button>
-
-      <!-- Modal Header -->
-      <div class="relative h-44 bg-cover bg-center flex items-end p-6 select-none" id="modal-header-img">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-        <button onclick="closeDetailedItinerary()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 border border-gold/30 text-gold flex items-center justify-center hover:bg-gold hover:text-luxury-dark transition-colors z-30"><i class="fa-solid fa-xmark"></i></button>
-        <div class="relative z-10 w-full pr-8">
-          <div class="text-[10px] text-gold font-bold tracking-widest uppercase mb-1" id="modal-day-label">DAY 1</div>
-          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight" id="modal-day-title">有馬温泉 「月光園 游月山荘」</h3>
-          <!-- SWIPE GUIDE GRAPHIC -->
-          <div class="text-[9px] text-gold/60 font-semibold tracking-wider mt-1 flex items-center gap-1">
-            <i class="fa-solid fa-hand-pointer animate-pulse"></i> ◀ 左右にスワイプして日程めくり ▶
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Body (Scrollable enriched cards) -->
-      <div class="p-6 overflow-y-auto space-y-6 flex-1 text-sm text-gray-300" id="modal-timeline-scroll-container">
-        <div class="space-y-6" id="modal-timeline-box">
-          <!-- Dynamically populated with super rich card-styled schedules -->
-        </div>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="p-4 border-t border-white/5 bg-black/60 flex gap-2">
-        <button onclick="switchView('itinerary'); closeDetailedItinerary();" class="flex-1 py-3 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-luxury-dark font-black text-center text-xs tracking-widest rounded-xl transition-all hover:shadow-[0_0_15px_rgba(223,186,107,0.3)]">
-          <i class="fa-solid fa-book-open mr-1"></i> 全体のしおり本編を開く
-        </button>
-        <button onclick="closeDetailedItinerary()" class="px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs rounded-xl border border-white/15">閉じる</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- PORTAL FOOTER -->
-  <footer class="border-t border-gold/15 bg-black py-12 px-4 text-center">
-    <div class="font-serif text-lg tracking-[0.3em] text-white">GRAND CRUISE Summer Vacation 2026</div>
-    <p class="text-xs text-gold tracking-widest mt-2 uppercase font-semibold">Designed for the Ultimate Family Adventure</p>
-    <p class="text-[10px] text-gray-500 mt-6 tracking-wide">© 2026 Family Road Trip Project. Safe Drive & Beautiful Cruise!</p>
-  </footer>
-
-
-  <!-- ================= JAVASCRIPT SYSTEM ENGINE ================= -->
-  <script>
-    // 1. GLOBAL DATABASE (PERFECTLY VERIFIED IMAGES & ACTUAL TARGET PATHS)
-    const previewData = {
-      all: {
-        title: "GRAND CRUISE ROAD TRIP 2026",
-        meta: "全行程一覧",
-        desc: "三鷹を出発し、姫路城、有馬温泉、門司港、南阿蘇、高千穂、由布院、別府温泉を駆け抜け、最後は太平洋を豪華クルーズフェリーで渡って横須賀から帰還する大周遊ロードトリップ！",
-        img1: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80", link1: "https://www.city.himeji.lg.jp/castle/",
-        img2: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", link2: "https://www.gekkoen.co.jp/yugetsu/",
-        img3: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80", link3: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
-        img4: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=300&q=80", link4: "https://owners-inn.com/?p=18939",
-        img5: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", link5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
-        img6: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=300&q=80", link6: "https://tqf.co.jp/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=横須賀港&waypoints=有馬温泉+月光園+游月山荘|星野リゾート+BEB5門司港|阿蘇大観峰|高千穂峡|星野リゾート+界+別府|天神&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=有馬温泉|門司港|阿蘇|高千穂|別府|天神",
-        btnText: "Googleマップで全ルートを開く"
-      },
-      1: {
-        title: "国宝「姫路城」と有馬温泉 月光園",
-        meta: "8.22 土",
-        desc: "三鷹を出発し、白鷺城と称される白亜の名城へ。有馬川沿いに佇む「月光園 游月山荘」にて、贅沢な夕朝会席と風情溢れる金泉掛け流しを堪能する記念すべき第1夜。",
-        img1: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80", link1: "https://www.city.himeji.lg.jp/castle/",
-        img2: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=400&q=80", link2: "https://www.gekkoen.co.jp/yugetsu/",
-        img3: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", link3: "https://www.gekkoen.co.jp/yugetsu/dish/",
-        img4: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=300&q=80", link4: "https://www.gekkoen.co.jp/yugetsu/spa/",
-        img5: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=300&q=80", link5: "https://arima-onsen.com/",
-        img6: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=300&q=80", link6: "https://www.gekkoen.co.jp/yugetsu/rooms/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=東京都三鷹市&daddr=有馬温泉+月光園+游月山荘&waypoints=姫路城&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉+月光園+游月山荘&waypoints=姫路城",
-        btnText: "Googleマップでナビを開く (DAY 1)",
-        timeline: [
-          { time: "05:00", title: "三鷹を出発 ── 暁の東名高速ハック！", desc: "東京ICから東名高速へ。早朝スタートを徹底することで、海老名SA付近やお盆明けの定番自然渋滞ポイントを完全にハックします。", img: "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=400&q=80", tip: "💡 足柄SAで最初の休憩を。富士山を眺めながら朝の美味しいコーヒーを補給するのがパパの流儀！", link: "https://sapa.c-nexco.co.jp/sapa?sapainfoid=4" },
-          { time: "12:00", title: "世界遺産・国宝「姫路城」大天守閣を制覇", desc: "白鷺城と称される白亜の天守へ。戦国時代の名残を残す石垣や急な木造階段を上り、最上階の絶景を愉しみます。（大人1,000円）", img: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80", tip: "💡 観光アドバイス：大天守の階段はとても急です。「滑り止め付きの靴下」を用意しておくと歩きやすくて安全です！", link: "https://www.city.himeji.lg.jp/castle/" },
-          { time: "15:00", title: "有馬温泉街のレトロそぞろ歩き", desc: "創業明治の『三ツ森』で焼き立て生炭酸せんべいを食べ歩き！滝川のせせらぎを聞きながらお土産やおやつ探しを愉しみましょう。", img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", tip: "💡 お土産お役立ち：お土産の『炭酸フレーク』はアイスにかけると絶品でお子様へのおすすめ品です！", link: "https://arima-onsen.com/" },
-          { time: "16:30", title: "月光園 游月山荘へ。滝川沿いの別世界露天", desc: "有馬が誇る「金泉」を贅沢に100%源泉掛け流しで愉しめる川音露天風呂に浸かり、長距離ドライブの疲れをリリース！", img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=400&q=80", tip: "💡 記念の1枚：夕方、川沿いの太鼓橋の上で愛車ドライブ初日の素晴らしい家族記念写真を撮りましょう！", link: "https://www.gekkoen.co.jp/yugetsu/" },
-          { time: "18:30", title: "極上の「神戸牛会席」を和の空間でお部屋食", desc: "お部屋食なのでリラックス。伝統的かつお洒落な本格会席。口の中でとろける最高峰「神戸牛」の陶板焼きなど贅沢ディナーを。", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", tip: "💡 浴衣ハック：移動の服からすぐに浴衣に着替えてリラックスしたまま、家族で美味しいお酒を囲めます。", link: "https://www.gekkoen.co.jp/yugetsu/dish/" }
-        ]
-      },
-      2: {
-        title: "有馬発 ➔ 門司港直行 ➔ 星野リゾート『BEB5門司港』",
-        meta: "8.23 日",
-        desc: "有馬温泉をチェックアウト後、関門海峡を越えて門司港へ直行ロングドライブ！長距離移動のため途中の観光は一切挟まず、15:30頃に星野リゾート『BEB5門司港』へ快適にチェックイン。レトロな港町の夜風を浴びながらお好きな屋台やレストランで外食ディナー！",
-        img1: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80", link1: "https://www.mojiko.info/",
-        img2: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80", link2: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
-        img3: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=400&q=80", link3: "https://www.mojiko.info/",
-        img4: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=300&q=80", link4: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
-        img5: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", link5: "https://www.mojiko.info/",
-        img6: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=300&q=80", link6: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=有馬温泉+月光園+游月山荘&daddr=星野リゾート+BEB5門司港&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=有馬温泉&destination=星野リゾートBEB5門司港",
-        btnText: "Googleマップでナビを開く (DAY 2)",
-        timeline: [
-          { time: "09:00", title: "有馬温泉を快走出発 ── 約430km大西征ドライブ", desc: "本日は移動に完全特化したスマートドライブ日！山陽自動車道へ入り、西へとひたすら快走します。", img: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=400&q=80", tip: "💡 運転支援：愛車のアクティブレーキープアシストが最高に活きます。みんなで歌いながら行きましょう！", link: "https://sapa.c-nexco.co.jp/" },
-          { time: "12:00", title: "吉備SAなどでご当地SAランチ", desc: "お盆明けで賑わう名物の吉備だんごや和風尾道ラーメンをお好みのままカジュアルに満喫します。", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", tip: "💡 グルメ：岡山名物『デミカツ丼』は濃厚で食べ応え抜群。ドライバーを交代し、しっかりリフレッシュしましょう。", link: "https://sapa.c-nexco.co.jp/" },
-          { time: "15:00", title: "関門大橋を渡り、感動の「九州上陸」！", desc: "海を隔てた九州の大パノラマを目撃しながら、感動の九州入りを果たします。", img: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80", tip: "💡 シャッターチャンス：関門大橋を渡る手前の『壇之浦PA』に立ち寄ると、ダイナミックな関門橋が120%の画角で写真に収まります！", link: "https://www.w-holdings.co.jp/sapa/2583.html" },
-          { time: "15:30", title: "星野リゾート「BEB5門司港」チェックイン", desc: "お菓子を囲んでいつでも家族でだらだらお喋りできるお洒落ロビー「TAMARIBA」に到着！", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80", tip: "💡 アジトを散策：ロビーに用意されたボードゲームやこだわりのDJプレイセットを触って楽しめます。お洒落すぎるアジトです！", link: "https://hoshinoresorts.com/ja/hotels/beb5mojiko/" },
-          { time: "18:00", title: "門司港レトロの夜景散策 ＆ 名物「焼きカレー」外食", desc: "大正ロマン漂う近代赤煉瓦建築群が息をのむ美しさで幻想的にライトアップ。夕食は門司港発祥の『焼きカレー』を頬張ります。", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300&q=80", tip: "💡 自由散策：素泊まりプランなので、家族会議で今夜食べたいものを自由に探すのも極上のアドベンチャーです！", link: "https://www.mojiko.info/" }
-        ]
-      },
-      3: {
-        title: "大観峰・草千里 ➔ CAN LI ASSO Eコテージ ➔ どんどこ湯 ➔ あか牛白水乃蔵",
-        meta: "8.24 月",
-        desc: "お昼頃に阿蘇へ到着。大観峰や草千里ヶ浜の大パノラマに感動。15:00にコンテナデザインが映える一棟貸し「CAN LI ASSO E」にチェックイン。16:30からは名湯どんどこ湯でととのい、18:30からは白水乃蔵であか牛炭火焼をいただきます！",
-        img1: "https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=400&q=80", link1: "https://www.asocity-kanko.jp/spot/daikanbo/",
-        img2: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400&q=80", link2: "https://owners-inn.com/?p=18939",
-        img3: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", link3: "https://tabelog.com/kumamoto/A4302/A430202/43000913/",
-        img4: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=80", link4: "https://www.asocity-kanko.jp/",
-        img5: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", link5: "https://www.dondokoyu.jp/",
-        img6: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=300&q=80", link6: "https://owners-inn.com/?p=18939",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=星野リゾート+BEB5門司港&daddr=CAN+LI+ASSO+E&waypoints=大観峰|草千里ヶ浜&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=星野リゾートBEB5門司港&destination=CAN+LI+ASSO+E&waypoints=大観峰|草千里ヶ浜",
-        btnText: "Googleマップでナビを開く (DAY 3)",
-        timeline: [
-          { time: "09:30", title: "門司港のんびり発 ── 前日のハックが活きる高原へ！", desc: "前日すでにアプローチ完了しているため、本日は約150kmのハーフドライブ。大分道経由で一気に緑きらめく大平原阿蘇へ！", img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80", tip: "💡 由布岳：湯布院ICあたりから見え始める由布岳の姿は言葉を失う美しさです。", link: "https://www.asocity-kanko.jp/" },
-          { time: "11:30", title: "阿蘇「大観峰」360度カルデラ盆地", desc: "阿蘇五岳が寝そべっている「涅槃像」に見える一大景勝地。目の前の広大なカルデラ盆地に息を呑みます。", img: "https://images.unsplash.com/photo-1621590393220-db981f7cf850?auto=format&fit=crop&w=400&q=80", tip: "💡 ご当地おやつ：あつあつ『あか牛の串焼き』と濃厚な『阿蘇ジャージー牛乳ソフト』をその場で！", link: "https://www.asocity-kanko.jp/spot/daikanbo/" },
-          { time: "13:00", title: "草千里ヶ浜の大草原散策", desc: "阿蘇中岳の火口を望む、広大な草原と雨水池。のんびりと雄大な世界を散歩します。", img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80", tip: "💡 乗馬体験：お好みの引き馬乗馬体験（1人1,500円〜）は家族みんなで大はしゃぎできるお勧めアクティビティです。", link: "https://www.asocity-kanko.jp/" },
-          { time: "15:00", title: "別荘「CAN LI ASSO E」チェックイン", desc: "お盆明けの極上秘密基地！大自然に溶け込む上質な一棟貸しコンテナヴィラ。おしゃれテラスでウェルカムコーヒーを。", img: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=400&q=80", tip: "💡 別荘の特権：誰にも邪魔されない貸切プライベートスペース。テラスでお気に入りの音楽を流しましょう。", link: "https://owners-inn.com/?p=18939" },
-          { time: "16:30", title: "「どんどこ湯」豪快巨石の源泉掛け流し", desc: "コテージすぐ近く。1000坪もの広大な日本庭園に配された豪快な大巨石露天風呂！極上の源泉をたっぷり堪能します。", img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", tip: "💡 サウナ：高原の澄んだ風を浴びながらのサウナと冷たい阿蘇伏流水の水風呂でのととのいは別格です。", link: "https://www.dondokoyu.jp/" },
-          { time: "18:30", title: "あか牛炭火焼「白水乃蔵」古民家あか牛ディナー", desc: "築150年の古民家食事処。お洒落な囲炉裏の炭火であぶる「あか牛」の蔵焼き！赤身肉の濃厚な旨味が広がります。", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80", tip: "💡 席確保：人気店のためお盆明けも事前ネット確認または席キープがマストの安心安全ハックです！", link: "https://tabelog.com/kumamoto/A4302/A430202/43000913/" }
-        ]
-      },
-      4: {
-        title: "高千穂峡ボート＆天岩戸 ➔ 四季の森温泉 ➔ 旨乃蔵地鶏",
-        meta: "8.25 火",
-        desc: "午前中に神話の郷「高千穂峡ボート」と天岩戸神社を巡り、13:00に本場のチキン南蛮ランチ。17:30からは南阿蘇久木野温泉「四季の森」で極上ととのい、19:00は「旨乃蔵」で激ウマ地鶏料理！コテージ連泊の極意。",
-        img1: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80", link1: "https://takachiho-kanko.info/sightseeing/detail.php?id=3",
-        img2: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80", link2: "https://takachiho-kanko.info/sightseeing/detail.php?id=7",
-        img3: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=400&q=80", link3: "https://takachiho-kanko.info/gourmet/4/",
-        img4: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", link4: "http://www.shikinonomori.co.jp/",
-        img5: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80", link5: "https://tabelog.com/kumamoto/A4302/A430202/43015494/",
-        img6: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=300&q=80", link6: "https://takachiho-jinja.or.jp/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=CAN+LI+ASSO+E&daddr=CAN+LI+ASSO+E&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森|旨乃蔵&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=CAN+LI+ASSO+E&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森|旨乃蔵",
-        btnText: "Googleマップでナビを開く (DAY 4)",
-        timeline: [
-          { time: "09:00", title: "午前：神話の郷「天安河原」＆「天岩戸神社」へ", desc: "八百万の神々が集まり会議をおこなったと伝わる巨大な洞窟。重ね石が並ぶ神秘の神域を参拝します。", img: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=400&q=80", tip: "💡 パワー：宮崎ならではの静まり返った渓流のマイナスイオンを五感で感じてください。", link: "https://takachiho-kanko.info/sightseeing/detail.php?id=7" },
-          { time: "10:30", title: "🛶 「高千穂峡」手漕ぎ貸しボート体験", desc: "柱状節理の切り立つ大渓谷。真名井の滝のすぐ側を、手漕ぎボートでゆっくり滑走！滝しぶきを見上げて感動！", img: "https://images.unsplash.com/photo-1624564287413-eb163f458cb5?auto=format&fit=crop&w=400&q=80", tip: "💡 びしょ濡れ：滝のすぐ横を通るので、必ず「着替え用タオル」を持参して！ボートを漕ぐパパのテクニックの見せ所！", link: "https://takachiho-kanko.info/sightseeing/detail.php?id=3" },
-          { time: "13:00", title: "13時昼飯：宮崎本場の「チキン南蛮」", desc: "ジューシーな唐揚げに、たっぷりの特製手作りタルタルソースがこれでもかと乗った極上チキン南蛮！", img: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=400&q=80", tip: "💡 ボリューム：甘くてコクのあるチキン南蛮は、お子様たちも大喜びのローカルご馳走です！", link: "https://takachiho-kanko.info/gourmet/4/" },
-          { time: "17:30", title: "南阿蘇久木野温泉「四季の森」温泉", desc: "夕暮れに染まる壮大な阿蘇五岳が壁紙のようにワイドに広がる絶景露天風呂を愉しみます。", img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=300&q=80", tip: "💡 ととのい：こちらは南阿蘇の純水掛け流し天然水風呂が自慢！サウナ上がりの冷たい水は極上です。（大人500円）", link: "http://www.shikinonomori.co.jp/" },
-          { time: "19:00", title: "19時夕食：「食事処 旨乃蔵」地鶏炭火焼き", desc: "網の上でモクモクと煙をたたせながら、噛むほどに旨味溢れる絶品の地鶏炭火焼きを愉しみます。", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80", tip: "💡 地元の名店：コテージに戻るだけなので、ゆっくりお好みの熊本麦焼酎を愉しめます！最高の夜の締めくくり。", link: "https://tabelog.com/kumamoto/A4302/A430202/43015494/" }
-        ]
-      },
-      5: {
-        title: "やまなみハイウェイ ➔ 由布岳散策 ➔ 星野リゾート「界 別府」",
-        meta: "8.26 水",
-        desc: "やまなみハイウェイの大草原をドライブし、湯布院「金鱗湖」周辺でお買い物や食べ歩きを満喫。別府温泉の海沿いに立つ隈研吾氏デザインの界別府へ。夕方から湯の坪や宿を愉しみ、温泉とお洒落な夕会席に癒やされます。",
-        img1: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80", link1: "https://yufuin.gr.jp/",
-        img2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/", link2: "https://hoshinoresorts.com/ja/hotels/kaibeppu/",
-        img3: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80", link3: "https://yufuin.gr.jp/",
-        img4: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=300&q=80", link4: "https://hoshinoresorts.com/ja/hotels/kaibeppu/rooms/",
-        img5: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", link5: "https://hoshinoresorts.com/ja/hotels/kaibeppu/spa/",
-        img6: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=300&q=80", link6: "https://hoshinoresorts.com/ja/hotels/kaibeppu/activities/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=CAN+LI+ASSO+E&daddr=星野リゾート+界+別府&waypoints=由布院&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=星野リゾート界別府&waypoints=由布院",
-        btnText: "Googleマップでナビを開く (DAY 5)",
-        timeline: [
-          { time: "10:00", title: "「やまなみハイウェイ」高原絶景ドライブ", desc: "九重連山の雄大な裾野を走る日本屈指のドライブ道路。吹き抜ける涼しい風が最高に爽快な高原ロードです！", img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80", tip: "💡 記念撮影：『長者原（ちょうじゃばる）』の駐車場に停め、硫黄山へ吸い込まれるようなお宝アングルで写真を！", link: "https://yufuin.gr.jp/" },
-          { time: "11:30", title: "湯布院「金鱗湖」＆「湯の坪街道」散策", desc: "湖面を揺らす湯気を見つめながらお散歩。湯の坪街道にはお洒落なスイーツやセレクトショップがぎっしり並びます。", img: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80", tip: "💡 ロールケーキ：大人気ロールケーキ『B-speak』をテイクアウトして、今日の高級宿「界」のお部屋でおやつに食べるのも贅沢！", link: "https://yufuin.gr.jp/" },
-          { time: "15:00", title: "星野リゾート「界 別府」チェックイン", desc: "隈研吾氏プロデュースのドラマチックな和モダン。別府湾のドラマチックな景色と足湯テラスをたっぷり堪能します。", img: "https://images.unsplash.com/photo-1598928506311-c55ded92da26?auto=format&fit=crop&w=400&q=80", tip: "💡 お洒落夜店：夕方からは伝統の温泉を使ったお洒落な夜店の風情やご当地太鼓ゲームをお子様と一緒にたっぷり楽しめます！", link: "https://hoshinoresorts.com/ja/hotels/kaibeppu/" },
-          { time: "16:30", title: "海のインフィニティ大浴場で美肌湯", desc: "別府湾と一体になれるかのような絶上大浴場。長旅のドライブのご褒美湯浴みを堪能します。", img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80", tip: "💡 フリーサービス：お風呂上がりに涼める、冷たいかぼすドリンクサービスも贅沢に用意されています。", link: "https://hoshinoresorts.com/ja/hotels/kaibeppu/spa/" },
-          { time: "18:30", title: "大分の味覚が集う「豊後お洒落創作会席」夕食", desc: "かぼす、豊後牛、関あじなど、美しく盛り付けられた絶品創作会席料理をお洒落な空間でいただきます。", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=300&q=80", tip: "💡 アワードディナー：今夜は最高の宿食。今回の旅の大冒険をみんなで楽しく振り返り、美味しい思い出を語り合いましょう！", link: "https://hoshinoresorts.com/ja/hotels/kaibeppu/activities/" }
-        ]
-      },
-      6: {
-        title: "別府ゆっくり発 ➔ 博多天神お土産 ➔ 屋台夕食 ➔ クルーズフェリー",
-        meta: "8.27〜28",
-        desc: "界別府をゆっくりチェックアウトした後は博多へ。デパ地下やセレクトショップでお土産を購入し、夕飯は天神・中洲 of 屋台へ！出航3時間前の20:50には新門司港に到着し、乗船手続きを済ませ、東京九州フェリーで優雅に帰京します。",
-        img1: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=400&q=80", link1: "https://tqf.co.jp/",
-        img2: "https://images.unsplash.com/photo-1511316695145-4992006ffddb?auto=format&fit=crop&w=400&q=80", link2: "https://tqf.co.jp/facilities/",
-        img3: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", link3: "https://yokanavi.com/yatai/",
-        img4: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=300&q=80", link4: "https://yokanavi.com/yatai/",
-        img5: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=300&q=80", link5: "https://yokanavi.com/",
-        img6: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=300&q=80", link6: "https://tqf.co.jp/facilities/",
-        embedSrc: "https://maps.google.co.jp/maps?output=embed&saddr=星野リゾート+界+別府&daddr=新門司港フェリーターミナル&waypoints=天神（福岡）&t=m",
-        btnHref: "https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=天神",
-        btnText: "Googleマップでナビを開く (DAY 6/7)",
-        timeline: [
-          { time: "10:00", title: "朝の贅沢を終えて界別府をゆっくり出発", desc: "朝風呂を存分に愉しみ、別府を出発。大分道経由で福岡天神へクルージングドライブ。", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80", tip: "💡 移動メモ：大分道は霧が出やすいので速度を落として安全に、快適なドライブを。", link: "https://hoshinoresorts.com/ja/hotels/kaibeppu/" },
-          { time: "12:30", title: "博多・天神お洒落ショッピング", desc: "天神の中心に到着。岩田屋や天神地下街などのお洒落エリアを大散策。最新セレクトショップや、博多の濃厚とんこつラーメンランチをご堪能！", img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", tip: "💡 お土産：名産『通りもん』や明太子は天神デパ地下で買っておくのが一番スムーズです。", link: "https://yokanavi.com/" },
-          { time: "17:30", title: "行列回避ハック！開店と同時に「博多屋台メシ」", desc: "17:30の開店と同時に屋台に入り並ばずに熱々の博多ラーメンや焼き鳥を堪能する大満足の屋台ディナー！", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", tip: "💡 おすすめ：天神三越裏や中洲の公認ネオ屋台は、初めての方やお子様連れでも抜群にクリーンで安心です！", link: "https://yokanavi.com/yatai/" },
-          { time: "19:30", title: "福岡天神を出発 ── 門司港へラストドライブ", desc: "お土産をたっぷり積み込んで、新門司港へ。お盆明けの夜の高速道路を、アイサイトツーリングアシストで極めて安全・スムーズに走ります。", img: "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=300&q=80", tip: "💡 出発：お盆時期は急な渋滞が起きやすいため、19:30前には天神を抜け出すのが安心ハックです。", link: "https://tqf.co.jp/" },
-          { time: "20:50", title: "★出航3時間前！新門司港に確実に到着", desc: "【重要】23:55の出航に対し、3時間前である21:00前（20:50頃）に港へ確実に到着します。車の乗船・積込手続きを余裕をもって完了。", img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=300&q=80", tip: "💡 手続き：車両手続きは徒歩乗船よりもかなり早く列が誘導されるため、3時間前到着が鉄則の最高マージンです。", link: "https://tqf.co.jp/facilities/" },
-          { time: "23:55", title: "クルーズフェリー出港！豪華太平洋洋上クルーズ", desc: "新日本海フェリーグループの巨大最新船！映画館シアターや、波音を聞く日本唯一の『洋上露天風呂』を愉しみベッドへ。", img: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=300&q=80", tip: "💡 クルーズ：お風呂あがりに家族でデッキに出て、満天の太平洋天の川星空を見上げるのが最高の宝物になります！", link: "https://tqf.co.jp/facilities/" }
-        ]
-      }
-    };
-
-    // 2. COUNTER TO DEPARTURE (100% PLATFORM INDEPENDENT OBJECT-BASED DATE)
-    const targetDate = new Date(2026, 7, 22, 5, 0, 0).getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      const d = document.getElementById('cd-days');
-      const h = document.getElementById('cd-hours');
-      const m = document.getElementById('cd-mins');
-      const s = document.getElementById('cd-secs');
-
-      if (!d || !h || !m || !s) return;
-
-      if (difference <= 0) {
-        d.innerText = "00";
-        h.innerText = "00";
-        m.innerText = "00";
-        s.innerText = "00";
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      d.innerText = String(days).padStart(2, '0');
-      h.innerText = String(hours).padStart(2, '0');
-      m.innerText = String(minutes).padStart(2, '0');
-      s.innerText = String(seconds).padStart(2, '0');
-    }
-
-    // 3. IMAGE ERROR RECOVERY SYSTEM (100% VISUAL SECURITY GUARANTEE)
-    function handleImageError(imgElement, iconType) {
-      if (!imgElement) return;
-      const parent = imgElement.parentElement;
-      if (parent) {
-        // Fallback to stylized vector card inside of broken image icon
-        imgElement.style.display = 'none';
-        parent.classList.add('bg-gradient-to-br', 'from-gold-dark/40', 'to-luxury-dark', 'border-gold/30');
-      }
-    }
-
-    // 4. VIEW CONTROLLER (SPA ENGINE)
-    function switchView(viewId) {
-      const views = ['portal', 'itinerary', 'concierge'];
-      views.forEach(v => {
-        const pane = document.getElementById('view-' + v);
-        const btn = document.getElementById('nav-btn-' + v);
-        if (pane) pane.classList.add('hidden');
-        if (btn) btn.classList.remove('active-nav-btn');
-      });
-
-      const activePane = document.getElementById('view-' + viewId);
-      const activeBtn = document.getElementById('nav-btn-' + viewId);
-      if (activePane) activePane.classList.remove('hidden');
-      if (activeBtn) activeBtn.classList.add('active-nav-btn');
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 5. PREVIEW TABS CONTROLLER (PORTAL VIEW)
-    function selectPreviewTab(dayNum) {
-      currentPreviewDay = dayNum;
-
-      // Update Active day buttons state
-      const tabs = ['all', '1', '2', '3', '4', '5', '6'];
-      tabs.forEach(t => {
-        const btn = document.getElementById('prev-tab-btn-' + t);
-        if (btn) btn.classList.remove('active-day-tab');
-      });
-      const activeBtn = document.getElementById('prev-tab-btn-' + dayNum);
-      if (activeBtn) activeBtn.classList.add('active-day-tab');
-
-      // Sync map & buttons
-      const iframe = document.getElementById('google-maps-iframe');
-      const navBtn = document.getElementById('google-maps-btn');
-      const navBtnText = document.getElementById('map-btn-text');
-      const mapIndicator = document.getElementById('map-indicator');
-
-      if (iframe && previewData[dayNum]) {
-        iframe.style.opacity = '0';
-        setTimeout(() => {
-          iframe.src = previewData[dayNum].embedSrc;
-          if (navBtn) navBtn.href = previewData[dayNum].btnHref;
-          if (navBtnText) navBtnText.innerText = previewData[dayNum].btnText;
-          if (mapIndicator) mapIndicator.innerText = dayNum === 'all' ? "全体ルート" : "DAY " + dayNum;
-          iframe.style.opacity = '1';
-        }, 300);
-      }
-
-      // Sync preview details
-      const prevTitle = document.getElementById('prev-title');
-      const prevMeta = document.getElementById('prev-meta');
-      const prevDesc = document.getElementById('prev-desc');
-      
-      if (prevTitle) prevTitle.innerText = previewData[dayNum].title;
-      if (prevMeta) prevMeta.innerText = previewData[dayNum].meta;
-      if (prevDesc) prevDesc.innerText = previewData[dayNum].desc;
-
-      // Update image sources & anchor links with hover effects
-      for (let j = 1; j <= 6; j++) {
-        const imgEl = document.getElementById('prev-img-' + j);
-        const linkEl = document.getElementById('prev-link-' + j);
-        if (imgEl && previewData[dayNum]) {
-          imgEl.style.display = 'block';
-          imgEl.src = previewData[dayNum]['img' + j];
-          const parent = imgEl.parentElement;
-          if (parent) parent.classList.remove('bg-gradient-to-br', 'from-gold-dark/40', 'to-luxury-dark');
-        }
-        if (linkEl && previewData[dayNum]) linkEl.href = previewData[dayNum]['link' + j];
-      }
-
-      // Sync Bottom action buttons
-      const triggerBtn = document.getElementById('detail-trigger-btn');
-      if (triggerBtn) {
-        triggerBtn.style.display = 'block';
-        if (dayNum === 'all') {
-          triggerBtn.innerText = "しおり本編（全体の旅程）を開く ➔";
-          triggerBtn.setAttribute('onclick', "switchView('itinerary')");
-        } else {
-          triggerBtn.innerText = "この日の詳細スケジュールを見る ➔";
-          triggerBtn.setAttribute('onclick', "openDetailedItinerary()");
-        }
-      }
-    }
-
-    // 6. ITINERARY CARD GENERATOR (ITINERARY VIEW)
-    function buildItineraryViewCards() {
-      const container = document.getElementById('itinerary-cards-container');
-      if (!container) return;
-
-      container.innerHTML = '';
-      const days = [1, 2, 3, 4, 5, 6];
-      days.forEach(day => {
-        const data = previewData[day];
-        const card = document.createElement('div');
-        card.className = 'glass rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 flex flex-col md:flex-row gap-6 cursor-pointer relative shadow-lg overflow-hidden';
-        card.setAttribute('onclick', "currentPreviewDay = " + day + "; openDetailedItinerary();");
-
-        card.innerHTML = `
-          <!-- Image Section -->
-          <div class="w-full md:w-[30%] h-40 rounded-2xl overflow-hidden shadow-inner flex-shrink-0 relative bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center border border-white/5">
-            <img src="${data.img1}" alt="${data.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="handleImageError(this, 'map')">
-          </div>
-          <!-- Info Section -->
-          <div class="flex-1 flex flex-col justify-between space-y-4">
-            <div>
-              <div class="flex justify-between items-center mb-1">
-                <span class="px-3 py-1 bg-gold text-luxury-dark text-[10px] font-black tracking-widest rounded-md uppercase">Day ${day} (${data.meta})</span>
-              </div>
-              <h3 class="text-lg font-black text-white tracking-tight">${data.title}</h3>
-              <p class="text-xs text-gray-400 mt-2 leading-relaxed">${data.desc}</p>
-            </div>
-            <div class="flex justify-between items-center text-[10px] font-bold text-gold tracking-widest">
-              <span>詳細な時間割りを見る ➔</span>
-              <span class="text-gray-500">${data.timeline.length}スポット予定</span>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // 7. TIME SCHEDULE MODAL OVERLAY (左右スワイプ ＆ アローボタン連動)
-    function openDetailedItinerary() {
-      const data = previewData[currentPreviewDay];
-      if (!data || currentPreviewDay === 'all') return;
-
-      // Sync Modal Header Info
-      document.getElementById('modal-day-label').innerText = currentPreviewDay === '6' ? "DAY 6 & 7" : "DAY " + currentPreviewDay;
-      document.getElementById('modal-day-title').innerText = data.title;
-      document.getElementById('modal-header-img').style.backgroundImage = "url('" + data.img1 + "')";
-
-      // Build Rich visual Cards inside Modal Timeline
-      const timelineBox = document.getElementById('modal-timeline-box');
-      timelineBox.innerHTML = '';
-      
-      data.timeline.forEach(item => {
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'p-5 rounded-2xl bg-white/[0.04] border border-white/5 space-y-4 shadow-xl hover:border-gold/30 transition-all duration-300';
-        
-        let buttonHTML = '';
-        if (item.link) {
-          buttonHTML = '<a href="' + item.link + '" target="_blank" class="text-[10px] text-gold font-bold hover:underline flex items-center gap-1"><i class="fa-solid fa-arrow-up-right-from-square"></i> スポット詳細</a>';
-        }
-
-        cardDiv.innerHTML = `
-          <!-- Header Time & Title -->
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-2 border-b border-white/5">
-            <div class="flex items-center gap-3">
-              <span class="px-3 py-1 bg-gold text-luxury-dark text-xs font-black tracking-widest rounded-md">${item.time}</span>
-              <h4 class="text-base font-black text-white tracking-tight">${item.title}</h4>
-            </div>
-            ${buttonHTML}
-          </div>
-          
-          <!-- Card Split layout: Photo and Desc -->
-          <div class="flex flex-col md:flex-row gap-4 items-start">
-            <div class="w-full md:w-[35%] h-36 rounded-xl overflow-hidden border border-white/10 shadow-md flex-shrink-0 bg-gradient-to-br from-gold/20 to-luxury-dark flex items-center justify-center">
-              <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover" onerror="handleImageError(this, 'location-dot')">
-            </div>
-            <div class="flex-1 space-y-3">
-              <p class="text-xs text-gray-300 leading-relaxed font-medium">${item.desc}</p>
-              
-              <!-- One-point Advise block -->
-              <div class="p-3 rounded-xl bg-gold/5 border border-gold/20 text-[11px] text-gold-light space-y-1">
-                <div class="flex items-center gap-1.5 font-bold"><i class="fa-solid fa-lightbulb text-gold"></i> Geminiの旅の極意</div>
-                <p class="text-gray-300 leading-relaxed font-medium">${item.tip}</p>
-              </div>
-            </div>
-          </div>
-        `;
-        timelineBox.appendChild(cardDiv);
-      });
-
-      // Render Floating navigation buttons visibility based on current day limits
-      const prevNav = document.getElementById('modal-nav-prev');
-      const nextNav = document.getElementById('modal-nav-next');
-      
-      if (prevNav) {
-        if (currentPreviewDay === '1' || currentPreviewDay === 1) {
-          prevNav.classList.add('hidden');
-        } else {
-          prevNav.classList.remove('hidden');
-        }
-      }
-      
-      if (nextNav) {
-        if (currentPreviewDay === '6' || currentPreviewDay === 6) {
-          nextNav.classList.add('hidden');
-        } else {
-          nextNav.classList.remove('hidden');
-        }
-      }
-
-      // Show Modal
-      const modal = document.getElementById('itinerary-modal');
-      const content = document.getElementById('itinerary-modal-content');
-      if (modal) modal.classList.remove('opacity-0', 'pointer-events-none');
-      if (content) {
-        content.classList.remove('scale-95');
-        content.classList.add('scale-100');
-      }
-
-      // Auto-scroll modal content back to top
-      const scrollContainer = document.getElementById('modal-timeline-scroll-container');
-      if (scrollContainer) scrollContainer.scrollTop = 0;
-    }
-
-    // Modal Swipe/Button Navigation Engine
-    function navigateItinerary(direction) {
-      if (currentPreviewDay === 'all') return;
-      
-      let dayInt = parseInt(currentPreviewDay);
-      let targetDay = dayInt + direction;
-      
-      // Guard boundaries
-      if (targetDay >= 1 && targetDay <= 6) {
-        const content = document.getElementById('itinerary-modal-content');
-        if (content) {
-          content.style.opacity = '0.3';
-          content.style.transform = "translateX(" + (direction * -20) + "px) scale(0.98)";
-        }
-        
-        setTimeout(() => {
-          currentPreviewDay = String(targetDay);
-          // Sync behind preview tab automatically
-          selectPreviewTab(currentPreviewDay);
-          openDetailedItinerary();
-          
-          if (content) {
-            content.style.opacity = '1';
-            content.style.transform = 'translateX(0) scale(1)';
-          }
-        }, 150);
-      }
-    }
-
-    function closeDetailedItinerary() {
-      const modal = document.getElementById('itinerary-modal');
-      const content = document.getElementById('itinerary-modal-content');
-      if (modal) modal.classList.add('opacity-0', 'pointer-events-none');
-      if (content) {
-        content.classList.remove('scale-100');
-        content.classList.add('scale-95');
-      }
-    }
-
-    // Touch Event Swiping Handling Setup
-    let touchstartX = 0;
-    let touchendX = 0;
-    
-    const modalContent = document.getElementById('itinerary-modal-content');
-    if (modalContent) {
-      modalContent.addEventListener('touchstart', function(e) {
-        touchstartX = e.changedTouches[0].screenX;
-      }, { passive: true });
-      
-      modalContent.addEventListener('touchend', function(e) {
-        touchendX = e.changedTouches[0].screenX;
-        handleSwipeGesture();
-      }, { passive: true });
-    }
-    
-    function handleSwipeGesture() {
-      const threshold = 60; // minimum swipe distance
-      if (touchendX < touchstartX - threshold) {
-        // Swiped Left -> Load Next Day
-        navigateItinerary(1);
-      }
-      if (touchendX > touchstartX + threshold) {
-        // Swiped Right -> Load Prev Day
-        navigateItinerary(-1);
-      }
-    }
-
-    // 8. INTERACTIVE MEMO BOARD (LOCALSTORAGE)
-    function loadMemos() {
-      const stored = localStorage.getItem('roadtrip_2026_memos');
-      let memos = stored ? JSON.parse(stored) : defaultMemos;
-      
-      const container = document.getElementById('memo-board-container');
-      if (container) {
-        container.innerHTML = '';
-        memos.forEach(m => {
-          const item = document.createElement('div');
-          item.className = 'p-3 rounded-2xl bg-white/5 border border-white/5 text-xs';
-          item.innerHTML = '<span class="font-bold text-gold mr-2">[' + m.author + ']</span><span class="text-gray-200">' + m.text + '</span>';
-          container.appendChild(item);
-        });
-        container.scrollTop = container.scrollHeight;
-      }
-    }
-
-    function postMemo(e) {
-      e.preventDefault();
-      const memoAuthor = document.getElementById('memo-author');
-      const memoText = document.getElementById('memo-text');
-      if (!memoAuthor || !memoText) return;
-
-      const author = memoAuthor.value.trim();
-      const text = memoText.value.trim();
-      if (!author || !text) return;
-
-      const stored = localStorage.getItem('roadtrip_2026_memos');
-      let memos = stored ? JSON.parse(stored) : defaultMemos;
-      memos.push({ author, text });
-      
-      localStorage.setItem('roadtrip_2026_memos', JSON.stringify(memos));
-      memoText.value = '';
-      loadMemos();
-      triggerConfetti();
-    }
-
-    // 9. PERSONALIZED PACKING LIST MANAGER (LOCALSTORAGE)
-    let packItems = [];
-    function initPackList() {
-      const storedCustom = localStorage.getItem('roadtrip_2026_custom_packs');
-      const customItems = storedCustom ? JSON.parse(storedCustom) : [];
-      
-      const defaultItems = [
-        { id: 'pack-etc', label: 'ETCカードの期限確認 ＆ 車載器テスト', reason: '料金所のスムーズ通過用' },
-        { id: 'pack-yukata', label: 'お祭り用おめかし（浴衣や歩きやすいサンダル）', reason: '温泉街・夏祭りの散策用' },
-        { id: 'pack-insurance', label: '健康保険証、ロードサービス（JAF等）の確認', reason: '長距離ドライブのトラブル対策' },
-        { id: 'pack-ferry', label: '東京九州フェリー・ボート・夜神楽のQRコード/予約票', reason: '各種アクティビティの乗船・入場用' }
-      ];
-      
-      packItems = [...defaultItems, ...customItems];
-      
-      packItems.forEach(item => {
-        const checked = localStorage.getItem('checked-' + item.id) === 'true';
-        item.checked = checked;
-      });
-      
-      renderPackList();
-    }
-
-    function renderPackList() {
-      const container = document.getElementById('checklist-container');
-      if (!container) return;
-      
-      container.innerHTML = '';
-      packItems.forEach(item => {
-        const label = document.createElement('label');
-        label.className = 'flex items-start gap-3 p-2 rounded-lg bg-white/5 border border-white/5 cursor-pointer text-xs select-none hover:bg-white/10 transition-colors';
-        
-        label.innerHTML = 
-          '<input type="checkbox" id="' + item.id + '" onchange="togglePackItem(\'' + item.id + '\')" class="accent-gold mt-0.5" ' + (item.checked ? 'checked' : '') + '>' +
-          '<div>' +
-            '<strong>' + item.label + '</strong>' +
-            (item.reason ? '<span class="block text-[10px] text-gray-400 mt-0.5">' + item.reason + '</span>' : '') +
-          '</div>';
-          
-        container.appendChild(label);
-      });
-      
-      calculatePackProgress();
-    }
-
-    function togglePackItem(id) {
-      const item = packItems.find(p => p.id === id);
-      if (item) {
-        item.checked = !item.checked;
-        localStorage.setItem('checked-' + id, item.checked);
-      }
-      calculatePackProgress();
-    }
-
-    function calculatePackProgress() {
-      if (packItems.length === 0) return;
-      const checkedCount = packItems.filter(p => p.checked).length;
-      const percent = Math.round((checkedCount / packItems.length) * 100);
-      
-      const bar = document.getElementById('pack-bar');
-      const progressLabel = document.getElementById('pack-progress');
-      if (bar) bar.style.width = percent + '%';
-      if (progressLabel) progressLabel.innerText = percent + '% Done';
-    }
-
-    function resetPackList() {
-      localStorage.removeItem('roadtrip_2026_custom_packs');
-      packItems.forEach(item => {
-        localStorage.removeItem('checked-' + item.id);
-      });
-      initPackList();
-      triggerConfetti();
-    }
-
-    // --- GEMINI 2.5 FLASH LIVE AI CONCIERGE INTEGRATION ---
-    const apiKey = ""; // Runtime automatically injects this
-    
-    async function askLiveAI() {
-      const aiDay = document.getElementById('ai-day');
-      const aiCategory = document.getElementById('ai-category');
-      if (!aiDay || !aiCategory) return;
-
-      const daySelected = aiDay.value;
-      const catSelected = aiCategory.value;
-      const responseBox = document.getElementById('ai-response-box');
-      const loader = document.getElementById('ai-loader');
-      const textContent = document.getElementById('ai-text-content');
-      const sourcesBox = document.getElementById('ai-sources');
-      const queryBtn = document.getElementById('ai-query-btn');
-
-      if (responseBox) responseBox.classList.remove('hidden');
-      if (loader) loader.classList.remove('hidden');
-      if (textContent) textContent.innerHTML = '';
-      if (sourcesBox) sourcesBox.innerHTML = '';
-      if (queryBtn) {
-        queryBtn.disabled = true;
-        queryBtn.classList.add('opacity-50');
-      }
-
-      const systemPrompt = "あなたは2026年夏の家族旅行しおりアプリに常駐する、最高にスマートでユーモアあふれるスバル・レガシィアウトバック乗りのAIトラベルコンシェルジュ「Gemini」です。家族旅行のスケジュール（有馬温泉月光園游月山荘、門司港レトロBEB5、南阿蘇CAN LI ASSO Eコテージ連泊、どんどこ湯、高千穂峡ボート、四季の森温泉、界別府、博多天神屋台）に沿って、お盆明けのリアルタイムでおすすめの周辺グルメ、絶景スポット、ティーンの娘・息子が大喜びする最新カフェやお土産、現地の混雑・道路情報を提案してください。レスポンスは親しみやすい日本語で、箇ため書きや絵文字を使ってリッチで見やすく構成してください。最後には「Geminiおすすめ周辺情報」として、具体的な場所名、理由、公式サイト直通を促す案内を簡潔に付与してください。";
-      const userPrompt = "DAY " + daySelected + " のルート近辺について、次のテーマで最新おすすめプランを提案して：【" + catSelected + "】";
-
-      const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=" + apiKey;
-      const payload = {
-        contents: [{ parts: [{ text: userPrompt }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        tools: [{ "google_search": {} }] // Enable Google Search Grounding for fresh, real-time results
-      };
-
-      let textResult = "";
-      let groundingSources = [];
-
-      // Retry up to 5 times with exponential backoff
-      let delay = 1000;
-      for (let i = 0; i < 5; i++) {
-        try {
-          const response = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          if (!response.ok) throw new Error("HTTP error! status: " + response.status);
-          const data = await response.json();
-          
-          textResult = data.candidates?.[0]?.content?.parts?.[0]?.text || "申し訳ありません。情報マッピングシステムが一時的に混雑しています。再度スキャンを行ってください！";
-          groundingSources = data.candidates?.[0]?.groundingMetadata?.groundingAttributions || [];
-          break;
-        } catch (e) {
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2;
-        }
-      }
-
-      // Render AI Output
-      if (loader) loader.classList.add('hidden');
-      if (queryBtn) {
-        queryBtn.disabled = false;
-        queryBtn.classList.remove('opacity-50');
-      }
-
-      // Convert Markdown to rich HTML list format elegantly
-      const formattedText = textResult
-        .replace(/\n/g, '<br>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gold">$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em class="text-gray-300">$1</em>');
-
-      if (textContent) textContent.innerHTML = '<p class="text-xs leading-relaxed text-gray-200">' + formattedText + '</p>';
-
-      // Render Grounding Sources
-      if (sourcesBox) {
-        if (groundingSources.length > 0) {
-          let sourcesHTML = '<span class="font-bold flex items-center gap-1 text-cyan-400"><i class="fa-solid fa-circle-check"></i> GeminiLIVEサーチ情報源:</span>';
-          const mappedSources = groundingSources.slice(0, 3).map(src => {
-            return '<a href="' + src.web?.uri + '" target="_blank" class="underline hover:text-white text-gray-400 font-medium">' + (src.web?.title || '外部サイト') + '</a>';
-          });
-          sourcesBox.innerHTML = sourcesHTML + mappedSources.join(' ／ ');
-        } else {
-          sourcesBox.innerHTML = '<span class="text-gray-600"><i class="fa-solid fa-database"></i> Gemini標準トラベルデータベースより出力</span>';
-        }
-      }
-
-      triggerConfetti();
-    }
-
-    // --- GEMINI 2.5 FLASH DYNAMIC PACKING LIST GENERATION ---
-    async function generateAIPacking() {
-      const inputEl = document.getElementById('ai-pack-input');
-      const feedbackEl = document.getElementById('ai-pack-feedback');
-      const btnEl = document.getElementById('ai-pack-btn');
-      if (!inputEl || !feedbackEl || !btnEl) return;
-      
-      const userInput = inputEl.value.trim();
-      if (!userInput) return;
-      
-      feedbackEl.classList.remove('hidden');
-      btnEl.disabled = true;
-      btnEl.classList.add('opacity-50');
-      
-      const systemPrompt = "あなたは家族旅行の荷造りアドバイザーです。ユーザーが入力したこだわりや旅の状況（例：「写真撮影が趣味」「お盆の猛暑」「中学生の娘がメイク好き」など）に合わせ、8月下旬の有馬温泉・阿蘇・別府を巡る6泊7日のロードトリップへ持っていくべきパーソナライズされた便利アイテム・持ち物を3つ提案してください。必ず指定されたJSONフォーマットのみで出力してください。他の説明やマークダウン記法(```json等)は一切含めないプレーンなJSONオブジェクトで出力してください。\n" +
-                           "出力スキーマ:\n" +
-                           "{\n" +
-                           "  \"items\": [\n" +
-                           "    { \"name\": \"アイテム名（15文字以内）\", \"reason\": \"推奨理由・使い道（短い一言説明）\" }\n" +
-                           "  ]\n" +
-                           "}";
-                           
-      const url = "[https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=](https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=)" + apiKey;
-      const payload = {
-        contents: [{ parts: [{ text: "こだわり・旅の状況: " + userInput }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        generationConfig: {
-          responseMimeType: "application/json",
-          responseSchema: {
-            type: "OBJECT",
-            properties: {
-              items: {
-                type: "ARRAY",
-                items: {
-                  type: "OBJECT",
-                  properties: {
-                    name: { type: "STRING" },
-                    reason: { type: "STRING" }
-                  },
-                  required: ["name", "reason"]
-                }
-              }
-            },
-            required: ["items"]
-          }
-        }
-      };
-      
-      let responseJson = null;
-      let delay = 1000;
-      for (let i = 0; i < 5; i++) {
-        try {
-          const response = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          if (!response.ok) throw new Error("HTTP error! status: " + response.status);
-          const data = await response.json();
-          const textResult = data.candidates?.[0]?.content?.parts?.[0]?.text;
-          responseJson = JSON.parse(textResult);
-          break;
-        } catch (e) {
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2;
-        }
-      }
-      
-      feedbackEl.classList.add('hidden');
-      btnEl.disabled = false;
-      btnEl.classList.remove('opacity-50');
-      
-      if (responseJson && responseJson.items) {
-        const storedCustom = localStorage.getItem('roadtrip_2026_custom_packs');
-        let customItems = storedCustom ? JSON.parse(storedCustom) : [];
-        
-        responseJson.items.forEach(newItem => {
-          const uniqueId = 'custom-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-          customItems.push({
-            id: uniqueId,
-            label: newItem.name,
-            reason: newItem.reason
-          });
-        });
-        
-        localStorage.setItem('roadtrip_2026_custom_packs', JSON.stringify(customItems));
-        inputEl.value = '';
-        initPackList(); // Reload and re-render checklist with new items
-        triggerConfetti();
-      } else {
-        const errorLabel = document.createElement('div');
-        errorLabel.className = 'text-[10px] text-red-400 mt-1';
-        errorLabel.innerText = "アイテムの提案取得に失敗しました。もう一度お試しください。";
-        feedbackEl.parentNode.appendChild(errorLabel);
-        setTimeout(() => errorLabel.remove(), 3000);
-      }
-    }
-
-    // --- GEMINI 2.5 FLASH DYNAMIC QUIZ GENERATION ---
-    async function generateGeminiQuiz() {
-      const quizDaySelect = document.getElementById('quiz-day');
-      if (!quizDaySelect) return;
-      const dayVal = quizDaySelect.value;
-
-      const quizBox = document.getElementById('quiz-box');
-      const quizLoader = document.getElementById('quiz-loader');
-      const quizContent = document.getElementById('quiz-content');
-      const quizGenBtn = document.getElementById('quiz-gen-btn');
-      const quizAnswerBox = document.getElementById('quiz-answer-box');
-
-      if (!quizBox || !quizLoader || !quizContent || !quizGenBtn || !quizAnswerBox) return;
-
-      quizBox.classList.remove('hidden');
-      quizLoader.classList.remove('hidden');
-      quizContent.classList.add('hidden');
-      quizAnswerBox.classList.add('hidden');
-      quizGenBtn.disabled = true;
-      quizGenBtn.classList.add('opacity-50');
-
-      const systemPrompt = "あなたは家族旅行を盛り上げる、天才クイズマスター「Gemini」です。旅程に基づき、DAY " + dayVal + " の目的地や名物（姫路城、有馬温泉、門司港、阿蘇、高千穂、別府、フェリーなど）に関する、ためになって家族（中高生のお子様も含む）全員が「えー！そうなんだ！」と大興奮するようなおもしろい3択クイズを1問作成してください。回答用の選択肢（A, B, C）を3つ提示し、正解と解説を提供してください。必ず指定されたJSONフォーマットのみで出力してください。Markdown表記(```json)や不要なテキストは含めず、プレーンなJSONテキストだけを返してください。\n" +
-                           "出力形式:\n" +
-                           "{\n" +
-                           "  \"question\": \"クイズの設問。旅立ちのワクワク感をあおるような楽しい文体で！\",\n" +
-                           "  \"optionA\": \"選択肢A\",\n" +
-                           "  \"optionB\": \"選択肢B\",\n" +
-                           "  \"optionC\": \"選択肢C\",\n" +
-                           "  \"answer\": \"A\" または \"B\" または \"C\" のいずれか1文字,\n" +
-                           "  \"explanation\": \"正解の理由と、ご当地に関する楽しい追加豆知識。家族が絶対行きたくなるように熱く語ってください！\"\n" +
-                           "}";
-
-      const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=" + apiKey;
-      const payload = {
-        contents: [{ parts: [{ text: "DAY " + dayVal + " のルートに基づく極上の3択クイズを1問作って！" }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        generationConfig: {
-          responseMimeType: "application/json",
-          responseSchema: {
-            type: "OBJECT",
-            properties: {
-              question: { type: "STRING" },
-              optionA: { type: "STRING" },
-              optionB: { type: "STRING" },
-              optionC: { type: "STRING" },
-              answer: { type: "STRING" },
-              explanation: { type: "STRING" }
-            },
-            required: ["question", "optionA", "optionB", "optionC", "answer", "explanation"]
-          }
-        }
-      };
-
-      let quizData = null;
-      let delay = 1000;
-      for (let i = 0; i < 5; i++) {
-        try {
-          const response = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          if (!response.ok) throw new Error("HTTP error! status: " + response.status);
-          const data = await response.json();
-          const textResult = data.candidates?.[0]?.content?.parts?.[0]?.text;
-          quizData = JSON.parse(textResult);
-          break;
-        } catch (e) {
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2;
-        }
-      }
-
-      quizLoader.classList.add('hidden');
-      quizGenBtn.disabled = false;
-      quizGenBtn.classList.remove('opacity-50');
-
-      if (quizData && quizData.question) {
-        document.getElementById('quiz-question').innerText = quizData.question;
-        
-        currentQuizAnswer = quizData.answer;
-        currentQuizExplanation = quizData.explanation;
-
-        const optionsContainer = document.getElementById('quiz-options-container');
-        optionsContainer.innerHTML = `
-          <button onclick="checkQuizAnswer('A')" id="btn-opt-A" class="w-full text-left p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/50 text-xs text-gray-200 transition-all font-medium flex items-center justify-between">
-            <span>A: ${quizData.optionA}</span>
-            <i class="fa-solid fa-chevron-right text-gold text-[10px]"></i>
-          </button>
-          <button onclick="checkQuizAnswer('B')" id="btn-opt-B" class="w-full text-left p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/50 text-xs text-gray-200 transition-all font-medium flex items-center justify-between">
-            <span>B: ${quizData.optionB}</span>
-            <i class="fa-solid fa-chevron-right text-gold text-[10px]"></i>
-          </button>
-          <button onclick="checkQuizAnswer('C')" id="btn-opt-C" class="w-full text-left p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/50 text-xs text-gray-200 transition-all font-medium flex items-center justify-between">
-            <span>C: ${quizData.optionC}</span>
-            <i class="fa-solid fa-chevron-right text-gold text-[10px]"></i>
-          </button>
-        `;
-
-        quizContent.classList.remove('hidden');
-        triggerConfetti();
-      } else {
-        alert("クイズの作成に失敗しました。もう一度お試しください。");
-        quizBox.classList.add('hidden');
-      }
-    }
-
-    function checkQuizAnswer(selected) {
-      const resultHeader = document.getElementById('quiz-result-header');
-      const explanationEl = document.getElementById('quiz-explanation');
-      const answerBox = document.getElementById('quiz-answer-box');
-
-      if (!resultHeader || !explanationEl || !answerBox) return;
-
-      const btnA = document.getElementById('btn-opt-A');
-      const btnB = document.getElementById('btn-opt-B');
-      const btnC = document.getElementById('btn-opt-C');
-
-      if (btnA) btnA.disabled = true;
-      if (btnB) btnB.disabled = true;
-      if (btnC) btnC.disabled = true;
-
-      if (selected === currentQuizAnswer) {
-        resultHeader.innerHTML = '<span class="text-green-400 flex items-center gap-1"><i class="fa-solid fa-circle-check text-base"></i> ✨ 大正解！！さすがファミリー！</span>';
-        triggerConfetti();
-      } else {
-        resultHeader.innerHTML = '<span class="text-red-400 flex items-center gap-1"><i class="fa-solid fa-circle-xmark text-base"></i> 惜しい！ 正解は 「' + currentQuizAnswer + '」でした！</span>';
-      }
-
-      explanationEl.innerText = currentQuizExplanation;
-      answerBox.classList.remove('hidden');
-    }
-
-    function closeQuizBox() {
-      const quizBox = document.getElementById('quiz-box');
-      if (quizBox) quizBox.classList.add('hidden');
-    }
-
-    // DOMContentLoaded setup
-    window.addEventListener('DOMContentLoaded', () => {
-      // 1. Initial Setup for Countdown timer
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-
-      // 2. Initial Setup for Previews & Local Storage States
-      selectPreviewTab('all');
-      loadMemos();
-      initPackList(); // Standard & AI dynamic packing list initialization
-      buildItineraryViewCards(); // Render itinerary tab view once
-    });
-  </script>
+</nav>
+
+<footer>
+  <p class="f1">GRAND CRUISE 2026</p>
+  <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
+</footer>
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+/* ============ VERIFIED PHOTOS (Wikimedia Commons) ============ */
+const P = {
+  himeji:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Himeji_castle_in_may_2015.jpg/960px-Himeji_castle_in_may_2015.jpg",
+  arima:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/170811_Rokko-Arima_Ropeway_Kobe_Japan00n.jpg/960px-170811_Rokko-Arima_Ropeway_Kobe_Japan00n.jpg",
+  mojiko:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/140721_Mojiko_Retro_Kitakyushu_Japan01s3.jpg/960px-140721_Mojiko_Retro_Kitakyushu_Japan01s3.jpg",
+  kanmon:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Kanmon-3.jpg/960px-Kanmon-3.jpg",
+  aso:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/20140516%E9%98%BF%E8%98%87%E5%B1%B1%E5%BA%83%E5%9F%9F.jpg/960px-20140516%E9%98%BF%E8%98%87%E5%B1%B1%E5%BA%83%E5%9F%9F.jpg",
+  daikanbo:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Mount_Aso_kabuto-iwa_viewpoint.JPG/960px-Mount_Aso_kabuto-iwa_viewpoint.JPG",
+  kusasenri:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Kusasenrigahama_in_Aso_City_2007_0811_03.jpg/960px-Kusasenrigahama_in_Aso_City_2007_0811_03.jpg",
+  takachiho:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Takachiho-kyo%28Gorge%29_-_River_-_%E5%B7%9D.jpg/960px-Takachiho-kyo%28Gorge%29_-_River_-_%E5%B7%9D.jpg",
+  amanoiwato:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Amanoiwato-west-shrine_%2828795304727%29.jpg/960px-Amanoiwato-west-shrine_%2828795304727%29.jpg",
+  makinoto:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Makinoto_Pass_-_01.jpg/960px-Makinoto_Pass_-_01.jpg",
+  kinrin:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Lake_Kinrin.JPG/960px-Lake_Kinrin.JPG",
+  yufuin:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Yufuin_Onsen_-Mus%C5%8Den_02.jpg/960px-Yufuin_Onsen_-Mus%C5%8Den_02.jpg",
+  yufudake:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Yuhudake.jpg/960px-Yuhudake.jpg",
+  beppu:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Beppu_Tower02s4s3200.jpg/960px-Beppu_Tower02s4s3200.jpg",
+  jigoku:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Beppu_Chinoike-jigoku03n3200.jpg/960px-Beppu_Chinoike-jigoku03n3200.jpg",
+  tenjin:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fukuoka_City_-_Watanabe-dori_Avenue_-_01.JPG/960px-Fukuoka_City_-_Watanabe-dori_Avenue_-_01.JPG",
+  nakasu:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nakasu02.jpg/960px-Nakasu02.jpg",
+  ferry:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Soleil_Tokyokyushuferry_%28cropped%29.jpg/960px-Soleil_Tokyokyushuferry_%28cropped%29.jpg",
+  kamishikimi:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Kamishikimi_Kumanoimasu_Shrine_001.jpg/960px-Kamishikimi_Kumanoimasu_Shrine_001.jpg",
+  shinmoji:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/%E9%96%80%E5%8F%B8%E6%B8%AF.JPG/960px-%E9%96%80%E5%8F%B8%E6%B8%AF.JPG"
+};
+
+/* ============ ITINERARY DATA ============ */
+const DAYS = [
+ { n:1, date:"8.22", dow:"土", short:"姫路・有馬", stay:"月光園 游月山荘", photo:P.himeji,
+   title:"国宝「姫路城」と有馬温泉 月光園",
+   desc:"三鷹を5:00に出発し、白鷺城と称される白亜の名城へ。夜は有馬川沿いの「月光園 游月山荘」で神戸牛会席と金泉掛け流しを堪能する記念すべき第1夜。",
+   nav:"https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉+月光園+游月山荘&waypoints=姫路城",
+   tl:[
+    {t:"05:00",tt:"三鷹を出発 ── 暁の東名ハック",d:"東京ICから東名へ。早朝スタートで海老名SA付近の定番渋滞を回避します。",tip:"足柄SAで最初の休憩。富士山を眺めながら朝コーヒーを補給するのがパパの流儀！",e:"🌅",link:"https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"},
+    {t:"12:00",tt:"世界遺産・国宝「姫路城」大天守を制覇",d:"白亜の天守へ。石垣や急な木造階段を上り、最上階からの絶景を楽しみます。（大人1,000円）",tip:"大天守の階段はとても急。滑りにくい靴で行くと安心です。",img:P.himeji,link:"https://www.city.himeji.lg.jp/castle/"},
+    {t:"15:00",tt:"有馬温泉街のレトロそぞろ歩き",d:"『三ツ森』の焼き立て炭酸せんべいを食べ歩き。川のせせらぎを聞きながらお土産探し。",tip:"お土産の『炭酸フレーク』はアイスにかけると絶品！",img:P.arima,link:"https://arima-onsen.com/"},
+    {t:"16:30",tt:"月光園 游月山荘へ ── 川音の露天風呂",d:"有馬名物「金泉」の川沿い露天で、長距離ドライブの疲れをリリース。",tip:"夕方、川沿いの太鼓橋の上で初日の家族記念写真を！",e:"♨️",link:"https://www.gekkoen.co.jp/yugetsu/"},
+    {t:"18:30",tt:"神戸牛会席をお部屋食で",d:"口の中でとろける神戸牛の陶板焼きなど、贅沢ディナーをお部屋でゆっくり。",tip:"着いたらすぐ浴衣に着替えてリラックスモードに切り替え。",e:"🥩",link:"https://www.gekkoen.co.jp/yugetsu/dish/"}
+   ]},
+ { n:2, date:"8.23", dow:"日", short:"門司港", stay:"星野リゾート BEB5門司港", photo:P.mojiko,
+   title:"山陽道を西へ430km ── 星野リゾート「BEB5門司港」",
+   desc:"移動に完全特化したスマートドライブ日。関門海峡を越えて15:30頃にBEB5門司港へチェックイン。レトロな港町の夜は焼きカレーで外食ディナー！",
+   nav:"https://www.google.com/maps/dir/?api=1&origin=有馬温泉&destination=星野リゾートBEB5門司港",
+   tl:[
+    {t:"09:00",tt:"有馬温泉を出発 ── 約430kmの大西征",d:"山陽自動車道へ入り、西へひたすら快走します。",tip:"クルーズコントロールが最高に活きる日。みんなで歌いながら行きましょう！",e:"🚗",link:"https://sapa.c-nexco.co.jp/"},
+    {t:"12:00",tt:"吉備SAなどでご当地SAランチ",d:"名物きびだんごや、岡山・広島のご当地メシをカジュアルに満喫。",tip:"岡山名物『デミカツ丼』は食べ応え抜群。運転はしっかり交代を。",e:"🍜",link:"https://sapa.c-nexco.co.jp/"},
+    {t:"15:00",tt:"関門橋を渡り、感動の九州上陸！",d:"海を隔てた九州の大パノラマを見ながら関門海峡を越えます。",tip:"手前の『壇之浦PA』に寄ると、関門橋がベスト画角で撮れます！",img:P.kanmon,link:"https://www.w-holdings.co.jp/sapa/2583.html"},
+    {t:"15:30",tt:"BEB5門司港チェックイン",d:"お菓子を囲んでだらだらできるロビー「TAMARIBA」に到着。ボードゲームも充実。",tip:"お洒落すぎるアジト。チェックイン後はロビー探検から！",e:"🏨",link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
+    {t:"18:00",tt:"門司港レトロ夜景さんぽ＆名物「焼きカレー」",d:"大正ロマンの赤煉瓦建築群がライトアップ。夕食は門司港発祥の焼きカレー。",tip:"素泊まりプランなので、今夜何を食べるかは家族会議で自由に！",img:P.mojiko,link:"https://www.mojiko.info/"}
+   ]},
+ { n:3, date:"8.24", dow:"月", short:"阿蘇", stay:"CAN LI ASSO E（1泊目）", photo:P.daikanbo,
+   title:"大観峰・草千里 ── 阿蘇の一棟貸しコテージへ",
+   desc:"お昼頃に阿蘇へ到着し、大観峰と草千里ヶ浜の大パノラマに感動。15:00にコンテナヴィラ「CAN LI ASSO E」へ。どんどこ湯でととのい、夜は白水乃蔵であか牛炭火焼！",
+   nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾートBEB5門司港&destination=CAN+LI+ASSO+E&waypoints=大観峰|草千里ヶ浜",
+   tl:[
+    {t:"09:30",tt:"門司港をのんびり出発 ── 高原へ150km",d:"前日の頑張りが活きるハーフドライブ。大分道経由で緑きらめく阿蘇へ。",tip:"湯布院ICあたりから見える由布岳の姿は言葉を失う美しさ。",img:P.yufudake,link:"https://www.asocity-kanko.jp/"},
+    {t:"11:30",tt:"阿蘇「大観峰」360度の大カルデラ",d:"阿蘇五岳が涅槃像に見える一大景勝地。目の前に広がるカルデラに息を呑みます。",tip:"あつあつ『あか牛の串焼き』と『阿蘇ジャージー牛乳ソフト』をその場で！",img:P.daikanbo,link:"https://www.asocity-kanko.jp/spot/daikanbo/"},
+    {t:"13:00",tt:"草千里ヶ浜の大草原さんぽ",d:"阿蘇中岳の火口を望む広大な草原と池。のんびり雄大な世界を散歩します。",tip:"引き馬の乗馬体験は家族みんなで大はしゃぎできる鉄板アクティビティ。",img:P.kusasenri,link:"https://www.asocity-kanko.jp/"},
+    {t:"15:00",tt:"「CAN LI ASSO E」チェックイン",d:"大自然に溶け込む一棟貸しコンテナヴィラ。テラスでウェルカムコーヒーを。",tip:"誰にも邪魔されない貸切空間。テラスでお気に入りの音楽を。",e:"🏕",link:"https://owners-inn.com/?p=18939"},
+    {t:"16:30",tt:"「どんどこ湯」豪快巨石の源泉掛け流し",d:"コテージ近く、広大な日本庭園に巨石露天が並ぶ名湯をたっぷり堪能。",tip:"高原の風を浴びるサウナ→阿蘇伏流水の水風呂のととのいは別格。",e:"♨️",link:"https://www.dondokoyu.jp/"},
+    {t:"18:30",tt:"あか牛炭火焼「白水乃蔵」",d:"築150年の古民家で、囲炉裏の炭火であぶるあか牛。赤身の旨味が広がります。",tip:"人気店なので事前のネット確認・席キープが安心。",e:"🔥",link:"https://tabelog.com/kumamoto/A4302/A430202/43000913/"}
+   ]},
+ { n:4, date:"8.25", dow:"火", short:"高千穂", stay:"CAN LI ASSO E（2泊目）", photo:P.takachiho,
+   title:"高千穂峡ボートと天岩戸 ── 神話の一日",
+   desc:"午前中に神話の郷・高千穂峡ボートと天岩戸神社を巡り、本場のチキン南蛮ランチ。夕方は南阿蘇「四季の森」温泉でととのい、夜は「旨乃蔵」で地鶏炭火焼。コテージ連泊の身軽さが効く一日。",
+   nav:"https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=CAN+LI+ASSO+E&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森|旨乃蔵",
+   tl:[
+    {t:"09:00",tt:"「天岩戸神社」と「天安河原」参拝",d:"八百万の神々が集った伝説の洞窟へ。積み石が並ぶ神秘の神域を参拝します。",tip:"静まり返った渓流のマイナスイオンを五感で。",img:P.amanoiwato,link:"https://amanoiwato-jinja.jp/"},
+    {t:"10:30",tt:"🛶「高千穂峡」手漕ぎボート体験",d:"柱状節理の大渓谷、真名井の滝のすぐ側をボートでゆっくり滑走！",tip:"滝しぶきでびしょ濡れ注意。着替え用タオル必携。パパの漕ぎテク見せ所！",img:P.takachiho,link:"https://takachiho-kanko.info/sightseeing/detail.php?id=3"},
+    {t:"13:00",tt:"本場・宮崎の「チキン南蛮」ランチ",d:"ジューシーな唐揚げに特製タルタルがたっぷり。ご当地の味を堪能。",tip:"甘くてコクのあるチキン南蛮は子どもたちも大喜びの一皿。",e:"🍗",link:"https://takachiho-kanko.info/gourmet/"},
+    {t:"17:30",tt:"南阿蘇久木野温泉「四季の森」",d:"夕暮れに染まる阿蘇五岳がワイドに広がる絶景露天。（大人500円）",tip:"サウナ上がりの南阿蘇天然水の水風呂は極上のととのい。",e:"♨️",link:"http://www.shikinonomori.co.jp/"},
+    {t:"19:00",tt:"「旨乃蔵」地鶏炭火焼きディナー",d:"モクモクと煙を立てて焼く、噛むほどに旨い地鶏炭火焼き。",tip:"帰りはコテージに戻るだけ。熊本の麦焼酎をゆっくり楽しめます！",e:"🍶",link:"https://tabelog.com/kumamoto/A4302/A430202/43015494/"}
+   ]},
+ { n:5, date:"8.26", dow:"水", short:"由布院・別府", stay:"星野リゾート 界 別府", photo:P.makinoto,
+   title:"やまなみハイウェイ ── 由布院さんぽと「界 別府」",
+   desc:"日本屈指の絶景道・やまなみハイウェイを北上し、由布院・金鱗湖エリアで食べ歩き。午後は隈研吾氏デザインの「界 別府」へ。海のインフィニティ湯と創作会席の贅沢な夜。",
+   nav:"https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=星野リゾート界別府&waypoints=由布院温泉",
+   tl:[
+    {t:"10:00",tt:"「やまなみハイウェイ」高原絶景ドライブ",d:"九重連山の裾野を走る日本屈指のドライブ道。吹き抜ける高原の風が爽快！",tip:"『長者原』の駐車場で一時停車。硫黄山に吸い込まれる画角で記念撮影を。",img:P.makinoto,link:"https://www.visit-oita.jp/spots/detail/4055"},
+    {t:"11:30",tt:"由布院「金鱗湖」＆「湯の坪街道」さんぽ",d:"湯気の立つ湖面を眺めて散歩。湯の坪街道はスイーツとセレクトショップの宝庫。",tip:"名物ロールケーキ『B-speak』をテイクアウトして宿のおやつに。",img:P.kinrin,link:"https://yufuin.gr.jp/"},
+    {t:"15:00",tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.beppu,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"16:30",tt:"海と一体のインフィニティ大浴場",d:"別府湾と溶け合うような大浴場で、長旅のご褒美湯浴み。",tip:"湯上がりの冷たいかぼすドリンクのサービスも忘れずに。",e:"🌊",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"18:30",tt:"豊後の創作会席ディナー",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",e:"🍽",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"}
+   ]},
+ { n:6, date:"8.27-28", dow:"木・金", short:"博多→フェリー", stay:"東京九州フェリー 船中泊", photo:P.ferry,
+   title:"博多天神・屋台メシ ── 太平洋クルーズで帰京",
+   desc:"界別府をゆっくり出て博多へ。天神でお土産を仕入れ、夕方は開店直後の屋台へ。20:50に新門司港着、23:55出港の東京九州フェリーで横須賀へ約21時間の洋上クルーズ。",
+   nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=天神",
+   tl:[
+    {t:"10:00",tt:"界 別府をゆっくり出発",d:"朝風呂を存分に楽しんでから、大分道経由で福岡・天神へ。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",e:"🚗",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"12:30",tt:"博多・天神ショッピング",d:"岩田屋や天神地下街を大散策。ランチは濃厚とんこつラーメン！",tip:"『通りもん』と明太子は天神のデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
+    {t:"17:30",tt:"行列回避！開店と同時に「博多屋台」",d:"17:30の開店直後に入店し、並ばず熱々の屋台ラーメンと焼き鳥を堪能。",tip:"天神三越裏や中洲の公認屋台は子連れでも安心のクリーンさ。",img:P.nakasu,link:"https://yokanavi.com/yatai/"},
+    {t:"19:30",tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",e:"🌃",link:"https://tqf.co.jp/"},
+    {t:"20:50",tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.shinmoji,link:"https://tqf.co.jp/"},
+    {t:"23:55",tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
+   ]}
+];
+
+/* ============ DETOUR IDEAS (curated) ============ */
+const DETOURS = [
+ {day:1,cat:"☕ 休憩",name:"EXPASA足柄（下り）",d:"富士山ビューの巨大SA。朝ごはんとコーヒー補給の定番基地。",meta:"東名・出発から約1時間",img:null,e:"🗻",q:"EXPASA足柄下り"},
+ {day:1,cat:"🎡 体験",name:"刈谷ハイウェイオアシス",d:"観覧車まである日本有数の人気ハイウェイオアシス。子どもの休憩に最強。",meta:"伊勢湾岸道・刈谷PA",e:"🎡",q:"刈谷ハイウェイオアシス"},
+ {day:1,cat:"☕ 休憩",name:"宝塚北SA",d:"宝塚歌劇の街らしい優雅な内装で「日本一美しいSA」とも。姫路への最終休憩に。",meta:"新名神",e:"🌹",q:"宝塚北サービスエリア"},
+ {day:2,cat:"🍜 グルメ",name:"吉備SA（下り）",d:"桃太郎の国のSA。きびだんご＆デミカツ丼でご当地ランチ。",meta:"山陽道・岡山",e:"🍑",q:"吉備サービスエリア下り"},
+ {day:2,cat:"📸 絶景",name:"宮島SA（下り）",d:"瀬戸内海と大鳥居モチーフが迎える絶景SA。もみじ饅頭の補給もここで。",meta:"山陽道・広島",e:"⛩",q:"宮島サービスエリア下り"},
+ {day:2,cat:"📸 絶景",name:"壇之浦PA（下り）",d:"関門橋の真下。源平合戦の海峡をバックにベストショットが撮れる。",meta:"関門橋の本州側たもと",img:P.kanmon,q:"壇之浦PA"},
+ {day:3,cat:"📸 絶景",name:"上色見熊野座神社",d:"苔むした百基の灯籠が続く「異世界への入口」。コテージから近い幻想スポット。",meta:"高森町・コテージ周辺",img:P.kamishikimi,q:"上色見熊野座神社"},
+ {day:3,cat:"☕ 休憩",name:"白川水源",d:"毎分60トンの水が湧く南阿蘇の名水。冷たい湧水でクールダウン。",meta:"南阿蘇村",e:"💧",q:"白川水源"},
+ {day:3,cat:"🛍 買い物",name:"阿蘇神社と門前町の水基巡り",d:"湧き水の飲み比べをしながら門前町を食べ歩き。馬肉コロッケが名物。",meta:"阿蘇市一の宮",e:"⛲",q:"阿蘇神社 門前町"},
+ {day:4,cat:"🎡 体験",name:"高千穂あまてらす鉄道",d:"廃線を走るグランド・スーパーカートで高さ105mの高千穂鉄橋へ。床のガラス越しに絶景！",meta:"当日券・高校生以上1,500円",e:"🚃",q:"高千穂あまてらす鉄道"},
+ {day:4,cat:"📸 絶景",name:"国見ヶ丘",d:"高千穂盆地を一望する展望所。秋の雲海で有名だが夏の夕景も◎。",meta:"高千穂町",e:"🌄",q:"国見ヶ丘 高千穂"},
+ {day:4,cat:"🛍 買い物",name:"トンネルの駅",d:"未成線のトンネルが焼酎の貯蔵庫に。SLの展示もあり大人も子どもも楽しい。",meta:"高千穂町・国道218号沿い",e:"🍶",q:"トンネルの駅 高千穂"},
+ {day:5,cat:"📸 絶景",name:"牧ノ戸峠",d:"やまなみハイウェイの最高地点（標高約1,330m）。展望台まで5分の小登山を。",meta:"九重町",img:P.makinoto,q:"牧ノ戸峠"},
+ {day:5,cat:"🎡 体験",name:"九重“夢”大吊橋",d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の大パノラマ。",meta:"やまなみから約15分",e:"🌉",q:"九重夢大吊橋"},
+ {day:5,cat:"📸 絶景",name:"狭霧台",d:"由布院盆地を見下ろす峠の展望台。由布岳を背にした街並みが一望。",meta:"由布院の手前",img:P.yufudake,q:"狭霧台"},
+ {day:5,cat:"🎡 体験",name:"別府地獄めぐり（海地獄）",d:"コバルトブルーに沸く国指定名勝。界別府から車ですぐ、夕方前に1〜2地獄だけつまむのもアリ。",meta:"別府市鉄輪",img:P.jigoku,q:"海地獄"},
+ {day:6,cat:"📸 絶景",name:"別府湾SA（下り）",d:"別府湾を見下ろす「絶景SA」。朝イチのコーヒー休憩に最高。",meta:"大分道",e:"🌊",q:"別府湾サービスエリア"},
+ {day:6,cat:"🎡 体験",name:"太宰府天満宮",d:"学問の神様に子どもたちの合格祈願。参道の焼きたて梅ヶ枝餅は必食。",meta:"福岡へ向かう途中・太宰府IC",e:"🌸",q:"太宰府天満宮"},
+ {day:6,cat:"🛍 買い物",name:"キャナルシティ博多",d:"運河の噴水ショーが名物の大型モール。雨でも安心のラストお土産基地。",meta:"博多・中洲近く",e:"⛲",q:"キャナルシティ博多"},
+ {day:6,cat:"🍜 グルメ",name:"櫛田神社",d:"博多祇園山笠の飾り山を常設展示。屋台の前に博多の総鎮守へお参り。",meta:"博多旧市街",e:"🏮",q:"櫛田神社 博多"}
+];
+
+/* ============ QUIZ (24問・通信不要) ============ */
+const QUIZ = [
+ {day:1,q:"姫路城の優美な姿から付いた別名は？",o:["白鷺城","白鳥城","白虎城"],a:0,x:"漆喰の白壁が羽を広げた白鷺のように見えることから「白鷺城（はくろじょう）」。1993年に日本初の世界文化遺産の一つになりました。"},
+ {day:1,q:"有馬温泉の「金泉」が茶褐色なのはなぜ？",o:["鉄分が空気に触れて酸化するから","温泉に金が溶けているから","火山の泥が混ざっているから"],a:0,x:"湧き出た瞬間は透明ですが、含まれる鉄分が空気に触れて酸化し、茶褐色になります。塩分濃度が高く保温効果抜群。"},
+ {day:1,q:"有馬温泉をこよなく愛し、何度も湯治に訪れた戦国武将は？",o:["豊臣秀吉","織田信長","徳川家康"],a:0,x:"秀吉は「太閤の湯」と呼ばれるほど有馬を愛し、妻ねねと共に何度も訪れました。温泉街には太閤ゆかりの史跡が残ります。"},
+ {day:1,q:"姫路城の天守群が建つ山の名前は？",o:["姫山","白山","城山"],a:0,x:"大天守は姫山の上に建っています。西の鷺山とあわせて城郭が広がります。"},
+ {day:2,q:"関門橋が結んでいるのは本州と何？",o:["九州","四国","彦島"],a:0,x:"山口県下関市と福岡県北九州市門司区を結ぶ全長約1,068mの吊橋。1973年開通時は東洋一の長さでした。"},
+ {day:2,q:"門司港発祥といわれるご当地グルメは？",o:["焼きカレー","皿うどん","ちゃんぽん"],a:0,x:"昭和30年代、余ったカレーをオーブンで焼いたのが始まりとされる焼きカレー。今夜の夕食候補ナンバーワン！"},
+ {day:2,q:"壇之浦で1185年に滅亡した一族は？",o:["平家","源氏","北条氏"],a:0,x:"源平最後の合戦「壇之浦の戦い」の舞台がまさに関門海峡。壇之浦PAから古戦場の海が見渡せます。"},
+ {day:2,q:"門司港レトロ地区にある駅舎で、国の重要文化財なのは？",o:["門司港駅","小倉駅","下関駅"],a:0,x:"大正3年築のネオ・ルネサンス様式の木造駅舎。現役の駅として初めて重要文化財に指定されました。"},
+ {day:3,q:"阿蘇のカルデラの大きさは世界でも…？",o:["最大級","50位くらい","実は小さい"],a:0,x:"南北約25km・東西約18kmは世界最大級。カルデラの中に約5万人が暮らす、世界的にも珍しい「人の住む火山」です。"},
+ {day:3,q:"大観峰から見た阿蘇五岳は何に例えられる？",o:["お釈迦様の寝姿","龍の背中","巨人の手"],a:0,x:"根子岳を顔に、高岳を胸にした「涅槃像（ねはんぞう）」＝お釈迦様の寝姿に見えると言われます。実物でぜひ確認を！"},
+ {day:3,q:"阿蘇名物「あか牛」の正式な品種名は？",o:["褐毛和種","黒毛和種","日本短角種"],a:0,x:"褐毛和種（あかげわしゅ）。阿蘇の草原で放牧され、赤身の旨さとヘルシーさが自慢です。"},
+ {day:3,q:"草千里ヶ浜でできる体験は？",o:["乗馬","ラクダ乗り","トロッコ"],a:0,x:"広大な草原での引き馬乗馬が名物。目の前には阿蘇中岳の噴煙も見えます。"},
+ {day:4,q:"高千穂峡の柱のような岩壁、あの地形の名前は？",o:["柱状節理","板状節理","風化花崗岩"],a:0,x:"阿蘇の火砕流が冷え固まる時にできた柱状節理。五ヶ瀬川が削ってできたのが高千穂峡です。"},
+ {day:4,q:"天岩戸神話で、岩戸に隠れてしまった神様は？",o:["天照大神","須佐之男命","月読命"],a:0,x:"弟スサノオの乱暴に怒った太陽神アマテラスが岩戸に隠れ、世界が真っ暗に。神々が天安河原で作戦会議を開いたと伝わります。"},
+ {day:4,q:"高千穂峡のシンボル、ボートから見上げる滝の名前は？",o:["真名井の滝","那智の滝","華厳の滝"],a:0,x:"日本の滝百選にも選ばれた真名井の滝。ボートで滝つぼ近くまで行けるのはここだけの体験！"},
+ {day:4,q:"宮崎名物チキン南蛮に欠かせないソースは？",o:["タルタルソース","デミグラスソース","ポン酢"],a:0,x:"甘酢にくぐらせた揚げ鶏に自家製タルタルをたっぷり。発祥は宮崎県延岡市といわれます。"},
+ {day:5,q:"由布岳の美しい姿から付いた別名は？",o:["豊後富士","九州アルプス","双子山"],a:0,x:"標高1,583m、ふたつの峰を持つ美しい山容から「豊後富士」。由布院の街のどこからでも見えます。"},
+ {day:5,q:"別府温泉が日本一を誇るものは？",o:["源泉の数と湧出量","露天風呂の広さ","温泉の熱さ"],a:0,x:"源泉数約2,300・湧出量ともに日本一。市内のあちこちから湯けむりが上がる「温泉の都」です。"},
+ {day:5,q:"金鱗湖の名前の由来は？",o:["魚のうろこが夕日に金色に輝いたから","湖底に金が沈んでいるから","形が金貨に似ているから"],a:0,x:"明治の学者が、湖で跳ねた魚のうろこが夕日で金色に輝くのを見て命名したと伝わります。朝霧の湖面も幻想的。"},
+ {day:5,q:"やまなみハイウェイの最高地点は？",o:["牧ノ戸峠","狭霧台","長者原"],a:0,x:"標高約1,330mの牧ノ戸峠。夏でも涼しく、久住山への登山口でもあります。"},
+ {day:6,q:"福岡の屋台の数は全国で…？",o:["日本一","3位くらい","実は大阪より少ない"],a:0,x:"福岡市の屋台は100軒前後で全国の屋台の約4割を占める日本一の屋台都市。市公認の制度もあります。"},
+ {day:6,q:"博多土産の定番「明太子」のルーツはどこの料理？",o:["韓国・釜山","中国・上海","ロシア・ウラジオストク"],a:0,x:"釜山生まれの創業者が、たらこのキムチ漬け「明卵漬」をヒントに博多で開発したのが始まりといわれます。"},
+ {day:6,q:"帰りに乗る東京九州フェリーの船の名前は？",o:["それいゆ・はまゆう","さんふらわあ・きりしま","おれんじホープ"],a:0,x:"「それいゆ」（太陽）と「はまゆう」（横須賀の市花）。露天風呂やシアターを備えた最新鋭のクルーズフェリーです。"},
+ {day:6,q:"新門司港から横須賀港までの航海時間はおよそ？",o:["約21時間","約8時間","約36時間"],a:0,x:"23:55に出て翌日の夜に到着する約21時間の船旅。丸一日、海の上でのんびり過ごせます。"}
+];
+
+/* ============ PACKING ============ */
+const CK_DEFAULT = [
+ {id:"etc",l:"ETCカードの期限確認 ＆ 車載器テスト",r:"料金所のスムーズ通過用"},
+ {id:"ferry",l:"フェリー・ボート・夜神楽の予約票/QRコード",r:"乗船・入場手続き用"},
+ {id:"insurance",l:"健康保険証・JAF会員証",r:"長距離ドライブの備え"},
+ {id:"yukata",l:"温泉街の散策用サンダル・羽織もの",r:"有馬・由布院・別府の街歩き"},
+ {id:"towel",l:"着替え用タオル（高千穂ボートで濡れる！）",r:"DAY4の必需品"},
+ {id:"charger",l:"車載充電器・モバイルバッテリー",r:"ナビ＆カメラの生命線"}
+];
+const PACK_THEMES = [
+ {n:"🥵 猛暑対策",items:["ネッククーラー・冷感タオル","塩分タブレット","日焼け止め・帽子","車内用サンシェード"]},
+ {n:"📸 写真派",items:["カメラ＆予備SDカード","三脚（星空・夜景用）","レンズクロス"]},
+ {n:"⛴ フェリー泊",items:["船内用の羽織もの（デッキは夜冷える）","酔い止め","洗面ポーチ","船内用スリッパ"]},
+ {n:"🧒 キッズ",items:["車内おやつBOX","酔い止め（子ども用）","タブレット＆ダウンロード済み動画","虫よけスプレー"]},
+ {n:"♨️ 温泉極め隊",items:["速乾タオル","湯上がり用ヘアゴム・ブラシ","スキンケアミニセット"]}
+];
+</script>
+<script>
+/* ============ UTIL ============ */
+const $ = id => document.getElementById(id);
+const LS = {
+  get(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f }catch(e){ return f } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)) }catch(e){} }
+};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(msg){
+  const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._tm); t._tm=setTimeout(()=>t.classList.remove('show'),2200);
+}
+function pop(opts){ if(typeof confetti==='function') confetti(Object.assign({particleCount:90,spread:75,origin:{y:.7},colors:['#d9b56e','#f3ddad','#67c6d8','#ff8a6b']},opts||{})) }
+function celebrate(){ pop({particleCount:160,spread:100}); setTimeout(()=>pop({origin:{x:.2,y:.6}}),250); setTimeout(()=>pop({origin:{x:.8,y:.6}}),480); toast('出発まで気持ちを高めていこう！🚗💨'); }
+function phTile(e){ return '<div class="ph">'+(e||'📍')+'</div>' }
+function imgOrEmoji(img,e,cls){
+  return img ? '<img src="'+img+'" alt="" loading="lazy" onerror="this.outerHTML=\''+phTile(e).replace(/'/g,"\\'")+'\'">' : phTile(e);
+}
+
+/* ============ NAV ============ */
+const VIEWS=['home','days','detour','play','prep'];
+function go(v){
+  VIEWS.forEach(x=>{
+    $('view-'+x).classList.toggle('act',x===v);
+    const b1=$('bt-'+x), b2=$('tt-'+x);
+    if(b1)b1.classList.toggle('act',x===v);
+    if(b2)b2.classList.toggle('act',x===v);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+}
+addEventListener('scroll',()=>$('hd').classList.toggle('scrolled',scrollY>30),{passive:true});
+
+/* ============ COUNTDOWN ============ */
+const T0=new Date(2026,7,22,5,0,0).getTime();   // 8/22 5:00 出発
+const T1=new Date(2026,7,28,23,0,0).getTime();  // 8/28 帰着日終わり
+function tickCD(){
+  const now=Date.now(), cd=$('cd'), msg=$('cd-msg');
+  if(now>=T0&&now<=T1){
+    cd.style.display='none'; msg.style.display='block';
+    const dayN=Math.floor((now-new Date(2026,7,22,0,0,0).getTime())/864e5)+1;
+    msg.textContent='🌊 旅は '+dayN+' 日目！今日も最高の一日に！';
+    return;
+  }
+  if(now>T1){ cd.style.display='none'; msg.style.display='block'; msg.textContent='🏠 おかえりなさい。最高の思い出をありがとう！'; return; }
+  let d=T0-now;
+  const f=n=>String(n).padStart(2,'0');
+  $('cd-d').textContent=Math.floor(d/864e5);
+  $('cd-h').textContent=f(Math.floor(d%864e5/36e5));
+  $('cd-m').textContent=f(Math.floor(d%36e5/6e4));
+  $('cd-s').textContent=f(Math.floor(d%6e4/1e3));
+}
+setInterval(tickCD,1000); tickCD();
+
+/* ============ HOME: ribbon & stays ============ */
+function buildRibbon(){
+  const stops=[{e:'🏠',day:'START',n:'三鷹 5:00発'}]
+    .concat(DAYS.map(d=>({e:['🏯','⚓','🌋','🛶','♨️','⛴'][d.n-1],day:'DAY '+d.n,n:d.short,go:d.n})))
+    .concat([{e:'🗼',day:'GOAL',n:'横須賀 8/28夜'}]);
+  $('ribbon').innerHTML=stops.map(s=>
+    '<div class="rb-node'+(s.go?'':' ')+'" '+(s.go?('onclick="openDay('+s.go+')"'):'')+'>'+
+    '<div class="rb-dot">'+s.e+'</div><div class="rb-day">'+s.day+'</div><div class="rb-name">'+s.n+'</div></div>'
+  ).join('');
+}
+function buildStays(){
+  const stays=[
+    {n:'DAY 1',t:'月光園 游月山荘',s:'有馬温泉・金泉掛け流し／神戸牛会席',img:P.arima,link:'https://www.gekkoen.co.jp/yugetsu/'},
+    {n:'DAY 2',t:'星野リゾート BEB5門司港',s:'港町レトロのお洒落アジト',img:P.mojiko,link:'https://hoshinoresorts.com/ja/hotels/beb5mojiko/'},
+    {n:'DAY 3・4',t:'CAN LI ASSO E',s:'阿蘇・一棟貸しコンテナヴィラ（連泊）',img:P.kusasenri,link:'https://owners-inn.com/?p=18939'},
+    {n:'DAY 5',t:'星野リゾート 界 別府',s:'隈研吾デザイン・海のインフィニティ湯',img:P.beppu,link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
+    {n:'DAY 6',t:'東京九州フェリー',s:'それいゆ／はまゆう・船中泊',img:P.ferry,link:'https://tqf.co.jp/'}
+  ];
+  $('stay-grid').innerHTML=stays.map(s=>
+    '<a class="stay" target="_blank" rel="noopener" href="'+s.link+'"><img src="'+s.img+'" alt="" loading="lazy">'+
+    '<div class="in"><p class="n">'+s.n+'</p><p class="t">'+s.t+'</p><p class="s">'+s.s+'</p></div></a>').join('');
+}
+
+/* ============ DAYS ============ */
+let curDay=1;
+function tripToday(){
+  const now=Date.now();
+  if(now<new Date(2026,7,22).getTime()||now>new Date(2026,7,29).getTime())return 0;
+  return Math.min(6,Math.floor((now-new Date(2026,7,22).getTime())/864e5)+1);
+}
+function buildDayTabs(){
+  const td=tripToday();
+  $('day-tabs').innerHTML=DAYS.map(d=>
+    '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
+  ).join('');
+}
+function openDay(n,stay){
+  curDay=n; buildDayTabs();
+  const d=DAYS[n-1];
+  $('day-body').innerHTML=
+    '<div class="dayhero"><img src="'+d.photo+'" alt="" loading="lazy">'+
+    '<div class="in"><p class="date en">DAY '+d.n+' — '+d.date+' '+d.dow+'</p><h3>'+d.title+'</h3><p class="d">'+d.desc+'</p></div></div>'+
+    '<div class="day-actions">'+
+      '<a class="btn btn-gold" style="font-size:13px;padding:11px 20px" target="_blank" rel="noopener" href="'+d.nav+'">🧭 この日のナビを開く</a>'+
+      '<button class="btn btn-ghost" onclick="go(\'detour\');setDetFilter(\'day'+d.n+'\')">📍 この日の寄り道を見る</button>'+
+      '<span class="chip">🏨 '+d.stay+'</span>'+
+    '</div>'+
+    '<div class="tl">'+d.tl.map(it=>
+      '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
+      '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
+      (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
+      (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
+      '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
+      '</div></div></div>').join('')+'</div>';
+  if(!stay){ go('days'); }
+}
+
+/* ============ DETOURS ============ */
+let detFilter='all';
+const IDEAS_KEY='gc2026_ideas', VOTES_KEY='gc2026_votes';
+function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q) }
+function allDetours(){
+  const custom=LS.get(IDEAS_KEY,[]).map((c,i)=>Object.assign({custom:true,ci:i},c));
+  return DETOURS.map((d,i)=>Object.assign({ci:'b'+i},d)).concat(custom);
+}
+function setDetFilter(f){ detFilter=f; buildDetFilters(); buildDetGrid(); }
+function buildDetFilters(){
+  const fs=[{k:'all',l:'すべて'}].concat(DAYS.map(d=>({k:'day'+d.n,l:'DAY '+d.n})),[{k:'fav',l:'♡ 人気順'}]);
+  $('det-filters').innerHTML=fs.map(f=>'<button class="df'+(detFilter===f.k?' act':'')+'" onclick="setDetFilter(\''+f.k+'\')">'+f.l+'</button>').join('');
+}
+function buildDetGrid(){
+  const votes=LS.get(VOTES_KEY,{});
+  let list=allDetours();
+  if(detFilter.startsWith('day')) list=list.filter(d=>String(d.day)===detFilter.slice(3));
+  if(detFilter==='fav') list=list.slice().sort((a,b)=>(votes[b.ci]||0)-(votes[a.ci]||0));
+  $('det-grid').innerHTML=list.length?list.map(d=>{
+    const v=votes[d.ci]||0;
+    return '<div class="det'+(d.custom?' custom':'')+'">'+
+    '<div class="det-ph">'+(d.img?'<img src="'+d.img+'" alt="" loading="lazy" onerror="this.remove()">':'<div class="emoji">'+(d.e||'💡')+'</div>')+
+      '<span class="day-b">DAY '+d.day+'</span><span class="cat-b">'+esc(d.cat)+'</span></div>'+
+    '<div class="det-in"><p class="det-tt">'+esc(d.name)+'</p><p class="det-d">'+esc(d.d||'')+'</p>'+
+    (d.meta?'<p class="det-meta">🚗 '+esc(d.meta)+'</p>':'')+
+    '<div class="det-foot"><button class="heart'+(v>0?' on':'')+'" onclick="vote(\''+d.ci+'\')">♡ <span>'+v+'</span></button>'+
+    (d.custom?'<button class="det-del" onclick="delIdea('+d.ci+')">削除</button>':'')+
+    '<a class="det-map" target="_blank" rel="noopener" href="'+mapsUrl(d.q||d.name)+'">地図 ↗</a></div></div></div>';
+  }).join(''):'<p class="empty">該当する寄り道はまだありません。上のフォームから追加してみよう！</p>';
+}
+function vote(ci){
+  const votes=LS.get(VOTES_KEY,{});
+  votes[ci]=(votes[ci]||0)+1;
+  LS.set(VOTES_KEY,votes); buildDetGrid();
+  if(votes[ci]===3) toast('人気上昇中！これは行くしかない ♡');
+}
+function addIdea(){
+  const name=$('idea-name').value.trim();
+  if(!name){ toast('スポット名を入れてください'); return; }
+  const ideas=LS.get(IDEAS_KEY,[]);
+  ideas.push({day:parseInt($('idea-day').value,10),cat:$('idea-cat').value,name:name,d:$('idea-memo').value.trim(),meta:'家族のアイデア',q:name});
+  LS.set(IDEAS_KEY,ideas);
+  $('idea-name').value=''; $('idea-memo').value='';
+  pop(); toast('アイデア帳に追加しました！');
+  buildDetGrid();
+}
+function delIdea(i){
+  const ideas=LS.get(IDEAS_KEY,[]);
+  ideas.splice(i,1); LS.set(IDEAS_KEY,ideas); buildDetGrid();
+}
+
+/* ============ QUIZ ============ */
+let qPool=[],qIdx=0,qScore=0,qTry=0,qDay='all';
+function setQuizDay(d){ qDay=d; buildQuizFilters(); startQuiz(); }
+function buildQuizFilters(){
+  const fs=[{k:'all',l:'全問ミックス'}].concat(DAYS.map(d=>({k:String(d.n),l:'DAY '+d.n})));
+  $('quiz-day-filters').innerHTML=fs.map(f=>'<button class="df'+(qDay===f.k?' act':'')+'" onclick="setQuizDay(\''+f.k+'\')">'+f.l+'</button>').join('');
+}
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; }
+function startQuiz(){
+  qPool=shuffle(QUIZ.filter(q=>qDay==='all'||String(q.day)===qDay));
+  qIdx=0; renderQuiz();
+}
+function renderQuiz(){
+  const q=qPool[qIdx];
+  $('q-no').textContent='QUESTION '+(qIdx+1)+' / '+qPool.length+'（DAY '+q.day+'）';
+  $('q-score').textContent='正解 '+qScore+' / 挑戦 '+qTry;
+  $('q-text').textContent=q.q;
+  $('q-exp').className='q-exp'; $('q-next').className='btn btn-gold q-next';
+  const order=shuffle(q.o.map((_,i)=>i));
+  $('q-opts').innerHTML=order.map((oi,pos)=>
+    '<button class="q-opt" onclick="answer(this,'+oi+','+q.a+')"><span class="k">'+String.fromCharCode(65+pos)+'</span>'+esc(q.o[oi])+'</button>').join('');
+}
+function answer(btn,oi,a){
+  const q=qPool[qIdx]; qTry++;
+  document.querySelectorAll('.q-opt').forEach(b=>b.disabled=true);
+  if(oi===a){ qScore++; btn.classList.add('correct'); pop({particleCount:60,spread:60}); }
+  else{
+    btn.classList.add('wrong');
+    document.querySelectorAll('.q-opt').forEach(b=>{ if(b.textContent.slice(1)===q.o[a]||b.textContent.includes(q.o[a])) b.classList.add('correct'); });
+  }
+  $('q-score').textContent='正解 '+qScore+' / 挑戦 '+qTry;
+  const ex=$('q-exp'); ex.innerHTML='<b>'+(oi===a?'正解！':'ざんねん！ 答えは「'+esc(q.o[a])+'」')+'</b><br>'+esc(q.x); ex.classList.add('show');
+  $('q-next').classList.add('show');
+}
+function nextQuiz(){ qIdx=(qIdx+1)%qPool.length; if(qIdx===0)qPool=shuffle(qPool); renderQuiz(); }
+
+/* ============ CHECKLIST ============ */
+const CK_KEY='gc2026_ck_custom', CKS_KEY='gc2026_ck_state';
+function ckAll(){ return CK_DEFAULT.concat(LS.get(CK_KEY,[]).map((c,i)=>({id:'c'+i,l:c.l,r:c.r||'追加アイテム',custom:true,ci:i}))) }
+function buildCk(){
+  const st=LS.get(CKS_KEY,{}); const items=ckAll();
+  $('ck-list').innerHTML=items.map(it=>
+    '<div class="ck'+(st[it.id]?' on':'')+'" onclick="toggleCk(\''+it.id+'\')">'+
+    '<span class="box">'+(st[it.id]?'✓':'')+'</span><span><span class="l">'+esc(it.l)+'</span><br><span class="r">'+esc(it.r)+'</span></span>'+
+    (it.custom?'<button class="del" onclick="event.stopPropagation();delCk('+it.ci+')">✕</button>':'')+'</div>').join('');
+  const done=items.filter(i=>st[i.id]).length, pct=items.length?Math.round(done/items.length*100):0;
+  $('prog-bar').style.width=pct+'%'; $('prog-t').textContent=pct+'% 完了';
+  if(pct===100){ pop({particleCount:120,spread:90}); }
+}
+function toggleCk(id){ const st=LS.get(CKS_KEY,{}); st[id]=!st[id]; LS.set(CKS_KEY,st); buildCk(); }
+function addCk(){
+  const v=$('ck-in').value.trim(); if(!v){toast('持ち物名を入れてください');return}
+  const c=LS.get(CK_KEY,[]); c.push({l:v}); LS.set(CK_KEY,c); $('ck-in').value=''; buildCk(); toast('追加しました');
+}
+function delCk(i){ const c=LS.get(CK_KEY,[]); c.splice(i,1); LS.set(CK_KEY,c); buildCk(); }
+function resetCk(){ LS.set(CKS_KEY,{}); buildCk(); toast('チェックをリセットしました'); }
+function buildThemes(){
+  const used=LS.get('gc2026_themes',[]);
+  $('pack-themes').innerHTML=PACK_THEMES.map((t,i)=>
+    '<button class="pt'+(used.includes(i)?' used':'')+'" onclick="addTheme('+i+')">'+t.n+'（'+t.items.length+'点）</button>').join('');
+}
+function addTheme(i){
+  const used=LS.get('gc2026_themes',[]); if(used.includes(i))return;
+  const c=LS.get(CK_KEY,[]);
+  PACK_THEMES[i].items.forEach(l=>c.push({l:l,r:PACK_THEMES[i].n}));
+  LS.set(CK_KEY,c); used.push(i); LS.set('gc2026_themes',used);
+  buildCk(); buildThemes(); pop(); toast(PACK_THEMES[i].n+' のセットを追加しました！');
+}
+
+/* ============ MEMO BOARD ============ */
+const MEMO_KEY='gc2026_memos';
+function buildMemos(){
+  const ms=LS.get(MEMO_KEY,[]);
+  $('memo-list').innerHTML=ms.length?ms.map((m,i)=>
+    '<div class="memo"><p class="m">'+esc(m.t)+'</p><p class="who">'+esc(m.at)+'</p>'+
+    '<button class="del" onclick="delMemo('+i+')">✕</button></div>').join('')
+    :'<p class="empty">まだメモがありません。旅の「やりたい！」を最初に書き込もう。</p>';
+}
+function addMemo(){
+  const v=$('memo-in').value.trim(); if(!v){toast('メモを入力してください');return}
+  const ms=LS.get(MEMO_KEY,[]);
+  const d=new Date();
+  ms.unshift({t:v,at:(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')});
+  LS.set(MEMO_KEY,ms); $('memo-in').value=''; buildMemos(); toast('メモしました！');
+}
+function delMemo(i){ const ms=LS.get(MEMO_KEY,[]); ms.splice(i,1); LS.set(MEMO_KEY,ms); buildMemos(); }
+function copyMemos(){
+  const ms=LS.get(MEMO_KEY,[]);
+  if(!ms.length){toast('コピーするメモがありません');return}
+  const txt='【GRAND CRUISE 2026 家族メモ】\n'+ms.map(m=>'・'+m.t).join('\n');
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(
+    ()=>toast('コピーしました！LINEに貼り付けて共有を'),
+    ()=>toast('コピーできませんでした')
+  );
+}
+
+/* ============ REVEAL & INIT ============ */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('#memo-in,#ck-in,#idea-name').forEach(el=>el.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ e.preventDefault(); ({['memo-in']:addMemo,['ck-in']:addCk,['idea-name']:addIdea})[el.id](); }
+}));
+buildRibbon(); buildStays(); buildMemos(); buildCk(); buildThemes();
+buildDetFilters(); buildDetGrid(); buildQuizFilters(); startQuiz();
+const td=tripToday(); openDay(td||1,true); buildDayTabs();
+go('home');
+</script>
 </body>
 </html>
