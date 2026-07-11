@@ -81,9 +81,11 @@ main{padding-bottom:calc(84px + var(--safe-b))}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Takachiho-kyo%28Gorge%29_-_River_-_%E5%B7%9D.jpg/960px-Takachiho-kyo%28Gorge%29_-_River_-_%E5%B7%9D.jpg') center 35%/cover no-repeat;transform:scale(1.08);animation:heroDrift 24s ease-in-out infinite alternate}
-@keyframes heroDrift{from{transform:scale(1.08) translateY(0)}to{transform:scale(1.16) translateY(-16px)}}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,32,.62) 0%,rgba(10,18,32,.45) 40%,var(--ink) 96%)}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;background-position:center 38%;background-size:cover;opacity:0;transform:scale(1.08);transition:opacity 2.2s ease}
+.hero-slide.on{opacity:1;animation:kenburns 9s ease-in-out forwards}
+@keyframes kenburns{from{transform:scale(1.08) translateY(0)}to{transform:scale(1.18) translateY(-14px)}}
+.hero-slides::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,32,.62) 0%,rgba(10,18,32,.45) 40%,var(--ink) 96%)}
 .hero-in{position:relative;z-index:2;padding:110px 20px 90px;width:100%}
 .hero .dates{font-size:12px;letter-spacing:.5em;color:var(--gold-l);font-weight:700}
 .hero h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(44px,11vw,104px);line-height:1.02;letter-spacing:.06em;margin:14px 0 6px;
@@ -133,6 +135,10 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 /* ---------- day tabs & itinerary ---------- */
 .day-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 14px;position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:40;background:linear-gradient(180deg,var(--ink) 78%,transparent);margin:0 -4px}
 .day-tabs::-webkit-scrollbar{display:none}
+.nav-toggle{display:flex;gap:7px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.nt{padding:7px 15px;border-radius:99px;border:1px solid var(--line2);font-size:12px;font-weight:700;color:var(--tx2);background:var(--card);transition:.2s}
+.nt.act{border-color:var(--gold);color:var(--gold-l);background:rgba(217,181,110,.1)}
+.nt-lab{font-size:11px;color:var(--tx3)}
 .dt{flex-shrink:0;padding:9px 17px;border-radius:99px;border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--tx2);background:var(--card);transition:.22s;white-space:nowrap}
 .dt small{display:block;font-size:9px;letter-spacing:.12em;color:var(--tx3);font-weight:500}
 .dt.act{background:linear-gradient(135deg,var(--gold-l),var(--gold-d));color:#241a08;border-color:transparent;box-shadow:0 6px 22px -6px rgba(217,181,110,.55)}
@@ -270,6 +276,83 @@ footer .f1{font-family:'Cormorant Garamond',serif;letter-spacing:.3em;color:var(
 footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
 .toast{position:fixed;left:50%;bottom:calc(96px + var(--safe-b));transform:translate(-50%,20px);background:var(--gold-l);color:#241a08;font-size:13px;font-weight:900;padding:11px 22px;border-radius:99px;opacity:0;pointer-events:none;transition:.35s;z-index:80;box-shadow:0 10px 30px -8px rgba(0,0,0,.6)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
+/* ---------- aurora bg ---------- */
+body::before,body::after{content:'';position:fixed;z-index:-1;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.13;pointer-events:none}
+body::before{background:radial-gradient(circle,#d9b56e,transparent 60%);top:-20vmax;right:-18vmax;animation:blob1 26s ease-in-out infinite alternate}
+body::after{background:radial-gradient(circle,#2a6a8f,transparent 60%);bottom:-24vmax;left:-16vmax;animation:blob2 32s ease-in-out infinite alternate}
+@keyframes blob1{from{transform:translate(0,0) scale(1)}to{transform:translate(-9vmax,7vmax) scale(1.15)}}
+@keyframes blob2{from{transform:translate(0,0) scale(1)}to{transform:translate(8vmax,-6vmax) scale(1.1)}}
+/* ---------- gold button sheen ---------- */
+.btn-gold{position:relative;overflow:hidden}
+.btn-gold::after{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sheen 4.2s ease-in-out infinite}
+@keyframes sheen{0%,72%{left:-80%}100%{left:130%}}
+/* ---------- countdown glow ---------- */
+.cd .cell{animation:cellGlow 3.2s ease-in-out infinite}
+.cd .cell:nth-child(2){animation-delay:.4s}.cd .cell:nth-child(3){animation-delay:.8s}.cd .cell:nth-child(4){animation-delay:1.2s}
+@keyframes cellGlow{0%,100%{box-shadow:0 0 0 rgba(217,181,110,0)}50%{box-shadow:0 6px 26px -6px rgba(217,181,110,.4)}}
+/* ---------- film strip ---------- */
+.strip{overflow:hidden;margin:0 calc(-1 * clamp(16px,4vw,28px)) 22px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.strip-in{display:flex;gap:12px;width:max-content;animation:filmslide 55s linear infinite}
+.strip:hover .strip-in{animation-play-state:paused}
+@keyframes filmslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.strip img{width:170px;height:110px;object-fit:cover;border-radius:14px;border:1px solid var(--line2);flex-shrink:0;cursor:pointer;transition:transform .3s}
+.strip img:hover{transform:scale(1.05)}
+/* ---------- photo wall ---------- */
+.gal{columns:2;column-gap:12px}
+@media(min-width:680px){.gal{columns:3}}
+.gal figure{break-inside:avoid;margin:0 0 12px;border-radius:16px;overflow:hidden;border:1px solid var(--line2);position:relative;cursor:pointer;isolation:isolate}
+.gal img{width:100%;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.gal figure:hover img{transform:scale(1.07)}
+.gal figcaption{position:absolute;inset:auto 0 0 0;padding:26px 12px 10px;font-size:11px;font-weight:700;color:#fff;background:linear-gradient(180deg,transparent,rgba(8,13,24,.88));display:flex;justify-content:space-between;align-items:flex-end;gap:6px}
+.gal figcaption small{font-size:9px;letter-spacing:.18em;color:var(--gold-l);flex-shrink:0}
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(5,9,16,.92);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out}
+.lb.show{display:flex;animation:fadeIn .3s}
+.lb img{max-width:94vw;max-height:76vh;border-radius:18px;border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.8);animation:lbIn .35s cubic-bezier(.2,.7,.3,1)}
+@keyframes lbIn{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+.lb .cap{margin-top:14px;font-family:'Shippori Mincho B1',serif;font-size:14px;color:var(--gold-l)}
+.lb .hint{font-size:10px;color:var(--tx3);margin-top:4px;letter-spacing:.2em}
+/* ---------- ribbon photo dots ---------- */
+.rb-dot.photo{background-size:cover;background-position:center;border-color:var(--gold-d);font-size:0}
+.rb-node.here .rb-dot{animation:herePulse 2.4s ease-in-out infinite}
+@keyframes herePulse{0%,100%{box-shadow:0 0 0 4px rgba(217,181,110,.16)}50%{box-shadow:0 0 0 9px rgba(217,181,110,.07)}}
+.rb-car{position:absolute;top:6px;left:0;font-size:20px;z-index:2;animation:carRun 14s linear infinite;pointer-events:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+@keyframes carRun{from{transform:translateX(-30px)}to{transform:translateX(calc(100vw + 30px))}}
+.ribbon-wrap{position:relative}
+/* ---------- day hero & timeline entrances ---------- */
+.dayhero img{animation:kenburns 12s ease-in-out infinite alternate}
+.tl-item{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.tl-item.on{opacity:1;transform:none}
+.tl-th{overflow:hidden}
+.tl-card:hover .tl-th img{transform:scale(1.08)}
+.tl-th img{transition:transform .5s}
+/* ---------- learning column ---------- */
+.col-card{border:1px solid rgba(103,198,216,.3);border-radius:20px;padding:clamp(18px,4vw,28px);background:linear-gradient(150deg,rgba(103,198,216,.08),var(--card));margin-top:30px;position:relative;overflow:hidden}
+.col-card::before{content:'学';position:absolute;right:-8px;top:-34px;font-family:'Shippori Mincho B1',serif;font-size:130px;color:rgba(103,198,216,.06);font-weight:800}
+.col-k{font-size:10px;letter-spacing:.3em;color:var(--sea);font-weight:700;text-transform:uppercase}
+.col-card h4{font-family:'Shippori Mincho B1',serif;font-size:clamp(16px,4.2vw,20px);color:#fff;margin:8px 0 12px;line-height:1.5;position:relative}
+.col-b{font-size:13.5px;color:var(--tx2);line-height:2;position:relative}
+.kw{color:var(--sea);font-weight:700;text-decoration:underline dotted rgba(103,198,216,.6);text-underline-offset:3px;transition:.2s}
+.kw:hover{color:#9fdcea}
+.kw::after{content:'↗';font-size:9px;margin-left:1px;vertical-align:super}
+.col-kws{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;position:relative}
+.kwc{font-size:11px;font-weight:700;padding:6px 13px;border-radius:99px;border:1px solid rgba(103,198,216,.35);color:var(--sea);background:rgba(103,198,216,.07);text-decoration:none;transition:.2s}
+.kwc:hover{background:rgba(103,198,216,.16)}
+.col-note{font-size:10.5px;color:var(--tx3);margin-top:12px;position:relative}
+/* ---------- micro interactions ---------- */
+.heart.burst{animation:heartPop .45s cubic-bezier(.2,.7,.3,1)}
+@keyframes heartPop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.q-opt.wrong{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+.det-ph{overflow:hidden}
+.det-ph img{transition:transform .5s}
+.det:hover .det-ph img{transform:scale(1.08)}
+.quiz-shell{background-size:cover;background-position:center;transition:background-image .4s}
+.stay .in,.dayhero .in{position:relative}
+@media (prefers-reduced-motion:reduce){
+  .hero-slide.on,.dayhero img,.strip-in,.btn-gold::after,.rb-car,body::before,body::after,.cd .cell{animation:none!important}
+  .tl-item{opacity:1;transform:none;transition:none}
+}
 @media print{
   header,nav.dock,.scroll-hint,.idea-form,.memo-form,.pack-themes,.q-next,.day-actions .btn-ghost{display:none!important}
   body{background:#fff;color:#111}
@@ -301,7 +384,7 @@ footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
 <!-- ================= HOME ================= -->
 <div class="view act" id="view-home">
   <div class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-slides" id="hero-slides"></div>
     <div class="hero-in wrap">
       <p class="dates en">2026.08.22 SAT — 08.28 FRI</p>
       <h1>GRAND<br>CRUISE</h1>
@@ -329,7 +412,7 @@ footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
         <h2 class="h2">7日間・約2,000kmの大航路</h2>
         <p class="d lead">停泊地をタップするとその日の旅程へジャンプします。</p>
       </div>
-      <div class="ribbon"><div class="ribbon-in" id="ribbon"></div></div>
+      <div class="ribbon-wrap"><span class="rb-car">🚗</span><div class="ribbon"><div class="ribbon-in" id="ribbon"></div></div></div>
       <div style="text-align:center;margin-top:18px">
         <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=姫路城|有馬温泉|門司港レトロ|阿蘇市|高千穂町|由布院温泉|別府市|福岡市天神">🗺 Googleマップで全ルートを見る</a>
       </div>
@@ -341,6 +424,16 @@ footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
         <h2 class="h2">今宵の宿</h2>
       </div>
       <div class="stay-grid" id="stay-grid"></div>
+    </section>
+
+    <section class="blk reveal">
+      <div class="sec-head">
+        <p class="kicker">Photo Preview</p>
+        <h2 class="h2">絶景プレビュー</h2>
+        <p class="d lead">道中で出会う景色とグルメを一足先に。写真をタップすると大きく見られます。</p>
+      </div>
+      <div class="strip"><div class="strip-in" id="strip"></div></div>
+      <div class="gal" id="gal"></div>
     </section>
 
     <section class="blk reveal">
@@ -383,6 +476,7 @@ footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
       <p class="kicker">Itinerary</p>
       <h2 class="h2">旅程しおり本編</h2>
     </div>
+    <div class="nav-toggle"></div>
     <div class="day-tabs" id="day-tabs"></div>
     <div id="day-body"></div>
   </div>
@@ -418,6 +512,7 @@ footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
       <button class="btn btn-gold" style="width:100%" onclick="addIdea()">アイデア帳に追加する</button>
     </div>
 
+    <div class="nav-toggle"></div>
     <div class="det-filters" id="det-filters"></div>
     <div class="det-grid" id="det-grid"></div>
   </div>
@@ -500,7 +595,9 @@ footer .f2{font-size:11px;color:var(--tx3);margin-top:6px}
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
+  <p class="f2" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v4 — 2026.07.11</p>
 </footer>
+<div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
@@ -525,8 +622,42 @@ const P = {
   nakasu:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nakasu02.jpg/960px-Nakasu02.jpg",
   ferry:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Soleil_Tokyokyushuferry_%28cropped%29.jpg/960px-Soleil_Tokyokyushuferry_%28cropped%29.jpg",
   kamishikimi:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Kamishikimi_Kumanoimasu_Shrine_001.jpg/960px-Kamishikimi_Kumanoimasu_Shrine_001.jpg",
-  shinmoji:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/%E9%96%80%E5%8F%B8%E6%B8%AF.JPG/960px-%E9%96%80%E5%8F%B8%E6%B8%AF.JPG"
+  shinmoji:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/%E9%96%80%E5%8F%B8%E6%B8%AF.JPG/960px-%E9%96%80%E5%8F%B8%E6%B8%AF.JPG",
+  kobe:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/4_Kobe_Beef%2C_Kobe_Japan.jpg/960px-4_Kobe_Beef%2C_Kobe_Japan.jpg",
+  senbei:"https://upload.wikimedia.org/wikipedia/commons/4/45/Tansansenbei17.JPG",
+  yakicurry:"https://upload.wikimedia.org/wikipedia/commons/1/15/Yaki-curry.jpg",
+  nanban:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Chicken_nanban_jetalone_in_Tsukishima%2C_Tokyo.jpg/960px-Chicken_nanban_jetalone_in_Tsukishima%2C_Tokyo.jpg",
+  ramen:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Hakataramen222.jpg/960px-Hakataramen222.jpg",
+  mentaiko:"https://upload.wikimedia.org/wikipedia/commons/1/1b/Mentaiko_by_Kanko.jpg",
+  umegae:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/%E6%A2%85%E3%83%B6%E6%9E%9D%E9%A4%85%E3%81%A8%E6%8A%B9%E8%8C%B6.JPG/960px-%E6%A2%85%E3%83%B6%E6%9E%9D%E9%A4%85%E3%81%A8%E6%8A%B9%E8%8C%B6.JPG",
+  kannawa:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/2020-02-24_Kannawa_Onsen_%E9%89%84%E8%BC%AA%E6%B8%A9%E6%B3%89%E5%85%A8%E6%99%AF_DSCF8631.jpg/960px-2020-02-24_Kannawa_Onsen_%E9%89%84%E8%BC%AA%E6%B8%A9%E6%B3%89%E5%85%A8%E6%99%AF_DSCF8631.jpg",
+  yumebridge:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kokonoe_Dream_Big_Suspension_Bridge_Oita%2CJAPAN.jpg/960px-Kokonoe_Dream_Big_Suspension_Bridge_Oita%2CJAPAN.jpg",
+  chojabaru:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Mount_Kuju_October_2011_01.jpg/960px-Mount_Kuju_October_2011_01.jpg",
+  takachihoshrine:"https://upload.wikimedia.org/wikipedia/commons/7/7d/%E3%81%9F%E3%81%8B%E3%81%A1%E3%81%BB%EF%BC%99.jpg",
+  beppuTower:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Beppu_Tower_20230212.jpg/960px-Beppu_Tower_20230212.jpg"
 };
+const HERO_SLIDES=[P.takachiho,P.kusasenri,P.himeji,P.makinoto,P.ferry];
+const GALLERY=[
+ {img:P.himeji,cap:"姫路城 大天守",day:"DAY 1"},
+ {img:P.arima,cap:"有馬温泉の街並み",day:"DAY 1"},
+ {img:P.kobe,cap:"神戸牛 — 今夜の主役",day:"DAY 1"},
+ {img:P.mojiko,cap:"門司港レトロ",day:"DAY 2"},
+ {img:P.kanmon,cap:"関門橋 — 九州上陸",day:"DAY 2"},
+ {img:P.yakicurry,cap:"名物・焼きカレー",day:"DAY 2"},
+ {img:P.daikanbo,cap:"大観峰の大カルデラ",day:"DAY 3"},
+ {img:P.kusasenri,cap:"草千里ヶ浜",day:"DAY 3"},
+ {img:P.kamishikimi,cap:"上色見熊野座神社",day:"DAY 3"},
+ {img:P.takachiho,cap:"高千穂峡・真名井の滝",day:"DAY 4"},
+ {img:P.amanoiwato,cap:"天岩戸神社",day:"DAY 4"},
+ {img:P.nanban,cap:"本場のチキン南蛮",day:"DAY 4"},
+ {img:P.makinoto,cap:"やまなみハイウェイ",day:"DAY 5"},
+ {img:P.kinrin,cap:"由布院・金鱗湖",day:"DAY 5"},
+ {img:P.yumebridge,cap:"九重“夢”大吊橋",day:"DAY 5"},
+ {img:P.kannawa,cap:"別府・鉄輪の湯けむり",day:"DAY 5"},
+ {img:P.ramen,cap:"屋台の博多ラーメン",day:"DAY 6"},
+ {img:P.ferry,cap:"東京九州フェリー それいゆ",day:"DAY 6/7"}
+];
+const DAYPHOTO={all:P.aso,1:P.himeji,2:P.mojiko,3:P.daikanbo,4:P.takachiho,5:P.makinoto,6:P.ferry};
 
 /* ============ ITINERARY DATA ============ */
 const DAYS = [
@@ -534,28 +665,31 @@ const DAYS = [
    title:"国宝「姫路城」と有馬温泉 月光園",
    desc:"三鷹を5:00に出発し、白鷺城と称される白亜の名城へ。夜は有馬川沿いの「月光園 游月山荘」で神戸牛会席と金泉掛け流しを堪能する記念すべき第1夜。",
    nav:"https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉+月光園+游月山荘&waypoints=姫路城",
+   yj:[[34.83938,134.69410,'姫路城'],[34.79521,135.24526,'月光園 游月山荘']],
    tl:[
     {t:"05:00",tt:"三鷹を出発 ── 暁の東名ハック",d:"東京ICから東名へ。早朝スタートで海老名SA付近の定番渋滞を回避します。",tip:"足柄SAで最初の休憩。富士山を眺めながら朝コーヒーを補給するのがパパの流儀！",e:"🌅",link:"https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"},
     {t:"12:00",tt:"世界遺産・国宝「姫路城」大天守を制覇",d:"白亜の天守へ。石垣や急な木造階段を上り、最上階からの絶景を楽しみます。（大人1,000円）",tip:"大天守の階段はとても急。滑りにくい靴で行くと安心です。",img:P.himeji,link:"https://www.city.himeji.lg.jp/castle/"},
-    {t:"15:00",tt:"有馬温泉街のレトロそぞろ歩き",d:"『三ツ森』の焼き立て炭酸せんべいを食べ歩き。川のせせらぎを聞きながらお土産探し。",tip:"お土産の『炭酸フレーク』はアイスにかけると絶品！",img:P.arima,link:"https://arima-onsen.com/"},
-    {t:"16:30",tt:"月光園 游月山荘へ ── 川音の露天風呂",d:"有馬名物「金泉」の川沿い露天で、長距離ドライブの疲れをリリース。",tip:"夕方、川沿いの太鼓橋の上で初日の家族記念写真を！",e:"♨️",link:"https://www.gekkoen.co.jp/yugetsu/"},
-    {t:"18:30",tt:"神戸牛会席をお部屋食で",d:"口の中でとろける神戸牛の陶板焼きなど、贅沢ディナーをお部屋でゆっくり。",tip:"着いたらすぐ浴衣に着替えてリラックスモードに切り替え。",e:"🥩",link:"https://www.gekkoen.co.jp/yugetsu/dish/"}
+    {t:"15:00",tt:"有馬温泉街のレトロそぞろ歩き",d:"『三ツ森』の焼き立て炭酸せんべいを食べ歩き。川のせせらぎを聞きながらお土産探し。",tip:"お土産の『炭酸フレーク』はアイスにかけると絶品！",img:P.senbei,link:"https://arima-onsen.com/"},
+    {t:"16:30",tt:"月光園 游月山荘へ ── 川音の露天風呂",d:"有馬名物「金泉」の川沿い露天で、長距離ドライブの疲れをリリース。",tip:"夕方、川沿いの太鼓橋の上で初日の家族記念写真を！",img:P.arima,link:"https://www.gekkoen.co.jp/yugetsu/"},
+    {t:"18:30",tt:"神戸牛会席をお部屋食で",d:"口の中でとろける神戸牛の陶板焼きなど、贅沢ディナーをお部屋でゆっくり。",tip:"着いたらすぐ浴衣に着替えてリラックスモードに切り替え。",img:P.kobe,link:"https://www.gekkoen.co.jp/yugetsu/dish/"}
    ]},
  { n:2, date:"8.23", dow:"日", short:"門司港", stay:"星野リゾート BEB5門司港", photo:P.mojiko,
    title:"山陽道を西へ430km ── 星野リゾート「BEB5門司港」",
    desc:"移動に完全特化したスマートドライブ日。関門海峡を越えて15:30頃にBEB5門司港へチェックイン。レトロな港町の夜は焼きカレーで外食ディナー！",
    nav:"https://www.google.com/maps/dir/?api=1&origin=有馬温泉&destination=星野リゾートBEB5門司港",
+   yj:[[33.94504,130.96472,'門司港レトロ（BEB5門司港）']],
    tl:[
     {t:"09:00",tt:"有馬温泉を出発 ── 約430kmの大西征",d:"山陽自動車道へ入り、西へひたすら快走します。",tip:"クルーズコントロールが最高に活きる日。みんなで歌いながら行きましょう！",e:"🚗",link:"https://sapa.c-nexco.co.jp/"},
     {t:"12:00",tt:"吉備SAなどでご当地SAランチ",d:"名物きびだんごや、岡山・広島のご当地メシをカジュアルに満喫。",tip:"岡山名物『デミカツ丼』は食べ応え抜群。運転はしっかり交代を。",e:"🍜",link:"https://sapa.c-nexco.co.jp/"},
     {t:"15:00",tt:"関門橋を渡り、感動の九州上陸！",d:"海を隔てた九州の大パノラマを見ながら関門海峡を越えます。",tip:"手前の『壇之浦PA』に寄ると、関門橋がベスト画角で撮れます！",img:P.kanmon,link:"https://www.w-holdings.co.jp/sapa/2583.html"},
     {t:"15:30",tt:"BEB5門司港チェックイン",d:"お菓子を囲んでだらだらできるロビー「TAMARIBA」に到着。ボードゲームも充実。",tip:"お洒落すぎるアジト。チェックイン後はロビー探検から！",e:"🏨",link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
-    {t:"18:00",tt:"門司港レトロ夜景さんぽ＆名物「焼きカレー」",d:"大正ロマンの赤煉瓦建築群がライトアップ。夕食は門司港発祥の焼きカレー。",tip:"素泊まりプランなので、今夜何を食べるかは家族会議で自由に！",img:P.mojiko,link:"https://www.mojiko.info/"}
+    {t:"18:00",tt:"門司港レトロ夜景さんぽ＆名物「焼きカレー」",d:"大正ロマンの赤煉瓦建築群がライトアップ。夕食は門司港発祥の焼きカレー。",tip:"素泊まりプランなので、今夜何を食べるかは家族会議で自由に！",img:P.yakicurry,link:"https://www.mojiko.info/"}
    ]},
  { n:3, date:"8.24", dow:"月", short:"阿蘇", stay:"CAN LI ASSO E（1泊目）", photo:P.daikanbo,
    title:"大観峰・草千里 ── 阿蘇の一棟貸しコテージへ",
    desc:"お昼頃に阿蘇へ到着し、大観峰と草千里ヶ浜の大パノラマに感動。15:00にコンテナヴィラ「CAN LI ASSO E」へ。どんどこ湯でととのい、夜は白水乃蔵であか牛炭火焼！",
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾートBEB5門司港&destination=CAN+LI+ASSO+E&waypoints=大観峰|草千里ヶ浜",
+   yj:[[32.99639,131.06722,'大観峰'],[32.88147,131.05355,'草千里ヶ浜'],[32.90443,130.99010,'どんどこ湯（コテージ至近）']],
    tl:[
     {t:"09:30",tt:"門司港をのんびり出発 ── 高原へ150km",d:"前日の頑張りが活きるハーフドライブ。大分道経由で緑きらめく阿蘇へ。",tip:"湯布院ICあたりから見える由布岳の姿は言葉を失う美しさ。",img:P.yufudake,link:"https://www.asocity-kanko.jp/"},
     {t:"11:30",tt:"阿蘇「大観峰」360度の大カルデラ",d:"阿蘇五岳が涅槃像に見える一大景勝地。目の前に広がるカルデラに息を呑みます。",tip:"あつあつ『あか牛の串焼き』と『阿蘇ジャージー牛乳ソフト』をその場で！",img:P.daikanbo,link:"https://www.asocity-kanko.jp/spot/daikanbo/"},
@@ -568,10 +702,11 @@ const DAYS = [
    title:"高千穂峡ボートと天岩戸 ── 神話の一日",
    desc:"午前中に神話の郷・高千穂峡ボートと天岩戸神社を巡り、本場のチキン南蛮ランチ。夕方は南阿蘇「四季の森」温泉でととのい、夜は「旨乃蔵」で地鶏炭火焼。コテージ連泊の身軽さが効く一日。",
    nav:"https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=CAN+LI+ASSO+E&waypoints=高千穂峡|天岩戸神社|南阿蘇久木野温泉+四季の森|旨乃蔵",
+   yj:[[32.73450,131.35069,'天岩戸神社 西本宮'],[32.70817,131.29894,'高千穂峡']],
    tl:[
     {t:"09:00",tt:"「天岩戸神社」と「天安河原」参拝",d:"八百万の神々が集った伝説の洞窟へ。積み石が並ぶ神秘の神域を参拝します。",tip:"静まり返った渓流のマイナスイオンを五感で。",img:P.amanoiwato,link:"https://amanoiwato-jinja.jp/"},
     {t:"10:30",tt:"🛶「高千穂峡」手漕ぎボート体験",d:"柱状節理の大渓谷、真名井の滝のすぐ側をボートでゆっくり滑走！",tip:"滝しぶきでびしょ濡れ注意。着替え用タオル必携。パパの漕ぎテク見せ所！",img:P.takachiho,link:"https://takachiho-kanko.info/sightseeing/detail.php?id=3"},
-    {t:"13:00",tt:"本場・宮崎の「チキン南蛮」ランチ",d:"ジューシーな唐揚げに特製タルタルがたっぷり。ご当地の味を堪能。",tip:"甘くてコクのあるチキン南蛮は子どもたちも大喜びの一皿。",e:"🍗",link:"https://takachiho-kanko.info/gourmet/"},
+    {t:"13:00",tt:"本場・宮崎の「チキン南蛮」ランチ",d:"ジューシーな唐揚げに特製タルタルがたっぷり。ご当地の味を堪能。",tip:"甘くてコクのあるチキン南蛮は子どもたちも大喜びの一皿。",img:P.nanban,link:"https://takachiho-kanko.info/gourmet/"},
     {t:"17:30",tt:"南阿蘇久木野温泉「四季の森」",d:"夕暮れに染まる阿蘇五岳がワイドに広がる絶景露天。（大人500円）",tip:"サウナ上がりの南阿蘇天然水の水風呂は極上のととのい。",e:"♨️",link:"http://www.shikinonomori.co.jp/"},
     {t:"19:00",tt:"「旨乃蔵」地鶏炭火焼きディナー",d:"モクモクと煙を立てて焼く、噛むほどに旨い地鶏炭火焼き。",tip:"帰りはコテージに戻るだけ。熊本の麦焼酎をゆっくり楽しめます！",e:"🍶",link:"https://tabelog.com/kumamoto/A4302/A430202/43015494/"}
    ]},
@@ -579,10 +714,11 @@ const DAYS = [
    title:"やまなみハイウェイ ── 由布院さんぽと「界 別府」",
    desc:"日本屈指の絶景道・やまなみハイウェイを北上し、由布院・金鱗湖エリアで食べ歩き。午後は隈研吾氏デザインの「界 別府」へ。海のインフィニティ湯と創作会席の贅沢な夜。",
    nav:"https://www.google.com/maps/dir/?api=1&origin=CAN+LI+ASSO+E&destination=星野リゾート界別府&waypoints=由布院温泉",
+   yj:[[33.26667,131.36917,'金鱗湖（由布院）'],[33.28033,131.50573,'界 別府（北浜）']],
    tl:[
     {t:"10:00",tt:"「やまなみハイウェイ」高原絶景ドライブ",d:"九重連山の裾野を走る日本屈指のドライブ道。吹き抜ける高原の風が爽快！",tip:"『長者原』の駐車場で一時停車。硫黄山に吸い込まれる画角で記念撮影を。",img:P.makinoto,link:"https://www.visit-oita.jp/spots/detail/4055"},
     {t:"11:30",tt:"由布院「金鱗湖」＆「湯の坪街道」さんぽ",d:"湯気の立つ湖面を眺めて散歩。湯の坪街道はスイーツとセレクトショップの宝庫。",tip:"名物ロールケーキ『B-speak』をテイクアウトして宿のおやつに。",img:P.kinrin,link:"https://yufuin.gr.jp/"},
-    {t:"15:00",tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.beppu,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"15:00",tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.kannawa,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"16:30",tt:"海と一体のインフィニティ大浴場",d:"別府湾と溶け合うような大浴場で、長旅のご褒美湯浴み。",tip:"湯上がりの冷たいかぼすドリンクのサービスも忘れずに。",e:"🌊",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"18:30",tt:"豊後の創作会席ディナー",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",e:"🍽",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"}
    ]},
@@ -590,10 +726,11 @@ const DAYS = [
    title:"博多天神・屋台メシ ── 太平洋クルーズで帰京",
    desc:"界別府をゆっくり出て博多へ。天神でお土産を仕入れ、夕方は開店直後の屋台へ。20:50に新門司港着、23:55出港の東京九州フェリーで横須賀へ約21時間の洋上クルーズ。",
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=天神",
+   yj:[[33.58867,130.40272,'天神'],[33.87639,130.99436,'東京九州フェリー 新門司ターミナル']],
    tl:[
     {t:"10:00",tt:"界 別府をゆっくり出発",d:"朝風呂を存分に楽しんでから、大分道経由で福岡・天神へ。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",e:"🚗",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"12:30",tt:"博多・天神ショッピング",d:"岩田屋や天神地下街を大散策。ランチは濃厚とんこつラーメン！",tip:"『通りもん』と明太子は天神のデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
-    {t:"17:30",tt:"行列回避！開店と同時に「博多屋台」",d:"17:30の開店直後に入店し、並ばず熱々の屋台ラーメンと焼き鳥を堪能。",tip:"天神三越裏や中洲の公認屋台は子連れでも安心のクリーンさ。",img:P.nakasu,link:"https://yokanavi.com/yatai/"},
+    {t:"17:30",tt:"行列回避！開店と同時に「博多屋台」",d:"17:30の開店直後に入店し、並ばず熱々の屋台ラーメンと焼き鳥を堪能。",tip:"天神三越裏や中洲の公認屋台は子連れでも安心のクリーンさ。",img:P.ramen,link:"https://yokanavi.com/yatai/"},
     {t:"19:30",tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",e:"🌃",link:"https://tqf.co.jp/"},
     {t:"20:50",tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.shinmoji,link:"https://tqf.co.jp/"},
     {t:"23:55",tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
@@ -602,26 +739,26 @@ const DAYS = [
 
 /* ============ DETOUR IDEAS (curated) ============ */
 const DETOURS = [
- {day:1,cat:"☕ 休憩",name:"EXPASA足柄（下り）",d:"富士山ビューの巨大SA。朝ごはんとコーヒー補給の定番基地。",meta:"東名・出発から約1時間",img:null,e:"🗻",q:"EXPASA足柄下り"},
+ {day:1,cat:"☕ 休憩",name:"EXPASA足柄（下り）",d:"富士山ビューの巨大SA。朝ごはんとコーヒー補給の定番基地。",meta:"東名・出発から約1時間",img:null,img:P.chojabaru,q:"EXPASA足柄下り"},
  {day:1,cat:"🎡 体験",name:"刈谷ハイウェイオアシス",d:"観覧車まである日本有数の人気ハイウェイオアシス。子どもの休憩に最強。",meta:"伊勢湾岸道・刈谷PA",e:"🎡",q:"刈谷ハイウェイオアシス"},
- {day:1,cat:"☕ 休憩",name:"宝塚北SA",d:"宝塚歌劇の街らしい優雅な内装で「日本一美しいSA」とも。姫路への最終休憩に。",meta:"新名神",e:"🌹",q:"宝塚北サービスエリア"},
- {day:2,cat:"🍜 グルメ",name:"吉備SA（下り）",d:"桃太郎の国のSA。きびだんご＆デミカツ丼でご当地ランチ。",meta:"山陽道・岡山",e:"🍑",q:"吉備サービスエリア下り"},
- {day:2,cat:"📸 絶景",name:"宮島SA（下り）",d:"瀬戸内海と大鳥居モチーフが迎える絶景SA。もみじ饅頭の補給もここで。",meta:"山陽道・広島",e:"⛩",q:"宮島サービスエリア下り"},
- {day:2,cat:"📸 絶景",name:"壇之浦PA（下り）",d:"関門橋の真下。源平合戦の海峡をバックにベストショットが撮れる。",meta:"関門橋の本州側たもと",img:P.kanmon,q:"壇之浦PA"},
- {day:3,cat:"📸 絶景",name:"上色見熊野座神社",d:"苔むした百基の灯籠が続く「異世界への入口」。コテージから近い幻想スポット。",meta:"高森町・コテージ周辺",img:P.kamishikimi,q:"上色見熊野座神社"},
- {day:3,cat:"☕ 休憩",name:"白川水源",d:"毎分60トンの水が湧く南阿蘇の名水。冷たい湧水でクールダウン。",meta:"南阿蘇村",e:"💧",q:"白川水源"},
- {day:3,cat:"🛍 買い物",name:"阿蘇神社と門前町の水基巡り",d:"湧き水の飲み比べをしながら門前町を食べ歩き。馬肉コロッケが名物。",meta:"阿蘇市一の宮",e:"⛲",q:"阿蘇神社 門前町"},
- {day:4,cat:"🎡 体験",name:"高千穂あまてらす鉄道",d:"廃線を走るグランド・スーパーカートで高さ105mの高千穂鉄橋へ。床のガラス越しに絶景！",meta:"当日券・高校生以上1,500円",e:"🚃",q:"高千穂あまてらす鉄道"},
+ {day:1,cat:"☕ 休憩",name:"宝塚北SA",ll:[34.86667,135.30353],d:"宝塚歌劇の街らしい優雅な内装で「日本一美しいSA」とも。姫路への最終休憩に。",meta:"新名神",e:"🌹",q:"宝塚北サービスエリア"},
+ {day:2,cat:"🍜 グルメ",name:"吉備SA（下り）",ll:[34.69365,133.87291],d:"桃太郎の国のSA。きびだんご＆デミカツ丼でご当地ランチ。",meta:"山陽道・岡山",e:"🍑",q:"吉備サービスエリア下り"},
+ {day:2,cat:"📸 絶景",name:"宮島SA（下り）",ll:[34.36590,132.31649],d:"瀬戸内海と大鳥居モチーフが迎える絶景SA。もみじ饅頭の補給もここで。",meta:"山陽道・広島",e:"⛩",q:"宮島サービスエリア下り"},
+ {day:2,cat:"📸 絶景",name:"壇之浦PA（下り）",ll:[33.96431,130.95369],d:"関門橋の真下。源平合戦の海峡をバックにベストショットが撮れる。",meta:"関門橋の本州側たもと",img:P.kanmon,q:"壇之浦PA"},
+ {day:3,cat:"📸 絶景",name:"上色見熊野座神社",ll:[32.85450,131.15867],d:"苔むした百基の灯籠が続く「異世界への入口」。コテージから近い幻想スポット。",meta:"高森町・コテージ周辺",img:P.kamishikimi,q:"上色見熊野座神社"},
+ {day:3,cat:"☕ 休憩",name:"白川水源",ll:[32.82447,131.09453],d:"毎分60トンの水が湧く南阿蘇の名水。冷たい湧水でクールダウン。",meta:"南阿蘇村",e:"💧",q:"白川水源"},
+ {day:3,cat:"🛍 買い物",name:"阿蘇神社と門前町の水基巡り",ll:[32.94778,131.11597],d:"湧き水の飲み比べをしながら門前町を食べ歩き。馬肉コロッケが名物。",meta:"阿蘇市一の宮",e:"⛲",q:"阿蘇神社 門前町"},
+ {day:4,cat:"🎡 体験",name:"高千穂あまてらす鉄道",ll:[32.71456,131.30685],d:"廃線を走るグランド・スーパーカートで高さ105mの高千穂鉄橋へ。床のガラス越しに絶景！",meta:"当日券・高校生以上1,500円",e:"🚃",q:"高千穂あまてらす鉄道"},
  {day:4,cat:"📸 絶景",name:"国見ヶ丘",d:"高千穂盆地を一望する展望所。秋の雲海で有名だが夏の夕景も◎。",meta:"高千穂町",e:"🌄",q:"国見ヶ丘 高千穂"},
  {day:4,cat:"🛍 買い物",name:"トンネルの駅",d:"未成線のトンネルが焼酎の貯蔵庫に。SLの展示もあり大人も子どもも楽しい。",meta:"高千穂町・国道218号沿い",e:"🍶",q:"トンネルの駅 高千穂"},
- {day:5,cat:"📸 絶景",name:"牧ノ戸峠",d:"やまなみハイウェイの最高地点（標高約1,330m）。展望台まで5分の小登山を。",meta:"九重町",img:P.makinoto,q:"牧ノ戸峠"},
- {day:5,cat:"🎡 体験",name:"九重“夢”大吊橋",d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の大パノラマ。",meta:"やまなみから約15分",e:"🌉",q:"九重夢大吊橋"},
+ {day:5,cat:"📸 絶景",name:"牧ノ戸峠",ll:[33.09639,131.20833],d:"やまなみハイウェイの最高地点（標高約1,330m）。展望台まで5分の小登山を。",meta:"九重町",img:P.makinoto,q:"牧ノ戸峠"},
+ {day:5,cat:"🎡 体験",name:"九重“夢”大吊橋",ll:[33.17389,131.22667],d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の大パノラマ。",meta:"やまなみから約15分",img:P.yumebridge,q:"九重夢大吊橋"},
  {day:5,cat:"📸 絶景",name:"狭霧台",d:"由布院盆地を見下ろす峠の展望台。由布岳を背にした街並みが一望。",meta:"由布院の手前",img:P.yufudake,q:"狭霧台"},
- {day:5,cat:"🎡 体験",name:"別府地獄めぐり（海地獄）",d:"コバルトブルーに沸く国指定名勝。界別府から車ですぐ、夕方前に1〜2地獄だけつまむのもアリ。",meta:"別府市鉄輪",img:P.jigoku,q:"海地獄"},
+ {day:5,cat:"🎡 体験",name:"別府地獄めぐり（海地獄）",ll:[33.31589,131.46968],d:"コバルトブルーに沸く国指定名勝。界別府から車ですぐ、夕方前に1〜2地獄だけつまむのもアリ。",meta:"別府市鉄輪",img:P.jigoku,q:"海地獄"},
  {day:6,cat:"📸 絶景",name:"別府湾SA（下り）",d:"別府湾を見下ろす「絶景SA」。朝イチのコーヒー休憩に最高。",meta:"大分道",e:"🌊",q:"別府湾サービスエリア"},
- {day:6,cat:"🎡 体験",name:"太宰府天満宮",d:"学問の神様に子どもたちの合格祈願。参道の焼きたて梅ヶ枝餅は必食。",meta:"福岡へ向かう途中・太宰府IC",e:"🌸",q:"太宰府天満宮"},
- {day:6,cat:"🛍 買い物",name:"キャナルシティ博多",d:"運河の噴水ショーが名物の大型モール。雨でも安心のラストお土産基地。",meta:"博多・中洲近く",e:"⛲",q:"キャナルシティ博多"},
- {day:6,cat:"🍜 グルメ",name:"櫛田神社",d:"博多祇園山笠の飾り山を常設展示。屋台の前に博多の総鎮守へお参り。",meta:"博多旧市街",e:"🏮",q:"櫛田神社 博多"}
+ {day:6,cat:"🎡 体験",name:"太宰府天満宮",ll:[33.52153,130.53486],d:"学問の神様に子どもたちの合格祈願。参道の焼きたて梅ヶ枝餅は必食。",meta:"福岡へ向かう途中・太宰府IC",img:P.umegae,q:"太宰府天満宮"},
+ {day:6,cat:"🛍 買い物",name:"キャナルシティ博多",ll:[33.59111,130.41056],d:"運河の噴水ショーが名物の大型モール。雨でも安心のラストお土産基地。",meta:"博多・中洲近く",e:"⛲",q:"キャナルシティ博多"},
+ {day:6,cat:"🍜 グルメ",name:"櫛田神社",ll:[33.59311,130.41069],d:"博多祇園山笠の飾り山を常設展示。屋台の前に博多の総鎮守へお参り。",meta:"博多旧市街",e:"🏮",q:"櫛田神社 博多"}
 ];
 
 /* ============ QUIZ (24問・通信不要) ============ */
@@ -652,6 +789,36 @@ const QUIZ = [
  {day:6,q:"新門司港から横須賀港までの航海時間はおよそ？",o:["約21時間","約8時間","約36時間"],a:0,x:"23:55に出て翌日の夜に到着する約21時間の船旅。丸一日、海の上でのんびり過ごせます。"}
 ];
 
+/* ============ 旅の学びコラム ============ */
+function wl(label,title){ return '<a class="kw" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/'+encodeURIComponent(title||label)+'">'+label+'</a>' }
+const COLUMNS={
+ 1:{t:"白鷺城はなぜ400年、燃えずに残ったのか",
+   b:()=>"姫路城の今の姿は、関ヶ原の戦いのあと"+wl("池田輝政")+"が約8年かけて築いたもの。以来、戦火にも空襲にも大地震にも耐え、天守が一度も失われていない奇跡の城です。白さの正体は壁全体を覆う"+wl("漆喰")+"で、美しさだけでなく防火・防弾の機能を兼ねた「機能美」。1993年には法隆寺とともに日本初の"+wl("世界遺産")+"に登録されました。夜に浸かる有馬温泉は"+wl("日本書紀")+"にも登場する"+wl("日本三古湯")+"の一つ。金泉が茶色いのは、湧き出た湯に含まれる鉄分が空気に触れて"+wl("酸化")+"するから——温泉は化学の実験室でもあります。",
+   k:[["池田輝政"],["世界遺産"],["漆喰"],["日本三古湯"],["酸化"]]},
+ 2:{t:"関門海峡——幅1kmの「歴史の交差点」",
+   b:()=>"今日渡る関門海峡は、最も狭い所で幅1kmもない細い海の道。ここで1185年、"+wl("壇ノ浦の戦い")+"により平家が滅び、鎌倉時代が始まりました。約430年後の1612年には、すぐそばの"+wl("巌流島")+"で"+wl("宮本武蔵")+"と佐々木小次郎が決闘。同じ海峡が二つの時代の転換点になっています。海峡の潮流は1日に4回も向きが変わるほど速く、これが古くから航海の難所とされた理由。頭上の関門橋は、太いケーブルで橋げたを吊る"+wl("吊橋")+"構造です。橋を渡る10秒間に、目の下を歴史が流れています。",
+   k:[["壇ノ浦の戦い"],["巌流島"],["宮本武蔵"],["吊橋"],["源義経"]]},
+ 3:{t:"世界最大級のカルデラに、人が住んでいる",
+   b:()=>"阿蘇の巨大なくぼ地は"+wl("カルデラ")+"。約27万年前から9万年前までの4回の巨大噴火で、大量のマグマが噴き出して地面が陥没してできました。特に最後の噴火（Aso-4）の"+wl("火砕流")+"は九州の広い範囲を覆う桁外れの規模。今日走る大観峰からは、そのカルデラの中に町や鉄道がある世界でも珍しい風景が見えます。そして草千里の大草原は、実は自然のままではありません。人々が約1000年、"+wl("野焼き")+"を続けて森に戻らないよう守ってきた「人がつくった自然」。名物のあか牛（"+wl("褐毛和種")+"）は、その草原の放牧が育てています。",
+   k:[["カルデラ"],["火砕流"],["野焼き"],["褐毛和種"],["阿蘇山"]]},
+ 4:{t:"神話と地質学が、同じ谷にある",
+   b:()=>"高千穂は"+wl("古事記")+"と日本書紀が伝える"+wl("天孫降臨")+"の舞台。"+wl("天照大神")+"が岩戸に隠れて世界が闇に包まれた天岩戸神話には、日食の記憶が反映されているという説もあります。一方、理科の目で見ると、ボートから見上げるあの柱のような岩壁は"+wl("柱状節理")+"。阿蘇の火砕流が冷えて固まるときに規則正しく収縮してできたもので、それを五ヶ瀬川が長い年月をかけて削り出しました。つまり高千穂峡は「阿蘇の噴火の作品」。夜に舞われる"+wl("高千穂の夜神楽")+"は国の重要無形民俗文化財で、神話が今も生きて演じられ続けています。",
+   k:[["古事記"],["天孫降臨"],["天照大神"],["柱状節理"],["高千穂の夜神楽"]]},
+ 5:{t:"地球のエネルギーを使いこなす町",
+   b:()=>"別府の湯けむりの正体は、地下のマグマが地下水を温めた地球の熱。別府は源泉数・湧出量ともに日本一の"+wl("温泉")+"都市です。地獄めぐりの海地獄が神秘的な青に見えるのは湯に溶けた成分（硫酸鉄）のせいで、血の池地獄の赤は酸化鉄——色の違いは化学成分の違いです。今日走るやまなみハイウェイの近くには、日本最大の地熱発電所である"+wl("八丁原発電所")+"があり、温泉と同じ地球の熱で電気を作っています。これが"+wl("再生可能エネルギー")+"の一つ、"+wl("地熱発電")+"。今夜の宿・界別府を設計した"+wl("隈研吾")+"は、国立競技場も手がけた世界的建築家です。",
+   k:[["地熱発電"],["八丁原発電所"],["再生可能エネルギー"],["隈研吾"],["別府温泉"]]},
+ 6:{t:"海から見ると、地理と物流がわかる",
+   b:()=>"博多は古代の迎賓館"+wl("鴻臚館")+"の時代から大陸への玄関口。鎌倉時代には"+wl("元寇")+"の舞台となり、海岸には今も防塁の跡が残ります。名物の"+wl("辛子明太子")+"のルーツは釜山の食文化——食べ物も海を渡って旅をしてきました。帰りに乗るフェリーは、トラック輸送を海運に切り替えてCO2を減らす"+wl("モーダルシフト")+"の主役で、僕たちの車と一緒に大量の貨物トラックも乗船します。最後に理科の宿題をひとつ。デッキから"+wl("水平線")+"までの距離は「3.6×√高さ(m)」kmで概算できます。高さ20mのデッキなら約16km。その先が見えないこと自体が、地球が丸い証拠です。",
+   k:[["鴻臚館"],["元寇"],["辛子明太子"],["モーダルシフト"],["水平線"]]}
+};
+function columnHTML(n){
+  const c=COLUMNS[n]; if(!c)return '';
+  return '<div class="col-card"><p class="col-k">📚 Learning Column — 旅の学びコラム</p><h4>'+c.t+'</h4>'+
+  '<p class="col-b">'+c.b()+'</p>'+
+  '<div class="col-kws">'+c.k.map(k=>'<a class="kwc" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/'+encodeURIComponent(k[1]||k[0])+'">🔎 '+k[0]+'</a>').join('')+'</div>'+
+  '<p class="col-note">青い言葉をタップすると出典（Wikipedia）で深掘りできます。気になった言葉は自由研究のテーマに。</p></div>';
+}
+
 /* ============ PACKING ============ */
 const CK_DEFAULT = [
  {id:"etc",l:"ETCカードの期限確認 ＆ 車載器テスト",r:"料金所のスムーズ通過用"},
@@ -663,279 +830,4 @@ const CK_DEFAULT = [
 ];
 const PACK_THEMES = [
  {n:"🥵 猛暑対策",items:["ネッククーラー・冷感タオル","塩分タブレット","日焼け止め・帽子","車内用サンシェード"]},
- {n:"📸 写真派",items:["カメラ＆予備SDカード","三脚（星空・夜景用）","レンズクロス"]},
- {n:"⛴ フェリー泊",items:["船内用の羽織もの（デッキは夜冷える）","酔い止め","洗面ポーチ","船内用スリッパ"]},
- {n:"🧒 キッズ",items:["車内おやつBOX","酔い止め（子ども用）","タブレット＆ダウンロード済み動画","虫よけスプレー"]},
- {n:"♨️ 温泉極め隊",items:["速乾タオル","湯上がり用ヘアゴム・ブラシ","スキンケアミニセット"]}
-];
-</script>
-<script>
-/* ============ UTIL ============ */
-const $ = id => document.getElementById(id);
-const LS = {
-  get(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f }catch(e){ return f } },
-  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)) }catch(e){} }
-};
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function toast(msg){
-  const t=$('toast'); t.textContent=msg; t.classList.add('show');
-  clearTimeout(t._tm); t._tm=setTimeout(()=>t.classList.remove('show'),2200);
-}
-function pop(opts){ if(typeof confetti==='function') confetti(Object.assign({particleCount:90,spread:75,origin:{y:.7},colors:['#d9b56e','#f3ddad','#67c6d8','#ff8a6b']},opts||{})) }
-function celebrate(){ pop({particleCount:160,spread:100}); setTimeout(()=>pop({origin:{x:.2,y:.6}}),250); setTimeout(()=>pop({origin:{x:.8,y:.6}}),480); toast('出発まで気持ちを高めていこう！🚗💨'); }
-function phTile(e){ return '<div class="ph">'+(e||'📍')+'</div>' }
-function imgOrEmoji(img,e,cls){
-  return img ? '<img src="'+img+'" alt="" loading="lazy" onerror="this.outerHTML=\''+phTile(e).replace(/'/g,"\\'")+'\'">' : phTile(e);
-}
-
-/* ============ NAV ============ */
-const VIEWS=['home','days','detour','play','prep'];
-function go(v){
-  VIEWS.forEach(x=>{
-    $('view-'+x).classList.toggle('act',x===v);
-    const b1=$('bt-'+x), b2=$('tt-'+x);
-    if(b1)b1.classList.toggle('act',x===v);
-    if(b2)b2.classList.toggle('act',x===v);
-  });
-  window.scrollTo({top:0,behavior:'instant'});
-}
-addEventListener('scroll',()=>$('hd').classList.toggle('scrolled',scrollY>30),{passive:true});
-
-/* ============ COUNTDOWN ============ */
-const T0=new Date(2026,7,22,5,0,0).getTime();   // 8/22 5:00 出発
-const T1=new Date(2026,7,28,23,0,0).getTime();  // 8/28 帰着日終わり
-function tickCD(){
-  const now=Date.now(), cd=$('cd'), msg=$('cd-msg');
-  if(now>=T0&&now<=T1){
-    cd.style.display='none'; msg.style.display='block';
-    const dayN=Math.floor((now-new Date(2026,7,22,0,0,0).getTime())/864e5)+1;
-    msg.textContent='🌊 旅は '+dayN+' 日目！今日も最高の一日に！';
-    return;
-  }
-  if(now>T1){ cd.style.display='none'; msg.style.display='block'; msg.textContent='🏠 おかえりなさい。最高の思い出をありがとう！'; return; }
-  let d=T0-now;
-  const f=n=>String(n).padStart(2,'0');
-  $('cd-d').textContent=Math.floor(d/864e5);
-  $('cd-h').textContent=f(Math.floor(d%864e5/36e5));
-  $('cd-m').textContent=f(Math.floor(d%36e5/6e4));
-  $('cd-s').textContent=f(Math.floor(d%6e4/1e3));
-}
-setInterval(tickCD,1000); tickCD();
-
-/* ============ HOME: ribbon & stays ============ */
-function buildRibbon(){
-  const stops=[{e:'🏠',day:'START',n:'三鷹 5:00発'}]
-    .concat(DAYS.map(d=>({e:['🏯','⚓','🌋','🛶','♨️','⛴'][d.n-1],day:'DAY '+d.n,n:d.short,go:d.n})))
-    .concat([{e:'🗼',day:'GOAL',n:'横須賀 8/28夜'}]);
-  $('ribbon').innerHTML=stops.map(s=>
-    '<div class="rb-node'+(s.go?'':' ')+'" '+(s.go?('onclick="openDay('+s.go+')"'):'')+'>'+
-    '<div class="rb-dot">'+s.e+'</div><div class="rb-day">'+s.day+'</div><div class="rb-name">'+s.n+'</div></div>'
-  ).join('');
-}
-function buildStays(){
-  const stays=[
-    {n:'DAY 1',t:'月光園 游月山荘',s:'有馬温泉・金泉掛け流し／神戸牛会席',img:P.arima,link:'https://www.gekkoen.co.jp/yugetsu/'},
-    {n:'DAY 2',t:'星野リゾート BEB5門司港',s:'港町レトロのお洒落アジト',img:P.mojiko,link:'https://hoshinoresorts.com/ja/hotels/beb5mojiko/'},
-    {n:'DAY 3・4',t:'CAN LI ASSO E',s:'阿蘇・一棟貸しコンテナヴィラ（連泊）',img:P.kusasenri,link:'https://owners-inn.com/?p=18939'},
-    {n:'DAY 5',t:'星野リゾート 界 別府',s:'隈研吾デザイン・海のインフィニティ湯',img:P.beppu,link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
-    {n:'DAY 6',t:'東京九州フェリー',s:'それいゆ／はまゆう・船中泊',img:P.ferry,link:'https://tqf.co.jp/'}
-  ];
-  $('stay-grid').innerHTML=stays.map(s=>
-    '<a class="stay" target="_blank" rel="noopener" href="'+s.link+'"><img src="'+s.img+'" alt="" loading="lazy">'+
-    '<div class="in"><p class="n">'+s.n+'</p><p class="t">'+s.t+'</p><p class="s">'+s.s+'</p></div></a>').join('');
-}
-
-/* ============ DAYS ============ */
-let curDay=1;
-function tripToday(){
-  const now=Date.now();
-  if(now<new Date(2026,7,22).getTime()||now>new Date(2026,7,29).getTime())return 0;
-  return Math.min(6,Math.floor((now-new Date(2026,7,22).getTime())/864e5)+1);
-}
-function buildDayTabs(){
-  const td=tripToday();
-  $('day-tabs').innerHTML=DAYS.map(d=>
-    '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
-  ).join('');
-}
-function openDay(n,stay){
-  curDay=n; buildDayTabs();
-  const d=DAYS[n-1];
-  $('day-body').innerHTML=
-    '<div class="dayhero"><img src="'+d.photo+'" alt="" loading="lazy">'+
-    '<div class="in"><p class="date en">DAY '+d.n+' — '+d.date+' '+d.dow+'</p><h3>'+d.title+'</h3><p class="d">'+d.desc+'</p></div></div>'+
-    '<div class="day-actions">'+
-      '<a class="btn btn-gold" style="font-size:13px;padding:11px 20px" target="_blank" rel="noopener" href="'+d.nav+'">🧭 この日のナビを開く</a>'+
-      '<button class="btn btn-ghost" onclick="go(\'detour\');setDetFilter(\'day'+d.n+'\')">📍 この日の寄り道を見る</button>'+
-      '<span class="chip">🏨 '+d.stay+'</span>'+
-    '</div>'+
-    '<div class="tl">'+d.tl.map(it=>
-      '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
-      '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
-      (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
-      (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
-      '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
-      '</div></div></div>').join('')+'</div>';
-  if(!stay){ go('days'); }
-}
-
-/* ============ DETOURS ============ */
-let detFilter='all';
-const IDEAS_KEY='gc2026_ideas', VOTES_KEY='gc2026_votes';
-function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q) }
-function allDetours(){
-  const custom=LS.get(IDEAS_KEY,[]).map((c,i)=>Object.assign({custom:true,ci:i},c));
-  return DETOURS.map((d,i)=>Object.assign({ci:'b'+i},d)).concat(custom);
-}
-function setDetFilter(f){ detFilter=f; buildDetFilters(); buildDetGrid(); }
-function buildDetFilters(){
-  const fs=[{k:'all',l:'すべて'}].concat(DAYS.map(d=>({k:'day'+d.n,l:'DAY '+d.n})),[{k:'fav',l:'♡ 人気順'}]);
-  $('det-filters').innerHTML=fs.map(f=>'<button class="df'+(detFilter===f.k?' act':'')+'" onclick="setDetFilter(\''+f.k+'\')">'+f.l+'</button>').join('');
-}
-function buildDetGrid(){
-  const votes=LS.get(VOTES_KEY,{});
-  let list=allDetours();
-  if(detFilter.startsWith('day')) list=list.filter(d=>String(d.day)===detFilter.slice(3));
-  if(detFilter==='fav') list=list.slice().sort((a,b)=>(votes[b.ci]||0)-(votes[a.ci]||0));
-  $('det-grid').innerHTML=list.length?list.map(d=>{
-    const v=votes[d.ci]||0;
-    return '<div class="det'+(d.custom?' custom':'')+'">'+
-    '<div class="det-ph">'+(d.img?'<img src="'+d.img+'" alt="" loading="lazy" onerror="this.remove()">':'<div class="emoji">'+(d.e||'💡')+'</div>')+
-      '<span class="day-b">DAY '+d.day+'</span><span class="cat-b">'+esc(d.cat)+'</span></div>'+
-    '<div class="det-in"><p class="det-tt">'+esc(d.name)+'</p><p class="det-d">'+esc(d.d||'')+'</p>'+
-    (d.meta?'<p class="det-meta">🚗 '+esc(d.meta)+'</p>':'')+
-    '<div class="det-foot"><button class="heart'+(v>0?' on':'')+'" onclick="vote(\''+d.ci+'\')">♡ <span>'+v+'</span></button>'+
-    (d.custom?'<button class="det-del" onclick="delIdea('+d.ci+')">削除</button>':'')+
-    '<a class="det-map" target="_blank" rel="noopener" href="'+mapsUrl(d.q||d.name)+'">地図 ↗</a></div></div></div>';
-  }).join(''):'<p class="empty">該当する寄り道はまだありません。上のフォームから追加してみよう！</p>';
-}
-function vote(ci){
-  const votes=LS.get(VOTES_KEY,{});
-  votes[ci]=(votes[ci]||0)+1;
-  LS.set(VOTES_KEY,votes); buildDetGrid();
-  if(votes[ci]===3) toast('人気上昇中！これは行くしかない ♡');
-}
-function addIdea(){
-  const name=$('idea-name').value.trim();
-  if(!name){ toast('スポット名を入れてください'); return; }
-  const ideas=LS.get(IDEAS_KEY,[]);
-  ideas.push({day:parseInt($('idea-day').value,10),cat:$('idea-cat').value,name:name,d:$('idea-memo').value.trim(),meta:'家族のアイデア',q:name});
-  LS.set(IDEAS_KEY,ideas);
-  $('idea-name').value=''; $('idea-memo').value='';
-  pop(); toast('アイデア帳に追加しました！');
-  buildDetGrid();
-}
-function delIdea(i){
-  const ideas=LS.get(IDEAS_KEY,[]);
-  ideas.splice(i,1); LS.set(IDEAS_KEY,ideas); buildDetGrid();
-}
-
-/* ============ QUIZ ============ */
-let qPool=[],qIdx=0,qScore=0,qTry=0,qDay='all';
-function setQuizDay(d){ qDay=d; buildQuizFilters(); startQuiz(); }
-function buildQuizFilters(){
-  const fs=[{k:'all',l:'全問ミックス'}].concat(DAYS.map(d=>({k:String(d.n),l:'DAY '+d.n})));
-  $('quiz-day-filters').innerHTML=fs.map(f=>'<button class="df'+(qDay===f.k?' act':'')+'" onclick="setQuizDay(\''+f.k+'\')">'+f.l+'</button>').join('');
-}
-function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; }
-function startQuiz(){
-  qPool=shuffle(QUIZ.filter(q=>qDay==='all'||String(q.day)===qDay));
-  qIdx=0; renderQuiz();
-}
-function renderQuiz(){
-  const q=qPool[qIdx];
-  $('q-no').textContent='QUESTION '+(qIdx+1)+' / '+qPool.length+'（DAY '+q.day+'）';
-  $('q-score').textContent='正解 '+qScore+' / 挑戦 '+qTry;
-  $('q-text').textContent=q.q;
-  $('q-exp').className='q-exp'; $('q-next').className='btn btn-gold q-next';
-  const order=shuffle(q.o.map((_,i)=>i));
-  $('q-opts').innerHTML=order.map((oi,pos)=>
-    '<button class="q-opt" onclick="answer(this,'+oi+','+q.a+')"><span class="k">'+String.fromCharCode(65+pos)+'</span>'+esc(q.o[oi])+'</button>').join('');
-}
-function answer(btn,oi,a){
-  const q=qPool[qIdx]; qTry++;
-  document.querySelectorAll('.q-opt').forEach(b=>b.disabled=true);
-  if(oi===a){ qScore++; btn.classList.add('correct'); pop({particleCount:60,spread:60}); }
-  else{
-    btn.classList.add('wrong');
-    document.querySelectorAll('.q-opt').forEach(b=>{ if(b.textContent.slice(1)===q.o[a]||b.textContent.includes(q.o[a])) b.classList.add('correct'); });
-  }
-  $('q-score').textContent='正解 '+qScore+' / 挑戦 '+qTry;
-  const ex=$('q-exp'); ex.innerHTML='<b>'+(oi===a?'正解！':'ざんねん！ 答えは「'+esc(q.o[a])+'」')+'</b><br>'+esc(q.x); ex.classList.add('show');
-  $('q-next').classList.add('show');
-}
-function nextQuiz(){ qIdx=(qIdx+1)%qPool.length; if(qIdx===0)qPool=shuffle(qPool); renderQuiz(); }
-
-/* ============ CHECKLIST ============ */
-const CK_KEY='gc2026_ck_custom', CKS_KEY='gc2026_ck_state';
-function ckAll(){ return CK_DEFAULT.concat(LS.get(CK_KEY,[]).map((c,i)=>({id:'c'+i,l:c.l,r:c.r||'追加アイテム',custom:true,ci:i}))) }
-function buildCk(){
-  const st=LS.get(CKS_KEY,{}); const items=ckAll();
-  $('ck-list').innerHTML=items.map(it=>
-    '<div class="ck'+(st[it.id]?' on':'')+'" onclick="toggleCk(\''+it.id+'\')">'+
-    '<span class="box">'+(st[it.id]?'✓':'')+'</span><span><span class="l">'+esc(it.l)+'</span><br><span class="r">'+esc(it.r)+'</span></span>'+
-    (it.custom?'<button class="del" onclick="event.stopPropagation();delCk('+it.ci+')">✕</button>':'')+'</div>').join('');
-  const done=items.filter(i=>st[i.id]).length, pct=items.length?Math.round(done/items.length*100):0;
-  $('prog-bar').style.width=pct+'%'; $('prog-t').textContent=pct+'% 完了';
-  if(pct===100){ pop({particleCount:120,spread:90}); }
-}
-function toggleCk(id){ const st=LS.get(CKS_KEY,{}); st[id]=!st[id]; LS.set(CKS_KEY,st); buildCk(); }
-function addCk(){
-  const v=$('ck-in').value.trim(); if(!v){toast('持ち物名を入れてください');return}
-  const c=LS.get(CK_KEY,[]); c.push({l:v}); LS.set(CK_KEY,c); $('ck-in').value=''; buildCk(); toast('追加しました');
-}
-function delCk(i){ const c=LS.get(CK_KEY,[]); c.splice(i,1); LS.set(CK_KEY,c); buildCk(); }
-function resetCk(){ LS.set(CKS_KEY,{}); buildCk(); toast('チェックをリセットしました'); }
-function buildThemes(){
-  const used=LS.get('gc2026_themes',[]);
-  $('pack-themes').innerHTML=PACK_THEMES.map((t,i)=>
-    '<button class="pt'+(used.includes(i)?' used':'')+'" onclick="addTheme('+i+')">'+t.n+'（'+t.items.length+'点）</button>').join('');
-}
-function addTheme(i){
-  const used=LS.get('gc2026_themes',[]); if(used.includes(i))return;
-  const c=LS.get(CK_KEY,[]);
-  PACK_THEMES[i].items.forEach(l=>c.push({l:l,r:PACK_THEMES[i].n}));
-  LS.set(CK_KEY,c); used.push(i); LS.set('gc2026_themes',used);
-  buildCk(); buildThemes(); pop(); toast(PACK_THEMES[i].n+' のセットを追加しました！');
-}
-
-/* ============ MEMO BOARD ============ */
-const MEMO_KEY='gc2026_memos';
-function buildMemos(){
-  const ms=LS.get(MEMO_KEY,[]);
-  $('memo-list').innerHTML=ms.length?ms.map((m,i)=>
-    '<div class="memo"><p class="m">'+esc(m.t)+'</p><p class="who">'+esc(m.at)+'</p>'+
-    '<button class="del" onclick="delMemo('+i+')">✕</button></div>').join('')
-    :'<p class="empty">まだメモがありません。旅の「やりたい！」を最初に書き込もう。</p>';
-}
-function addMemo(){
-  const v=$('memo-in').value.trim(); if(!v){toast('メモを入力してください');return}
-  const ms=LS.get(MEMO_KEY,[]);
-  const d=new Date();
-  ms.unshift({t:v,at:(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')});
-  LS.set(MEMO_KEY,ms); $('memo-in').value=''; buildMemos(); toast('メモしました！');
-}
-function delMemo(i){ const ms=LS.get(MEMO_KEY,[]); ms.splice(i,1); LS.set(MEMO_KEY,ms); buildMemos(); }
-function copyMemos(){
-  const ms=LS.get(MEMO_KEY,[]);
-  if(!ms.length){toast('コピーするメモがありません');return}
-  const txt='【GRAND CRUISE 2026 家族メモ】\n'+ms.map(m=>'・'+m.t).join('\n');
-  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(
-    ()=>toast('コピーしました！LINEに貼り付けて共有を'),
-    ()=>toast('コピーできませんでした')
-  );
-}
-
-/* ============ REVEAL & INIT ============ */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-document.querySelectorAll('#memo-in,#ck-in,#idea-name').forEach(el=>el.addEventListener('keydown',e=>{
-  if(e.key==='Enter'){ e.preventDefault(); ({['memo-in']:addMemo,['ck-in']:addCk,['idea-name']:addIdea})[el.id](); }
-}));
-buildRibbon(); buildStays(); buildMemos(); buildCk(); buildThemes();
-buildDetFilters(); buildDetGrid(); buildQuizFilters(); startQuiz();
-const td=tripToday(); openDay(td||1,true); buildDayTabs();
-go('home');
-</script>
-</body>
-</html>
+ {n:"📸 写真派",items:["カメラ＆予備SDカード","三脚（星
