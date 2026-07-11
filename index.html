@@ -226,7 +226,11 @@ select.f-in option{background:var(--ink2)}
 .q-next{margin-top:16px;display:none;width:100%}
 .q-next.show{display:inline-flex}
 .game-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:26px}
-.game{border:1px solid var(--line2);border-radius:16px;background:var(--card);padding:18px}
+.game{border:1px solid var(--line2);border-radius:16px;background:var(--card);overflow:hidden}
+.game-ph{height:104px;overflow:hidden}
+.game-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.game:hover .game-ph img{transform:scale(1.07)}
+.game-in{padding:16px}
 .game .e{font-size:26px}
 .game .t{font-weight:900;font-size:14px;color:#fff;margin:8px 0 4px}
 .game .d{font-size:12px;color:var(--tx2)}
@@ -548,10 +552,10 @@ window.addEventListener('load',function(){setTimeout(function(){
       <button class="btn btn-gold q-next" id="q-next" onclick="nextQuiz()">次の問題へ →</button>
     </div>
     <div class="game-grid">
-      <div class="game"><div class="e">🚗</div><p class="t">ナンバープレート県つなぎ</p><p class="d">見つけたナンバーの地名でしりとり。「熊本→とちぎ→…」振り出しは出発地・多摩！</p></div>
-      <div class="game"><div class="e">🎤</div><p class="t">ご当地イントロクイズ</p><p class="d">通過中の県にゆかりのある曲を1人が流して早押し。DJはパパの隣の人。</p></div>
-      <div class="game"><div class="e">🔍</div><p class="t">高速道路ビンゴ</p><p class="d">「白いトラック」「観覧車」「海」「トンネル3連続」など9マスを決めて先に揃えた人が勝ち。</p></div>
-      <div class="game"><div class="e">⛴</div><p class="t">フェリー星空ミッション</p><p class="d">帰りの洋上デッキで夏の大三角を全員で探す。見つけた人が翌朝の席を最初に選べる。</p></div>
+      <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Japanese_green_on_white_license_plate.png" alt="" loading="lazy"></div><div class="game-in"><p class="t">ナンバープレート県つなぎ</p><p class="d">見つけたナンバーの地名でしりとり。「熊本→とちぎ→…」振り出しは出発地・多摩！</p></div></div>
+      <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Makinoto_Pass_-_01.jpg/960px-Makinoto_Pass_-_01.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">ご当地イントロクイズ</p><p class="d">通過中の県にゆかりのある曲を1人が流して早押し。DJはパパの隣の人。</p></div></div>
+      <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Kanmon-3.jpg/960px-Kanmon-3.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">高速道路ビンゴ</p><p class="d">「白いトラック」「観覧車」「海」「トンネル3連続」など9マスを決めて先に揃えた人が勝ち。</p></div></div>
+      <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg/960px-%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">フェリー星空ミッション</p><p class="d">帰りの洋上デッキで夏の大三角を全員で探す。見つけた人が翌朝の席を最初に選べる。</p></div></div>
     </div>
   </div>
 </div>
@@ -605,7 +609,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v5 — 2026.07.11</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v6 — 2026.07.12</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -644,7 +648,26 @@ const P = {
   yumebridge:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kokonoe_Dream_Big_Suspension_Bridge_Oita%2CJAPAN.jpg/960px-Kokonoe_Dream_Big_Suspension_Bridge_Oita%2CJAPAN.jpg",
   chojabaru:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Mount_Kuju_October_2011_01.jpg/960px-Mount_Kuju_October_2011_01.jpg",
   takachihoshrine:"https://upload.wikimedia.org/wikipedia/commons/7/7d/%E3%81%9F%E3%81%8B%E3%81%A1%E3%81%BB%EF%BC%99.jpg",
-  beppuTower:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Beppu_Tower_20230212.jpg/960px-Beppu_Tower_20230212.jpg"
+  beppuTower:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Beppu_Tower_20230212.jpg/960px-Beppu_Tower_20230212.jpg",
+  fuji:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mt.Fuji_from_Mierula.jpg/960px-Mt.Fuji_from_Mierula.jpg",
+  mitaka:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/960px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg",
+  rotenburo:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Onsen_in_Nachikatsuura%2C_Japan.jpg/960px-Onsen_in_Nachikatsuura%2C_Japan.jpg",
+  onsenY:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Yufuin_Onsen_Rotenburo.JPG/960px-Yufuin_Onsen_Rotenburo.JPG",
+  jidori:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Nagoyasyu.jpg/960px-Nagoyasyu.jpg",
+  akaushi:"https://upload.wikimedia.org/wikipedia/commons/7/7d/10th_Wagyukyoshinkai_Shinsa%2C_Japanese_Brown.jpg",
+  kibisa:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Kibi_SA.JPG/960px-Kibi_SA.JPG",
+  miyajimasa:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Sanyo-expwy-miyajima-sa_down.jpg/960px-Sanyo-expwy-miyajima-sa_down.jpg",
+  kariya:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Kariya_Highway_Oasis_20181008N.JPG/960px-Kariya_Highway_Oasis_20181008N.JPG",
+  takarazuka:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Takarazuka-kita_Service_Area_Nobori.jpg/960px-Takarazuka-kita_Service_Area_Nobori.jpg",
+  shirakawa:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Shirakawa_Spring_2023.jpg/960px-Shirakawa_Spring_2023.jpg",
+  amaterasu:"https://upload.wikimedia.org/wikipedia/commons/5/57/%E9%AB%98%E5%8D%83%E7%A9%82%E9%89%84%E9%81%93%E3%83%BB%E5%A4%A9%E5%B2%A9%E6%88%B8-%E6%B7%B1%E8%A7%92%E3%83%BB%E9%AB%98%E5%8D%83%E7%A9%82%E6%A9%8B%E6%A2%81%E3%83%BB2.jpg",
+  canal:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Canalcityhakata2019.jpg/960px-Canalcityhakata2019.jpg",
+  asojinja:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Aso_Jinja_03.jpg/960px-Aso_Jinja_03.jpg",
+  kushida:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Kushidajinjafukuoka01.jpg/960px-Kushidajinjafukuoka01.jpg",
+  kunimi:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Kunimigaoka%2C_Takachiho-1.jpg/960px-Kunimigaoka%2C_Takachiho-1.jpg",
+  tsurumi:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Beppu_Tsurumidake.jpg/960px-Beppu_Tsurumidake.jpg",
+  milkyway:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg/960px-%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg",
+  shochu:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Shochu_001.jpg/960px-Shochu_001.jpg"
 };
 const HERO_SLIDES=[P.takachiho,P.kusasenri,P.himeji,P.makinoto,P.ferry];
 const GALLERY=[
@@ -677,7 +700,7 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉+月光園+游月山荘&waypoints=姫路城",
    yj:[[34.83938,134.69410,'姫路城'],[34.79521,135.24526,'月光園 游月山荘']],
    tl:[
-    {t:"05:00",tt:"三鷹を出発 ── 暁の東名ハック",d:"東京ICから東名へ。早朝スタートで海老名SA付近の定番渋滞を回避します。",tip:"足柄SAで最初の休憩。富士山を眺めながら朝コーヒーを補給するのがパパの流儀！",e:"🌅",link:"https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"},
+    {t:"05:00",tt:"三鷹を出発 ── 暁の東名ハック",d:"東京ICから東名へ。早朝スタートで海老名SA付近の定番渋滞を回避します。",tip:"足柄SAで最初の休憩。富士山を眺めながら朝コーヒーを補給するのがパパの流儀！",img:P.mitaka,link:"https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"},
     {t:"12:00",tt:"世界遺産・国宝「姫路城」大天守を制覇",d:"白亜の天守へ。石垣や急な木造階段を上り、最上階からの絶景を楽しみます。（大人1,000円）",tip:"大天守の階段はとても急。滑りにくい靴で行くと安心です。",img:P.himeji,link:"https://www.city.himeji.lg.jp/castle/"},
     {t:"15:00",tt:"有馬温泉街のレトロそぞろ歩き",d:"『三ツ森』の焼き立て炭酸せんべいを食べ歩き。川のせせらぎを聞きながらお土産探し。",tip:"お土産の『炭酸フレーク』はアイスにかけると絶品！",img:P.senbei,link:"https://arima-onsen.com/"},
     {t:"16:30",tt:"月光園 游月山荘へ ── 川音の露天風呂",d:"有馬名物「金泉」の川沿い露天で、長距離ドライブの疲れをリリース。",tip:"夕方、川沿いの太鼓橋の上で初日の家族記念写真を！",img:P.arima,link:"https://www.gekkoen.co.jp/yugetsu/"},
@@ -689,10 +712,10 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=有馬温泉&destination=星野リゾートBEB5門司港",
    yj:[[33.94504,130.96472,'門司港レトロ（BEB5門司港）']],
    tl:[
-    {t:"09:00",tt:"有馬温泉を出発 ── 約430kmの大西征",d:"山陽自動車道へ入り、西へひたすら快走します。",tip:"クルーズコントロールが最高に活きる日。みんなで歌いながら行きましょう！",e:"🚗",link:"https://sapa.c-nexco.co.jp/"},
-    {t:"12:00",tt:"吉備SAなどでご当地SAランチ",d:"名物きびだんごや、岡山・広島のご当地メシをカジュアルに満喫。",tip:"岡山名物『デミカツ丼』は食べ応え抜群。運転はしっかり交代を。",e:"🍜",link:"https://sapa.c-nexco.co.jp/"},
+    {t:"09:00",tt:"有馬温泉を出発 ── 約430kmの大西征",d:"山陽自動車道へ入り、西へひたすら快走します。",tip:"クルーズコントロールが最高に活きる日。みんなで歌いながら行きましょう！",img:P.arima,link:"https://sapa.c-nexco.co.jp/"},
+    {t:"12:00",tt:"吉備SAなどでご当地SAランチ",d:"名物きびだんごや、岡山・広島のご当地メシをカジュアルに満喫。",tip:"岡山名物『デミカツ丼』は食べ応え抜群。運転はしっかり交代を。",img:P.kibisa,link:"https://sapa.c-nexco.co.jp/"},
     {t:"15:00",tt:"関門橋を渡り、感動の九州上陸！",d:"海を隔てた九州の大パノラマを見ながら関門海峡を越えます。",tip:"手前の『壇之浦PA』に寄ると、関門橋がベスト画角で撮れます！",img:P.kanmon,link:"https://www.w-holdings.co.jp/sapa/2583.html"},
-    {t:"15:30",tt:"BEB5門司港チェックイン",d:"お菓子を囲んでだらだらできるロビー「TAMARIBA」に到着。ボードゲームも充実。",tip:"お洒落すぎるアジト。チェックイン後はロビー探検から！",e:"🏨",link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
+    {t:"15:30",tt:"BEB5門司港チェックイン",d:"お菓子を囲んでだらだらできるロビー「TAMARIBA」に到着。ボードゲームも充実。",tip:"お洒落すぎるアジト。チェックイン後はロビー探検から！",img:P.shinmoji,link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
     {t:"18:00",tt:"門司港レトロ夜景さんぽ＆名物「焼きカレー」",d:"大正ロマンの赤煉瓦建築群がライトアップ。夕食は門司港発祥の焼きカレー。",tip:"素泊まりプランなので、今夜何を食べるかは家族会議で自由に！",img:P.yakicurry,link:"https://www.mojiko.info/"}
    ]},
  { n:3, date:"8.24", dow:"月", short:"阿蘇", stay:"CAN LI ASSO E（1泊目）", photo:P.daikanbo,
@@ -704,9 +727,9 @@ const DAYS = [
     {t:"09:30",tt:"門司港をのんびり出発 ── 高原へ150km",d:"前日の頑張りが活きるハーフドライブ。大分道経由で緑きらめく阿蘇へ。",tip:"湯布院ICあたりから見える由布岳の姿は言葉を失う美しさ。",img:P.yufudake,link:"https://www.asocity-kanko.jp/"},
     {t:"11:30",tt:"阿蘇「大観峰」360度の大カルデラ",d:"阿蘇五岳が涅槃像に見える一大景勝地。目の前に広がるカルデラに息を呑みます。",tip:"あつあつ『あか牛の串焼き』と『阿蘇ジャージー牛乳ソフト』をその場で！",img:P.daikanbo,link:"https://www.asocity-kanko.jp/spot/daikanbo/"},
     {t:"13:00",tt:"草千里ヶ浜の大草原さんぽ",d:"阿蘇中岳の火口を望む広大な草原と池。のんびり雄大な世界を散歩します。",tip:"引き馬の乗馬体験は家族みんなで大はしゃぎできる鉄板アクティビティ。",img:P.kusasenri,link:"https://www.asocity-kanko.jp/"},
-    {t:"15:00",tt:"「CAN LI ASSO E」チェックイン",d:"大自然に溶け込む一棟貸しコンテナヴィラ。テラスでウェルカムコーヒーを。",tip:"誰にも邪魔されない貸切空間。テラスでお気に入りの音楽を。",e:"🏕",link:"https://owners-inn.com/?p=18939"},
-    {t:"16:30",tt:"「どんどこ湯」豪快巨石の源泉掛け流し",d:"コテージ近く、広大な日本庭園に巨石露天が並ぶ名湯をたっぷり堪能。",tip:"高原の風を浴びるサウナ→阿蘇伏流水の水風呂のととのいは別格。",e:"♨️",link:"https://www.dondokoyu.jp/"},
-    {t:"18:30",tt:"あか牛炭火焼「白水乃蔵」",d:"築150年の古民家で、囲炉裏の炭火であぶるあか牛。赤身の旨味が広がります。",tip:"人気店なので事前のネット確認・席キープが安心。",e:"🔥",link:"https://tabelog.com/kumamoto/A4302/A430202/43000913/"}
+    {t:"15:00",tt:"「CAN LI ASSO E」チェックイン",d:"大自然に溶け込む一棟貸しコンテナヴィラ。テラスでウェルカムコーヒーを。",tip:"誰にも邪魔されない貸切空間。テラスでお気に入りの音楽を。",img:P.aso,link:"https://owners-inn.com/?p=18939"},
+    {t:"16:30",tt:"「どんどこ湯」豪快巨石の源泉掛け流し",d:"コテージ近く、広大な日本庭園に巨石露天が並ぶ名湯をたっぷり堪能。",tip:"高原の風を浴びるサウナ→阿蘇伏流水の水風呂のととのいは別格。",img:P.rotenburo,link:"https://www.dondokoyu.jp/"},
+    {t:"18:30",tt:"あか牛炭火焼「白水乃蔵」",d:"築150年の古民家で、囲炉裏の炭火であぶるあか牛。赤身の旨味が広がります。",tip:"人気店なので事前のネット確認・席キープが安心。",img:P.akaushi,link:"https://tabelog.com/kumamoto/A4302/A430202/43000913/"}
    ]},
  { n:4, date:"8.25", dow:"火", short:"高千穂", stay:"CAN LI ASSO E（2泊目）", photo:P.takachiho,
    title:"高千穂峡ボートと天岩戸 ── 神話の一日",
@@ -717,8 +740,8 @@ const DAYS = [
     {t:"09:00",tt:"「天岩戸神社」と「天安河原」参拝",d:"八百万の神々が集った伝説の洞窟へ。積み石が並ぶ神秘の神域を参拝します。",tip:"静まり返った渓流のマイナスイオンを五感で。",img:P.amanoiwato,link:"https://amanoiwato-jinja.jp/"},
     {t:"10:30",tt:"🛶「高千穂峡」手漕ぎボート体験",d:"柱状節理の大渓谷、真名井の滝のすぐ側をボートでゆっくり滑走！",tip:"滝しぶきでびしょ濡れ注意。着替え用タオル必携。パパの漕ぎテク見せ所！",img:P.takachiho,link:"https://takachiho-kanko.info/sightseeing/detail.php?id=3"},
     {t:"13:00",tt:"本場・宮崎の「チキン南蛮」ランチ",d:"ジューシーな唐揚げに特製タルタルがたっぷり。ご当地の味を堪能。",tip:"甘くてコクのあるチキン南蛮は子どもたちも大喜びの一皿。",img:P.nanban,link:"https://takachiho-kanko.info/gourmet/"},
-    {t:"17:30",tt:"南阿蘇久木野温泉「四季の森」",d:"夕暮れに染まる阿蘇五岳がワイドに広がる絶景露天。（大人500円）",tip:"サウナ上がりの南阿蘇天然水の水風呂は極上のととのい。",e:"♨️",link:"http://www.shikinonomori.co.jp/"},
-    {t:"19:00",tt:"「旨乃蔵」地鶏炭火焼きディナー",d:"モクモクと煙を立てて焼く、噛むほどに旨い地鶏炭火焼き。",tip:"帰りはコテージに戻るだけ。熊本の麦焼酎をゆっくり楽しめます！",e:"🍶",link:"https://tabelog.com/kumamoto/A4302/A430202/43015494/"}
+    {t:"17:30",tt:"南阿蘇久木野温泉「四季の森」",d:"夕暮れに染まる阿蘇五岳がワイドに広がる絶景露天。（大人500円）",tip:"サウナ上がりの南阿蘇天然水の水風呂は極上のととのい。",img:P.onsenY,link:"http://www.shikinonomori.co.jp/"},
+    {t:"19:00",tt:"「旨乃蔵」地鶏炭火焼きディナー",d:"モクモクと煙を立てて焼く、噛むほどに旨い地鶏炭火焼き。",tip:"帰りはコテージに戻るだけ。熊本の麦焼酎をゆっくり楽しめます！",img:P.jidori,link:"https://tabelog.com/kumamoto/A4302/A430202/43015494/"}
    ]},
  { n:5, date:"8.26", dow:"水", short:"由布院・別府", stay:"星野リゾート 界 別府", photo:P.makinoto,
    title:"やまなみハイウェイ ── 由布院さんぽと「界 別府」",
@@ -728,9 +751,9 @@ const DAYS = [
    tl:[
     {t:"10:00",tt:"「やまなみハイウェイ」高原絶景ドライブ",d:"九重連山の裾野を走る日本屈指のドライブ道。吹き抜ける高原の風が爽快！",tip:"『長者原』の駐車場で一時停車。硫黄山に吸い込まれる画角で記念撮影を。",img:P.makinoto,link:"https://www.visit-oita.jp/spots/detail/4055"},
     {t:"11:30",tt:"由布院「金鱗湖」＆「湯の坪街道」さんぽ",d:"湯気の立つ湖面を眺めて散歩。湯の坪街道はスイーツとセレクトショップの宝庫。",tip:"名物ロールケーキ『B-speak』をテイクアウトして宿のおやつに。",img:P.kinrin,link:"https://yufuin.gr.jp/"},
-    {t:"15:00",tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.kannawa,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
-    {t:"16:30",tt:"海と一体のインフィニティ大浴場",d:"別府湾と溶け合うような大浴場で、長旅のご褒美湯浴み。",tip:"湯上がりの冷たいかぼすドリンクのサービスも忘れずに。",e:"🌊",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
-    {t:"18:30",tt:"豊後の創作会席ディナー",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",e:"🍽",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"}
+    {t:"15:00",tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.tsurumi,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"16:30",tt:"海と一体のインフィニティ大浴場",d:"別府湾と溶け合うような大浴場で、長旅のご褒美湯浴み。",tip:"湯上がりの冷たいかぼすドリンクのサービスも忘れずに。",img:P.kannawa,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"18:30",tt:"豊後の創作会席ディナー",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",img:P.beppu,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"}
    ]},
  { n:6, date:"8.27-28", dow:"木・金", short:"博多→フェリー", stay:"東京九州フェリー 船中泊", photo:P.ferry,
    title:"博多天神・屋台メシ ── 太平洋クルーズで帰京",
@@ -738,10 +761,10 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=天神",
    yj:[[33.58867,130.40272,'天神'],[33.87639,130.99436,'東京九州フェリー 新門司ターミナル']],
    tl:[
-    {t:"10:00",tt:"界 別府をゆっくり出発",d:"朝風呂を存分に楽しんでから、大分道経由で福岡・天神へ。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",e:"🚗",link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"10:00",tt:"界 別府をゆっくり出発",d:"朝風呂を存分に楽しんでから、大分道経由で福岡・天神へ。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"12:30",tt:"博多・天神ショッピング",d:"岩田屋や天神地下街を大散策。ランチは濃厚とんこつラーメン！",tip:"『通りもん』と明太子は天神のデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
     {t:"17:30",tt:"行列回避！開店と同時に「博多屋台」",d:"17:30の開店直後に入店し、並ばず熱々の屋台ラーメンと焼き鳥を堪能。",tip:"天神三越裏や中洲の公認屋台は子連れでも安心のクリーンさ。",img:P.ramen,link:"https://yokanavi.com/yatai/"},
-    {t:"19:30",tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",e:"🌃",link:"https://tqf.co.jp/"},
+    {t:"19:30",tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",img:P.nakasu,link:"https://tqf.co.jp/"},
     {t:"20:50",tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.shinmoji,link:"https://tqf.co.jp/"},
     {t:"23:55",tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
    ]}
@@ -749,26 +772,26 @@ const DAYS = [
 
 /* ============ DETOUR IDEAS (curated) ============ */
 const DETOURS = [
- {day:1,cat:"☕ 休憩",name:"EXPASA足柄（下り）",d:"富士山ビューの巨大SA。朝ごはんとコーヒー補給の定番基地。",meta:"東名・出発から約1時間",img:null,img:P.chojabaru,q:"EXPASA足柄下り"},
- {day:1,cat:"🎡 体験",name:"刈谷ハイウェイオアシス",d:"観覧車まである日本有数の人気ハイウェイオアシス。子どもの休憩に最強。",meta:"伊勢湾岸道・刈谷PA",e:"🎡",q:"刈谷ハイウェイオアシス"},
- {day:1,cat:"☕ 休憩",name:"宝塚北SA",ll:[34.86667,135.30353],d:"宝塚歌劇の街らしい優雅な内装で「日本一美しいSA」とも。姫路への最終休憩に。",meta:"新名神",e:"🌹",q:"宝塚北サービスエリア"},
- {day:2,cat:"🍜 グルメ",name:"吉備SA（下り）",ll:[34.69365,133.87291],d:"桃太郎の国のSA。きびだんご＆デミカツ丼でご当地ランチ。",meta:"山陽道・岡山",e:"🍑",q:"吉備サービスエリア下り"},
- {day:2,cat:"📸 絶景",name:"宮島SA（下り）",ll:[34.36590,132.31649],d:"瀬戸内海と大鳥居モチーフが迎える絶景SA。もみじ饅頭の補給もここで。",meta:"山陽道・広島",e:"⛩",q:"宮島サービスエリア下り"},
+ {day:1,cat:"☕ 休憩",name:"EXPASA足柄（下り）",d:"富士山ビューの巨大SA。朝ごはんとコーヒー補給の定番基地。",meta:"東名・出発から約1時間",img:P.fuji,q:"EXPASA足柄下り"},
+ {day:1,cat:"🎡 体験",name:"刈谷ハイウェイオアシス",d:"観覧車まである日本有数の人気ハイウェイオアシス。子どもの休憩に最強。",meta:"伊勢湾岸道・刈谷PA",img:P.kariya,q:"刈谷ハイウェイオアシス"},
+ {day:1,cat:"☕ 休憩",name:"宝塚北SA",ll:[34.86667,135.30353],d:"宝塚歌劇の街らしい優雅な内装で「日本一美しいSA」とも。姫路への最終休憩に。",meta:"新名神",img:P.takarazuka,q:"宝塚北サービスエリア"},
+ {day:2,cat:"🍜 グルメ",name:"吉備SA（下り）",ll:[34.69365,133.87291],d:"桃太郎の国のSA。きびだんご＆デミカツ丼でご当地ランチ。",meta:"山陽道・岡山",img:P.kibisa,q:"吉備サービスエリア下り"},
+ {day:2,cat:"📸 絶景",name:"宮島SA（下り）",ll:[34.36590,132.31649],d:"瀬戸内海と大鳥居モチーフが迎える絶景SA。もみじ饅頭の補給もここで。",meta:"山陽道・広島",img:P.miyajimasa,q:"宮島サービスエリア下り"},
  {day:2,cat:"📸 絶景",name:"壇之浦PA（下り）",ll:[33.96431,130.95369],d:"関門橋の真下。源平合戦の海峡をバックにベストショットが撮れる。",meta:"関門橋の本州側たもと",img:P.kanmon,q:"壇之浦PA"},
  {day:3,cat:"📸 絶景",name:"上色見熊野座神社",ll:[32.85450,131.15867],d:"苔むした百基の灯籠が続く「異世界への入口」。コテージから近い幻想スポット。",meta:"高森町・コテージ周辺",img:P.kamishikimi,q:"上色見熊野座神社"},
- {day:3,cat:"☕ 休憩",name:"白川水源",ll:[32.82447,131.09453],d:"毎分60トンの水が湧く南阿蘇の名水。冷たい湧水でクールダウン。",meta:"南阿蘇村",e:"💧",q:"白川水源"},
- {day:3,cat:"🛍 買い物",name:"阿蘇神社と門前町の水基巡り",ll:[32.94778,131.11597],d:"湧き水の飲み比べをしながら門前町を食べ歩き。馬肉コロッケが名物。",meta:"阿蘇市一の宮",e:"⛲",q:"阿蘇神社 門前町"},
- {day:4,cat:"🎡 体験",name:"高千穂あまてらす鉄道",ll:[32.71456,131.30685],d:"廃線を走るグランド・スーパーカートで高さ105mの高千穂鉄橋へ。床のガラス越しに絶景！",meta:"当日券・高校生以上1,500円",e:"🚃",q:"高千穂あまてらす鉄道"},
- {day:4,cat:"📸 絶景",name:"国見ヶ丘",d:"高千穂盆地を一望する展望所。秋の雲海で有名だが夏の夕景も◎。",meta:"高千穂町",e:"🌄",q:"国見ヶ丘 高千穂"},
- {day:4,cat:"🛍 買い物",name:"トンネルの駅",d:"未成線のトンネルが焼酎の貯蔵庫に。SLの展示もあり大人も子どもも楽しい。",meta:"高千穂町・国道218号沿い",e:"🍶",q:"トンネルの駅 高千穂"},
+ {day:3,cat:"☕ 休憩",name:"白川水源",ll:[32.82447,131.09453],d:"毎分60トンの水が湧く南阿蘇の名水。冷たい湧水でクールダウン。",meta:"南阿蘇村",img:P.shirakawa,q:"白川水源"},
+ {day:3,cat:"🛍 買い物",name:"阿蘇神社と門前町の水基巡り",ll:[32.94778,131.11597],d:"湧き水の飲み比べをしながら門前町を食べ歩き。馬肉コロッケが名物。",meta:"阿蘇市一の宮",img:P.asojinja,q:"阿蘇神社 門前町"},
+ {day:4,cat:"🎡 体験",name:"高千穂あまてらす鉄道",ll:[32.71456,131.30685],d:"廃線を走るグランド・スーパーカートで高さ105mの高千穂鉄橋へ。床のガラス越しに絶景！",meta:"当日券・高校生以上1,500円",img:P.amaterasu,q:"高千穂あまてらす鉄道"},
+ {day:4,cat:"📸 絶景",name:"国見ヶ丘",d:"高千穂盆地を一望する展望所。秋の雲海で有名だが夏の夕景も◎。",meta:"高千穂町",img:P.kunimi,q:"国見ヶ丘 高千穂"},
+ {day:4,cat:"🛍 買い物",name:"トンネルの駅",d:"未成線のトンネルが焼酎の貯蔵庫に。SLの展示もあり大人も子どもも楽しい。",meta:"高千穂町・国道218号沿い",img:P.shochu,q:"トンネルの駅 高千穂"},
  {day:5,cat:"📸 絶景",name:"牧ノ戸峠",ll:[33.09639,131.20833],d:"やまなみハイウェイの最高地点（標高約1,330m）。展望台まで5分の小登山を。",meta:"九重町",img:P.makinoto,q:"牧ノ戸峠"},
  {day:5,cat:"🎡 体験",name:"九重“夢”大吊橋",ll:[33.17389,131.22667],d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の大パノラマ。",meta:"やまなみから約15分",img:P.yumebridge,q:"九重夢大吊橋"},
  {day:5,cat:"📸 絶景",name:"狭霧台",d:"由布院盆地を見下ろす峠の展望台。由布岳を背にした街並みが一望。",meta:"由布院の手前",img:P.yufudake,q:"狭霧台"},
  {day:5,cat:"🎡 体験",name:"別府地獄めぐり（海地獄）",ll:[33.31589,131.46968],d:"コバルトブルーに沸く国指定名勝。界別府から車ですぐ、夕方前に1〜2地獄だけつまむのもアリ。",meta:"別府市鉄輪",img:P.jigoku,q:"海地獄"},
- {day:6,cat:"📸 絶景",name:"別府湾SA（下り）",d:"別府湾を見下ろす「絶景SA」。朝イチのコーヒー休憩に最高。",meta:"大分道",e:"🌊",q:"別府湾サービスエリア"},
+ {day:6,cat:"📸 絶景",name:"別府湾SA（下り）",d:"別府湾を見下ろす「絶景SA」。朝イチのコーヒー休憩に最高。",meta:"大分道",img:P.tsurumi,q:"別府湾サービスエリア"},
  {day:6,cat:"🎡 体験",name:"太宰府天満宮",ll:[33.52153,130.53486],d:"学問の神様に子どもたちの合格祈願。参道の焼きたて梅ヶ枝餅は必食。",meta:"福岡へ向かう途中・太宰府IC",img:P.umegae,q:"太宰府天満宮"},
- {day:6,cat:"🛍 買い物",name:"キャナルシティ博多",ll:[33.59111,130.41056],d:"運河の噴水ショーが名物の大型モール。雨でも安心のラストお土産基地。",meta:"博多・中洲近く",e:"⛲",q:"キャナルシティ博多"},
- {day:6,cat:"🍜 グルメ",name:"櫛田神社",ll:[33.59311,130.41069],d:"博多祇園山笠の飾り山を常設展示。屋台の前に博多の総鎮守へお参り。",meta:"博多旧市街",e:"🏮",q:"櫛田神社 博多"}
+ {day:6,cat:"🛍 買い物",name:"キャナルシティ博多",ll:[33.59111,130.41056],d:"運河の噴水ショーが名物の大型モール。雨でも安心のラストお土産基地。",meta:"博多・中洲近く",img:P.canal,q:"キャナルシティ博多"},
+ {day:6,cat:"🍜 グルメ",name:"櫛田神社",ll:[33.59311,130.41069],d:"博多祇園山笠の飾り山を常設展示。屋台の前に博多の総鎮守へお参り。",meta:"博多旧市街",img:P.kushida,q:"櫛田神社 博多"}
 ];
 
 /* ============ QUIZ (24問・通信不要) ============ */
@@ -954,9 +977,9 @@ addEventListener('keydown',e=>{ if(e.key==='Escape')closeLb(); });
 
 /* ============ HOME: ribbon & stays ============ */
 function buildRibbon(){
-  const stops=[{e:'🏠',day:'START',n:'三鷹 5:00発'}]
+  const stops=[{e:'🏠',img:P.mitaka,day:'START',n:'三鷹 5:00発'}]
     .concat(DAYS.map(d=>({e:['🏯','⚓','🌋','🛶','♨️','⛴'][d.n-1],img:d.photo,day:'DAY '+d.n,n:d.short,go:d.n})))
-    .concat([{e:'🗼',day:'GOAL',n:'横須賀 8/28夜'}]);
+    .concat([{e:'🗼',img:P.ferry,day:'GOAL',n:'横須賀 8/28夜'}]);
   $('ribbon').innerHTML=stops.map(s=>
     '<div class="rb-node" '+(s.go?('onclick="openDay('+s.go+')"'):'')+'>'+
     (s.img?'<div class="rb-dot photo" style="background-image:url('+s.img+')">'+s.e+'</div>':'<div class="rb-dot">'+s.e+'</div>')+
