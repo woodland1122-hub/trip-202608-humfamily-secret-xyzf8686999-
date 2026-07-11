@@ -364,6 +364,16 @@ body::after{background:radial-gradient(circle,#2a6a8f,transparent 60%);bottom:-2
 </style>
 </head>
 <body>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){
+  if(typeof window.go!=='function'){
+    var b=document.createElement('div');
+    b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:9999;background:#c0392b;color:#fff;font-weight:bold;padding:14px 16px;font-size:13px;text-align:center;font-family:sans-serif';
+    b.textContent='⚠️ アップロードされたファイルが不完全です（コードが途中で欠落）。「Upload files」方式でindex.htmlを上げ直してください。';
+    document.body.appendChild(b);
+  }
+},1000);});
+</script>
 
 <header id="hd">
   <div class="bar">
@@ -595,7 +605,7 @@ body::after{background:radial-gradient(circle,#2a6a8f,transparent 60%);bottom:-2
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v4 — 2026.07.11</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v5 — 2026.07.11</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -830,4 +840,344 @@ const CK_DEFAULT = [
 ];
 const PACK_THEMES = [
  {n:"🥵 猛暑対策",items:["ネッククーラー・冷感タオル","塩分タブレット","日焼け止め・帽子","車内用サンシェード"]},
- {n:"📸 写真派",items:["カメラ＆予備SDカード","三脚（星
+ {n:"📸 写真派",items:["カメラ＆予備SDカード","三脚（星空・夜景用）","レンズクロス"]},
+ {n:"⛴ フェリー泊",items:["船内用の羽織もの（デッキは夜冷える）","酔い止め","洗面ポーチ","船内用スリッパ"]},
+ {n:"🧒 キッズ",items:["車内おやつBOX","酔い止め（子ども用）","タブレット＆ダウンロード済み動画","虫よけスプレー"]},
+ {n:"♨️ 温泉極め隊",items:["速乾タオル","湯上がり用ヘアゴム・ブラシ","スキンケアミニセット"]}
+];
+</script>
+<script>
+/* ============ UTIL ============ */
+const $ = id => document.getElementById(id);
+const LS = {
+  get(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f }catch(e){ return f } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)) }catch(e){} }
+};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(msg){
+  const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._tm); t._tm=setTimeout(()=>t.classList.remove('show'),2200);
+}
+function pop(opts){ if(typeof confetti==='function') confetti(Object.assign({particleCount:90,spread:75,origin:{y:.7},colors:['#d9b56e','#f3ddad','#67c6d8','#ff8a6b']},opts||{})) }
+function celebrate(){ pop({particleCount:160,spread:100}); setTimeout(()=>pop({origin:{x:.2,y:.6}}),250); setTimeout(()=>pop({origin:{x:.8,y:.6}}),480); toast('出発まで気持ちを高めていこう！🚗💨'); }
+function phTile(e){ return '<div class="ph">'+(e||'📍')+'</div>' }
+function imgOrEmoji(img,e,cls){
+  return img ? '<img src="'+img+'" alt="" loading="lazy" onerror="this.outerHTML=\''+phTile(e).replace(/'/g,"\\'")+'\'">' : phTile(e);
+}
+
+/* ============ NAV APP (Google / Yahoo!カーナビ) ============ */
+const NAV_KEY='gc2026_navapp';
+function navApp(){ return LS.get(NAV_KEY,'google') }
+function setNavApp(a){
+  LS.set(NAV_KEY,a); renderNavToggles();
+  if($('day-body').innerHTML) openDay(curDay,true);
+  buildDetGrid();
+  toast(a==='yahoo'?'Yahoo!カーナビ連携に切替（アプリが必要）':'Googleマップ連携に切替');
+}
+function yjRoute(pts){ return 'yjcarnavi://navi/select?point=current&'+pts.map(p=>'point='+p[0]+','+p[1]+','+encodeURIComponent(p[2])).join('&') }
+function yjSpot(ll,name){ return 'yjcarnavi://navi/select?lat='+ll[0]+'&lon='+ll[1]+'&name='+encodeURIComponent(name) }
+function dayNav(d){ return navApp()==='yahoo'&&d.yj ? yjRoute(d.yj) : d.nav }
+function detNav(d){
+  if(navApp()==='yahoo'&&d.ll) return {href:yjSpot(d.ll,d.name),label:'ナビ ↗'};
+  return {href:mapsUrl(d.q||d.name),label:(navApp()==='yahoo'?'地図(G) ↗':'地図 ↗')};
+}
+function renderNavToggles(){
+  document.querySelectorAll('.nav-toggle').forEach(el=>{
+    el.innerHTML='<span class="nt-lab">ナビ連携:</span>'
+    +'<button class="nt'+(navApp()==='google'?' act':'')+'" onclick="setNavApp(\'google\')">Googleマップ</button>'
+    +'<button class="nt'+(navApp()==='yahoo'?' act':'')+'" onclick="setNavApp(\'yahoo\')">Yahoo!カーナビ</button>'
+    +(navApp()==='yahoo'?'<span class="nt-lab">※スマホのYahoo!カーナビアプリが起動します</span>':'');
+  });
+}
+
+/* ============ NAV ============ */
+const VIEWS=['home','days','detour','play','prep'];
+function go(v){
+  VIEWS.forEach(x=>{
+    $('view-'+x).classList.toggle('act',x===v);
+    const b1=$('bt-'+x), b2=$('tt-'+x);
+    if(b1)b1.classList.toggle('act',x===v);
+    if(b2)b2.classList.toggle('act',x===v);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+}
+addEventListener('scroll',()=>$('hd').classList.toggle('scrolled',scrollY>30),{passive:true});
+
+/* ============ COUNTDOWN ============ */
+const T0=new Date(2026,7,22,5,0,0).getTime();   // 8/22 5:00 出発
+const T1=new Date(2026,7,28,23,0,0).getTime();  // 8/28 帰着日終わり
+function tickCD(){
+  const now=Date.now(), cd=$('cd'), msg=$('cd-msg');
+  if(now>=T0&&now<=T1){
+    cd.style.display='none'; msg.style.display='block';
+    const dayN=Math.floor((now-new Date(2026,7,22,0,0,0).getTime())/864e5)+1;
+    msg.textContent='🌊 旅は '+dayN+' 日目！今日も最高の一日に！';
+    return;
+  }
+  if(now>T1){ cd.style.display='none'; msg.style.display='block'; msg.textContent='🏠 おかえりなさい。最高の思い出をありがとう！'; return; }
+  let d=T0-now;
+  const f=n=>String(n).padStart(2,'0');
+  $('cd-d').textContent=Math.floor(d/864e5);
+  $('cd-h').textContent=f(Math.floor(d%864e5/36e5));
+  $('cd-m').textContent=f(Math.floor(d%36e5/6e4));
+  $('cd-s').textContent=f(Math.floor(d%6e4/1e3));
+}
+setInterval(tickCD,1000); tickCD();
+
+/* ============ HERO SLIDESHOW ============ */
+function buildHeroSlides(){
+  const box=$('hero-slides');
+  box.innerHTML=HERO_SLIDES.map((u,i)=>'<div class="hero-slide'+(i===0?' on':'')+'" style="background-image:url('+u+')"></div>').join('');
+  let cur=0;
+  setInterval(()=>{
+    const sl=box.children; if(!sl.length)return;
+    sl[cur].classList.remove('on');
+    cur=(cur+1)%sl.length;
+    sl[cur].classList.add('on');
+  },8000);
+}
+/* ============ GALLERY & LIGHTBOX ============ */
+function buildGallery(){
+  const items=GALLERY.map((g,i)=>'<img src="'+g.img+'" alt="'+esc(g.cap)+'" loading="lazy" onclick="openLb('+i+')" onerror="this.remove()">').join('');
+  $('strip').innerHTML=items+items;
+  $('gal').innerHTML=GALLERY.map((g,i)=>
+    '<figure onclick="openLb('+i+')"><img src="'+g.img+'" alt="'+esc(g.cap)+'" loading="lazy" onerror="this.parentElement.remove()">'+
+    '<figcaption>'+esc(g.cap)+'<small>'+g.day+'</small></figcaption></figure>').join('');
+}
+function openLb(i){
+  const g=GALLERY[i];
+  $('lb-img').src=g.img; $('lb-cap').textContent=g.day+' — '+g.cap;
+  $('lb').classList.add('show'); document.body.style.overflow='hidden';
+}
+function closeLb(){ $('lb').classList.remove('show'); document.body.style.overflow=''; }
+addEventListener('keydown',e=>{ if(e.key==='Escape')closeLb(); });
+
+/* ============ HOME: ribbon & stays ============ */
+function buildRibbon(){
+  const stops=[{e:'🏠',day:'START',n:'三鷹 5:00発'}]
+    .concat(DAYS.map(d=>({e:['🏯','⚓','🌋','🛶','♨️','⛴'][d.n-1],img:d.photo,day:'DAY '+d.n,n:d.short,go:d.n})))
+    .concat([{e:'🗼',day:'GOAL',n:'横須賀 8/28夜'}]);
+  $('ribbon').innerHTML=stops.map(s=>
+    '<div class="rb-node" '+(s.go?('onclick="openDay('+s.go+')"'):'')+'>'+
+    (s.img?'<div class="rb-dot photo" style="background-image:url('+s.img+')">'+s.e+'</div>':'<div class="rb-dot">'+s.e+'</div>')+
+    '<div class="rb-day">'+s.day+'</div><div class="rb-name">'+s.n+'</div></div>'
+  ).join('');
+}
+function buildStays(){
+  const stays=[
+    {n:'DAY 1',t:'月光園 游月山荘',s:'有馬温泉・金泉掛け流し／神戸牛会席',img:P.arima,link:'https://www.gekkoen.co.jp/yugetsu/'},
+    {n:'DAY 2',t:'星野リゾート BEB5門司港',s:'港町レトロのお洒落アジト',img:P.mojiko,link:'https://hoshinoresorts.com/ja/hotels/beb5mojiko/'},
+    {n:'DAY 3・4',t:'CAN LI ASSO E',s:'阿蘇・一棟貸しコンテナヴィラ（連泊）',img:P.kusasenri,link:'https://owners-inn.com/?p=18939'},
+    {n:'DAY 5',t:'星野リゾート 界 別府',s:'隈研吾デザイン・海のインフィニティ湯',img:P.beppu,link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
+    {n:'DAY 6',t:'東京九州フェリー',s:'それいゆ／はまゆう・船中泊',img:P.ferry,link:'https://tqf.co.jp/'}
+  ];
+  $('stay-grid').innerHTML=stays.map(s=>
+    '<a class="stay" target="_blank" rel="noopener" href="'+s.link+'"><img src="'+s.img+'" alt="" loading="lazy">'+
+    '<div class="in"><p class="n">'+s.n+'</p><p class="t">'+s.t+'</p><p class="s">'+s.s+'</p></div></a>').join('');
+}
+
+/* ============ DAYS ============ */
+let curDay=1;
+function tripToday(){
+  const now=Date.now();
+  if(now<new Date(2026,7,22).getTime()||now>new Date(2026,7,29).getTime())return 0;
+  return Math.min(6,Math.floor((now-new Date(2026,7,22).getTime())/864e5)+1);
+}
+function buildDayTabs(){
+  const td=tripToday();
+  $('day-tabs').innerHTML=DAYS.map(d=>
+    '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
+  ).join('');
+}
+function openDay(n,stay){
+  curDay=n; buildDayTabs();
+  const d=DAYS[n-1];
+  $('day-body').innerHTML=
+    '<div class="dayhero"><img src="'+d.photo+'" alt="" loading="lazy">'+
+    '<div class="in"><p class="date en">DAY '+d.n+' — '+d.date+' '+d.dow+'</p><h3>'+d.title+'</h3><p class="d">'+d.desc+'</p></div></div>'+
+    '<div class="day-actions">'+
+      '<a class="btn btn-gold" style="font-size:13px;padding:11px 20px" target="_blank" rel="noopener" href="'+dayNav(d)+'">🧭 この日のナビを開く'+(navApp()==='yahoo'&&d.yj?'（Y!カーナビ）':'')+'</a>'+
+      '<button class="btn btn-ghost" onclick="go(\'detour\');setDetFilter(\'day'+d.n+'\')">📍 この日の寄り道を見る</button>'+
+      '<span class="chip">🏨 '+d.stay+'</span>'+
+    '</div>'+
+    '<div class="tl">'+d.tl.map(it=>
+      '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
+      '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
+      (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
+      (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
+      '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
+      '</div></div></div>').join('')+'</div>'+columnHTML(n);
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('#day-body .tl-item').forEach((el,i)=>{
+      setTimeout(()=>el.classList.add('on'), 90*i+120);
+    });
+  });
+  if(!stay){ go('days'); }
+}
+
+/* ============ DETOURS ============ */
+let detFilter='all';
+const IDEAS_KEY='gc2026_ideas', VOTES_KEY='gc2026_votes';
+function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q) }
+function allDetours(){
+  const custom=LS.get(IDEAS_KEY,[]).map((c,i)=>Object.assign({custom:true,ci:i},c));
+  return DETOURS.map((d,i)=>Object.assign({ci:'b'+i},d)).concat(custom);
+}
+function setDetFilter(f){ detFilter=f; buildDetFilters(); buildDetGrid(); }
+function buildDetFilters(){
+  const fs=[{k:'all',l:'すべて'}].concat(DAYS.map(d=>({k:'day'+d.n,l:'DAY '+d.n})),[{k:'fav',l:'♡ 人気順'}]);
+  $('det-filters').innerHTML=fs.map(f=>'<button class="df'+(detFilter===f.k?' act':'')+'" onclick="setDetFilter(\''+f.k+'\')">'+f.l+'</button>').join('');
+}
+function buildDetGrid(){
+  const votes=LS.get(VOTES_KEY,{});
+  let list=allDetours();
+  if(detFilter.startsWith('day')) list=list.filter(d=>String(d.day)===detFilter.slice(3));
+  if(detFilter==='fav') list=list.slice().sort((a,b)=>(votes[b.ci]||0)-(votes[a.ci]||0));
+  $('det-grid').innerHTML=list.length?list.map(d=>{
+    const v=votes[d.ci]||0;
+    return '<div class="det'+(d.custom?' custom':'')+'">'+
+    '<div class="det-ph">'+(d.img?'<img src="'+d.img+'" alt="" loading="lazy" onerror="this.remove()">':'<div class="emoji">'+(d.e||'💡')+'</div>')+
+      '<span class="day-b">DAY '+d.day+'</span><span class="cat-b">'+esc(d.cat)+'</span></div>'+
+    '<div class="det-in"><p class="det-tt">'+esc(d.name)+'</p><p class="det-d">'+esc(d.d||'')+'</p>'+
+    (d.meta?'<p class="det-meta">🚗 '+esc(d.meta)+'</p>':'')+
+    '<div class="det-foot"><button class="heart'+(v>0?' on':'')+'" onclick="vote(\''+d.ci+'\')">♡ <span>'+v+'</span></button>'+
+    (d.custom?'<button class="det-del" onclick="delIdea('+d.ci+')">削除</button>':'')+
+    (function(){const nv=detNav(d);return '<a class="det-map" target="_blank" rel="noopener" href="'+nv.href+'">'+nv.label+'</a>'})()+'</div></div></div>';
+  }).join(''):'<p class="empty">該当する寄り道はまだありません。上のフォームから追加してみよう！</p>';
+}
+function vote(ci){
+  const votes=LS.get(VOTES_KEY,{});
+  votes[ci]=(votes[ci]||0)+1;
+  LS.set(VOTES_KEY,votes); buildDetGrid();
+  requestAnimationFrame(()=>{document.querySelectorAll('.heart.on').forEach(h=>{h.classList.add('burst');setTimeout(()=>h.classList.remove('burst'),500)})});
+  if(votes[ci]===3) toast('人気上昇中！これは行くしかない ♡');
+}
+function addIdea(){
+  const name=$('idea-name').value.trim();
+  if(!name){ toast('スポット名を入れてください'); return; }
+  const ideas=LS.get(IDEAS_KEY,[]);
+  ideas.push({day:parseInt($('idea-day').value,10),cat:$('idea-cat').value,name:name,d:$('idea-memo').value.trim(),meta:'家族のアイデア',q:name});
+  LS.set(IDEAS_KEY,ideas);
+  $('idea-name').value=''; $('idea-memo').value='';
+  pop(); toast('アイデア帳に追加しました！');
+  buildDetGrid();
+}
+function delIdea(i){
+  const ideas=LS.get(IDEAS_KEY,[]);
+  ideas.splice(i,1); LS.set(IDEAS_KEY,ideas); buildDetGrid();
+}
+
+/* ============ QUIZ ============ */
+let qPool=[],qIdx=0,qScore=0,qTry=0,qDay='all';
+function setQuizDay(d){ qDay=d; buildQuizFilters(); startQuiz(); applyQuizBanner(); }
+function applyQuizBanner(){
+  const shell=document.querySelector('.quiz-shell'); if(!shell)return;
+  shell.style.backgroundImage='linear-gradient(rgba(13,22,38,.93),rgba(15,26,44,.96)),url('+(DAYPHOTO[qDay]||P.aso)+')';
+}
+function buildQuizFilters(){
+  const fs=[{k:'all',l:'全問ミックス'}].concat(DAYS.map(d=>({k:String(d.n),l:'DAY '+d.n})));
+  $('quiz-day-filters').innerHTML=fs.map(f=>'<button class="df'+(qDay===f.k?' act':'')+'" onclick="setQuizDay(\''+f.k+'\')">'+f.l+'</button>').join('');
+}
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; }
+function startQuiz(){
+  qPool=shuffle(QUIZ.filter(q=>qDay==='all'||String(q.day)===qDay));
+  qIdx=0; renderQuiz();
+}
+function renderQuiz(){
+  const q=qPool[qIdx];
+  $('q-no').textContent='QUESTION '+(qIdx+1)+' / '+qPool.length+'（DAY '+q.day+'）';
+  $('q-score').textContent='正解 '+qScore+' / 挑戦 '+qTry;
+  $('q-text').textContent=q.q;
+  $('q-exp').className='q-exp'; $('q-next').className='btn btn-gold q-next';
+  const order=shuffle(q.o.map((_,i)=>i));
+  $('q-opts').innerHTML=order.map((oi,pos)=>
+    '<button class="q-opt" onclick="answer(this,'+oi+','+q.a+')"><span class="k">'+String.fromCharCode(65+pos)+'</span>'+esc(q.o[oi])+'</button>').join('');
+}
+function answer(btn,oi,a){
+  const q=qPool[qIdx]; qTry++;
+  document.querySelectorAll('.q-opt').forEach(b=>b.disabled=true);
+  if(oi===a){ qScore++; btn.classList.add('correct'); pop({particleCount:60,spread:60}); }
+  else{
+    btn.classList.add('wrong');
+    document.querySelectorAll('.q-opt').forEach(b=>{ if(b.textContent.slice(1)===q.o[a]||b.textContent.includes(q.o[a])) b.classList.add('correct'); });
+  }
+  $('q-score').textContent='正解 '+qScore+' / 挑戦 '+qTry;
+  const ex=$('q-exp'); ex.innerHTML='<b>'+(oi===a?'正解！':'ざんねん！ 答えは「'+esc(q.o[a])+'」')+'</b><br>'+esc(q.x); ex.classList.add('show');
+  $('q-next').classList.add('show');
+}
+function nextQuiz(){ qIdx=(qIdx+1)%qPool.length; if(qIdx===0)qPool=shuffle(qPool); renderQuiz(); }
+
+/* ============ CHECKLIST ============ */
+const CK_KEY='gc2026_ck_custom', CKS_KEY='gc2026_ck_state';
+function ckAll(){ return CK_DEFAULT.concat(LS.get(CK_KEY,[]).map((c,i)=>({id:'c'+i,l:c.l,r:c.r||'追加アイテム',custom:true,ci:i}))) }
+function buildCk(){
+  const st=LS.get(CKS_KEY,{}); const items=ckAll();
+  $('ck-list').innerHTML=items.map(it=>
+    '<div class="ck'+(st[it.id]?' on':'')+'" onclick="toggleCk(\''+it.id+'\')">'+
+    '<span class="box">'+(st[it.id]?'✓':'')+'</span><span><span class="l">'+esc(it.l)+'</span><br><span class="r">'+esc(it.r)+'</span></span>'+
+    (it.custom?'<button class="del" onclick="event.stopPropagation();delCk('+it.ci+')">✕</button>':'')+'</div>').join('');
+  const done=items.filter(i=>st[i.id]).length, pct=items.length?Math.round(done/items.length*100):0;
+  $('prog-bar').style.width=pct+'%'; $('prog-t').textContent=pct+'% 完了';
+  if(pct===100){ pop({particleCount:120,spread:90}); }
+}
+function toggleCk(id){ const st=LS.get(CKS_KEY,{}); st[id]=!st[id]; LS.set(CKS_KEY,st); buildCk(); }
+function addCk(){
+  const v=$('ck-in').value.trim(); if(!v){toast('持ち物名を入れてください');return}
+  const c=LS.get(CK_KEY,[]); c.push({l:v}); LS.set(CK_KEY,c); $('ck-in').value=''; buildCk(); toast('追加しました');
+}
+function delCk(i){ const c=LS.get(CK_KEY,[]); c.splice(i,1); LS.set(CK_KEY,c); buildCk(); }
+function resetCk(){ LS.set(CKS_KEY,{}); buildCk(); toast('チェックをリセットしました'); }
+function buildThemes(){
+  const used=LS.get('gc2026_themes',[]);
+  $('pack-themes').innerHTML=PACK_THEMES.map((t,i)=>
+    '<button class="pt'+(used.includes(i)?' used':'')+'" onclick="addTheme('+i+')">'+t.n+'（'+t.items.length+'点）</button>').join('');
+}
+function addTheme(i){
+  const used=LS.get('gc2026_themes',[]); if(used.includes(i))return;
+  const c=LS.get(CK_KEY,[]);
+  PACK_THEMES[i].items.forEach(l=>c.push({l:l,r:PACK_THEMES[i].n}));
+  LS.set(CK_KEY,c); used.push(i); LS.set('gc2026_themes',used);
+  buildCk(); buildThemes(); pop(); toast(PACK_THEMES[i].n+' のセットを追加しました！');
+}
+
+/* ============ MEMO BOARD ============ */
+const MEMO_KEY='gc2026_memos';
+function buildMemos(){
+  const ms=LS.get(MEMO_KEY,[]);
+  $('memo-list').innerHTML=ms.length?ms.map((m,i)=>
+    '<div class="memo"><p class="m">'+esc(m.t)+'</p><p class="who">'+esc(m.at)+'</p>'+
+    '<button class="del" onclick="delMemo('+i+')">✕</button></div>').join('')
+    :'<p class="empty">まだメモがありません。旅の「やりたい！」を最初に書き込もう。</p>';
+}
+function addMemo(){
+  const v=$('memo-in').value.trim(); if(!v){toast('メモを入力してください');return}
+  const ms=LS.get(MEMO_KEY,[]);
+  const d=new Date();
+  ms.unshift({t:v,at:(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')});
+  LS.set(MEMO_KEY,ms); $('memo-in').value=''; buildMemos(); toast('メモしました！');
+}
+function delMemo(i){ const ms=LS.get(MEMO_KEY,[]); ms.splice(i,1); LS.set(MEMO_KEY,ms); buildMemos(); }
+function copyMemos(){
+  const ms=LS.get(MEMO_KEY,[]);
+  if(!ms.length){toast('コピーするメモがありません');return}
+  const txt='【GRAND CRUISE 2026 家族メモ】\n'+ms.map(m=>'・'+m.t).join('\n');
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(
+    ()=>toast('コピーしました！LINEに貼り付けて共有を'),
+    ()=>toast('コピーできませんでした')
+  );
+}
+
+/* ============ REVEAL & INIT ============ */
+const io=new IntersectionObserver(es=>es.forEach((e)=>{if(e.isIntersecting){e.target.style.transitionDelay=(Math.min([...document.querySelectorAll('.reveal')].indexOf(e.target)%4,3)*.12)+'s';e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('#memo-in,#ck-in,#idea-name').forEach(el=>el.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ e.preventDefault(); ({['memo-in']:addMemo,['ck-in']:addCk,['idea-name']:addIdea})[el.id](); }
+}));
+buildHeroSlides(); buildGallery(); buildRibbon(); buildStays(); buildMemos(); buildCk(); buildThemes(); applyQuizBanner();
+renderNavToggles(); buildDetFilters(); buildDetGrid(); buildQuizFilters(); startQuiz();
+const td=tripToday(); openDay(td||1,true); buildDayTabs();
+go('home');
+$('build-badge').textContent+=' ｜ ✓ 完全版・全機能OK';
+</script>
+</body>
+</html>
