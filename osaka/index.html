@@ -6,698 +6,262 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#05070a">
-<title>OSAKA OVERNIGHT DRIVE ｜ 大阪日帰り 2026.07.31–08.01</title>
+<title>OSAKA SUPPORT TRIP ｜ 大阪応援旅 2026.07.31–08.01</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#05070a; --bg2:#0b0f15; --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.18);
-  --tx:#eef2f7; --mu:#8e9aab; --dim:#5d6878;
-  --ac:#5fd0ff; --ac2:#b8f0ff; --warn:#ff6b6b;
-  --sh:0 30px 80px rgba(0,0,0,.75);
-}
+:root{--bg:#05070a;--bg2:#0b0f15;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.18);
+ --tx:#eef2f7;--mu:#8e9aab;--dim:#5d6878;--ac:#5fd0ff;--ac2:#b8f0ff}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);
-  font-family:"Zen Kaku Gothic New",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
-  font-weight:300;line-height:1.85;letter-spacing:.02em;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Zen Kaku Gothic New",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;font-weight:300;line-height:1.85;letter-spacing:.02em;overflow-x:hidden}
 img{display:block;width:100%;height:100%;object-fit:cover}
 a{color:inherit;text-decoration:none}
-.num,.lat{font-family:"Oswald",sans-serif;font-weight:300;letter-spacing:.06em}
+.lat{font-family:"Oswald",sans-serif;font-weight:300;letter-spacing:.06em}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-
-/* ---------- HERO ---------- */
 .hero{position:relative;height:100svh;min-height:600px;overflow:hidden}
 .hero .slide{position:absolute;inset:0;opacity:0;transition:opacity 2.2s ease}
 .hero .slide.on{opacity:1}
-.hero .slide img{transform:scale(1.14);animation:kb 16s ease-out forwards;filter:saturate(.85) contrast(1.08) brightness(.62)}
-.hero .slide.on img{animation:kb 16s ease-out forwards}
-@keyframes kb{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.20) translate3d(-1.5%,-1.5%,0)}}
-.hero:after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(5,7,10,.72) 0%,rgba(5,7,10,.22) 32%,rgba(5,7,10,.55) 68%,var(--bg) 100%)}
-.hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;
-  padding:0 26px;max-width:1180px;margin:0 auto;left:0;right:0}
-.kicker{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.55em;color:var(--ac);margin-bottom:20px;
-  text-transform:uppercase;opacity:1;animation:up 1.2s .5s forwards}
-.hero h1{margin:0;font-family:"Oswald",sans-serif;font-weight:200;line-height:.94;
-  font-size:clamp(46px,12.5vw,150px);letter-spacing:.01em;opacity:1;animation:up 1.4s .75s forwards}
+.hero .slide img{transform:scale(1.14);animation:kb 16s ease-out forwards;filter:saturate(.85) contrast(1.08) brightness(.6)}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.2) translate3d(-1.5%,-1.5%,0)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,10,.74) 0%,rgba(5,7,10,.24) 32%,rgba(5,7,10,.58) 68%,var(--bg) 100%)}
+.hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:0 26px;max-width:1180px;margin:0 auto;left:0;right:0}
+.kicker{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.5em;color:var(--ac);margin-bottom:20px;text-transform:uppercase;animation:up 1.2s .4s backwards}
+.hero h1{margin:0;font-family:"Oswald",sans-serif;font-weight:200;line-height:.94;font-size:clamp(42px,11.5vw,138px);animation:up 1.4s .6s backwards}
 .hero h1 b{display:block;font-weight:600}
-.hero .sub{margin-top:26px;font-size:13px;color:#cfd8e4;letter-spacing:.14em;opacity:1;animation:up 1.4s 1.05s forwards}
-.hero .sub .bar{display:inline-block;width:38px;height:1px;background:var(--ac);vertical-align:middle;margin:0 12px}
-.cd{margin-top:34px;display:flex;gap:26px;opacity:1;animation:up 1.4s 1.3s forwards}
-.cd div{text-align:left}
-.cd .v{font-family:"Oswald",sans-serif;font-size:clamp(26px,7vw,44px);font-weight:300;line-height:1;color:#fff}
-.cd .l{font-size:9.5px;letter-spacing:.34em;color:var(--mu);margin-top:7px}
-@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:4;
-  font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.4em;color:var(--dim)}
-.scrollcue span{display:block;width:1px;height:44px;background:linear-gradient(var(--ac),transparent);margin:10px auto 0;animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
-
-/* ---------- NAV ---------- */
-nav{position:sticky;top:0;z-index:60;background:rgba(5,7,10,.82);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--line)}
-nav .in{display:flex;gap:0;overflow-x:auto;max-width:1180px;margin:0 auto;scrollbar-width:none}
+.hero .sub{margin-top:24px;font-size:13px;color:#cfd8e4;letter-spacing:.13em;animation:up 1.4s .9s backwards}
+.hero .sub .bar{display:inline-block;width:36px;height:1px;background:var(--ac);vertical-align:middle;margin:0 12px}
+.cd{margin-top:30px;display:flex;gap:24px;animation:up 1.4s 1.1s backwards}
+.cd .v{font-family:"Oswald",sans-serif;font-size:clamp(24px,6.5vw,42px);font-weight:300;line-height:1;color:#fff}
+.cd .l{font-size:9.5px;letter-spacing:.32em;color:var(--mu);margin-top:7px}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.mem{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.mem div{border:1px solid var(--line2);padding:8px 16px;font-size:12.5px;letter-spacing:.14em;color:#dbe4ef;background:rgba(255,255,255,.03)}
+.scrollcue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:4;font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.4em;color:var(--dim)}
+.scrollcue span{display:block;width:1px;height:40px;background:linear-gradient(var(--ac),transparent);margin:10px auto 0}
+nav{position:sticky;top:0;z-index:60;background:rgba(5,7,10,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav .in{display:flex;overflow-x:auto;max-width:1180px;margin:0 auto;scrollbar-width:none}
 nav .in::-webkit-scrollbar{display:none}
-nav a{flex:0 0 auto;padding:15px 17px;font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.26em;
-  color:var(--mu);border-bottom:2px solid transparent;transition:.25s;white-space:nowrap}
+nav a{flex:0 0 auto;padding:15px 16px;font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.24em;color:var(--mu);border-bottom:2px solid transparent;transition:.25s;white-space:nowrap}
 nav a:hover,nav a.act{color:#fff;border-color:var(--ac)}
-
-/* ---------- SECTION ---------- */
-section{padding:88px 0 34px;position:relative}
-.shead{margin-bottom:44px}
-.shead .en{font-family:"Oswald",sans-serif;font-size:clamp(34px,9vw,74px);font-weight:200;line-height:1;color:#fff}
-.shead .jp{margin-top:12px;font-size:12px;letter-spacing:.34em;color:var(--ac)}
-.shead .ds{margin-top:16px;max-width:640px;font-size:13.5px;color:var(--mu);line-height:1.95}
-.rule{height:1px;background:linear-gradient(90deg,var(--ac),transparent);margin-top:22px}
-
-/* ---------- STOP CARD ---------- */
+section{padding:80px 0 30px;position:relative}
+.shead{margin-bottom:40px}
+.shead .en{font-family:"Oswald",sans-serif;font-size:clamp(32px,8.5vw,70px);font-weight:200;line-height:1;color:#fff}
+.shead .jp{margin-top:12px;font-size:12px;letter-spacing:.3em;color:var(--ac)}
+.shead .ds{margin-top:16px;max-width:660px;font-size:13.5px;color:var(--mu);line-height:1.95}
+.rule{height:1px;background:linear-gradient(90deg,var(--ac),transparent);margin-top:20px}
 .stops{display:grid;gap:20px}
 .stop{position:relative;border:1px solid var(--line);background:var(--bg2);overflow:hidden;transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
-.js .stop{opacity:0;transform:translateY(46px)}
-.stop.in,.js .stop.in{opacity:1!important;transform:none!important}
+.js .stop{opacity:0;transform:translateY(44px)}
+.stop.in{opacity:1!important;transform:none!important}
 .stop .ph{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#141b25,#0a0e14)}
 .stop .ph img{transform:scale(1.06);transition:transform 1.6s cubic-bezier(.2,.7,.3,1);filter:saturate(.9) contrast(1.06) brightness(.82)}
 .stop:hover .ph img{transform:scale(1.14)}
-.stop .ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,10,.15),rgba(5,7,10,.92))}
-.stop .time{position:absolute;left:0;top:0;z-index:3;background:rgba(5,7,10,.72);backdrop-filter:blur(8px);
-  padding:9px 16px;font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.1em;color:var(--ac2);
-  border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
-.stop .cap{position:absolute;right:9px;bottom:7px;z-index:3;font-size:9px;color:rgba(255,255,255,.42);letter-spacing:.06em}
+.stop .ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,10,.12),rgba(5,7,10,.92))}
+.stop .time{position:absolute;left:0;top:0;z-index:3;background:rgba(5,7,10,.72);backdrop-filter:blur(8px);padding:9px 16px;font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.1em;color:var(--ac2);border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.stop .cap{position:absolute;right:9px;bottom:7px;z-index:3;font-size:9px;color:rgba(255,255,255,.42)}
 .stop .ttl{position:absolute;left:20px;right:20px;bottom:16px;z-index:3}
-.stop .ttl h3{margin:0;font-size:clamp(21px,4.6vw,32px);font-weight:500;letter-spacing:.03em;line-height:1.3;
-  text-shadow:0 4px 26px rgba(0,0,0,.9)}
-.stop .ttl .mini{margin-top:6px;font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.32em;color:var(--ac)}
+.stop .ttl h3{margin:0;font-size:clamp(20px,4.4vw,30px);font-weight:500;line-height:1.3;text-shadow:0 4px 26px rgba(0,0,0,.9)}
+.stop .ttl .mini{margin-top:6px;font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.3em;color:var(--ac)}
 .stop .bd{padding:20px 20px 22px}
 .stop .bd p{margin:0;font-size:14px;color:#c3ccd9;line-height:1.95}
-.tip{margin-top:14px;padding:13px 15px;border-left:2px solid var(--ac);background:rgba(95,208,255,.05);
-  font-size:12.5px;color:#a9b6c6;line-height:1.9}
+.tip{margin-top:14px;padding:13px 15px;border-left:2px solid var(--ac);background:rgba(95,208,255,.05);font-size:12.5px;color:#a9b6c6;line-height:1.9}
 .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.btn{display:inline-block;padding:10px 16px;font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.2em;
-  border:1px solid var(--line2);color:#dbe4ef;transition:.25s;background:rgba(255,255,255,.02)}
+.btn{display:inline-block;padding:10px 15px;font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.18em;border:1px solid var(--line2);color:#dbe4ef;transition:.25s;background:rgba(255,255,255,.02)}
 .btn:hover{background:#fff;color:#05070a;border-color:#fff}
 .btn.k{border-color:rgba(95,208,255,.55);color:var(--ac2)}
 .btn.k:hover{background:var(--ac);color:#04121a;border-color:var(--ac)}
-@media(min-width:900px){
-  .stop{display:grid;grid-template-columns:1.15fr .85fr;align-items:stretch}
-  .stop .ph{aspect-ratio:auto;min-height:330px}
-  .stop .bd{padding:34px 32px;display:flex;flex-direction:column;justify-content:center}
-  .stop:nth-child(even) .ph{order:2}
-}
-
-/* ---------- MAP ---------- */
-.mapbox{border:1px solid var(--line);background:var(--bg2);overflow:hidden;position:relative}
-.mapbox iframe{display:block;width:100%;height:min(72vh,560px);border:0;filter:invert(.92) hue-rotate(180deg) saturate(.55) contrast(.92)}
+@media(min-width:900px){.stop{display:grid;grid-template-columns:1.15fr .85fr}
+ .stop .ph{aspect-ratio:auto;min-height:330px}
+ .stop .bd{padding:34px 32px;display:flex;flex-direction:column;justify-content:center}
+ .stop:nth-child(even) .ph{order:2}}
+.tick{display:grid;gap:14px;margin-top:-16px}
+@media(min-width:760px){.tick{grid-template-columns:1fr 1fr}}
+.tk{border:1px solid var(--line2);background:linear-gradient(150deg,#101822,#070a0f);padding:22px 22px 24px;position:relative;overflow:hidden}
+.tk:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ac)}
+.tk .lab{font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.32em;color:var(--ac)}
+.tk .train{font-family:"Oswald",sans-serif;font-size:26px;margin-top:8px;color:#fff;letter-spacing:.04em}
+.tk .seat{margin-top:12px;font-size:22px;font-weight:500;letter-spacing:.06em;color:var(--ac2)}
+.tk .meta{margin-top:10px;font-size:12.5px;color:var(--mu);line-height:1.9}
+.mapbox{border:1px solid var(--line);background:var(--bg2);overflow:hidden}
+.mapbox iframe{display:block;width:100%;height:min(70vh,540px);border:0;filter:invert(.92) hue-rotate(180deg) saturate(.55) contrast(.92)}
 .mapnote{padding:14px 16px;font-size:11.5px;color:var(--dim);border-top:1px solid var(--line)}
-
-/* ---------- TRIVIA ---------- */
 .tri{display:grid;gap:16px}
 @media(min-width:760px){.tri{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1080px){.tri{grid-template-columns:repeat(3,1fr)}}
 .tc{border:1px solid var(--line);background:var(--bg2);overflow:hidden;transition:.9s cubic-bezier(.2,.7,.3,1)}
-.js .tc{opacity:0;transform:translateY(34px) scale(.985)}
-.tc.in,.js .tc.in{opacity:1!important;transform:none!important}
+.js .tc{opacity:0;transform:translateY(32px) scale(.985)}
+.tc.in{opacity:1!important;transform:none!important}
 .tc .ph{aspect-ratio:3/2;overflow:hidden;background:linear-gradient(135deg,#141b25,#0a0e14);position:relative}
 .tc .ph img{transform:scale(1.05);transition:transform 2s cubic-bezier(.2,.7,.3,1);filter:saturate(.85) contrast(1.05) brightness(.78)}
 .tc:hover .ph img{transform:scale(1.16)}
 .tc .ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(11,15,21,.95))}
-.tc .where{position:absolute;left:14px;bottom:11px;z-index:2;font-family:"Oswald",sans-serif;font-size:11px;
-  letter-spacing:.3em;color:var(--ac)}
+.tc .where{position:absolute;left:14px;bottom:11px;z-index:2;font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.28em;color:var(--ac)}
 .tc .bd{padding:17px 17px 19px}
-.tc h4{margin:0 0 9px;font-size:16px;font-weight:500;letter-spacing:.02em}
+.tc h4{margin:0 0 9px;font-size:16px;font-weight:500}
 .tc p{margin:0;font-size:13px;color:#aeb9c8;line-height:1.95}
-.tc .more{display:inline-block;margin-top:12px;font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.22em;
-  color:var(--ac);border-bottom:1px solid rgba(95,208,255,.4);padding-bottom:2px}
-
-/* ---------- QUIZ ---------- */
-.quiz{border:1px solid var(--line);background:linear-gradient(160deg,#0d131b,#070a0f);padding:26px 22px 30px;margin-top:44px}
-.qhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.tc .more{display:inline-block;margin-top:12px;font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.2em;color:var(--ac);border-bottom:1px solid rgba(95,208,255,.4);padding-bottom:2px}
+.quiz{border:1px solid var(--line);background:linear-gradient(160deg,#0d131b,#070a0f);padding:26px 22px 30px}
+.qhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:18px}
 .qhead .t{font-family:"Oswald",sans-serif;font-size:20px;letter-spacing:.2em}
-.qhead .sc{font-family:"Oswald",sans-serif;font-size:13px;color:var(--ac);letter-spacing:.18em}
+.qhead .sc{font-family:"Oswald",sans-serif;font-size:13px;color:var(--ac);letter-spacing:.16em}
 .q{border-top:1px solid var(--line);padding:20px 0}
 .q .qq{font-size:14.5px;margin-bottom:14px;line-height:1.85}
-.q .qq b{font-family:"Oswald",sans-serif;color:var(--ac);margin-right:10px;font-size:13px;letter-spacing:.1em}
-.opt{display:block;width:100%;text-align:left;padding:12px 15px;margin-bottom:8px;font:inherit;font-size:13.5px;
-  color:#d5dde8;background:rgba(255,255,255,.025);border:1px solid var(--line);cursor:pointer;transition:.2s}
+.q .qq b{font-family:"Oswald",sans-serif;color:var(--ac);margin-right:10px;font-size:13px}
+.opt{display:block;width:100%;text-align:left;padding:12px 15px;margin-bottom:8px;font:inherit;font-size:13.5px;color:#d5dde8;background:rgba(255,255,255,.025);border:1px solid var(--line);cursor:pointer;transition:.2s}
 .opt:hover{border-color:var(--line2);background:rgba(255,255,255,.06)}
 .opt.ok{border-color:#3ddc97;background:rgba(61,220,151,.13);color:#c9ffe6}
 .opt.ng{border-color:#ff6b6b;background:rgba(255,107,107,.11);color:#ffd2d2}
-.exp{display:none;margin-top:10px;padding:12px 14px;border-left:2px solid var(--ac);background:rgba(95,208,255,.05);
-  font-size:12.5px;color:#a9b6c6;line-height:1.9}
+.exp{display:none;margin-top:10px;padding:12px 14px;border-left:2px solid var(--ac);background:rgba(95,208,255,.05);font-size:12.5px;color:#a9b6c6;line-height:1.9}
 .exp.show{display:block}
-
-/* ---------- TABLE / INFO ---------- */
 .grid2{display:grid;gap:16px}
 @media(min-width:820px){.grid2{grid-template-columns:1fr 1fr}}
 .panel{border:1px solid var(--line);background:var(--bg2);padding:24px 22px}
-.panel h4{margin:0 0 16px;font-family:"Oswald",sans-serif;font-size:12px;letter-spacing:.32em;color:var(--ac)}
+.panel h4{margin:0 0 16px;font-family:"Oswald",sans-serif;font-size:12px;letter-spacing:.3em;color:var(--ac)}
 table{width:100%;border-collapse:collapse;font-size:13px}
 td{padding:11px 2px;border-bottom:1px solid var(--line);color:#c3ccd9;vertical-align:top}
-td.r{text-align:right;font-family:"Oswald",sans-serif;color:#fff;white-space:nowrap;letter-spacing:.04em}
+td.r{text-align:right;font-family:"Oswald",sans-serif;color:#fff;white-space:nowrap}
 tr.tot td{border-bottom:none;border-top:1px solid var(--line2);padding-top:15px;font-size:15px;color:#fff}
 tr.tot td.r{font-size:19px;color:var(--ac2)}
 .note{font-size:12.5px;color:var(--mu);line-height:2;margin:0}
-.note li{margin-bottom:9px}
-ul.note{padding-left:18px}
-.alert{border:1px solid rgba(255,107,107,.35);background:rgba(255,107,107,.06);padding:20px 20px;margin-top:16px}
+ul.note{padding-left:18px}.note li{margin-bottom:9px}
+.alert{border:1px solid rgba(255,107,107,.35);background:rgba(255,107,107,.06);margin-top:16px}
 .alert h4{color:#ff9f9f}
-
-/* ---------- MEMBERS ---------- */
-.mem{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.mem div{border:1px solid var(--line2);padding:9px 18px;font-size:13px;letter-spacing:.16em;color:#dbe4ef;
-  background:rgba(255,255,255,.03)}
-
-footer{padding:54px 0 70px;border-top:1px solid var(--line);margin-top:60px;text-align:center}
-footer .b{font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.32em;color:var(--dim)}
-#guard{display:none;background:#a01722;color:#fff;padding:14px;text-align:center;font-size:13px}
+footer{padding:50px 0 70px;border-top:1px solid var(--line);margin-top:56px;text-align:center}
+footer .b{font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.3em;color:var(--dim)}
 .imgfail{background:linear-gradient(135deg,#1b2534,#080c12)!important}
-</style>
-</head>
+</style></head>
 <body>
-<div id="guard">ページのコードが途中で切れています。ファイルを再アップロードしてください。</div>
-
-<!-- ================= HERO ================= -->
-<header class="hero" id="top">
-  <div class="slide on" data-i="0"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/1280px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" alt="道頓堀の夜"></div>
-  <div class="slide" data-i="1"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg/1280px-Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg" alt="梅田スカイビル"></div>
-  <div class="slide" data-i="2"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg/1280px-Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg" alt="新東名高速"></div>
-  <div class="slide" data-i="3"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mt.Fuji_from_Mierula.jpg/1280px-Mt.Fuji_from_Mierula.jpg" alt="富士山"></div>
-  <div class="slide" data-i="4"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Osaka_Castle_02bs3200.jpg/1280px-Osaka_Castle_02bs3200.jpg" alt="大阪城"></div>
-  <div class="inner">
-    <div class="kicker">Overnight Drive ／ Tokyo — Osaka</div>
-    <h1>OSAKA<b>ONE DAY</b></h1>
-    <div class="sub"><span class="lat">2026.07.31 FRI 22:30</span><span class="bar"></span><span class="lat">08.01 SAT 22:00</span></div>
-    <div class="cd">
-      <div><div class="v" id="cdd">--</div><div class="l">DAYS</div></div>
-      <div><div class="v" id="cdh">--</div><div class="l">HOURS</div></div>
-      <div><div class="v" id="cdm">--</div><div class="l">MIN</div></div>
-      <div><div class="v" id="cds">--</div><div class="l">SEC</div></div>
-    </div>
-    <div class="mem"><div>だい</div><div>麻美</div><div>タロ</div><div>レガシィ アウトバック</div></div>
+<header class="hero" id="top"><div class="slide on" data-i="0"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg/1280px-Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg" alt=""></div><div class="slide" data-i="1"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_Nozomi_in_Tokyo.jpg/1280px-Shinkansen_Nozomi_in_Tokyo.jpg" alt=""></div><div class="slide" data-i="2"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/1280px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" alt=""></div><div class="slide" data-i="3"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg/1280px-Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg" alt=""></div><div class="slide" data-i="4"><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Osaka_Castle_02bs3200.jpg/1280px-Osaka_Castle_02bs3200.jpg" alt=""></div>
+<div class="inner">
+  <div class="kicker">Shinkansen ／ Tokyo — Osaka ／ 1 Night</div>
+  <h1>OSAKA<b>SUPPORT</b></h1>
+  <div class="sub"><span class="lat">2026.07.31 FRI 18:00</span><span class="bar"></span><span class="lat">08.01 SAT 21:20</span></div>
+  <div class="cd">
+    <div><div class="v" id="cdd">--</div><div class="l">DAYS</div></div>
+    <div><div class="v" id="cdh">--</div><div class="l">HOURS</div></div>
+    <div><div class="v" id="cdm">--</div><div class="l">MIN</div></div>
+    <div><div class="v" id="cds">--</div><div class="l">SEC</div></div>
   </div>
-  <div class="scrollcue">SCROLL<span></span></div>
+  <div class="mem"><div>だい</div><div>麻美</div><div>タロ</div><div>のぞみ285 / 274</div></div>
+</div>
+<div class="scrollcue">SCROLL<span></span></div>
 </header>
+<nav><div class="in">
+<a href="#ticket">TICKET</a><a href="#depart">NIGHT RUN</a><a href="#morning">MORNING</a>
+<a href="#concert">CONCERT</a><a href="#tenma">TENMA</a><a href="#umeda">UMEDA</a>
+<a href="#home">HOMEWARD</a><a href="#map">MAP</a><a href="#trivia">TRIVIA</a><a href="#quiz">QUIZ</a><a href="#info">COST</a>
+</div></nav>
 
-<nav>
-  <div class="in">
-    <a href="#night">NIGHT DRIVE</a>
-    <a href="#onsen">MORNING BATH</a>
-    <a href="#osaka">OSAKA</a>
-    <a href="#back">RETURN</a>
-    <a href="#map">MAP</a>
-    <a href="#trivia">ROAD TRIVIA</a>
-    <a href="#quiz">QUIZ</a>
-    <a href="#info">COST &amp; NOTES</a>
-  </div>
-</nav>
-
-<!-- ================= 往路 ================= -->
-<section id="night"><div class="wrap">
-  <div class="shead">
-    <div class="en">NIGHT DRIVE</div>
-    <div class="jp">往路　三鷹 → 寝屋川　約490km</div>
-    <div class="ds">中央道から東富士五湖道路、新御殿場で新東名へ。深夜の高速をひたすら西へ。走行7時間半、休憩は3回。運転はだいさんと麻美さんの交代制で。</div>
-    <div class="rule"></div>
-  </div>
-  <div class="stops" id="s-night"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="三鷹 出発" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/1280px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg"><div class="time">22:30</div><div class="cap">三鷹</div><div class="ttl"><div class="mini">DEPARTURE</div><h3>三鷹 出発</h3></div></div><div class="bd"><p>出発前に満タン給油。荷物は後席1名分を空けて積むと、休憩中に交代で横になれます。</p><div class="tip">三鷹という地名は、世田谷・府中・野方——3つの御鷹場が重なる場所だったことに由来します。今日はその「三つの鷹の地」から西へ。</div><div class="acts"><a class="btn k" href="yjcarnavi://navi/select?lat=35.68361&lon=139.55944&name=%E4%B8%89%E9%B7%B9%E5%B8%82">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E9%B7%B9%E5%B8%82">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="調布IC から中央道へ" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg/1280px-%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg"><div class="time">22:45</div><div class="cap">夏の天の川</div><div class="ttl"><div class="mini">CHUO EXPWY</div><h3>調布IC から中央道へ</h3></div></div><div class="bd"><p>金曜の夜、都心を抜けて一気に山へ。八王子を過ぎると空が暗くなります。</p><div class="tip">深夜割引は0:00〜4:00に高速上にいればOK。この行程だと中央道〜新東名でちょうど時間帯に入ります。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E8%AA%BF%E5%B8%83%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%81%E3%82%A7%E3%83%B3%E3%82%B8">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="河口湖IC → 東富士五湖道路" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mt.Fuji_from_Mierula.jpg/1280px-Mt.Fuji_from_Mierula.jpg"><div class="time">0:00</div><div class="cap">富士山</div><div class="ttl"><div class="mini">MT.FUJI</div><h3>河口湖IC → 東富士五湖道路</h3></div></div><div class="bd"><p>標高が上がって外気温が下がります。窓を少し開けると空気が変わるのが分かるはず。</p><div class="tip">晴れて月が出ていれば、東富士五湖道路から富士山のシルエットが見えます。8月1日は月齢18前後で、後半に月が昇ります。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%B2%B3%E5%8F%A3%E6%B9%96%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%81%E3%82%A7%E3%83%B3%E3%82%B8">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="新御殿場IC → 新東名" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg/1280px-Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg"><div class="time">0:20</div><div class="cap">新東名高速</div><div class="ttl"><div class="mini">SHIN-TOMEI</div><h3>新御殿場IC → 新東名</h3></div></div><div class="bd"><p>ここから道が一気に広く、まっすぐになります。深夜のいちばん走りやすい区間。</p><div class="tip">新東名は設計速度140km/h。新静岡〜森掛川は日本で初めて最高速度120km/hになった区間です。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%BE%A1%E6%AE%BF%E5%A0%B4%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%81%E3%82%A7%E3%83%B3%E3%82%B8">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="駿河湾沼津SA（休憩①・20分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Surugawan-Numazu_SA_JD21a16b.jpg/1280px-Surugawan-Numazu_SA_JD21a16b.jpg"><div class="time">0:35</div><div class="cap">駿河湾沼津SA</div><div class="ttl"><div class="mini">REST 01</div><h3>駿河湾沼津SA（休憩①・20分）</h3></div></div><div class="bd"><p>上り線は駿河湾を見下ろす高台。深夜でも夜景がきれいです。ここで最初の交代を。</p><div class="tip">駿河湾は日本一深い湾で、最深部は約2,500m。だから桜えびもタカアシガニもここでしか揚がりません。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://sapa.c-nexco.co.jp/">NEXCO中日本 SA・PA情報</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E9%A7%BF%E6%B2%B3%E6%B9%BE%E6%B2%BC%E6%B4%A5%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A8%E3%83%AA%E3%82%A2">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="NEOPASA浜松（休憩②＋給油①・20分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Hamamatsu_SA_of_SHIN-TOMEI_EXPWY.JPG/1280px-Hamamatsu_SA_of_SHIN-TOMEI_EXPWY.JPG"><div class="time">2:10</div><div class="cap">浜松SA（新東名）</div><div class="ttl"><div class="mini">REST 02 ／ FUEL 01</div><h3>NEOPASA浜松（休憩②＋給油①・20分）</h3></div></div><div class="bd"><p>ここで満タンにしておけば、大阪滞在中の給油は不要になります。24時間営業のフードコートあり。</p><div class="tip">深夜はスタンドが閉まる店舗があります。万一閉まっていたら静岡SAか駿河湾沼津SAへ。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://sapa.c-nexco.co.jp/">NEXCO中日本 SA・PA情報</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=NEOPASA%E6%B5%9C%E6%9D%BE">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="刈谷PA（休憩③・20分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Kariya_Highway_Oasis_20181008N.JPG/1280px-Kariya_Highway_Oasis_20181008N.JPG"><div class="time">3:40</div><div class="cap">刈谷ハイウェイオアシス</div><div class="ttl"><div class="mini">REST 03</div><h3>刈谷PA（休憩③・20分）</h3></div></div><div class="bd"><p>3回目の休憩。ここを過ぎたら残りは名神・京滋バイパスで一気に。</p><div class="tip">刈谷はトヨタグループ発祥の地。豊田自動織機・デンソー・アイシンの本社がこの街に集まっています。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://kariya-oasis.com/">刈谷ハイウェイオアシス 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E5%88%88%E8%B0%B7%E3%83%8F%E3%82%A4%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%AA%E3%82%A2%E3%82%B7%E3%82%B9">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="瀬田東JCT → 京滋バイパス → 第二京阪" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg/1280px-Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg"><div class="time">5:45</div><div class="cap">琵琶湖・大津</div><div class="ttl"><div class="mini">KYOTO BYPASS</div><h3>瀬田東JCT → 京滋バイパス → 第二京阪</h3></div></div><div class="bd"><p>夜が明けます。瀬田川を渡ると、あとは大阪まで下るだけ。</p><div class="tip">琵琶湖から流れ出す川は瀬田川ただ1本。宇治川、淀川と名を変えて大阪湾へ注ぎます。今日走る道は、ほぼこの水の流れをなぞっています。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E7%94%B0%E6%9D%B1%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="東香里湯元 水春 着" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Onsen_in_Nachikatsuura%2C_Japan.jpg/1280px-Onsen_in_Nachikatsuura%2C_Japan.jpg"><div class="time">6:00</div><div class="cap">温泉（イメージ）</div><div class="ttl"><div class="mini">ARRIVAL</div><h3>東香里湯元 水春 着</h3></div></div><div class="bd"><p>寝屋川北ICを降りてすぐ。駐車場320台・無料。土日祝は6:00オープンなので、ちょうど開店と同時に入れます。</p><div class="tip">走行 約490km。80km/h・休憩3回（各20分）想定の到着時刻です。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://suisyun.jp/neyagawa/">東香里湯元 水春 公式サイト</a><a class="btn k" href="yjcarnavi://navi/select?lat=34.775385&lon=135.657201&name=%E6%9D%B1%E9%A6%99%E9%87%8C%E6%B9%AF%E5%85%83%20%E6%B0%B4%E6%98%A5">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E9%A6%99%E9%87%8C%E6%B9%AF%E5%85%83%20%E6%B0%B4%E6%98%A5">GOOGLEマップ</a></div></div></article></div>
+<section id="ticket"><div class="wrap">
+ <div class="shead"><div class="en">TICKET</div><div class="jp">きっぷ・座席</div><div class="rule"></div></div>
+ <div class="tick">
+  <div class="tk"><div class="lab">OUTBOUND ／ 7.31 FRI</div><div class="train">NOZOMI 285</div>
+   <div class="seat">5号車 10番 A・B・C</div>
+   <div class="meta">東京 19:48 発 → 新大阪 22:15 着（2時間27分）<br>全席指定。19:40には新幹線ホームへ。</div></div>
+  <div class="tk"><div class="lab">INBOUND ／ 8.1 SAT</div><div class="train">NOZOMI 274</div>
+   <div class="seat">6号車 11番 A・B・C</div>
+   <div class="meta">新大阪 18:15 発 → 東京 20:45 着（2時間30分）<br>17:55にはホームへ。富士山は左側の窓。</div></div>
+ </div>
 </div></section>
 
-<!-- ================= 水春 ================= -->
-<section id="onsen"><div class="wrap">
-  <div class="shead">
-    <div class="en">MORNING BATH</div>
-    <div class="jp">東香里湯元 水春　6:00 → 8:30</div>
-    <div class="ds">寝屋川北ICを降りてすぐ。天然温泉「長者の湯」と高濃度炭酸泉で夜通しの運転をリセットして、朝食と仮眠まで済ませてしまう。</div>
-    <div class="rule"></div>
-  </div>
-  <div class="stops" id="s-onsen"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="入浴（長者の湯・高濃度炭酸泉・露天岩風呂）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Yufuin_Onsen_Rotenburo.JPG/1280px-Yufuin_Onsen_Rotenburo.JPG"><div class="time">6:05</div><div class="cap">露天風呂（イメージ）</div><div class="ttl"><div class="mini">BATH</div><h3>入浴（長者の湯・高濃度炭酸泉・露天岩風呂）</h3></div></div><div class="bd"><p>天然温泉「長者の湯」に、高濃度炭酸泉と露天岩風呂。夜通しの運転で固まった身体をまずほぐします。大人1,050円、岩盤浴は別料金。中学生以上は大人料金です。</p><div class="tip">炭酸泉はぬるめでじっくり入るほうが効きます。熱い湯で一気に温めると、そのあと眠くなりすぎるので注意。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://suisyun.jp/neyagawa/">水春 公式サイト</a><a class="btn k" href="yjcarnavi://navi/select?lat=34.775385&lon=135.657201&name=%E6%9D%B1%E9%A6%99%E9%87%8C%E6%B9%AF%E5%85%83%20%E6%B0%B4%E6%98%A5">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E9%A6%99%E9%87%8C%E6%B9%AF%E5%85%83%20%E6%B0%B4%E6%98%A5">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="朝食（お食事処 水春亭）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Takoyaki.jpg/1280px-Takoyaki.jpg"><div class="time">7:00</div><div class="cap">大阪の粉もん</div><div class="ttl"><div class="mini">BREAKFAST</div><h3>朝食（お食事処 水春亭）</h3></div></div><div class="bd"><p>7:00から営業。日祝限定の朝食バイキングは土曜は非実施なので、通常メニューでの利用になります。</p><div class="tip">このあと仮眠を取るなら、朝食は軽めに。がっつり食べると起きられなくなります。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://suisyun.jp/neyagawa/">水春 公式サイト</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="仮眠（岩盤浴エリアのリクライナー）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Onsen_in_Nachikatsuura%2C_Japan.jpg/1280px-Onsen_in_Nachikatsuura%2C_Japan.jpg"><div class="time">7:40</div><div class="cap">休憩処（イメージ）</div><div class="ttl"><div class="mini">NAP</div><h3>仮眠（岩盤浴エリアのリクライナー）</h3></div></div><div class="bd"><p>リクライニングチェアとコミック1万冊。50分あればひと眠りできます。タロは漫画で時間をつぶすのもあり。</p><div class="tip">仮眠は30〜50分が目安。それ以上寝ると深い睡眠に入って、起きたあとかえってだるくなります。</div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="出発 → 吹田へ（近畿道・中央環状 約35分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Osaka_Castle_02bs3200.jpg/1280px-Osaka_Castle_02bs3200.jpg"><div class="time">8:30</div><div class="cap">大阪城</div><div class="ttl"><div class="mini">DEPART</div><h3>出発 → 吹田へ（近畿道・中央環状 約35分）</h3></div></div><div class="bd"><p>朝風呂のあとは身体が緩みます。出発前にコーヒーを一杯。</p><div class="tip">土曜朝の近畿道は比較的空いています。ただし吹田JCT周辺は合流が多いので車線変更は早めに。</div><div class="acts"><a class="btn k" href="yjcarnavi://navi/select?lat=34.759952&lon=135.515501&name=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8">GOOGLEマップ</a></div></div></article></div>
-</div></section>
+<section id="depart"><div class="wrap"><div class="shead"><div class="en">NIGHT RUN</div><div class="jp">往路　三鷹 → 東京 → 新大阪</div><div class="ds">18:00に三鷹を出て、東京駅で麻美さんと合流。駅弁を買い込んで19:48ののぞみ285号へ。新大阪着は22:15。</div><div class="rule"></div></div><div class="stops"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="三鷹 出発（中央線快速）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/1280px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg"><div class="time">18:00</div><div class="cap">三鷹駅</div><div class="ttl"><div class="mini">DEPARTURE</div><h3>三鷹 出発（中央線快速）</h3></div></div><div class="bd"><p>だいさんとタロは中央線快速で東京駅へ。麻美さんは会社から直接、東京駅で合流します。三鷹から東京は約30分。</p><div class="tip">金曜18時台の中央線快速は下り方向が混みますが、上り（東京方面）は比較的座れます。</div><div class="acts"><a class="btn k" target="_blank" rel="noopener" href="https://transit.yahoo.co.jp/search/result?from=%E4%B8%89%E9%B7%B9&amp;to=%E6%9D%B1%E4%BA%AC">乗換案内</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%89%E9%B7%B9%E9%A7%85">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="東京駅で3人合流" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg/1280px-Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg"><div class="time">18:35</div><div class="cap">東京駅 丸の内駅舎</div><div class="ttl"><div class="mini">MEET UP</div><h3>東京駅で3人合流</h3></div></div><div class="bd"><p>待ち合わせは分かりやすい場所で。丸の内中央口か、新幹線の八重洲中央のりかえ口あたりが定番です。</p><div class="tip">赤レンガの丸の内駅舎は1914年完成、辰野金吾の設計。2012年に戦災で失われた3階部分とドームが復原されました。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%A7%85%20%E4%B8%B8%E3%81%AE%E5%86%85%E4%B8%AD%E5%A4%AE%E5%8F%A3">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="夕食の駅弁を購入（駅弁屋 祭）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ekiben.jpg/1280px-Ekiben.jpg"><div class="time">18:45</div><div class="cap">駅弁</div><div class="ttl"><div class="mini">EKIBEN</div><h3>夕食の駅弁を購入（駅弁屋 祭）</h3></div></div><div class="bd"><p>グランスタ東京1階、丸の内中央口改札側から新幹線のりば方面へ向かって中央通路の右側。営業は5:30〜22:00です。</p><div class="tip">金曜の夕方（16〜19時）は最も混む時間帯のひとつ。列ができていても回転は速いので、19:15までに並べば十分間に合います。飲み物は別の売店で買うと時短。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.gransta.jp/mall/gransta_tokyo/ekibenyamatsuri/">駅弁屋 祭 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%A7%85%E5%BC%81%E5%B1%8B%20%E7%A5%AD%20%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B9%E3%82%BF%E6%9D%B1%E4%BA%AC">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="のぞみ285号 発 ／ 5号車 10番 A・B・C席" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_Nozomi_in_Tokyo.jpg/1280px-Shinkansen_Nozomi_in_Tokyo.jpg"><div class="time">19:48</div><div class="cap">東海道新幹線</div><div class="ttl"><div class="mini">NOZOMI 285</div><h3>のぞみ285号 発 ／ 5号車 10番 A・B・C席</h3></div></div><div class="bd"><p>3列シート側のABC席。10番は車両のほぼ中央です。乗車は17番線または19番線あたり、電光掲示で確認を。</p><div class="tip">のぞみは全席指定。発車5分前にはホームにいたいので、19:40には移動を始めてください。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://railway.jr-central.co.jp/train_information/">JR東海 運行情報</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%A7%85%20%E6%96%B0%E5%B9%B9%E7%B7%9A%E3%83%9B%E3%83%BC%E3%83%A0">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="車中 2時間27分 ／ 雑学タイム" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_N700S-8000_721_8004_Inside_20220924.jpg/1280px-Shinkansen_N700S-8000_721_8004_Inside_20220924.jpg"><div class="time">19:48</div><div class="cap">N700S 車内</div><div class="ttl"><div class="mini">ON BOARD</div><h3>車中 2時間27分 ／ 雑学タイム</h3></div></div><div class="bd"><p>弁当を食べ終わったら、このしおりの「ROAD TRIVIA」を上から読んでいくと、ちょうど新大阪まで持ちます。通過する土地の順に並べてあります。</p><div class="tip">車内販売は東海道新幹線では終了しています。飲み物は東京駅で買っておいてください。デッキの自販機もありません。</div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="新大阪 着" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Platform_of_Shin-Osaka_Station_%28Tokaido-Sanyo_Shinkansen%29.JPG/1280px-Platform_of_Shin-Osaka_Station_%28Tokaido-Sanyo_Shinkansen%29.JPG"><div class="time">22:15</div><div class="cap">新大阪駅 新幹線ホーム</div><div class="ttl"><div class="mini">ARRIVAL</div><h3>新大阪 着</h3></div></div><div class="bd"><p>御堂筋線への乗り換えは中央口方面。ホテルへは地下鉄新大阪駅の7番出口が最寄りです。</p><div class="tip">この時間、駅ナカの店はほぼ閉まっています。夜食や朝の飲み物が必要なら、改札外のセブンイレブン（6:30〜23:30）で。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="SARASA HOTEL 新大阪 チェックイン" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/1280px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg"><div class="time">22:30</div><div class="cap">大阪の夜</div><div class="ttl"><div class="mini">CHECK IN</div><h3>SARASA HOTEL 新大阪 チェックイン</h3></div></div><div class="bd"><p>大阪市淀川区西中島7-1-17。地下鉄御堂筋線 新大阪駅7番出口から徒歩3分、JR新大阪駅1F正面口から徒歩7分です。</p><div class="tip">翌朝は8:00チェックアウト。荷物をまとめてから寝ると朝が10分早くなります。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://sarasahotels.com/hotel/shinosaka/">SARASA HOTEL 新大阪 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=SARASA%20HOTEL%20%E6%96%B0%E5%A4%A7%E9%98%AA">GOOGLEマップ</a></div></div></article></div></div></section>
+<section id="morning"><div class="wrap"><div class="shead"><div class="en">OSAKA MORNING</div><div class="jp">8/1 朝　新大阪 → 吹田</div><div class="ds">8:00チェックアウト。朝食をしっかり食べて、荷物をロッカーに預けたら身軽に吹田へ。</div><div class="rule"></div></div><div class="stops"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="チェックアウト" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Shin-Osaka_Station.jpg"><div class="time">8:00</div><div class="cap">新大阪駅</div><div class="ttl"><div class="mini">CHECK OUT</div><h3>チェックアウト</h3></div></div><div class="bd"><p>荷物を持って新大阪駅方面へ。朝食の店は駅の反対側（北東）なので、先に食べてから駅に戻る流れが効率的です。</p><div class="tip">今日は夕方まで身軽に動きたいので、朝食のあとに必ずコインロッカーへ寄ります。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=SARASA%20HOTEL%20%E6%96%B0%E5%A4%A7%E9%98%AA">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="朝食：がんこ 新大阪店" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Breakfast_at_Tamahan_Ryokan%2C_Kyoto.jpg/1280px-Breakfast_at_Tamahan_Ryokan%2C_Kyoto.jpg"><div class="time">8:15</div><div class="cap">和朝食</div><div class="ttl"><div class="mini">BREAKFAST</div><h3>朝食：がんこ 新大阪店</h3></div></div><div class="bd"><p>淀川区宮原4-1-21、ヴィアイン新大阪ウエスト1F。土曜も朝食6:00〜10:00で、和食・洋食が選べます。3人で座ってしっかり食べられる貴重な店。</p><div class="tip">ここで炭水化物を入れておくと、天満の昼呑みが楽になります。逆に食べ過ぎるとお昼が入らないので腹八分目で。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://gankosinosaka.owst.jp/">がんこ 新大阪店 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AF%BF%E5%8F%B8%20%E5%92%8C%E9%A3%9F%20%E3%81%8C%E3%82%93%E3%81%93%20%E6%96%B0%E5%A4%A7%E9%98%AA%E5%BA%97">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="新大阪駅のコインロッカーに荷物を預ける" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Platform_of_Shin-Osaka_Station_%28Tokaido-Sanyo_Shinkansen%29.JPG/1280px-Platform_of_Shin-Osaka_Station_%28Tokaido-Sanyo_Shinkansen%29.JPG"><div class="time">9:05</div><div class="cap">新大阪駅</div><div class="ttl"><div class="mini">LOCKER</div><h3>新大阪駅のコインロッカーに荷物を預ける</h3></div></div><div class="bd"><p>帰りも新大阪発なので、ここに預けるのが一番合理的です。3人分のバッグをまとめて中〜大サイズに。</p><div class="tip">土曜朝はまだ空いています。9時台なら選び放題。逆に夕方は空きが減るので、ここで確保しておく意味は大きいです。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85%20%E3%82%B3%E3%82%A4%E3%83%B3%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="JR新大阪 → JR吹田（京都線・約6分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG/1280px-JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG"><div class="time">9:20</div><div class="cap">阪急梅田駅</div><div class="ttl"><div class="mini">JR KYOTO LINE</div><h3>JR新大阪 → JR吹田（京都線・約6分）</h3></div></div><div class="bd"><p>乗換なしで6分。普通電車で2駅です。</p><div class="tip">快速は吹田に停まりません。必ず「普通」に乗ってください。</div><div class="acts"><a class="btn k" target="_blank" rel="noopener" href="https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%A4%A7%E9%98%AA&amp;to=%E5%90%B9%E7%94%B0">乗換案内</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=JR%E5%90%B9%E7%94%B0%E9%A7%85">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="JR吹田駅 → メイシアター（徒歩15分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/1280px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg"><div class="time">9:35</div><div class="cap">徒歩ルート</div><div class="ttl"><div class="mini">WALK</div><h3>JR吹田駅 → メイシアター（徒歩15分）</h3></div></div><div class="bd"><p>中央出口を出て線路沿いに進み、阪急吹田駅を越えて地下道経由。メイシアターは阪急吹田駅前すぐです。</p><div class="tip">JR吹田からは徒歩15分。阪急吹田駅が使えるなら駅前すぐなので、帰りは阪急を使います。</div><div class="acts"><a class="btn k" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;origin=JR%E5%90%B9%E7%94%B0%E9%A7%85&amp;destination=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8">徒歩ルート</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8">GOOGLEマップ</a></div></div></article></div></div></section>
+<section id="concert"><div class="wrap"><div class="shead"><div class="en">CONCERT</div><div class="jp">メイシアター　10:00 → 12:00</div><div class="ds">今日の本丸、全国マンドリンコンクール。会場は阪急吹田駅前です。</div><div class="rule"></div></div><div class="stops"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="メイシアター 着（開場9:00）" src="https://upload.wikimedia.org/wikipedia/commons/5/52/American_Ideal_Mandolin_Orchestra_%288654615121%29.jpg"><div class="time">9:50</div><div class="cap">マンドリンオーケストラ</div><div class="ttl"><div class="mini">ARRIVE</div><h3>メイシアター 着（開場9:00）</h3></div></div><div class="bd"><p>吹田市泉町2-29-1。大ホールは約1,400席あります。</p><div class="tip">大ホールは音がよく回ります。マンドリンのトレモロは客席後方でも意外なほど届くので、席は焦らなくて大丈夫。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://maytheater.jp/access/">メイシアター アクセス</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="全国マンドリンコンクール 鑑賞" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Neapolitan_mandolin.jpg"><div class="time">10:00</div><div class="cap">ナポリ式マンドリン</div><div class="ttl"><div class="mini">MAIN EVENT</div><h3>全国マンドリンコンクール 鑑賞</h3></div></div><div class="bd"><p>今日の本丸。12:00ごろまで。</p><div class="tip">マンドリンは18世紀のナポリ生まれ。日本には1901年に比留間賢八が持ち込み、大正期に学生の間で大流行しました。学生マンドリンオーケストラがこれだけ盛んな国は、世界を見ても日本くらいです。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://maytheater.jp/">メイシアター 公式</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="阪急吹田 → 天神橋筋六丁目（千里線・約12分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG/1280px-JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG"><div class="time">12:10</div><div class="cap">阪急電車</div><div class="ttl"><div class="mini">MOVE</div><h3>阪急吹田 → 天神橋筋六丁目（千里線・約12分）</h3></div></div><div class="bd"><p>メイシアターは阪急吹田駅前。千里線に乗れば天神橋筋六丁目まで一直線、乗換なしで着きます。</p><div class="tip">千里線は天神橋筋六丁目からOsaka Metro堺筋線に直通する電車が多いので、行き先表示（天下茶屋行きなど）を確認して乗れば天六は必ず停まります。</div><div class="acts"><a class="btn k" target="_blank" rel="noopener" href="https://transit.yahoo.co.jp/search/result?from=%E5%90%B9%E7%94%B0%28%E9%98%AA%E6%80%A5%29&amp;to=%E5%A4%A9%E7%A5%9E%E6%A9%8B%E7%AD%8B%E5%85%AD%E4%B8%81%E7%9B%AE">乗換案内</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E7%A5%9E%E6%A9%8B%E7%AD%8B%E5%85%AD%E4%B8%81%E7%9B%AE%E9%A7%85">GOOGLEマップ</a></div></div></article></div></div></section>
+<section id="tenma"><div class="wrap"><div class="shead"><div class="en">TENMA</div><div class="jp">天満・天神橋筋　12:45 → 15:20</div><div class="ds">天六でうまい屋のたこ焼き、日本一長い商店街を南下して天満酒蔵で昼呑み。電車移動なので今日は飲めます。</div><div class="rule"></div></div><div class="stops"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="うまい屋のたこ焼き（天六すぐ）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Takoyaki.jpg/1280px-Takoyaki.jpg"><div class="time">12:45</div><div class="cap">たこ焼き</div><div class="ttl"><div class="mini">TAKOYAKI</div><h3>うまい屋のたこ焼き（天六すぐ）</h3></div></div><div class="bd"><p>北区浪花町4-21、天神橋筋六丁目からすぐ。11:30〜19:00、火曜休なので土曜は営業。創業70年超、ミシュランガイドのビブグルマンに載った老舗です。</p><div class="tip">ソースをかけない、生地の味で食べさせるたこ焼き。途中で生地を足す二度焼きが特徴です。まずここで一発かまして、商店街へ。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%86%E3%81%BE%E3%81%84%E5%B1%8B%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E6%B5%AA%E8%8A%B1%E7%94%BA4-21">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="天神橋筋商店街を南へ歩く" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Sh%C5%8Dtengai.jpg/1280px-Sh%C5%8Dtengai.jpg"><div class="time">13:15</div><div class="cap">商店街（イメージ）</div><div class="ttl"><div class="mini">ARCADE</div><h3>天神橋筋商店街を南へ歩く</h3></div></div><div class="bd"><p>天六から天満方面へアーケードを南下。天神橋筋商店街は南北約2.6kmで日本一長い商店街です。天六から天満駅までなら20〜25分。</p><div class="tip">端から端まで歩くと1時間近くかかります。今日歩く天六〜天満の区間に、安くて旨い店が集中しています。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E7%A5%9E%E6%A9%8B%E7%AD%8B%E5%95%86%E5%BA%97%E8%A1%97">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="昼呑み：天満酒蔵" src="https://upload.wikimedia.org/wikipedia/commons/1/11/Izakaya_ikenomedaka.jpg"><div class="time">13:40</div><div class="cap">大衆酒場（イメージ）</div><div class="ttl"><div class="mini">DAY DRINKING</div><h3>昼呑み：天満酒蔵</h3></div></div><div class="bd"><p>北区天神橋5-7-28。毎日11:30〜21:30（LO 21:00）。昭和44年創業、天神橋筋で半世紀以上続く家族経営の大衆酒場です。座席があるので3人でも落ち着いて飲めます。</p><div class="tip">ビール大瓶が400円台、一皿もの安い。立ち飲み専門店は中学生の入店を断る場合がありますが、ここは座席のある酒場です。それでも入口でひと声かけておくと確実。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://tenmasakagura.com/">天満酒蔵 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E6%BA%80%E9%85%92%E8%94%B5%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E5%A4%A9%E7%A5%9E%E6%A9%8B5-7-28">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="JR天満 → 大阪（環状線・約3分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Osaka_Castle_02bs3200.jpg/1280px-Osaka_Castle_02bs3200.jpg"><div class="time">15:20</div><div class="cap">大阪城</div><div class="ttl"><div class="mini">LOOP LINE</div><h3>JR天満 → 大阪（環状線・約3分）</h3></div></div><div class="bd"><p>環状線でたった1駅。天満駅は商店街のアーケードのすぐ脇なので迷いません。</p><div class="tip">ここで一度、酔いの具合を確認してください。このあと梅田で買い物、そして新幹線です。</div><div class="acts"><a class="btn k" target="_blank" rel="noopener" href="https://transit.yahoo.co.jp/search/result?from=%E5%A4%A9%E6%BA%80&amp;to=%E5%A4%A7%E9%98%AA">乗換案内</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=JR%E5%A4%A9%E6%BA%80%E9%A7%85">GOOGLEマップ</a></div></div></article></div></div></section>
+<section id="umeda"><div class="wrap"><div class="shead"><div class="en">UMEDA</div><div class="jp">梅田　15:40 → 17:20</div><div class="ds">阪急うめだ本店B1で土産をまとめ買いして、阪神のスナックパークでいか焼き。土曜はB1〜5Fが21:00まで営業です。</div><div class="rule"></div></div><div class="stops"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="阪急うめだ本店 B1 で大阪土産" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Umeda_Hankyu_Department_Store.JPG/1280px-Umeda_Hankyu_Department_Store.JPG"><div class="time">15:40</div><div class="cap">阪急うめだ本店</div><div class="ttl"><div class="mini">DEPACHIKA</div><h3>阪急うめだ本店 B1 で大阪土産</h3></div></div><div class="bd"><p>土曜は地下1階〜5階が21:00まで。公式フロアガイドで確認したところ、B1には551蓬莱、モンシェール（堂島ロール）、五感、バトンドール、グランカルビーが揃っています。ここだけで完結します。</p><div class="tip">阪急百貨店は1929年、世界で初めて「ターミナルデパート」を作った店。駅そのものに百貨店を建てる発想はここから始まりました。小林一三の発明です。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.hankyu-dept.co.jp/honten/floor/floorb1.html">阪急うめだ本店 B1 フロアガイド</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%98%AA%E6%80%A5%E3%81%86%E3%82%81%E3%81%A0%E6%9C%AC%E5%BA%97">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="阪神梅田本店 B1「スナックパーク」で いか焼き" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg/1280px-Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg"><div class="time">16:40</div><div class="cap">粉もん</div><div class="ttl"><div class="mini">IKAYAKI</div><h3>阪神梅田本店 B1「スナックパーク」で いか焼き</h3></div></div><div class="bd"><p>阪急から徒歩3分。10:00〜22:00（LO 21:30）。1978年からある阪神の名物フードコートで、看板は「阪神名物いか焼き」。安い・早い・旨いを立ったまま。</p><div class="tip">いか焼きは小麦粉の生地にイカを混ぜて鉄板で圧着した、大阪独自の粉もん。関東でいう「イカの姿焼き」とは別物です。最後の大阪らしさをここで回収。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.hanshin-dept.jp/">阪神梅田本店 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%98%AA%E7%A5%9E%E6%A2%85%E7%94%B0%E6%9C%AC%E5%BA%97%20%E3%82%B9%E3%83%8A%E3%83%83%E3%82%AF%E3%83%91%E3%83%BC%E3%82%AF">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="大阪 → 新大阪（JR・約4分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg/1280px-Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg"><div class="time">17:20</div><div class="cap">梅田スカイビル</div><div class="ttl"><div class="mini">LAST TRAIN</div><h3>大阪 → 新大阪（JR・約4分）</h3></div></div><div class="bd"><p>土曜夕方の大阪駅は混みます。17:20には梅田を離れてください。</p><div class="tip">ここだけは絶対に余裕を持って。のぞみは全席指定なので、乗り遅れると振替に手間がかかります。</div><div class="acts"><a class="btn k" target="_blank" rel="noopener" href="https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA&amp;to=%E6%96%B0%E5%A4%A7%E9%98%AA">乗換案内</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%98%AA%E9%A7%85">GOOGLEマップ</a></div></div></article></div></div></section>
+<section id="home"><div class="wrap"><div class="shead"><div class="en">HOMEWARD</div><div class="jp">復路　新大阪 → 東京 → 三鷹</div><div class="ds">551の豚まんを積んで18:15発。東京着20:45、三鷹には21:20ごろ。</div><div class="rule"></div></div><div class="stops"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="ロッカー回収＋551蓬莱の豚まん" src="https://upload.wikimedia.org/wikipedia/commons/8/87/Nikuman.jpg"><div class="time">17:40</div><div class="cap">豚まん</div><div class="ttl"><div class="mini">551</div><h3>ロッカー回収＋551蓬莱の豚まん</h3></div></div><div class="bd"><p>551蓬莱は改札内・改札外とも9:00〜21:30。豚まんは日持ちしないので、梅田では買わずにここで最後に。改札内の「おみやげ街道」（6:30〜22:00）で、たこパティエ・月化粧・Jagabeeたこ焼き味を買い足せば職場配りまで揃います。</p><div class="tip">551の豚まんは1日平均およそ17万個売れます。夏場は保冷剤を付けてもらうか、チルド商品を選ぶと安心。新幹線の車内はにおいが出るので、食べるのは家に帰ってから。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.551horai.co.jp/">551蓬莱 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=551%E8%93%AC%E8%8E%B1%20%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="のぞみ274号 発 ／ 6号車 11番 A・B・C席" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_Nozomi_in_Tokyo.jpg/1280px-Shinkansen_Nozomi_in_Tokyo.jpg"><div class="time">18:15</div><div class="cap">東海道新幹線</div><div class="ttl"><div class="mini">NOZOMI 274</div><h3>のぞみ274号 発 ／ 6号車 11番 A・B・C席</h3></div></div><div class="bd"><p>17:55にはホームへ。往路と同じ3列側のABC席です。</p><div class="tip">上り列車では富士山は進行方向の左側。19時前後に三島〜新富士あたりを通過するので、夏なら空がまだ明るく、シルエットが見えるかもしれません。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://railway.jr-central.co.jp/train_information/">JR東海 運行情報</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85%20%E6%96%B0%E5%B9%B9%E7%B7%9A%E3%83%9B%E3%83%BC%E3%83%A0">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="東京 着" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg/1280px-Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg"><div class="time">20:45</div><div class="cap">東京駅</div><div class="ttl"><div class="mini">TOKYO</div><h3>東京 着</h3></div></div><div class="bd"><p>中央線快速で三鷹へ。土曜夜の中央線は本数が多いので、階段を上がってすぐ乗れます。</p><div class="tip">お土産が重いので、乗り換えは無理せずエスカレーターを使ってください。</div><div class="acts"><a class="btn k" target="_blank" rel="noopener" href="https://transit.yahoo.co.jp/search/result?from=%E6%9D%B1%E4%BA%AC&amp;to=%E4%B8%89%E9%B7%B9">乗換案内</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%A7%85">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="三鷹 帰宅" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/1280px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg"><div class="time">21:20</div><div class="cap">三鷹</div><div class="ttl"><div class="mini">HOME</div><h3>三鷹 帰宅</h3></div></div><div class="bd"><p>1泊2日、往復約1,000km。おつかれさまでした。</p><div class="tip">551の豚まんは蒸し直すと買った時の味に戻ります。電子レンジよりも蒸し器か、濡らしたキッチンペーパーを巻いてレンジへ。</div></div></article></div></div></section>
 
-<!-- ================= 大阪 ================= -->
-<section id="osaka"><div class="wrap">
-  <div class="shead">
-    <div class="en">OSAKA DAY</div>
-    <div class="jp">吹田・梅田・堂島　9:05 → 13:45</div>
-    <div class="ds">今日の本丸、メイシアターの全国マンドリンコンクール。そのあとは梅田で粉もん、堂島でロールケーキを積んで折り返す。</div>
-    <div class="rule"></div>
-  </div>
-  <div class="stops" id="s-osaka"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="タイムズ阪急吹田駅前 着" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG/1280px-JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG"><div class="time">9:05</div><div class="cap">阪急梅田駅</div><div class="ttl"><div class="mini">PARKING</div><h3>タイムズ阪急吹田駅前 着</h3></div></div><div class="bd"><p>メイシアターまで歩いてすぐ。満車のときは周辺のコインパーキングへ。</p><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://times-info.net/P27-osaka/C205/park-detail-BUK0019650/">タイムズ阪急吹田駅前</a><a class="btn k" href="yjcarnavi://navi/select?lat=34.759952&lon=135.515501&name=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BA%E9%98%AA%E6%80%A5%E5%90%B9%E7%94%B0%E9%A7%85%E5%89%8D">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="全国マンドリンコンクール 鑑賞" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Neapolitan_mandolin.jpg"><div class="time">9:30</div><div class="cap">ナポリ式マンドリン</div><div class="ttl"><div class="mini">MAIN EVENT</div><h3>全国マンドリンコンクール 鑑賞</h3></div></div><div class="bd"><p>開場9:00、鑑賞は12:00まで。今日いちばんの目的地。大ホールは約1,400席あります。</p><div class="tip">マンドリンは18世紀のナポリ生まれ。日本には1901年に比留間賢八が持ち込み、大正期に学生の間で大流行しました。学生マンドリンオーケストラがこれだけ盛んな国は、世界を見ても日本くらいです。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://maytheater.jp/access/">メイシアター アクセス</a><a class="btn k" href="yjcarnavi://navi/select?lat=34.759952&lon=135.515501&name=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="駐車場 出庫 → 梅田へ" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg/1280px-Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg"><div class="time">12:15</div><div class="cap">梅田スカイビル</div><div class="ttl"><div class="mini">MOVE</div><h3>駐車場 出庫 → 梅田へ</h3></div></div><div class="bd"><p>新御堂筋で梅田まで約20分。土曜昼の梅田周辺は駐車場が埋まりやすいので、早めに入庫先を決めておくと安心。</p><div class="tip">梅田はもともと「埋田」。低湿地を埋め立てた田んぼでした。縁起を担いで「梅」の字に変えたと伝わります。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%A2%85%E7%94%B0%20%E9%A7%90%E8%BB%8A%E5%A0%B4">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="新梅田食道街「はなだこ」" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg/1280px-Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg"><div class="time">12:45</div><div class="cap">たこ焼き屋台</div><div class="ttl"><div class="mini">LUNCH</div><h3>新梅田食道街「はなだこ」</h3></div></div><div class="bd"><p>大阪駅の高架下、100軒近くがひしめく食道街。はなだこのたこ焼きは立ち食い・テイクアウトなので3人でも大丈夫。</p><div class="tip">たこ焼きの誕生は1935年。会津屋の遠藤留吉が、明石焼きにヒントを得て「ラヂオ焼き」の中身を蛸に変えたのが始まりです。ラヂオは当時の最先端の贅沢品でした。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://shinume.com/">新梅田食道街 公式サイト</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E6%A2%85%E7%94%B0%E9%A3%9F%E9%81%93%E8%A1%97">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="モンシェール堂島本店（堂島ロール）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/HK_Food_Swiss_Roll_Saint_Honore_Cake.JPG/1280px-HK_Food_Swiss_Roll_Saint_Honore_Cake.JPG"><div class="time">13:30</div><div class="cap">ロールケーキ（イメージ）</div><div class="ttl"><div class="mini">SWEETS</div><h3>モンシェール堂島本店（堂島ロール）</h3></div></div><div class="bd"><p>土曜は10:00〜18:00。買ってすぐ保冷して積み込み、家で食べるのが正解。</p><div class="tip">堂島は1730年に幕府公認となった米市場の地。世界で初めて整備された先物取引所で、いまのローソク足チャートもここで生まれました。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.mon-cher.com/shoplist/osaka_dojimahonten.php">モンシェール堂島本店 公式</a><a class="btn k" href="yjcarnavi://navi/select?lat=34.694797&lon=135.495414&name=%E3%83%A2%E3%83%B3%E3%82%B7%E3%82%A7%E3%83%BC%E3%83%AB%E5%A0%82%E5%B3%B6%E6%9C%AC%E5%BA%97">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A2%E3%83%B3%E3%82%B7%E3%82%A7%E3%83%BC%E3%83%AB%20%E5%A0%82%E5%B3%B6%E6%9C%AC%E5%BA%97">GOOGLEマップ</a></div></div></article></div>
-</div></section>
-
-<!-- ================= 復路 ================= -->
-<section id="back"><div class="wrap">
-  <div class="shead">
-    <div class="en">RETURN</div>
-    <div class="jp">復路　堂島 → 三鷹　約530km</div>
-    <div class="ds">阪神高速から名神へ。土山で給油、刈谷で夕食。最大のリスクは中央道上りの土曜夕方渋滞。</div>
-    <div class="rule"></div>
-  </div>
-  <div class="stops" id="s-back"><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="堂島 出発（阪神高速 → 名神）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/1280px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg"><div class="time">13:45</div><div class="cap">道頓堀</div><div class="ttl"><div class="mini">DEPART</div><h3>堂島 出発（阪神高速 → 名神）</h3></div></div><div class="bd"><p>保冷剤とクーラーボックスがあるとロールケーキが安心。阪神高速の入口は堂島から近い出入口を選んで。</p><div class="tip">土曜午後の阪神高速環状線は混みます。11号池田線経由で豊中から名神に乗るルートも検討を。</div><div class="acts"><a class="btn k" href="yjcarnavi://navi/select?lat=35.68361&lon=139.55944&name=%E4%B8%89%E9%B7%B9%E5%B8%82">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E5%A0%82%E5%B3%B6">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="土山SA（休憩＋給油②・20分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Tsuchiyama-_Picture_of_the_Suzuka_Mountains_%285759539194%29.jpg/1280px-Tsuchiyama-_Picture_of_the_Suzuka_Mountains_%285759539194%29.jpg"><div class="time">15:30</div><div class="cap">鈴鹿山脈（土山）</div><div class="ttl"><div class="mini">FUEL 02</div><h3>土山SA（休憩＋給油②・20分）</h3></div></div><div class="bd"><p>ここで満タンにすれば、帰宅までの約380kmは余裕を持って走れます。</p><div class="tip">土山は東海道五十三次の49番目の宿場町。「坂は照る照る 鈴鹿は曇る あいの土山 雨が降る」——鈴鹿馬子唄で知られる、雨の多い峠です。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://sapa.c-nexco.co.jp/">NEXCO中日本 SA・PA情報</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E5%9C%9F%E5%B1%B1%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A8%E3%83%AA%E3%82%A2">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="刈谷ハイウェイオアシス（夕食・50分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Kariya_Highway_Oasis_20181008N.JPG/1280px-Kariya_Highway_Oasis_20181008N.JPG"><div class="time">16:30</div><div class="cap">刈谷ハイウェイオアシス</div><div class="ttl"><div class="mini">DINNER</div><h3>刈谷ハイウェイオアシス（夕食・50分）</h3></div></div><div class="bd"><p>フードコートに地元の人気店が揃っていて、3人でも席が取りやすい。観覧車と天然温泉もあります。</p><div class="tip">ここは「日本一集客する道の駅」と言われる施設。年間800万人以上が訪れます。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://kariya-oasis.com/">刈谷ハイウェイオアシス 公式</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E5%88%88%E8%B0%B7%E3%83%8F%E3%82%A4%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%AA%E3%82%A2%E3%82%B7%E3%82%B9">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="浜松SA（休憩・15分）" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Lake_Hamana.JPG/1280px-Lake_Hamana.JPG"><div class="time">18:30</div><div class="cap">浜名湖</div><div class="ttl"><div class="mini">REST</div><h3>浜松SA（休憩・15分）</h3></div></div><div class="bd"><p>最後の長めの休憩。ここから河口湖まで2時間、集中力の勝負です。</p><div class="tip">浜名湖はもともと淡水湖でした。1498年の明応地震の津波で砂州が切れて「今切」ができ、海とつながる汽水湖に。うなぎ養殖に向くのはこの汽水のおかげです。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%B5%9C%E6%9D%BE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A8%E3%83%AA%E3%82%A2">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="河口湖IC" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mt.Fuji_from_Mierula.jpg/1280px-Mt.Fuji_from_Mierula.jpg"><div class="time">20:35</div><div class="cap">富士山</div><div class="ttl"><div class="mini">CHUO</div><h3>河口湖IC</h3></div></div><div class="bd"><p>ここから中央道の上り。土曜夕方〜夜は大月〜八王子でサグ渋滞が起きやすい区間に入ります。</p><div class="tip">渋滞の多くは上り坂で無意識に速度が落ちることから始まります。車間を詰めずに、一定速度を保つのがいちばんの渋滞対策。</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.jartic.or.jp/">道路交通情報センター</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%B2%B3%E5%8F%A3%E6%B9%96%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%81%E3%82%A7%E3%83%B3%E3%82%B8">GOOGLEマップ</a></div></div></article><article class="stop"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="三鷹 帰宅" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/1280px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg"><div class="time">21:55</div><div class="cap">三鷹</div><div class="ttl"><div class="mini">HOME</div><h3>三鷹 帰宅</h3></div></div><div class="bd"><p>約1,020kmの日帰り。おつかれさまでした。堂島ロールは冷蔵庫へ。</p><div class="tip">帰宅したらまず水分を。長時間運転のあとは自覚がなくても脱水気味になっています。</div><div class="acts"><a class="btn k" href="yjcarnavi://navi/select?lat=35.68361&lon=139.55944&name=%E4%B8%89%E9%B7%B9%E5%B8%82">YAHOO!カーナビ</a><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E9%B7%B9%E5%B8%82">GOOGLEマップ</a></div></div></article></div>
-</div></section>
-
-<!-- ================= MAP ================= -->
 <section id="map"><div class="wrap">
-  <div class="shead">
-    <div class="en">ROUTE MAP</div>
-    <div class="jp">全行程マップ（Googleマップ）</div>
-    <div class="ds">三鷹 → 水春 → メイシアター → 新梅田食道街 → モンシェール堂島本店 → 刈谷ハイウェイオアシス → 三鷹。地図をタップすると拡大表示になります。</div>
-    <div class="rule"></div>
-  </div>
-  <div class="mapbox">
-    <iframe id="gmap" src="https://maps.google.com/maps?hl=ja&amp;output=embed&amp;saddr=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%89%E9%B7%B9%E5%B8%82&amp;daddr=%E6%9D%B1%E9%A6%99%E9%87%8C%E6%B9%AF%E5%85%83%E6%B0%B4%E6%98%A5%20%E5%AF%9D%E5%B1%8B%E5%B7%9D%E5%B8%82%E5%AF%9D%E5%B1%8B%E5%8C%97%E7%94%BA2-1+to:%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8+to:%E3%83%A2%E3%83%B3%E3%82%B7%E3%82%A7%E3%83%BC%E3%83%AB%E5%A0%82%E5%B3%B6%E6%9C%AC%E5%BA%97+to:%E5%88%88%E8%B0%B7%E3%83%8F%E3%82%A4%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%AA%E3%82%A2%E3%82%B7%E3%82%B9+to:%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%89%E9%B7%B9%E5%B8%82" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="全行程マップ"></iframe>
-    <div class="mapnote">地図が表示されないときは下のボタンからGoogleマップアプリで開いてください。</div>
-  </div>
-  <div class="acts" style="margin-top:18px">
-    <a class="btn k" id="mapall" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=driving&amp;origin=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%89%E9%B7%B9%E5%B8%82&amp;destination=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%89%E9%B7%B9%E5%B8%82&amp;waypoints=%E6%9D%B1%E9%A6%99%E9%87%8C%E6%B9%AF%E5%85%83%E6%B0%B4%E6%98%A5%20%E5%AF%9D%E5%B1%8B%E5%B7%9D%E5%B8%82%E5%AF%9D%E5%B1%8B%E5%8C%97%E7%94%BA2-1%7C%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8%7C%E6%96%B0%E6%A2%85%E7%94%B0%E9%A3%9F%E9%81%93%E8%A1%97%7C%E3%83%A2%E3%83%B3%E3%82%B7%E3%82%A7%E3%83%BC%E3%83%AB%E5%A0%82%E5%B3%B6%E6%9C%AC%E5%BA%97%7C%E5%88%88%E8%B0%B7%E3%83%8F%E3%82%A4%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%AA%E3%82%A2%E3%82%B7%E3%82%B9" target="_blank" rel="noopener">GOOGLEマップで全ルートを開く</a>
-    <a class="btn" id="mapout" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=driving&amp;origin=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%89%E9%B7%B9%E5%B8%82&amp;destination=%E6%9D%B1%E9%A6%99%E9%87%8C%E6%B9%AF%E5%85%83%E6%B0%B4%E6%98%A5%20%E5%AF%9D%E5%B1%8B%E5%B7%9D%E5%B8%82%E5%AF%9D%E5%B1%8B%E5%8C%97%E7%94%BA2-1&amp;waypoints=%E6%B2%B3%E5%8F%A3%E6%B9%96%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%81%E3%82%A7%E3%83%B3%E3%82%B8%7CNEOPASA%E6%B5%9C%E6%9D%BE%7C%E5%88%88%E8%B0%B7%E3%83%91%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%A8%E3%83%AA%E3%82%A2" target="_blank" rel="noopener">往路だけ見る</a>
-    <a class="btn" id="mapin" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=driving&amp;origin=%E3%83%A2%E3%83%B3%E3%82%B7%E3%82%A7%E3%83%BC%E3%83%AB%E5%A0%82%E5%B3%B6%E6%9C%AC%E5%BA%97&amp;destination=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%89%E9%B7%B9%E5%B8%82&amp;waypoints=%E5%9C%9F%E5%B1%B1%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A8%E3%83%AA%E3%82%A2%7C%E5%88%88%E8%B0%B7%E3%83%8F%E3%82%A4%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%AA%E3%82%A2%E3%82%B7%E3%82%B9%7C%E6%B5%9C%E6%9D%BE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A8%E3%83%AA%E3%82%A2" target="_blank" rel="noopener">復路だけ見る</a>
-  </div>
+ <div class="shead"><div class="en">CITY MAP</div><div class="jp">8/1 大阪市内の動き</div>
+  <div class="ds">新大阪 → メイシアター（吹田）→ 天満 → 梅田 → 新大阪。位置関係の把握用です。実際の乗換は各行程の「乗換案内」ボタンから。</div>
+  <div class="rule"></div></div>
+ <div class="mapbox"><iframe src="https://maps.google.com/maps?hl=ja&amp;output=embed&amp;saddr=%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85&amp;daddr=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8+to:%E5%A4%A9%E6%BA%80%E9%A7%85+to:%E9%98%AA%E6%80%A5%E3%81%86%E3%82%81%E3%81%A0%E6%9C%AC%E5%BA%97+to:%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="大阪市内マップ"></iframe>
+  <div class="mapnote">地図が出ないときは下のボタンからGoogleマップアプリで開いてください。</div></div>
+ <div class="acts" style="margin-top:18px">
+  <a class="btn k" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=transit&amp;origin=%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85&amp;destination=%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85&amp;waypoints=%E3%83%A1%E3%82%A4%E3%82%B7%E3%82%A2%E3%82%BF%E3%83%BC%20%E5%90%B9%E7%94%B0%E5%B8%82%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8%7C%E5%A4%A9%E7%A5%9E%E6%A9%8B%E7%AD%8B%E5%95%86%E5%BA%97%E8%A1%97%7C%E9%98%AA%E6%80%A5%E3%81%86%E3%82%81%E3%81%A0%E6%9C%AC%E5%BA%97">GOOGLEマップで全ルート（公共交通）</a>
+  <a class="btn" target="_blank" rel="noopener" href="https://transit.yahoo.co.jp/">YAHOO!乗換案内</a>
+  <a class="btn" target="_blank" rel="noopener" href="https://railway.jr-central.co.jp/train_information/">JR東海 運行情報</a>
+ </div>
 </div></section>
 
-<!-- ================= TRIVIA ================= -->
 <section id="trivia"><div class="wrap">
-  <div class="shead">
-    <div class="en">ROAD TRIVIA</div>
-    <div class="jp">走りながら学ぶ　通過する土地の話</div>
-    <div class="ds">窓の外を流れていく土地には、それぞれ理由のある名前と歴史がある。運転していない人が読み上げると車内が持ちます。上から順に、走る順番に並んでいます。</div>
-    <div class="rule"></div>
-  </div>
-  <div class="tri" id="s-tri"><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="「三鷹」は鷹狩り場が3つ重なる地" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/1280px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg"><div class="where">MITAKA ／ 三鷹</div></div><div class="bd"><h4>「三鷹」は鷹狩り場が3つ重なる地</h4><p>江戸幕府の御鷹場が、世田谷・府中・野方の3領にまたがって置かれていた土地。その「三つの鷹場」が地名になりました。武蔵野の雑木林は、鷹狩りのために意図的に残された面もあります。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E4%B8%89%E9%B7%B9%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="談合坂は「村人が談合した坂」" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg/1280px-%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg"><div class="where">CHUO EXPWY ／ 談合坂</div></div><div class="bd"><h4>談合坂は「村人が談合した坂」</h4><p>中央道でおなじみの談合坂SA。名の由来は諸説ありますが、村人が寄り合って話し合い（＝談合）をした坂という説が有力です。今の「談合」の悪いイメージとは無関係。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E8%AB%87%E5%90%88%E5%9D%82%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A8%E3%83%AA%E3%82%A2">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="3つの湖は、もとは1つの湖だった" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mt.Fuji_from_Mierula.jpg/1280px-Mt.Fuji_from_Mierula.jpg"><div class="where">FUJI FIVE LAKES ／ 富士五湖</div></div><div class="bd"><h4>3つの湖は、もとは1つの湖だった</h4><p>本栖湖・精進湖・西湖は、かつて「せの海」という1つの大きな湖でした。864年の貞観大噴火で流れ出た溶岩が湖を分断し、3つに。いまも水位が連動するのは、地下でつながっている名残と考えられています。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E4%BA%94%E6%B9%96">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="家康の「御殿」があった場所" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg/1280px-Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg"><div class="where">GOTEMBA ／ 御殿場</div></div><div class="bd"><h4>家康の「御殿」があった場所</h4><p>御殿場の地名は、徳川家康の御殿が置かれたことに由来します。駿府と江戸を行き来する家康のための休憩所として建てられたもの。地名がそのまま建物の記録になっている例です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%BE%A1%E6%AE%BF%E5%A0%B4%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="日本で最初に120km/hになった道" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg/1280px-Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg"><div class="where">SHIN-TOMEI ／ 新東名</div></div><div class="bd"><h4>日本で最初に120km/hになった道</h4><p>新東名は設計速度140km/hで造られた高速道路。カーブが緩く車線幅も広い。2020年、新静岡〜森掛川が日本で初めて最高速度120km/hに引き上げられました。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%96%B0%E6%9D%B1%E5%90%8D%E9%AB%98%E9%80%9F%E9%81%93%E8%B7%AF">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="日本でいちばん深い湾、約2,500m" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Suruga_Bay_and_Fuji_Coast_20120910.jpg/1280px-Suruga_Bay_and_Fuji_Coast_20120910.jpg"><div class="where">SURUGA BAY ／ 駿河湾</div></div><div class="bd"><h4>日本でいちばん深い湾、約2,500m</h4><p>駿河湾の最深部はおよそ2,500m。海岸のすぐ先が急に落ち込む地形で、だから桜えび・シラス・タカアシガニといった深海の幸がここでしか揚がりません。深海魚の水揚げ量も日本一です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E9%A7%BF%E6%B2%B3%E6%B9%BE">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="ヤマハもカワイもローランドも、浜松発" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Hamamatsu_SA_of_SHIN-TOMEI_EXPWY.JPG/1280px-Hamamatsu_SA_of_SHIN-TOMEI_EXPWY.JPG"><div class="where">HAMAMATSU ／ 浜松</div></div><div class="bd"><h4>ヤマハもカワイもローランドも、浜松発</h4><p>浜松は「楽器の街」。天竜川が運ぶ良質な木材と水運が、明治期にオルガン作りを根づかせました。山葉寅楠が壊れたオルガンを修理したのが始まりで、そこからヤマハが生まれています。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%B5%9C%E6%9D%BE%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="地震の津波で、淡水湖が海とつながった" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Lake_Hamana.JPG/1280px-Lake_Hamana.JPG"><div class="where">LAKE HAMANA ／ 浜名湖</div></div><div class="bd"><h4>地震の津波で、淡水湖が海とつながった</h4><p>浜名湖はもともと淡水湖でした。1498年の明応地震の津波で砂州が切れ、「今切（いまぎれ）」ができて海と直結。以来、汽水湖になりました。うなぎ養殖に向くのはこの汽水のおかげです。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%90%8D%E6%B9%96">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="トヨタグループが生まれた街" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Kariya_Highway_Oasis_20181008N.JPG/1280px-Kariya_Highway_Oasis_20181008N.JPG"><div class="where">KARIYA ／ 刈谷</div></div><div class="bd"><h4>トヨタグループが生まれた街</h4><p>豊田自動織機、デンソー、アイシン。トヨタグループの中核企業の本社が刈谷に集まっています。トヨタ自動車のルーツである自動織機工場がここにあったからです。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%88%88%E8%B0%B7%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="名神でいちばん雪が積もる区間" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg/1280px-Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg"><div class="where">SEKIGAHARA ／ 関ヶ原</div></div><div class="bd"><h4>名神でいちばん雪が積もる区間</h4><p>関ヶ原は名神最大の難所。伊吹山が日本海からの雪雲を受け止め、そのまま雪を落とします。1927年に伊吹山で観測された積雪11.82mは、いまも世界記録です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E5%B1%B1">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="流れ出す川は、たった1本" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg/1280px-Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg"><div class="where">LAKE BIWA ／ 琵琶湖</div></div><div class="bd"><h4>流れ出す川は、たった1本</h4><p>琵琶湖に流れ込む川は460本以上ありますが、流れ出すのは瀬田川ただ1本。それが宇治川、淀川と名を変えて大阪湾へ。約400万年前からある世界有数の古代湖でもあります。今日の行程は、この水の流れをそのままなぞっています。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E7%90%B5%E7%90%B6%E6%B9%96">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="「鉢かづき姫」の里" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Onsen_in_Nachikatsuura%2C_Japan.jpg/1280px-Onsen_in_Nachikatsuura%2C_Japan.jpg"><div class="where">NEYAGAWA ／ 寝屋川</div></div><div class="bd"><h4>「鉢かづき姫」の里</h4><p>水春のある寝屋川市は、おとぎ話「鉢かづき姫」の舞台とされる土地。頭に鉢をかぶせられた姫の物語で、市はこれを推しており駅前に像もあります。地名の「寝屋」も物語に出てくる寝屋長者から。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%AF%9D%E5%B1%8B%E5%B7%9D%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="日本初のニュータウンと、日本最古級のビール工場" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG/1280px-JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG"><div class="where">SUITA ／ 吹田</div></div><div class="bd"><h4>日本初のニュータウンと、日本最古級のビール工場</h4><p>吹田の千里ニュータウンは、1962年入居開始の日本初の大規模ニュータウン。さらにアサヒビール吹田工場は1891年操業で、いまも稼働している日本最古級のビール工場です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%90%B9%E7%94%B0%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="ナポリ生まれ、日本で学生文化になった楽器" src="https://upload.wikimedia.org/wikipedia/commons/5/52/American_Ideal_Mandolin_Orchestra_%288654615121%29.jpg"><div class="where">MANDOLIN ／ マンドリン</div></div><div class="bd"><h4>ナポリ生まれ、日本で学生文化になった楽器</h4><p>マンドリンは18世紀のナポリで完成した楽器。日本には1901年に比留間賢八が持ち込み、大正期に学生のあいだで大流行しました。大学・高校のマンドリンクラブがこれだけ多い国は、世界的にも日本くらいです。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="1935年、ラヂオ焼きの中身を蛸に変えた日" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg/1280px-Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg"><div class="where">TAKOYAKI ／ たこ焼き</div></div><div class="bd"><h4>1935年、ラヂオ焼きの中身を蛸に変えた日</h4><p>たこ焼きの元祖は大阪・会津屋の遠藤留吉。牛すじを入れた「ラヂオ焼き」を売っていたところ、客に明石では蛸を入れると聞き、中身を蛸に変えたのが始まりです。ラヂオは当時の最先端＝ハイカラの象徴でした。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E3%81%9F%E3%81%93%E7%84%BC%E3%81%8D">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="もとの字は「埋田」" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg/1280px-Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg"><div class="where">UMEDA ／ 梅田</div></div><div class="bd"><h4>もとの字は「埋田」</h4><p>梅田は低湿地を埋め立てて田にした土地で、もとの表記は「埋田」。さすがに縁起が悪いというので「梅」の字を当てたと伝わります。大阪の中心が、実は埋立地から始まっている。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%A2%85%E7%94%B0">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="世界初の先物取引所は、大阪にあった" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/1280px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg"><div class="where">DOJIMA ／ 堂島</div></div><div class="bd"><h4>世界初の先物取引所は、大阪にあった</h4><p>1730年に幕府公認となった堂島米市場は、世界で最初に整備された先物取引所とされます。価格の上下を視覚化するローソク足チャートもここで生まれ、いまも世界中の市場で使われています。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%A0%82%E5%B3%B6%E7%B1%B3%E4%BC%9A%E6%89%80">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="「あいの土山、雨が降る」" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Tsuchiyama-_Picture_of_the_Suzuka_Mountains_%285759539194%29.jpg/1280px-Tsuchiyama-_Picture_of_the_Suzuka_Mountains_%285759539194%29.jpg"><div class="where">TSUCHIYAMA ／ 土山</div></div><div class="bd"><h4>「あいの土山、雨が降る」</h4><p>土山は東海道五十三次の49番目の宿場。鈴鹿馬子唄の「坂は照る照る 鈴鹿は曇る あいの土山 雨が降る」で知られます。鈴鹿峠は昔から天気が変わりやすく、旅人泣かせの難所でした。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%B1%E5%AE%BF">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="日本一の茶畑は、失業対策から生まれた" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tea-plantation_Shizuoka-Fukuroi.jpg/1280px-Tea-plantation_Shizuoka-Fukuroi.jpg"><div class="where">MAKINOHARA ／ 牧之原</div></div><div class="bd"><h4>日本一の茶畑は、失業対策から生まれた</h4><p>東名から見える牧之原台地の茶畑は日本最大の茶産地。明治維新で職を失った旧幕臣たちが開墾した土地です。荒れ地だった台地が、いま日本の緑茶の中心になっている。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E7%89%A7%E3%83%8E%E5%8E%9F%E5%8F%B0%E5%9C%B0">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="渋滞は、坂道で勝手に生まれる" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg/1280px-Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg"><div class="where">TRAFFIC JAM ／ サグ渋滞</div></div><div class="bd"><h4>渋滞は、坂道で勝手に生まれる</h4><p>下り坂から上り坂に変わる地点（サグ部）では、ドライバーが気づかないうちに速度が落ちます。それが後続に伝わって渋滞になる。中央道の大月〜八王子はその典型。車間を空けて一定速度で走るのが最善の対策です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E4%BA%A4%E9%80%9A%E6%B8%8B%E6%BB%9E">くわしく読む</a></div></article></div>
+ <div class="shead"><div class="en">ROAD TRIVIA</div><div class="jp">車中で学ぶ　通過する土地の話 22本</div>
+  <div class="ds">上から順に、東海道新幹線で通過する順番に並べてあります。往路の2時間27分、上から読んでいけばちょうど新大阪まで持ちます。後半は大阪の街の話。</div>
+  <div class="rule"></div></div>
+ <div class="tri"><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="赤レンガ駅舎は1914年生まれ" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg/1280px-Tokyo_Station_Marunouchi_Building_Night_view1_201912.jpg"><div class="where">TOKYO ST ／ 東京駅</div></div><div class="bd"><h4>赤レンガ駅舎は1914年生まれ</h4><p>設計は辰野金吾。1945年の空襲で3階部分とドームを失い、長く2階建てで営業していました。2012年、当初の姿に復原。今日の旅は、この100年前の建物から始まります。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%AC%E9%A7%85">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="東海道新幹線でいちばん新しい駅" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_Nozomi_in_Tokyo.jpg/1280px-Shinkansen_Nozomi_in_Tokyo.jpg"><div class="where">SHINAGAWA ／ 品川</div></div><div class="bd"><h4>東海道新幹線でいちばん新しい駅</h4><p>品川駅の新幹線ホームができたのは2003年。当初の計画にはなく、東京駅の発着容量が限界に近づいたために増設されました。開業から40年近く経ってから駅が増えた例です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%93%81%E5%B7%9D%E9%A7%85">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="開業当時は田んぼの中の駅だった" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_N700S-8000_721_8004_Inside_20220924.jpg/1280px-Shinkansen_N700S-8000_721_8004_Inside_20220924.jpg"><div class="where">SHIN-YOKOHAMA ／ 新横浜</div></div><div class="bd"><h4>開業当時は田んぼの中の駅だった</h4><p>1964年の開業時、新横浜の周りは一面の田畑で「無用の長物」とまで言われました。いまは新幹線駅として屈指の乗降客数。都市がホームに合わせて育った例です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%96%B0%E6%A8%AA%E6%B5%9C%E9%A7%85">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="東海道新幹線でいちばん狭い駅" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mt.Fuji_from_Mierula.jpg/1280px-Mt.Fuji_from_Mierula.jpg"><div class="where">ATAMI ／ 熱海</div></div><div class="bd"><h4>東海道新幹線でいちばん狭い駅</h4><p>熱海は背後が山、目の前が海。ホームを広げる余地がなく、東海道新幹線で最も幅の狭い駅として知られます。通過するのぞみの風圧がすごいのはそのためです。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E7%86%B1%E6%B5%B7%E9%A7%85">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="上り列車では左側の窓" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mt.Fuji_from_Mierula.jpg/1280px-Mt.Fuji_from_Mierula.jpg"><div class="where">MT.FUJI ／ 富士山</div></div><div class="bd"><h4>上り列車では左側の窓</h4><p>新大阪から東京へ向かうときは進行方向の左手に富士山。三島〜新富士のあたりが一番大きく見えます。帰りの18:15発なら19時前後に通過するので、夏の空がまだ明るいうちに間に合うかもしれません。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E5%B1%B1">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="日本一の茶畑は失業対策から生まれた" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Lake_Hamana.JPG/1280px-Lake_Hamana.JPG"><div class="where">MAKINOHARA ／ 牧之原</div></div><div class="bd"><h4>日本一の茶畑は失業対策から生まれた</h4><p>静岡を過ぎて広がる牧之原台地の茶畑は日本最大の茶産地。明治維新で職を失った旧幕臣たちが開墾した土地です。荒れ地だった台地が、いま日本の緑茶の中心になっています。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E7%89%A7%E3%83%8E%E5%8E%9F%E5%8F%B0%E5%9C%B0">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="ヤマハもカワイもローランドも、この街から" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Lake_Hamana.JPG/1280px-Lake_Hamana.JPG"><div class="where">HAMAMATSU ／ 浜松</div></div><div class="bd"><h4>ヤマハもカワイもローランドも、この街から</h4><p>浜松は「楽器の街」。天竜川が運ぶ良質な木材と水運が、明治期にオルガン作りを根づかせました。山葉寅楠が壊れたオルガンを修理したのが、ヤマハの出発点です。今日聴くマンドリンの遠い親戚。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%B5%9C%E6%9D%BE%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="「まもなく名古屋」の合図の駅" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_Nozomi_in_Tokyo.jpg/1280px-Shinkansen_Nozomi_in_Tokyo.jpg"><div class="where">MIKAWA-ANJO ／ 三河安城</div></div><div class="bd"><h4>「まもなく名古屋」の合図の駅</h4><p>のぞみは停まりませんが、車内アナウンスで「三河安城を通過」と流れると、名古屋到着まであと約10分。降りる準備を始める目印として、鉄道好きの間ではおなじみの駅です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E4%B8%89%E6%B2%B3%E5%AE%89%E5%9F%8E%E9%A7%85">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="「政治駅」と言われるが、本当の理由は雪" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg/1280px-Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg"><div class="where">GIFU-HASHIMA ／ 岐阜羽島</div></div><div class="bd"><h4>「政治駅」と言われるが、本当の理由は雪</h4><p>地元選出の大物政治家がねじ込んだ駅、という話が有名ですが、実際は関ヶ原の豪雪に備えた除雪基地と待避設備が必要だったことが大きな理由です。話が面白いほうだけが残った例。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%B2%90%E9%98%9C%E7%BE%BD%E5%B3%B6%E9%A7%85">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="東海道新幹線 最大の弱点" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg/1280px-Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg"><div class="where">SEKIGAHARA ／ 関ヶ原</div></div><div class="bd"><h4>東海道新幹線 最大の弱点</h4><p>伊吹山が日本海からの雪雲を受け止め、そのまま関ヶ原に雪を落とします。毎冬ダイヤが乱れるのはこの区間。線路に散水して雪を溶かすスプリンクラーが設置されています。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E5%B1%B1">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="流れ出す川は、たった1本" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg/1280px-Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg"><div class="where">LAKE BIWA ／ 琵琶湖</div></div><div class="bd"><h4>流れ出す川は、たった1本</h4><p>米原の先に広がる琵琶湖。流れ込む川は460本以上ありますが、流れ出すのは瀬田川ただ1本。それが宇治川、淀川と名を変えて大阪湾へ注ぎます。今日の行程は、この水の流れをなぞっています。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E7%90%B5%E7%90%B6%E6%B9%96">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="京都タワーは新幹線と同い年" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg/1280px-Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg"><div class="where">KYOTO ／ 京都</div></div><div class="bd"><h4>京都タワーは新幹線と同い年</h4><p>京都タワーの完成は1964年12月。東海道新幹線の開業は同じ年の10月です。新幹線で来る客を迎えるかたちで、京都の新しい玄関がつくられました。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E4%BA%AC%E9%83%BD%E3%82%BF%E3%83%AF%E3%83%BC">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="なぜ「新」大阪なのか" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Platform_of_Shin-Osaka_Station_%28Tokaido-Sanyo_Shinkansen%29.JPG/1280px-Platform_of_Shin-Osaka_Station_%28Tokaido-Sanyo_Shinkansen%29.JPG"><div class="where">SHIN-OSAKA ／ 新大阪</div></div><div class="bd"><h4>なぜ「新」大阪なのか</h4><p>大阪駅に新幹線を通すだけの用地がなく、淀川の北側に新しく駅を作るしかありませんでした。だから「新」大阪。街ではなく線路の都合でできた駅です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="開業時は4時間、いまは2時間21分" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Shinkansen_Nozomi_in_Tokyo.jpg/1280px-Shinkansen_Nozomi_in_Tokyo.jpg"><div class="where">SPEED ／ 所要時間</div></div><div class="bd"><h4>開業時は4時間、いまは2時間21分</h4><p>1964年の開業時、東京〜新大阪は「ひかり」で4時間かかりました。現在の最速のぞみは2時間21分。60年で1時間半以上縮んだことになります。今日乗るのぞみ285号は2時間27分。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="日本初のニュータウンと、日本最古級のビール工場" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG/1280px-JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG"><div class="where">SUITA ／ 吹田</div></div><div class="bd"><h4>日本初のニュータウンと、日本最古級のビール工場</h4><p>吹田の千里ニュータウンは1962年入居開始の日本初の大規模ニュータウン。さらにアサヒビール吹田工場は1891年操業で、いまも動き続けている日本最古級のビール工場です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%90%B9%E7%94%B0%E5%B8%82">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="ナポリ生まれ、日本で学生文化になった楽器" src="https://upload.wikimedia.org/wikipedia/commons/5/52/American_Ideal_Mandolin_Orchestra_%288654615121%29.jpg"><div class="where">MANDOLIN ／ マンドリン</div></div><div class="bd"><h4>ナポリ生まれ、日本で学生文化になった楽器</h4><p>18世紀のナポリで完成した楽器。日本には1901年に比留間賢八が持ち込み、大正期に学生のあいだで大流行しました。大学・高校のマンドリンクラブがこれだけ多い国は、世界的にも日本くらいです。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="日本一長い商店街、2.6km" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Sh%C5%8Dtengai.jpg/1280px-Sh%C5%8Dtengai.jpg"><div class="where">TENJINBASHI ／ 天神橋筋</div></div><div class="bd"><h4>日本一長い商店街、2.6km</h4><p>天神橋筋商店街は南北およそ2.6km。もとは大阪天満宮の参道で、そこに店が並んでいったのが始まりです。端から端まで歩くと1時間近くかかります。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%A4%A9%E7%A5%9E%E6%A9%8B%E7%AD%8B%E5%95%86%E5%BA%97%E8%A1%97">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="天神祭は日本三大祭のひとつ" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Osaka_Tenmangu01n3390.jpg/1280px-Osaka_Tenmangu01n3390.jpg"><div class="where">TENMANGU ／ 大阪天満宮</div></div><div class="bd"><h4>天神祭は日本三大祭のひとつ</h4><p>菅原道真を祀る「天神さん」。毎年7月24・25日の天神祭は、京都の祇園祭、東京の神田祭と並ぶ日本三大祭のひとつ。船渡御と奉納花火で知られます。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%98%AA%E5%A4%A9%E6%BA%80%E5%AE%AE">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="安くて旨い店が多いのには理由がある" src="https://upload.wikimedia.org/wikipedia/commons/1/11/Izakaya_ikenomedaka.jpg"><div class="where">TENMA ／ 天満</div></div><div class="bd"><h4>安くて旨い店が多いのには理由がある</h4><p>天満にはかつて「天満青物市場」がありました。江戸期から続く食材の集積地で、そこに集まった料理人と店がいまの飲食街の下地になっています。昼から酒場が開いているのもその名残。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E5%A4%A9%E6%BA%80">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="もとの字は「埋田」" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg/1280px-Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg"><div class="where">UMEDA ／ 梅田</div></div><div class="bd"><h4>もとの字は「埋田」</h4><p>低湿地を埋め立てて田にした土地なので、もとの表記は「埋田」。さすがに縁起が悪いというので「梅」の字を当てたと伝わります。大阪の中心が、実は埋立地から始まっている。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E6%A2%85%E7%94%B0">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="世界初の「ターミナルデパート」" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Umeda_Hankyu_Department_Store.JPG/1280px-Umeda_Hankyu_Department_Store.JPG"><div class="where">HANKYU ／ 阪急百貨店</div></div><div class="bd"><h4>世界初の「ターミナルデパート」</h4><p>1929年、阪急は梅田駅そのものに百貨店を開きました。鉄道会社が駅ビルで小売をやるという、いまや世界中で当たり前の商売はここから始まっています。小林一三の発明です。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E9%98%AA%E6%80%A5%E7%99%BE%E8%B2%A8%E5%BA%97">くわしく読む</a></div></article><article class="tc"><div class="ph"><img referrerpolicy="no-referrer" loading="lazy" alt="1935年、ラヂオ焼きの中身を蛸に変えた日" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg/1280px-Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg"><div class="where">TAKOYAKI ／ たこ焼き</div></div><div class="bd"><h4>1935年、ラヂオ焼きの中身を蛸に変えた日</h4><p>元祖は大阪・会津屋の遠藤留吉。牛すじを入れた「ラヂオ焼き」を売っていたところ、客に明石では蛸を入れると聞き、中身を変えたのが始まりです。ラヂオは当時の最先端＝ハイカラの象徴でした。</p><a class="more" target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E3%81%9F%E3%81%93%E7%84%BC%E3%81%8D">くわしく読む</a></div></article></div>
 </div></section>
 
-<!-- ================= QUIZ ================= -->
 <section id="quiz"><div class="wrap">
-  <div class="shead">
-    <div class="en">ROAD QUIZ</div>
-    <div class="jp">全12問　車内で出し合う用</div>
-    <div class="rule"></div>
-  </div>
-  <div class="quiz">
-    <div class="qhead"><div class="t">QUESTIONS</div><div class="sc" id="score">SCORE 0 / 12</div></div>
-    <div id="s-quiz"><div class="q" data-i="0"><div class="qq"><b>Q1</b>「三鷹」という地名の由来は？</div><button class="opt" data-q="0" data-o="0">3つの鷹狩り場が重なる土地だったから</button><button class="opt" data-q="0" data-o="1">鷹が3羽並んで飛ぶのが見えたから</button><button class="opt" data-q="0" data-o="2">三つの川が集まる土地だったから</button><div class="exp">世田谷・府中・野方——江戸幕府の御鷹場が3つにまたがっていたことが由来です。</div></div><div class="q" data-i="1"><div class="qq"><b>Q2</b>富士五湖のうち、もとは1つの湖だった3つは？</div><button class="opt" data-q="1" data-o="0">山中湖・河口湖・西湖</button><button class="opt" data-q="1" data-o="1">本栖湖・精進湖・西湖</button><button class="opt" data-q="1" data-o="2">河口湖・精進湖・本栖湖</button><div class="exp">「せの海」という1つの湖が、864年の貞観大噴火の溶岩流で3つに分断されました。</div></div><div class="q" data-i="2"><div class="qq"><b>Q3</b>日本で最初に最高速度120km/hになった高速道路は？</div><button class="opt" data-q="2" data-o="0">東名高速</button><button class="opt" data-q="2" data-o="1">新東名高速</button><button class="opt" data-q="2" data-o="2">新名神高速</button><div class="exp">2020年、新東名の新静岡〜森掛川が日本初の120km/h区間になりました。設計速度は140km/hです。</div></div><div class="q" data-i="3"><div class="qq"><b>Q4</b>日本でいちばん深い湾は？</div><button class="opt" data-q="3" data-o="0">富山湾</button><button class="opt" data-q="3" data-o="1">相模湾</button><button class="opt" data-q="3" data-o="2">駿河湾</button><div class="exp">駿河湾の最深部は約2,500m。深海魚の水揚げ量も日本一です。</div></div><div class="q" data-i="4"><div class="qq"><b>Q5</b>浜松が「楽器の街」になった理由は？</div><button class="opt" data-q="4" data-o="0">天竜川の木材と水運があったから</button><button class="opt" data-q="4" data-o="1">江戸幕府が楽器工房を置いたから</button><button class="opt" data-q="4" data-o="2">オランダ人が楽器を伝えたから</button><div class="exp">良質な木材と水運が明治期のオルガン製造を支えました。山葉寅楠のオルガン修理がヤマハの出発点です。</div></div><div class="q" data-i="5"><div class="qq"><b>Q6</b>浜名湖が海とつながったきっかけは？</div><button class="opt" data-q="5" data-o="0">江戸時代の運河工事</button><button class="opt" data-q="5" data-o="1">1498年の地震の津波</button><button class="opt" data-q="5" data-o="2">明治の干拓事業</button><div class="exp">明応地震の津波で砂州が切れ「今切」ができました。以来、汽水湖になっています。</div></div><div class="q" data-i="6"><div class="qq"><b>Q7</b>刈谷に本社が集まっている企業グループは？</div><button class="opt" data-q="6" data-o="0">ホンダグループ</button><button class="opt" data-q="6" data-o="1">トヨタグループ</button><button class="opt" data-q="6" data-o="2">スズキグループ</button><div class="exp">豊田自動織機・デンソー・アイシンなど、トヨタグループ中核企業の本社が刈谷にあります。</div></div><div class="q" data-i="7"><div class="qq"><b>Q8</b>琵琶湖から流れ出す川は何本？</div><button class="opt" data-q="7" data-o="0">1本</button><button class="opt" data-q="7" data-o="1">12本</button><button class="opt" data-q="7" data-o="2">460本以上</button><div class="exp">流れ込むのは460本以上ですが、流れ出すのは瀬田川ただ1本。宇治川→淀川と名を変えます。</div></div><div class="q" data-i="8"><div class="qq"><b>Q9</b>マンドリンが生まれた都市は？</div><button class="opt" data-q="8" data-o="0">ウィーン</button><button class="opt" data-q="8" data-o="1">ナポリ</button><button class="opt" data-q="8" data-o="2">ミラノ</button><div class="exp">18世紀のナポリで完成した楽器です。日本には1901年に比留間賢八が持ち込みました。</div></div><div class="q" data-i="9"><div class="qq"><b>Q10</b>たこ焼きの中身が蛸になったのは何年ごろ？</div><button class="opt" data-q="9" data-o="0">1875年ごろ</button><button class="opt" data-q="9" data-o="1">1935年ごろ</button><button class="opt" data-q="9" data-o="2">1955年ごろ</button><div class="exp">1935年、会津屋の遠藤留吉が「ラヂオ焼き」の中身を蛸に変えたのが始まりとされます。</div></div><div class="q" data-i="10"><div class="qq"><b>Q11</b>「梅田」のもとの漢字表記は？</div><button class="opt" data-q="10" data-o="0">埋田</button><button class="opt" data-q="10" data-o="1">産田</button><button class="opt" data-q="10" data-o="2">馬手田</button><div class="exp">湿地を埋め立てた田んぼだったので「埋田」。縁起を担いで「梅」に変えたと伝わります。</div></div><div class="q" data-i="11"><div class="qq"><b>Q12</b>世界で最初に整備された先物取引所があった場所は？</div><button class="opt" data-q="11" data-o="0">ロンドン</button><button class="opt" data-q="11" data-o="1">シカゴ</button><button class="opt" data-q="11" data-o="2">大阪・堂島</button><div class="exp">1730年公認の堂島米市場です。ローソク足チャートもここで生まれました。</div></div></div>
-  </div>
+ <div class="shead"><div class="en">TRAIN QUIZ</div><div class="jp">全12問　車内で出し合う用</div><div class="rule"></div></div>
+ <div class="quiz"><div class="qhead"><div class="t">QUESTIONS</div><div class="sc" id="score">SCORE 0 / 12</div></div>
+ <div id="qs"><div class="q"><div class="qq"><b>Q1</b>東京駅の赤レンガ駅舎が完成したのは何年？</div><button class="opt" data-q="0" data-o="0">1914年</button><button class="opt" data-q="0" data-o="1">1932年</button><button class="opt" data-q="0" data-o="2">1950年</button><div class="exp">1914年、辰野金吾の設計です。戦災で失った3階部分とドームは2012年に復原されました。</div></div><div class="q"><div class="qq"><b>Q2</b>東海道新幹線でいちばん新しい駅は？</div><button class="opt" data-q="1" data-o="0">新横浜</button><button class="opt" data-q="1" data-o="1">品川</button><button class="opt" data-q="1" data-o="2">三河安城</button><div class="exp">品川の新幹線ホームは2003年開業。当初の計画にはなく、東京駅の容量不足を補うために増設されました。</div></div><div class="q"><div class="qq"><b>Q3</b>東海道新幹線でホームの幅がいちばん狭い駅は？</div><button class="opt" data-q="2" data-o="0">熱海</button><button class="opt" data-q="2" data-o="1">小田原</button><button class="opt" data-q="2" data-o="2">三島</button><div class="exp">熱海は背後が山、目の前が海で、広げる余地がありません。</div></div><div class="q"><div class="qq"><b>Q4</b>新大阪→東京の上り列車で、富士山が見えるのはどちら側？</div><button class="opt" data-q="3" data-o="0">進行方向の右側</button><button class="opt" data-q="3" data-o="1">進行方向の左側</button><button class="opt" data-q="3" data-o="2">どちらからも見えない</button><div class="exp">上りでは左側です。三島〜新富士あたりが一番大きく見えます。</div></div><div class="q"><div class="qq"><b>Q5</b>浜松が「楽器の街」になった理由は？</div><button class="opt" data-q="4" data-o="0">天竜川の木材と水運があったから</button><button class="opt" data-q="4" data-o="1">江戸幕府が楽器工房を置いたから</button><button class="opt" data-q="4" data-o="2">オランダ人が楽器を伝えたから</button><div class="exp">良質な木材と水運が明治期のオルガン製造を支えました。山葉寅楠のオルガン修理がヤマハの出発点です。</div></div><div class="q"><div class="qq"><b>Q6</b>岐阜羽島駅が作られた主な理由は？</div><button class="opt" data-q="5" data-o="0">大物政治家の口利きだけ</button><button class="opt" data-q="5" data-o="1">関ヶ原の雪対策の基地が必要だったから</button><button class="opt" data-q="5" data-o="2">名古屋の混雑を分散するため</button><div class="exp">政治駅という話が有名ですが、実際は関ヶ原の豪雪に備えた除雪基地と待避設備が大きな理由でした。</div></div><div class="q"><div class="qq"><b>Q7</b>琵琶湖から流れ出す川は何本？</div><button class="opt" data-q="6" data-o="0">1本</button><button class="opt" data-q="6" data-o="1">12本</button><button class="opt" data-q="6" data-o="2">460本以上</button><div class="exp">流れ込むのは460本以上ですが、流れ出すのは瀬田川ただ1本。宇治川→淀川と名を変えます。</div></div><div class="q"><div class="qq"><b>Q8</b>京都タワーが完成した年は？</div><button class="opt" data-q="7" data-o="0">1955年</button><button class="opt" data-q="7" data-o="1">1964年</button><button class="opt" data-q="7" data-o="2">1970年</button><div class="exp">1964年12月完成。東海道新幹線の開業（同年10月）と同じ年です。</div></div><div class="q"><div class="qq"><b>Q9</b>「新大阪」という駅名になった理由は？</div><button class="opt" data-q="8" data-o="0">大阪駅に用地がなく淀川の北に新設したから</button><button class="opt" data-q="8" data-o="1">大阪府が新しく作った駅だから</button><button class="opt" data-q="8" data-o="2">旧大阪駅が廃止されたから</button><div class="exp">大阪駅に新幹線を通す用地がなく、淀川の北側に新設するしかありませんでした。</div></div><div class="q"><div class="qq"><b>Q10</b>マンドリンが生まれた都市は？</div><button class="opt" data-q="9" data-o="0">ウィーン</button><button class="opt" data-q="9" data-o="1">ナポリ</button><button class="opt" data-q="9" data-o="2">ミラノ</button><div class="exp">18世紀のナポリで完成した楽器です。日本には1901年に比留間賢八が持ち込みました。</div></div><div class="q"><div class="qq"><b>Q11</b>天神橋筋商店街の長さは？</div><button class="opt" data-q="10" data-o="0">約0.8km</button><button class="opt" data-q="10" data-o="1">約2.6km</button><button class="opt" data-q="10" data-o="2">約5.4km</button><div class="exp">南北およそ2.6kmで日本一長い商店街。もとは大阪天満宮の参道でした。</div></div><div class="q"><div class="qq"><b>Q12</b>「梅田」のもとの漢字表記は？</div><button class="opt" data-q="11" data-o="0">埋田</button><button class="opt" data-q="11" data-o="1">産田</button><button class="opt" data-q="11" data-o="2">馬手田</button><div class="exp">湿地を埋め立てた田んぼだったので「埋田」。縁起を担いで「梅」に変えたと伝わります。</div></div></div></div>
 </div></section>
 
-<!-- ================= INFO ================= -->
 <section id="info"><div class="wrap">
-  <div class="shead">
-    <div class="en">COST &amp; NOTES</div>
-    <div class="jp">費用・給油・注意点</div>
-    <div class="rule"></div>
+ <div class="shead"><div class="en">COST &amp; NOTES</div><div class="jp">現地費用・注意点</div><div class="rule"></div></div>
+ <div class="grid2">
+  <div class="panel"><h4>ON-SITE COST ／ 3名・新幹線と宿泊を除く</h4>
+   <table><tr><td>東京駅の駅弁・飲み物（3名）</td><td class="r">4,500–6,000</td></tr><tr><td>朝食 がんこ新大阪店（3名）</td><td class="r">3,000–4,500</td></tr><tr><td>天満の昼呑み・食べ歩き（3名）</td><td class="r">8,000–12,000</td></tr><tr><td>土産（阪急うめだ＋新大阪）</td><td class="r">5,000–10,000</td></tr><tr><td>大阪市内の交通費（3名）</td><td class="r">3,000–4,000</td></tr><tr><td>コインロッカー</td><td class="r">700–1,000</td></tr><tr class="tot"><td>合計</td><td class="r">24,000–37,500</td></tr></table>
+   <p class="note" style="margin-top:14px">新幹線代と宿泊費は購入・予約済みのため除いています。</p>
   </div>
-  <div class="grid2">
-    <div class="panel">
-      <h4>ESTIMATED COST ／ 3名</h4>
-      <table>
-        <tr><td>ガソリン（往復約1,020km・73〜85L）</td><td class="r">13,000–15,500</td></tr>
-        <tr><td>高速代 往路（深夜割引）</td><td class="r">8,500–9,500</td></tr>
-        <tr><td>高速代 復路（休日割引）</td><td class="r">9,000–10,000</td></tr>
-        <tr><td>水春 入浴＋岩盤浴</td><td class="r">4,500–5,500</td></tr>
-        <tr><td>食事 朝・昼・夕</td><td class="r">13,500–18,000</td></tr>
-        <tr><td>駐車場（吹田＋梅田＋堂島）</td><td class="r">2,500–4,000</td></tr>
-        <tr class="tot"><td>合計</td><td class="r">51,000–63,000</td></tr>
-      </table>
-    </div>
-    <div class="panel">
-      <h4>FUEL PLAN ／ 給油2回</h4>
-      <p class="note">満タン600km超に対して往復約1,020km。2回で足ります。</p>
-      <ul class="note" style="margin-top:14px">
-        <li><strong>往路 NEOPASA浜松（2:10頃）で満タン</strong> — これで大阪滞在中の給油は不要になります。</li>
-        <li><strong>復路 土山SA（15:30頃）で満タン</strong> — 帰宅まで約380kmなので余裕あり。</li>
-        <li>新東名は深夜にスタンドが閉まる店舗があります。閉まっていたら静岡SAか駿河湾沼津SAで。</li>
-      </ul>
-      <h4 style="margin-top:26px">MEALS ／ 食事メモ</h4>
-      <ul class="note">
-        <li><strong>朝</strong>／水春亭 7:00〜。日祝限定の朝食バイキングは土曜は非実施、通常メニューでの利用になります。</li>
-        <li><strong>昼</strong>／新梅田食道街「はなだこ」。たこ焼きは立ち食い・テイクアウトなので問題なし。ただし食道街には中学生が入れない酒場系の店も混在しています。串カツなどを足すなら店頭で確認を。座って食べたいなら大阪駅直結のレストラン街が無難。</li>
-        <li><strong>夕</strong>／刈谷ハイウェイオアシス。フードコートに地元の人気店が揃っていて3人でも席が取りやすい。</li>
-      </ul>
-    </div>
+  <div class="panel"><h4>KEY POINTS ／ 押さえどころ</h4>
+   <ul class="note">
+    <li><strong>荷物は新大阪駅のコインロッカーへ。</strong>帰りも新大阪発なので回収が楽です。昼呑みするので身軽さは重要。</li>
+    <li><strong>551蓬莱は9:00〜21:30。</strong>朝は買えません。帰りの17:40に買うのが正解です。</li>
+    <li><strong>エキマルシェ新大阪は全館リニューアル中</strong>で一部店舗が閉店しています。ネット記事に出ている店が無いことがあるので注意。</li>
+    <li><strong>メイシアターは阪急吹田駅前すぐ、JR吹田からは徒歩15分。</strong>朝はJRで、帰りは阪急で天六へ、が最短です。</li>
+   </ul>
   </div>
-  <div class="panel alert">
-    <h4>WATCH OUT</h4>
-    <ul class="note">
-      <li><strong>7時間半のぶっ通し運転。</strong>だいさんと麻美さんで交代しながら。後席が1名分空くので、休憩中に順番で横になるのも有効です。</li>
-      <li><strong>朝風呂＋仮眠のあとは身体が緩みます。</strong>出発前にコーヒーを一杯。</li>
-      <li><strong>中央道 上り（河口湖→調布）の土曜夕方渋滞</strong>が復路最大のリスク。大月〜八王子で30分〜1時間の遅れが出ることがあります。混雑時は新御殿場から東名で用賀へ抜ける手も。</li>
-      <li>高速料金の深夜／休日割引の制度は変更の可能性があります。出発前にNEXCOの料金検索で確認してください。</li>
-    </ul>
-    <div class="acts">
-      <a class="btn" target="_blank" rel="noopener" href="https://www.driveplaza.com/dp/SearchTop">NEXCO 料金・ルート検索</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.jartic.or.jp/">日本道路交通情報センター</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.jma.go.jp/bosai/forecast/">気象庁 天気予報</a>
-    </div>
+ </div>
+ <div class="panel alert"><h4>WATCH OUT</h4>
+  <ul class="note">
+   <li><strong>天満の立ち飲み専門店は、中学生の入店を断る場合があります。</strong>座席のある大衆酒場を選ぶか、入る前に店頭でひと声かけてください。天満酒蔵は座席があります。</li>
+   <li><strong>17:20には梅田を離れる。</strong>土曜夕方の大阪駅は混みます。のぞみは全席指定なので、乗り遅れると振替が面倒です。</li>
+   <li><strong>551の豚まんは夏場は保冷剤を。</strong>車内で開けるとにおいが出るので、食べるのは帰宅後に。</li>
+   <li>飲食店の営業時間は変わることがあります。当日、公式サイトか電話で最終確認を。</li>
+  </ul>
+  <div class="acts">
+   <a class="btn" target="_blank" rel="noopener" href="https://www.jma.go.jp/bosai/forecast/">気象庁 天気予報</a>
+   <a class="btn" target="_blank" rel="noopener" href="https://railway.jr-central.co.jp/train_information/">JR東海 運行情報</a>
+   <a class="btn" target="_blank" rel="noopener" href="https://www.westjr.co.jp/">JR西日本</a>
   </div>
+ </div>
 </div></section>
 
-<footer>
-  <div class="b">OSAKA ONE DAY ／ build v3 — 2026-07-31 ／ 完全版・全機能OK</div>
-</footer>
-
+<footer><div class="b">OSAKA SUPPORT TRIP ／ build v1 — 2026-07-31 ／ 完全版</div></footer>
 <script>
-/* ========== 写真 ========== */
-function C(f,w){return 'https://commons.wikimedia.org/wiki/Special:FilePath/'+f+'?width='+(w||1200)}
-var U="https://upload.wikimedia.org/wikipedia/commons/thumb/";
-var P = {
-  dotonbori : U+"4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/1280px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg",
-  umeda     : U+"7/7f/Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg/1280px-Umeda_Sky_Building%2C_Osaka%2C_November_2016_-01.jpg",
-  osakajo   : U+"e/e4/Osaka_Castle_02bs3200.jpg/1280px-Osaka_Castle_02bs3200.jpg",
-  shintomei : U+"7/77/Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg/1280px-Shin_Tomei_expressway_near_Shin-Fuji_InterChange_20100830.jpg",
-  fuji      : U+"5/55/Mt.Fuji_from_Mierula.jpg/1280px-Mt.Fuji_from_Mierula.jpg",
-  mitaka    : U+"5/5c/JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg/1280px-JR_Chuo-Main-Line_Mitaka_Station_North_Exit.jpg",
-  numazusa  : U+"0/0b/Surugawan-Numazu_SA_JD21a16b.jpg/1280px-Surugawan-Numazu_SA_JD21a16b.jpg",
-  suruga    : U+"0/0a/Suruga_Bay_and_Fuji_Coast_20120910.jpg/1280px-Suruga_Bay_and_Fuji_Coast_20120910.jpg",
-  hamaSA    : U+"d/d0/Hamamatsu_SA_of_SHIN-TOMEI_EXPWY.JPG/1280px-Hamamatsu_SA_of_SHIN-TOMEI_EXPWY.JPG",
-  hamana    : U+"c/c1/Lake_Hamana.JPG/1280px-Lake_Hamana.JPG",
-  kariya    : U+"c/c0/Kariya_Highway_Oasis_20181008N.JPG/1280px-Kariya_Highway_Oasis_20181008N.JPG",
-  biwa      : U+"e/e1/Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg/1280px-Otsu_at_the_south_end_of_Lake_Biwa_in_Shiga_prefecture.jpg",
-  rotenburo : U+"4/41/Onsen_in_Nachikatsuura%2C_Japan.jpg/1280px-Onsen_in_Nachikatsuura%2C_Japan.jpg",
-  onsen2    : U+"0/07/Yufuin_Onsen_Rotenburo.JPG/1280px-Yufuin_Onsen_Rotenburo.JPG",
-  mandolin  : "https://upload.wikimedia.org/wikipedia/commons/1/1d/Neapolitan_mandolin.jpg",
-  mandolin2 : "https://upload.wikimedia.org/wikipedia/commons/5/52/American_Ideal_Mandolin_Orchestra_%288654615121%29.jpg",
-  takoyaki  : U+"9/91/Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg/1280px-Takoyaki_stall_by_sakura_chihaya_in_Osaka.jpg",
-  takoyaki2 : U+"c/cb/Takoyaki.jpg/1280px-Takoyaki.jpg",
-  hankyu    : U+"5/53/JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG/1280px-JP-Osaka-Umeda-Hankyu-Umeda-Station.JPG",
-  rollcake  : U+"a/a3/HK_Food_Swiss_Roll_Saint_Honore_Cake.JPG/1280px-HK_Food_Swiss_Roll_Saint_Honore_Cake.JPG",
-  tea       : U+"7/74/Tea-plantation_Shizuoka-Fukuroi.jpg/1280px-Tea-plantation_Shizuoka-Fukuroi.jpg",
-  milkyway  : U+"4/40/%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg/1280px-%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg",
-  meishin   : U+"b/bc/Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg/1280px-Meishin_Expressway%EF%BC%88Old_Sekigahara_Route%EF%BC%89-06.jpg",
-  suzuka    : U+"0/07/Tsuchiyama-_Picture_of_the_Suzuka_Mountains_%285759539194%29.jpg/1280px-Tsuchiyama-_Picture_of_the_Suzuka_Mountains_%285759539194%29.jpg"
-};
-
-/* ========== ナビ ========== */
-function G(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}
-function Y(lat,lon,name){return 'yjcarnavi://navi/select?lat='+lat+'&lon='+lon+'&name='+encodeURIComponent(name)}
-function dir(o,d,w){
-  var u='https://www.google.com/maps/dir/?api=1&travelmode=driving&origin='+encodeURIComponent(o)+'&destination='+encodeURIComponent(d);
-  if(w&&w.length) u+='&waypoints='+w.map(encodeURIComponent).join('%7C');
-  return u;
-}
-
-/* ========== 行程データ ========== */
-var NIGHT=[
- {t:"22:30",en:"DEPARTURE",h:"三鷹 出発",img:P.mitaka,cap:"三鷹",
-  d:"出発前に満タン給油。荷物は後席1名分を空けて積むと、休憩中に交代で横になれます。",
-  tip:"三鷹という地名は、世田谷・府中・野方——3つの御鷹場が重なる場所だったことに由来します。今日はその「三つの鷹の地」から西へ。",
-  yj:[35.68361,139.55944,"三鷹市"],g:"三鷹市"},
- {t:"22:45",en:"CHUO EXPWY",h:"調布IC から中央道へ",img:P.milkyway,cap:"夏の天の川",
-  d:"金曜の夜、都心を抜けて一気に山へ。八王子を過ぎると空が暗くなります。",
-  tip:"深夜割引は0:00〜4:00に高速上にいればOK。この行程だと中央道〜新東名でちょうど時間帯に入ります。",
-  g:"調布インターチェンジ"},
- {t:"0:00",en:"MT.FUJI",h:"河口湖IC → 東富士五湖道路",img:P.fuji,cap:"富士山",
-  d:"標高が上がって外気温が下がります。窓を少し開けると空気が変わるのが分かるはず。",
-  tip:"晴れて月が出ていれば、東富士五湖道路から富士山のシルエットが見えます。8月1日は月齢18前後で、後半に月が昇ります。",
-  g:"河口湖インターチェンジ"},
- {t:"0:20",en:"SHIN-TOMEI",h:"新御殿場IC → 新東名",img:P.shintomei,cap:"新東名高速",
-  d:"ここから道が一気に広く、まっすぐになります。深夜のいちばん走りやすい区間。",
-  tip:"新東名は設計速度140km/h。新静岡〜森掛川は日本で初めて最高速度120km/hになった区間です。",
-  g:"新御殿場インターチェンジ"},
- {t:"0:35",en:"REST 01",h:"駿河湾沼津SA（休憩①・20分）",img:P.numazusa,cap:"駿河湾沼津SA",
-  d:"上り線は駿河湾を見下ろす高台。深夜でも夜景がきれいです。ここで最初の交代を。",
-  tip:"駿河湾は日本一深い湾で、最深部は約2,500m。だから桜えびもタカアシガニもここでしか揚がりません。",
-  link:"https://sapa.c-nexco.co.jp/", linkl:"NEXCO中日本 SA・PA情報",
-  g:"駿河湾沼津サービスエリア"},
- {t:"2:10",en:"REST 02 ／ FUEL 01",h:"NEOPASA浜松（休憩②＋給油①・20分）",img:P.hamaSA,cap:"浜松SA（新東名）",
-  d:"ここで満タンにしておけば、大阪滞在中の給油は不要になります。24時間営業のフードコートあり。",
-  tip:"深夜はスタンドが閉まる店舗があります。万一閉まっていたら静岡SAか駿河湾沼津SAへ。",
-  link:"https://sapa.c-nexco.co.jp/", linkl:"NEXCO中日本 SA・PA情報",
-  g:"NEOPASA浜松"},
- {t:"3:40",en:"REST 03",h:"刈谷PA（休憩③・20分）",img:P.kariya,cap:"刈谷ハイウェイオアシス",
-  d:"3回目の休憩。ここを過ぎたら残りは名神・京滋バイパスで一気に。",
-  tip:"刈谷はトヨタグループ発祥の地。豊田自動織機・デンソー・アイシンの本社がこの街に集まっています。",
-  link:"https://kariya-oasis.com/", linkl:"刈谷ハイウェイオアシス 公式",
-  g:"刈谷ハイウェイオアシス"},
- {t:"5:45",en:"KYOTO BYPASS",h:"瀬田東JCT → 京滋バイパス → 第二京阪",img:P.biwa,cap:"琵琶湖・大津",
-  d:"夜が明けます。瀬田川を渡ると、あとは大阪まで下るだけ。",
-  tip:"琵琶湖から流れ出す川は瀬田川ただ1本。宇治川、淀川と名を変えて大阪湾へ注ぎます。今日走る道は、ほぼこの水の流れをなぞっています。",
-  g:"瀬田東ジャンクション"},
- {t:"6:00",en:"ARRIVAL",h:"東香里湯元 水春 着",img:P.rotenburo,cap:"温泉（イメージ）",
-  d:"寝屋川北ICを降りてすぐ。駐車場320台・無料。土日祝は6:00オープンなので、ちょうど開店と同時に入れます。",
-  tip:"走行 約490km。80km/h・休憩3回（各20分）想定の到着時刻です。",
-  link:"https://suisyun.jp/neyagawa/", linkl:"東香里湯元 水春 公式サイト",
-  yj:[34.775385,135.657201,"東香里湯元 水春"], g:"東香里湯元 水春"}
-];
-
-var ONSEN=[
- {t:"6:05",en:"BATH",h:"入浴（長者の湯・高濃度炭酸泉・露天岩風呂）",img:P.onsen2,cap:"露天風呂（イメージ）",
-  d:"天然温泉「長者の湯」に、高濃度炭酸泉と露天岩風呂。夜通しの運転で固まった身体をまずほぐします。大人1,050円、岩盤浴は別料金。中学生以上は大人料金です。",
-  tip:"炭酸泉はぬるめでじっくり入るほうが効きます。熱い湯で一気に温めると、そのあと眠くなりすぎるので注意。",
-  link:"https://suisyun.jp/neyagawa/", linkl:"水春 公式サイト",
-  yj:[34.775385,135.657201,"東香里湯元 水春"], g:"東香里湯元 水春"},
- {t:"7:00",en:"BREAKFAST",h:"朝食（お食事処 水春亭）",img:P.takoyaki2,cap:"大阪の粉もん",
-  d:"7:00から営業。日祝限定の朝食バイキングは土曜は非実施なので、通常メニューでの利用になります。",
-  tip:"このあと仮眠を取るなら、朝食は軽めに。がっつり食べると起きられなくなります。",
-  link:"https://suisyun.jp/neyagawa/", linkl:"水春 公式サイト"},
- {t:"7:40",en:"NAP",h:"仮眠（岩盤浴エリアのリクライナー）",img:P.rotenburo,cap:"休憩処（イメージ）",
-  d:"リクライニングチェアとコミック1万冊。50分あればひと眠りできます。タロは漫画で時間をつぶすのもあり。",
-  tip:"仮眠は30〜50分が目安。それ以上寝ると深い睡眠に入って、起きたあとかえってだるくなります。"},
- {t:"8:30",en:"DEPART",h:"出発 → 吹田へ（近畿道・中央環状 約35分）",img:P.osakajo,cap:"大阪城",
-  d:"朝風呂のあとは身体が緩みます。出発前にコーヒーを一杯。",
-  tip:"土曜朝の近畿道は比較的空いています。ただし吹田JCT周辺は合流が多いので車線変更は早めに。",
-  yj:[34.759952,135.515501,"メイシアター"], g:"メイシアター 吹田市文化会館"}
-];
-
-var OSAKA=[
- {t:"9:05",en:"PARKING",h:"タイムズ阪急吹田駅前 着",img:P.hankyu,cap:"阪急梅田駅",
-  d:"メイシアターまで歩いてすぐ。満車のときは周辺のコインパーキングへ。",
-  link:"https://times-info.net/P27-osaka/C205/park-detail-BUK0019650/", linkl:"タイムズ阪急吹田駅前",
-  yj:[34.759952,135.515501,"メイシアター"], g:"タイムズ阪急吹田駅前"},
- {t:"9:30",en:"MAIN EVENT",h:"全国マンドリンコンクール 鑑賞",img:P.mandolin,cap:"ナポリ式マンドリン",
-  d:"開場9:00、鑑賞は12:00まで。今日いちばんの目的地。大ホールは約1,400席あります。",
-  tip:"マンドリンは18世紀のナポリ生まれ。日本には1901年に比留間賢八が持ち込み、大正期に学生の間で大流行しました。学生マンドリンオーケストラがこれだけ盛んな国は、世界を見ても日本くらいです。",
-  link:"https://maytheater.jp/access/", linkl:"メイシアター アクセス",
-  yj:[34.759952,135.515501,"メイシアター"], g:"メイシアター 吹田市文化会館"},
- {t:"12:15",en:"MOVE",h:"駐車場 出庫 → 梅田へ",img:P.umeda,cap:"梅田スカイビル",
-  d:"新御堂筋で梅田まで約20分。土曜昼の梅田周辺は駐車場が埋まりやすいので、早めに入庫先を決めておくと安心。",
-  tip:"梅田はもともと「埋田」。低湿地を埋め立てた田んぼでした。縁起を担いで「梅」の字に変えたと伝わります。",
-  g:"梅田 駐車場"},
- {t:"12:45",en:"LUNCH",h:"新梅田食道街「はなだこ」",img:P.takoyaki,cap:"たこ焼き屋台",
-  d:"大阪駅の高架下、100軒近くがひしめく食道街。はなだこのたこ焼きは立ち食い・テイクアウトなので3人でも大丈夫。",
-  tip:"たこ焼きの誕生は1935年。会津屋の遠藤留吉が、明石焼きにヒントを得て「ラヂオ焼き」の中身を蛸に変えたのが始まりです。ラヂオは当時の最先端の贅沢品でした。",
-  link:"https://shinume.com/", linkl:"新梅田食道街 公式サイト",
-  g:"新梅田食道街"},
- {t:"13:30",en:"SWEETS",h:"モンシェール堂島本店（堂島ロール）",img:P.rollcake,cap:"ロールケーキ（イメージ）",
-  d:"土曜は10:00〜18:00。買ってすぐ保冷して積み込み、家で食べるのが正解。",
-  tip:"堂島は1730年に幕府公認となった米市場の地。世界で初めて整備された先物取引所で、いまのローソク足チャートもここで生まれました。",
-  link:"https://www.mon-cher.com/shoplist/osaka_dojimahonten.php", linkl:"モンシェール堂島本店 公式",
-  yj:[34.694797,135.495414,"モンシェール堂島本店"], g:"モンシェール 堂島本店"}
-];
-
-var BACK=[
- {t:"13:45",en:"DEPART",h:"堂島 出発（阪神高速 → 名神）",img:P.dotonbori,cap:"道頓堀",
-  d:"保冷剤とクーラーボックスがあるとロールケーキが安心。阪神高速の入口は堂島から近い出入口を選んで。",
-  tip:"土曜午後の阪神高速環状線は混みます。11号池田線経由で豊中から名神に乗るルートも検討を。",
-  yj:[35.68361,139.55944,"三鷹市"], g:"堂島"},
- {t:"15:30",en:"FUEL 02",h:"土山SA（休憩＋給油②・20分）",img:P.suzuka,cap:"鈴鹿山脈（土山）",
-  d:"ここで満タンにすれば、帰宅までの約380kmは余裕を持って走れます。",
-  tip:"土山は東海道五十三次の49番目の宿場町。「坂は照る照る 鈴鹿は曇る あいの土山 雨が降る」——鈴鹿馬子唄で知られる、雨の多い峠です。",
-  link:"https://sapa.c-nexco.co.jp/", linkl:"NEXCO中日本 SA・PA情報",
-  g:"土山サービスエリア"},
- {t:"16:30",en:"DINNER",h:"刈谷ハイウェイオアシス（夕食・50分）",img:P.kariya,cap:"刈谷ハイウェイオアシス",
-  d:"フードコートに地元の人気店が揃っていて、3人でも席が取りやすい。観覧車と天然温泉もあります。",
-  tip:"ここは「日本一集客する道の駅」と言われる施設。年間800万人以上が訪れます。",
-  link:"https://kariya-oasis.com/", linkl:"刈谷ハイウェイオアシス 公式",
-  g:"刈谷ハイウェイオアシス"},
- {t:"18:30",en:"REST",h:"浜松SA（休憩・15分）",img:P.hamana,cap:"浜名湖",
-  d:"最後の長めの休憩。ここから河口湖まで2時間、集中力の勝負です。",
-  tip:"浜名湖はもともと淡水湖でした。1498年の明応地震の津波で砂州が切れて「今切」ができ、海とつながる汽水湖に。うなぎ養殖に向くのはこの汽水のおかげです。",
-  g:"浜松サービスエリア"},
- {t:"20:35",en:"CHUO",h:"河口湖IC",img:P.fuji,cap:"富士山",
-  d:"ここから中央道の上り。土曜夕方〜夜は大月〜八王子でサグ渋滞が起きやすい区間に入ります。",
-  tip:"渋滞の多くは上り坂で無意識に速度が落ちることから始まります。車間を詰めずに、一定速度を保つのがいちばんの渋滞対策。",
-  link:"https://www.jartic.or.jp/", linkl:"道路交通情報センター",
-  g:"河口湖インターチェンジ"},
- {t:"21:55",en:"HOME",h:"三鷹 帰宅",img:P.mitaka,cap:"三鷹",
-  d:"約1,020kmの日帰り。おつかれさまでした。堂島ロールは冷蔵庫へ。",
-  tip:"帰宅したらまず水分を。長時間運転のあとは自覚がなくても脱水気味になっています。",
-  yj:[35.68361,139.55944,"三鷹市"], g:"三鷹市"}
-];
-
-/* ========== 雑学 ========== */
-var TRI=[
- {w:"MITAKA ／ 三鷹",t:"「三鷹」は鷹狩り場が3つ重なる地",img:P.mitaka,
-  p:"江戸幕府の御鷹場が、世田谷・府中・野方の3領にまたがって置かれていた土地。その「三つの鷹場」が地名になりました。武蔵野の雑木林は、鷹狩りのために意図的に残された面もあります。",
-  u:"https://ja.wikipedia.org/wiki/%E4%B8%89%E9%B7%B9%E5%B8%82"},
- {w:"CHUO EXPWY ／ 談合坂",t:"談合坂は「村人が談合した坂」",img:P.milkyway,
-  p:"中央道でおなじみの談合坂SA。名の由来は諸説ありますが、村人が寄り合って話し合い（＝談合）をした坂という説が有力です。今の「談合」の悪いイメージとは無関係。",
-  u:"https://ja.wikipedia.org/wiki/%E8%AB%87%E5%90%88%E5%9D%82%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A8%E3%83%AA%E3%82%A2"},
- {w:"FUJI FIVE LAKES ／ 富士五湖",t:"3つの湖は、もとは1つの湖だった",img:P.fuji,
-  p:"本栖湖・精進湖・西湖は、かつて「せの海」という1つの大きな湖でした。864年の貞観大噴火で流れ出た溶岩が湖を分断し、3つに。いまも水位が連動するのは、地下でつながっている名残と考えられています。",
-  u:"https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E4%BA%94%E6%B9%96"},
- {w:"GOTEMBA ／ 御殿場",t:"家康の「御殿」があった場所",img:P.shintomei,
-  p:"御殿場の地名は、徳川家康の御殿が置かれたことに由来します。駿府と江戸を行き来する家康のための休憩所として建てられたもの。地名がそのまま建物の記録になっている例です。",
-  u:"https://ja.wikipedia.org/wiki/%E5%BE%A1%E6%AE%BF%E5%A0%B4%E5%B8%82"},
- {w:"SHIN-TOMEI ／ 新東名",t:"日本で最初に120km/hになった道",img:P.shintomei,
-  p:"新東名は設計速度140km/hで造られた高速道路。カーブが緩く車線幅も広い。2020年、新静岡〜森掛川が日本で初めて最高速度120km/hに引き上げられました。",
-  u:"https://ja.wikipedia.org/wiki/%E6%96%B0%E6%9D%B1%E5%90%8D%E9%AB%98%E9%80%9F%E9%81%93%E8%B7%AF"},
- {w:"SURUGA BAY ／ 駿河湾",t:"日本でいちばん深い湾、約2,500m",img:P.suruga,
-  p:"駿河湾の最深部はおよそ2,500m。海岸のすぐ先が急に落ち込む地形で、だから桜えび・シラス・タカアシガニといった深海の幸がここでしか揚がりません。深海魚の水揚げ量も日本一です。",
-  u:"https://ja.wikipedia.org/wiki/%E9%A7%BF%E6%B2%B3%E6%B9%BE"},
- {w:"HAMAMATSU ／ 浜松",t:"ヤマハもカワイもローランドも、浜松発",img:P.hamaSA,
-  p:"浜松は「楽器の街」。天竜川が運ぶ良質な木材と水運が、明治期にオルガン作りを根づかせました。山葉寅楠が壊れたオルガンを修理したのが始まりで、そこからヤマハが生まれています。",
-  u:"https://ja.wikipedia.org/wiki/%E6%B5%9C%E6%9D%BE%E5%B8%82"},
- {w:"LAKE HAMANA ／ 浜名湖",t:"地震の津波で、淡水湖が海とつながった",img:P.hamana,
-  p:"浜名湖はもともと淡水湖でした。1498年の明応地震の津波で砂州が切れ、「今切（いまぎれ）」ができて海と直結。以来、汽水湖になりました。うなぎ養殖に向くのはこの汽水のおかげです。",
-  u:"https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%90%8D%E6%B9%96"},
- {w:"KARIYA ／ 刈谷",t:"トヨタグループが生まれた街",img:P.kariya,
-  p:"豊田自動織機、デンソー、アイシン。トヨタグループの中核企業の本社が刈谷に集まっています。トヨタ自動車のルーツである自動織機工場がここにあったからです。",
-  u:"https://ja.wikipedia.org/wiki/%E5%88%88%E8%B0%B7%E5%B8%82"},
- {w:"SEKIGAHARA ／ 関ヶ原",t:"名神でいちばん雪が積もる区間",img:P.meishin,
-  p:"関ヶ原は名神最大の難所。伊吹山が日本海からの雪雲を受け止め、そのまま雪を落とします。1927年に伊吹山で観測された積雪11.82mは、いまも世界記録です。",
-  u:"https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E5%B1%B1"},
- {w:"LAKE BIWA ／ 琵琶湖",t:"流れ出す川は、たった1本",img:P.biwa,
-  p:"琵琶湖に流れ込む川は460本以上ありますが、流れ出すのは瀬田川ただ1本。それが宇治川、淀川と名を変えて大阪湾へ。約400万年前からある世界有数の古代湖でもあります。今日の行程は、この水の流れをそのままなぞっています。",
-  u:"https://ja.wikipedia.org/wiki/%E7%90%B5%E7%90%B6%E6%B9%96"},
- {w:"NEYAGAWA ／ 寝屋川",t:"「鉢かづき姫」の里",img:P.rotenburo,
-  p:"水春のある寝屋川市は、おとぎ話「鉢かづき姫」の舞台とされる土地。頭に鉢をかぶせられた姫の物語で、市はこれを推しており駅前に像もあります。地名の「寝屋」も物語に出てくる寝屋長者から。",
-  u:"https://ja.wikipedia.org/wiki/%E5%AF%9D%E5%B1%8B%E5%B7%9D%E5%B8%82"},
- {w:"SUITA ／ 吹田",t:"日本初のニュータウンと、日本最古級のビール工場",img:P.hankyu,
-  p:"吹田の千里ニュータウンは、1962年入居開始の日本初の大規模ニュータウン。さらにアサヒビール吹田工場は1891年操業で、いまも稼働している日本最古級のビール工場です。",
-  u:"https://ja.wikipedia.org/wiki/%E5%90%B9%E7%94%B0%E5%B8%82"},
- {w:"MANDOLIN ／ マンドリン",t:"ナポリ生まれ、日本で学生文化になった楽器",img:P.mandolin2,
-  p:"マンドリンは18世紀のナポリで完成した楽器。日本には1901年に比留間賢八が持ち込み、大正期に学生のあいだで大流行しました。大学・高校のマンドリンクラブがこれだけ多い国は、世界的にも日本くらいです。",
-  u:"https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3"},
- {w:"TAKOYAKI ／ たこ焼き",t:"1935年、ラヂオ焼きの中身を蛸に変えた日",img:P.takoyaki,
-  p:"たこ焼きの元祖は大阪・会津屋の遠藤留吉。牛すじを入れた「ラヂオ焼き」を売っていたところ、客に明石では蛸を入れると聞き、中身を蛸に変えたのが始まりです。ラヂオは当時の最先端＝ハイカラの象徴でした。",
-  u:"https://ja.wikipedia.org/wiki/%E3%81%9F%E3%81%93%E7%84%BC%E3%81%8D"},
- {w:"UMEDA ／ 梅田",t:"もとの字は「埋田」",img:P.umeda,
-  p:"梅田は低湿地を埋め立てて田にした土地で、もとの表記は「埋田」。さすがに縁起が悪いというので「梅」の字を当てたと伝わります。大阪の中心が、実は埋立地から始まっている。",
-  u:"https://ja.wikipedia.org/wiki/%E6%A2%85%E7%94%B0"},
- {w:"DOJIMA ／ 堂島",t:"世界初の先物取引所は、大阪にあった",img:P.dotonbori,
-  p:"1730年に幕府公認となった堂島米市場は、世界で最初に整備された先物取引所とされます。価格の上下を視覚化するローソク足チャートもここで生まれ、いまも世界中の市場で使われています。",
-  u:"https://ja.wikipedia.org/wiki/%E5%A0%82%E5%B3%B6%E7%B1%B3%E4%BC%9A%E6%89%80"},
- {w:"TSUCHIYAMA ／ 土山",t:"「あいの土山、雨が降る」",img:P.suzuka,
-  p:"土山は東海道五十三次の49番目の宿場。鈴鹿馬子唄の「坂は照る照る 鈴鹿は曇る あいの土山 雨が降る」で知られます。鈴鹿峠は昔から天気が変わりやすく、旅人泣かせの難所でした。",
-  u:"https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%B1%E5%AE%BF"},
- {w:"MAKINOHARA ／ 牧之原",t:"日本一の茶畑は、失業対策から生まれた",img:P.tea,
-  p:"東名から見える牧之原台地の茶畑は日本最大の茶産地。明治維新で職を失った旧幕臣たちが開墾した土地です。荒れ地だった台地が、いま日本の緑茶の中心になっている。",
-  u:"https://ja.wikipedia.org/wiki/%E7%89%A7%E3%83%8E%E5%8E%9F%E5%8F%B0%E5%9C%B0"},
- {w:"TRAFFIC JAM ／ サグ渋滞",t:"渋滞は、坂道で勝手に生まれる",img:P.meishin,
-  p:"下り坂から上り坂に変わる地点（サグ部）では、ドライバーが気づかないうちに速度が落ちます。それが後続に伝わって渋滞になる。中央道の大月〜八王子はその典型。車間を空けて一定速度で走るのが最善の対策です。",
-  u:"https://ja.wikipedia.org/wiki/%E4%BA%A4%E9%80%9A%E6%B8%8B%E6%BB%9E"}
-];
-
-/* ========== クイズ ========== */
-var QUIZ=[
- {q:"「三鷹」という地名の由来は？",o:["3つの鷹狩り場が重なる土地だったから","鷹が3羽並んで飛ぶのが見えたから","三つの川が集まる土地だったから"],a:0,
-  x:"世田谷・府中・野方——江戸幕府の御鷹場が3つにまたがっていたことが由来です。"},
- {q:"富士五湖のうち、もとは1つの湖だった3つは？",o:["山中湖・河口湖・西湖","本栖湖・精進湖・西湖","河口湖・精進湖・本栖湖"],a:1,
-  x:"「せの海」という1つの湖が、864年の貞観大噴火の溶岩流で3つに分断されました。"},
- {q:"日本で最初に最高速度120km/hになった高速道路は？",o:["東名高速","新東名高速","新名神高速"],a:1,
-  x:"2020年、新東名の新静岡〜森掛川が日本初の120km/h区間になりました。設計速度は140km/hです。"},
- {q:"日本でいちばん深い湾は？",o:["富山湾","相模湾","駿河湾"],a:2,
-  x:"駿河湾の最深部は約2,500m。深海魚の水揚げ量も日本一です。"},
- {q:"浜松が「楽器の街」になった理由は？",o:["天竜川の木材と水運があったから","江戸幕府が楽器工房を置いたから","オランダ人が楽器を伝えたから"],a:0,
-  x:"良質な木材と水運が明治期のオルガン製造を支えました。山葉寅楠のオルガン修理がヤマハの出発点です。"},
- {q:"浜名湖が海とつながったきっかけは？",o:["江戸時代の運河工事","1498年の地震の津波","明治の干拓事業"],a:1,
-  x:"明応地震の津波で砂州が切れ「今切」ができました。以来、汽水湖になっています。"},
- {q:"刈谷に本社が集まっている企業グループは？",o:["ホンダグループ","トヨタグループ","スズキグループ"],a:1,
-  x:"豊田自動織機・デンソー・アイシンなど、トヨタグループ中核企業の本社が刈谷にあります。"},
- {q:"琵琶湖から流れ出す川は何本？",o:["1本","12本","460本以上"],a:0,
-  x:"流れ込むのは460本以上ですが、流れ出すのは瀬田川ただ1本。宇治川→淀川と名を変えます。"},
- {q:"マンドリンが生まれた都市は？",o:["ウィーン","ナポリ","ミラノ"],a:1,
-  x:"18世紀のナポリで完成した楽器です。日本には1901年に比留間賢八が持ち込みました。"},
- {q:"たこ焼きの中身が蛸になったのは何年ごろ？",o:["1875年ごろ","1935年ごろ","1955年ごろ"],a:1,
-  x:"1935年、会津屋の遠藤留吉が「ラヂオ焼き」の中身を蛸に変えたのが始まりとされます。"},
- {q:"「梅田」のもとの漢字表記は？",o:["埋田","産田","馬手田"],a:0,
-  x:"湿地を埋め立てた田んぼだったので「埋田」。縁起を担いで「梅」に変えたと伝わります。"},
- {q:"世界で最初に整備された先物取引所があった場所は？",o:["ロンドン","シカゴ","大阪・堂島"],a:2,
-  x:"1730年公認の堂島米市場です。ローソク足チャートもここで生まれました。"}
-];
-
-/* ========== 描画 ========== */
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-function stopHTML(s){
-  var acts='';
-  if(s.link) acts+='<a class="btn" target="_blank" rel="noopener" href="'+s.link+'">'+esc(s.linkl||'公式サイト')+'</a>';
-  if(s.yj)   acts+='<a class="btn k" href="'+Y(s.yj[0],s.yj[1],s.yj[2])+'">YAHOO!カーナビ</a>';
-  if(s.g)    acts+='<a class="btn" target="_blank" rel="noopener" href="'+G(s.g)+'">GOOGLEマップ</a>';
-  return '<article class="stop">'+
-   '<div class="ph"><img loading="lazy" alt="'+esc(s.h)+'" src="'+s.img+'">'+
-     '<div class="time">'+esc(s.t)+'</div>'+
-     (s.cap?'<div class="cap">'+esc(s.cap)+'</div>':'')+
-     '<div class="ttl"><div class="mini">'+esc(s.en)+'</div><h3>'+esc(s.h)+'</h3></div>'+
-   '</div>'+
-   '<div class="bd"><p>'+esc(s.d)+'</p>'+
-     (s.tip?'<div class="tip">'+esc(s.tip)+'</div>':'')+
-     (acts?'<div class="acts">'+acts+'</div>':'')+
-   '</div></article>';
-}
-
-
-
-var done=0;
-document.getElementById('s-quiz').addEventListener('click',function(e){
-  var b=e.target.closest('.opt'); if(!b) return;
-  var box=b.closest('.q'); if(box.dataset.ans) return;
-  var qi=+b.dataset.q, oi=+b.dataset.o, ans=QUIZ[qi].a;
-  box.dataset.ans='1';
-  box.querySelectorAll('.opt').forEach(function(x,j){ if(j===ans) x.classList.add('ok'); else if(j===oi) x.classList.add('ng'); });
-  box.querySelector('.exp').classList.add('show');
-  if(oi===ans) done++;
-  document.getElementById('score').textContent='SCORE '+done+' / '+QUIZ.length;
+var ANS=[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0],done=0;
+document.getElementById('qs').addEventListener('click',function(e){
+ var b=e.target.closest('.opt'); if(!b) return;
+ var box=b.closest('.q'); if(box.dataset.ans) return;
+ var qi=+b.dataset.q, oi=+b.dataset.o, a=ANS[qi]; box.dataset.ans='1';
+ box.querySelectorAll('.opt').forEach(function(x,j){ if(j===a)x.classList.add('ok'); else if(j===oi)x.classList.add('ng') });
+ box.querySelector('.exp').classList.add('show');
+ if(oi===a)done++;
+ document.getElementById('score').textContent='SCORE '+done+' / '+ANS.length;
 });
-
-/* ========== 地図 ========== */
-var ORIGIN='東京都三鷹市', SUISYUN='東香里湯元水春 寝屋川市寝屋北町2-1';
-var WPS=[SUISYUN,'メイシアター 吹田市文化会館','新梅田食道街','モンシェール堂島本店','刈谷ハイウェイオアシス'];
-
-
-/* ========== ヒーロー ========== */
-(function(){
-  var sl=document.querySelectorAll('.hero .slide');
-  var cur=0;
-  setInterval(function(){
-    sl[cur].classList.remove('on');
-    cur=(cur+1)%sl.length;
-    var img=sl[cur].querySelector('img');
-    img.style.animation='none'; void img.offsetWidth; img.style.animation='';
-    sl[cur].classList.add('on');
-  },6200);
-})();
-
-/* ========== カウントダウン ========== */
-var T0=new Date(2026,6,31,22,30,0).getTime();
-function tick(){
-  var d=T0-Date.now(), pre=d>0;
-  if(!pre) d=Math.abs(d);
-  var s=Math.floor(d/1000);
-  var dd=Math.floor(s/86400), hh=Math.floor(s%86400/3600), mm=Math.floor(s%3600/60), ss=s%60;
-  function z(n){return (n<10?'0':'')+n}
-  document.getElementById('cdd').textContent=z(dd);
-  document.getElementById('cdh').textContent=z(hh);
-  document.getElementById('cdm').textContent=z(mm);
-  document.getElementById('cds').textContent=z(ss);
-}
-tick(); setInterval(tick,1000);
-
-/* ========== スクロール演出 ========== */
-var io=new IntersectionObserver(function(es){
-  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.stop,.tc').forEach(function(el,i){ el.style.transitionDelay=(i%3*90)+'ms'; io.observe(el); });
-
-/* ナビ現在地ハイライト */
-var secs=[].slice.call(document.querySelectorAll('section')), links=[].slice.call(document.querySelectorAll('nav a'));
-var io2=new IntersectionObserver(function(es){
-  es.forEach(function(e){
-    if(!e.isIntersecting) return;
-    links.forEach(function(a){ a.classList.toggle('act', a.getAttribute('href')==='#'+e.target.id) });
-  });
-},{rootMargin:'-45% 0px -50% 0px'});
-secs.forEach(function(s){ if(s.id) io2.observe(s) });
-
-/* 画像フォールバック */
-document.addEventListener('error',function(e){
-  var t=e.target;
-  if(!t||t.tagName!=='IMG') return;
-  if(!t.dataset.retry){ t.dataset.retry='1'; setTimeout(function(){ t.src=t.src.split('#')[0]+'#r'+Date.now() },1200); return; }
-  t.style.display='none'; if(t.parentElement) t.parentElement.classList.add('imgfail');
-},true);
-
-/* コード欠損ガード：ここまで実行できたらバナーを消す */
-
+(function(){var sl=document.querySelectorAll('.hero .slide'),c=0;
+ setInterval(function(){sl[c].classList.remove('on');c=(c+1)%sl.length;
+  var im=sl[c].querySelector('img');im.style.animation='none';void im.offsetWidth;im.style.animation='';
+  sl[c].classList.add('on')},6200)})();
+var T0=new Date(2026,6,31,18,0,0).getTime();
+function z(n){return(n<10?'0':'')+n}
+function tick(){var d=Math.abs(T0-Date.now()),s=Math.floor(d/1000);
+ document.getElementById('cdd').textContent=z(Math.floor(s/86400));
+ document.getElementById('cdh').textContent=z(Math.floor(s%86400/3600));
+ document.getElementById('cdm').textContent=z(Math.floor(s%3600/60));
+ document.getElementById('cds').textContent=z(s%60)}
+tick();setInterval(tick,1000);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.stop,.tc').forEach(function(el,i){el.style.transitionDelay=(i%3*90)+'ms';io.observe(el)});
+var links=[].slice.call(document.querySelectorAll('nav a'));
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;
+ links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section').forEach(function(s){if(s.id)io2.observe(s)});
+document.addEventListener('error',function(e){var t=e.target;if(!t||t.tagName!=='IMG')return;
+ if(!t.dataset.retry){t.dataset.retry='1';setTimeout(function(){t.src=t.src.split('#')[0]+'#r'+Date.now()},1200);return}
+ t.style.display='none';if(t.parentElement)t.parentElement.classList.add('imgfail')},true);
 </script>
-</body>
-</html>
+</body></html>
