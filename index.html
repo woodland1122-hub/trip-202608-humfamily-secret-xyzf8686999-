@@ -201,6 +201,7 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .tl-tip{margin:10px 0 0;padding:10px 13px;border-radius:12px;background:rgba(217,181,110,.07);border:1px dashed rgba(217,181,110,.3);font-size:12px;color:var(--gold-l)}
 .tl-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--sea);text-decoration:none}
 .tl-link:hover{text-decoration:underline}
+.tl-map{margin-left:16px;color:var(--gold-l)}
 /* ---------- detour (寄り道) ---------- */
 .det-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .df{padding:7px 15px;border-radius:99px;border:1px solid var(--line2);font-size:12px;font-weight:700;color:var(--tx2);background:var(--card);transition:.2s}
@@ -1307,7 +1308,11 @@ function wxHTML(n,rec,stale,sun){
     '<p class="wx-pop">☔️ 降水確率 '+(rec.pop==null?'—':rec.pop+'%')+'</p></div></div>'+
     '<div class="wx-dress">'+wxDress(n,rec.mx,rec.mn,rec.pop||0,rec.c).join('<br>')+'</div>'+
     wxSunHTML(n,sun)+
-    '<p class="wx-note">'+(stale?'※圏外のため、前回取得した予報を表示しています。':'出典: Open-Meteo（気象庁データを含む）。開くたびに最新を取り直します。')+'</p>';
+    '<p class="wx-note">'+(stale?('※前回取得'+(rec.at?'（'+wxWhen(rec.at)+'）':'')+'の予報です。電波が届くと自動で新しくなります。'):'出典: Open-Meteo（気象庁データを含む）。30分ごとに取り直します。')+'</p>';
+}
+function wxWhen(ts){
+  const d=new Date(ts);
+  return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
 }
 /* ---- 予定ごと（その場所・その時刻）の天気 ---- */
 const WX_KEY='gc2026_wx', WXH_KEY='gc2026_wxh';
@@ -1347,9 +1352,11 @@ function loadWx(n){
   const el=document.getElementById('wx-'+n), s=WX_SPOT[n];
   if(!el||!s) return;
   const dayC=LS.get(WX_KEY,{}), hC=LS.get(WXH_KEY,{});
-  if(dayC[n]) el.innerHTML=wxHTML(n,dayC[n],true,hC[n]&&hC[n].sun);
+  const fresh=dayC[n]&&hC[n]&&hC[n].at&&(Date.now()-hC[n].at<18e5); /* 30分以内に取得ずみなら取り直さない */
+  if(dayC[n]) el.innerHTML=wxHTML(n,dayC[n],!fresh,hC[n]&&hC[n].sun);
   else el.innerHTML='<p class="wx-load">天気を確認しています…</p>';
   paintTlWx(n);
+  if(fresh) return;
   const sp=daySpots(n);
   const u='https://api.open-meteo.com/v1/forecast?latitude='+sp.list.map(l=>l[0]).join(',')+
     '&longitude='+sp.list.map(l=>l[1]).join(',')+
@@ -1459,6 +1466,7 @@ function openDay(n,stay){
       (it.ll?'<div id="twx-'+d.n+'-'+ix+'"></div>':'')+
       (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
       (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
+      (it.ll?'<a class="tl-link tl-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+it.ll[0]+','+it.ll[1]+'">📍 ここを地図で開く ↗</a>':'')+
       '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
       '</div></div></div>').join('')+'</div>'+columnHTML(n);
   loadWx(n);
