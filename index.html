@@ -152,7 +152,22 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .dayhero .date{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.3em;color:var(--gold-l);font-weight:700}
 .dayhero h3{font-family:'Shippori Mincho B1',serif;font-size:clamp(19px,4.8vw,30px);font-weight:800;color:#fff;line-height:1.45;margin:6px 0 8px}
 .dayhero .d{font-size:12.5px;color:var(--tx2);max-width:640px}
-.day-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 26px}
+.day-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 18px}
+.wx{border:1px solid var(--line);border-radius:16px;background:linear-gradient(150deg,var(--card),var(--ink2));padding:14px 16px;margin:0 0 26px}
+.wx-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.wx-ic{font-size:32px;line-height:1}
+.wx-main{flex:1;min-width:160px}
+.wx-sky{font-weight:900;font-size:15px;color:#fff}
+.wx-place{font-size:11px;letter-spacing:.18em;color:var(--gold);font-weight:700}
+.wx-temp{display:flex;gap:12px;align-items:baseline;font-family:'Cormorant Garamond',serif}
+.wx-mx{font-size:30px;font-weight:700;color:var(--coral)}
+.wx-mn{font-size:20px;font-weight:700;color:var(--sea)}
+.wx-unit{font-size:11px;color:var(--tx3);font-family:'Zen Kaku Gothic New',sans-serif;margin-left:-6px}
+.wx-pop{font-size:12px;color:var(--tx2);font-weight:700}
+.wx-dress{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--tx2);line-height:1.8}
+.wx-dress b{color:var(--gold-l)}
+.wx-note{margin-top:7px;font-size:10.5px;color:var(--tx3)}
+.wx-load{font-size:12px;color:var(--tx3)}
 /* timeline */
 .tl{position:relative;padding-left:30px}
 .tl::before{content:'';position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),rgba(217,181,110,.06))}
@@ -477,6 +492,7 @@ window.addEventListener('load',function(){setTimeout(function(){
         <div class="info"><p class="t">⛴ 帰りのフェリー（最重要）</p><p class="d">東京九州フェリー「それいゆ／はまゆう」<br>8/27（木）23:55 新門司港 出港 → 8/28（金）夜 横須賀港 着（約21時間）。<br><b>車両乗船は出航3時間前・20:50港着が鉄則。</b><br><a target="_blank" rel="noopener" href="https://tqf.co.jp/">公式サイト ↗</a></p></div>
         <div class="info"><p class="t">🏯 予約・チケット</p><p class="d">姫路城 大人1,000円。<b>軍艦島は野母崎の対岸から見る方針なので、船の予約は不要。</b>QRコード・予約票は「準備」タブのチェックリストで最終確認を。</p></div>
         <div class="info"><p class="t">🚗 ドライブ心得</p><p class="d">DAY1は5:00発で渋滞回避。大分道は霧に注意。お盆明けでも夕方の都市部は混みます。休憩は2時間毎に。</p></div>
+        <div class="info"><p class="t">🌡 天気と服装</p><p class="d">「旅程」タブの各日に、<b>その日その場所の予報・最高最低気温・服装のアドバイス</b>が出ます。開くたびに自動で取り直します。<br>圏外のときは前回取った予報を表示するので、宿のWi‑Fiで一度ずつ開いておくと安心です。</p></div>
         <div class="info"><p class="t">🌀 フェリーが欠航したら</p><p class="d">台風で8/27の便が飛ばない場合は、<b>陸路で2日かけて帰る</b>。新門司から三鷹まで約1,150km。<br>初日は中国道〜名神で神戸〜京都あたりまで（約600km）。SAで仮眠を取り、翌日に残り約550kmを走る。<br>無理に一気に走らない。眠くなったら次のSAで必ず停まる。</p></div>
         <div class="info"><p class="t">🆘 もしもの時</p><p class="d">道路緊急ダイヤル <b>#9910</b>／JAF <b>#8139</b>／救急相談 <b>#7119</b>。健康保険証を忘れずに。</p></div>
       </div>
@@ -610,7 +626,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v12 — 2026.08.07</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v16 — 2026.08.07</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -783,6 +799,7 @@ const DAYS = [
    yj:[[33.26667,131.36917,'金鱗湖（由布院）'],[33.17389,131.22667,'九重“夢”大吊橋'],[33.28033,131.50573,'界 別府（北浜）']],
    tl:[
     {t:"07:00",tt:"朝もやの「金鱗湖」を独り占め",d:"泊まったからこそできる早朝さんぽ。湯気の立つ湖面がいちばん美しく、いちばん空いている時間です。",tip:"7時台の湯の坪街道はまだ店が閉まっている。それでいい。人がいない由布院は別の街です。",img:P.kinrin,link:"https://yufuin.gr.jp/"},
+    {t:"08:30",tt:"「湯布院 千家」で由布岳を見ながら朝ごはん",d:"全面ガラス張りの向こうに由布岳と田園。8:30オープンで、モーニングも名物のとり天もあります。宿が素泊まりなので、今日の朝食はここ。",tip:"窓際の席が取れるかどうかで満足度が変わる。開店と同時に入るのが正解です。",img:P.yufudake,link:"https://www.senke.info/"},
     {t:"09:30",tt:"「やまなみハイウェイ」高原絶景ドライブ",d:"九重連山の裾野を走る日本屈指のドライブ道。吹き抜ける高原の風が爽快！",tip:"『長者原』の駐車場で一時停車。硫黄山に吸い込まれる画角で記念撮影を。",img:P.makinoto,link:"https://www.visit-oita.jp/spots/detail/8579"},
     {t:"11:00",tt:"九重“夢”大吊橋を渡る",d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の谷を真下に見ます。",tip:"高さが苦手な人は真ん中を見て歩けば大丈夫。太朗は絶対はしゃぐので手すりに注意。",img:P.yumebridge,link:"https://www.yumeooturihashi.com/"},
     {t:"15:00",tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.beppucity,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
@@ -790,15 +807,15 @@ const DAYS = [
     {t:"18:30",tt:"豊後の創作会席ディナー",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",img:P.kaiseki,link:"https://www.jtb.co.jp/kokunai-hotel/htl/8410122/restaurant/"}
    ]},
  { n:6, date:"8.27-28", dow:"木・金", short:"太宰府→フェリー", stay:"東京九州フェリー 船中泊", photo:P.ferry,
-   title:"博多天神・屋台メシ ── 太平洋クルーズで帰京",
-   desc:"界別府を少し早めに出て、太宰府天満宮で子どもたちの合格祈願。その足で博多へ入り、天神でお土産を仕入れて夕方は開店直後の屋台へ。20:50に新門司港着、23:55出港の東京九州フェリーで横須賀へ約21時間の洋上クルーズ。",
+   title:"太宰府と博多 ── イカの活き造りで締めて、太平洋クルーズで帰京",
+   desc:"界別府を少し早めに出て、太宰府天満宮で子どもたちの合格祈願。その足で博多へ入り、天神でお土産を仕入れる。旅の最後の晩ごはんは「河太郎」でイカの活き造り。20:50に新門司港着、23:55出港の東京九州フェリーで横須賀へ約21時間の洋上クルーズ。",
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=太宰府天満宮|天神",
    yj:[[33.52153,130.53486,'太宰府天満宮'],[33.58867,130.40272,'天神'],[33.87639,130.99436,'東京九州フェリー 新門司ターミナル']],
    tl:[
     {t:"09:30",tt:"界 別府を出発",d:"朝風呂を楽しんでから、大分道経由で福岡へ。太宰府に寄る分だけ30分だけ早く出ます。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"12:00",tt:"「太宰府天満宮」で合格祈願",d:"学問の神様・菅原道真を祀る全国天満宮の総本宮。九州道の太宰府ICを降りてすぐです。",tip:"参道の梅ヶ枝餅は焼きたてを1個ずつ。冷めたのを持ち帰るより、その場で食べるのが正解。",img:P.dazaifu,link:"https://www.dazaifutenmangu.or.jp/"},
     {t:"14:30",tt:"博多・天神ショッピング",d:"岩田屋や天神地下街を大散策。ランチは濃厚とんこつラーメン！",tip:"『通りもん』と明太子は天神のデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
-    {t:"17:30",tt:"行列回避！開店と同時に「博多屋台」",d:"17:30の開店直後に入店し、並ばず熱々の屋台ラーメンと焼き鳥を堪能。",tip:"天神三越裏や中洲の公認屋台は子連れでも安心のクリーンさ。",img:P.ramen,link:"https://yokanavi.com/yatai/"},
+    {t:"17:00",tt:"「河太郎」でイカの活き造り ── 旅の最後の晩ごはん",d:"呼子のイカの活き造り発祥の店。注文を受けてから生け簀のイカを目の前でさばくので、皿の上で透きとおったまま動きます。17:00の開店と同時に入ります。",tip:"ゲソは後から天ぷらか塩焼きにしてもらえる。透明なイカを見た瞬間の太朗の顔が、この旅の最後の一枚になる。要予約。",img:P.ramen,link:"https://www.kawataro.jp/hakata/"},
     {t:"19:30",tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",img:P.nakasu,link:"https://tqf.co.jp/2021/06/17/tqfinformation0530/"},
     {t:"20:50",tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.shinmoji,link:"https://tqf.co.jp/"},
     {t:"23:55",tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
@@ -831,12 +848,16 @@ const DETOURS = [
  {day:5,cat:"📸 絶景",name:"牧ノ戸峠",ll:[33.09639,131.20833],d:"やまなみハイウェイの最高地点（標高約1,330m）。駐車場から展望台まで5分の登りで、九重連山が一列に並ぶ景色が出てきます。",meta:"九重町",img:P.makinoto,q:"牧ノ戸峠"},
  {day:5,cat:"🎡 体験",name:"九重“夢”大吊橋",ll:[33.17389,131.22667],d:"高さ173m・長さ390mの歩行者専用としては日本最大級の吊橋。床の一部が金網で、真下に震動の滝が見えます。渡り切るだけで家族の性格が分かる。",meta:"やまなみから約15分",img:P.yumebridge,q:"九重夢大吊橋"},
  {day:5,cat:"☕ 休憩",name:"湯の坪街道",d:"由布院のメインストリート。10時を過ぎると人だらけになるので、宿を出る前の朝いちばんに歩くのが正解。金鱗湖まで歩いてつながっています。",meta:"金鱗湖のすぐそば",img:P.yunotsubo,q:"湯の坪街道"},
+ {day:5,cat:"☕ 休憩",name:"由布岳一望のカフェ「湯布院 千家」",d:"全面ガラス張りの向こうに由布岳と田園が広がります。朝8:30から開いていて、モーニングも名物のとり天ランチもある。TERRAは素泊まりなので、ここが朝ごはんの本命。",meta:"由布院駅から車3分／8:30〜17:00・木曜と第2金曜が休み",img:P.yufudake,q:"湯布院 千家 カフェ"},
  {day:5,cat:"🎡 体験",name:"別府地獄めぐり（海地獄）",ll:[33.31589,131.46968],d:"98度のコバルトブルーが煮え立つ国指定名勝。7つ全部回ると半日かかるので、界別府に入る前に海地獄だけつまむのが現実的です。",meta:"別府市鉄輪",img:P.jigoku,q:"海地獄"},
  {day:6,cat:"📸 絶景",name:"別府湾SA（下り）",d:"別府湾を丘の上から見下ろす絶景SA。朝の光で海が白く光る時間に通ります。ここのコーヒーが旅で最後のSA休憩になる。",meta:"大分道",img:P.beppuwansa,q:"別府湾サービスエリア"},
  {day:6,cat:"🎡 体験",name:"太宰府天満宮",ll:[33.52153,130.53486],d:"学問の神様に、はなと太朗の合格祈願。参道の梅ヶ枝餅は焼きたてを1個ずつ、その場で食べるのが正解です。",meta:"福岡へ向かう途中・太宰府IC",img:P.dazaifu,q:"太宰府天満宮"},
  {day:6,cat:"🎡 体験",name:"九州国立博物館",d:"太宰府天満宮の裏手から、エスカレーターと動く歩道のトンネルで直結しています。日本で4番目の国立博物館。参拝ついでに国宝が見られるのは、ここだけ。",meta:"太宰府天満宮から徒歩",img:P.kyuhaku,q:"九州国立博物館"},
  {day:6,cat:"🛍 買い物",name:"キャナルシティ博多",ll:[33.59111,130.41056],d:"建物の真ん中を運河が流れ、10分おきに噴水ショーが上がる大型モール。屋根があるので、雨でも最後のお土産をここで片づけられます。",meta:"博多・中洲近く",img:P.canal,q:"キャナルシティ博多"},
- {day:6,cat:"🍜 グルメ",name:"櫛田神社",ll:[33.59311,130.41069],d:"博多祇園山笠の飾り山が一年中立てられている博多の総鎮守。高さ10m超の山笠を間近で見上げてから屋台へ向かうと、博多の夜の解像度が上がります。",meta:"博多旧市街",img:P.kushida,q:"櫛田神社 博多"}
+ {day:6,cat:"🍜 グルメ",name:"櫛田神社",ll:[33.59311,130.41069],d:"博多祇園山笠の飾り山が一年中立てられている博多の総鎮守。高さ10m超の山笠を間近で見上げてから夕食に向かうと、博多の夜の解像度が上がります。",meta:"博多旧市街",img:P.kushida,q:"櫛田神社 博多"},
+ {day:6,cat:"🍜 グルメ",name:"河太郎 博多駅前店",d:"呼子のイカの活き造り発祥の店。カウンターに座ると、生け簀から上げたイカを目の前でさばくところが見られます。ランチは活き造り御膳2,800円（税抜）。",meta:"ランチ12:00〜13:30／ディナー17:00〜21:30",img:P.ramen,q:"河太郎 博多駅前店"},
+ {day:6,cat:"🍜 グルメ",name:"河太郎 中洲本店",d:"創業60年の本店。ディナーは月〜土17:30〜。中洲の屋台街がすぐそばなので、食後に少しだけ夜の中洲を歩ける。",meta:"ランチ11:45〜14:00／ディナー17:30〜22:00",img:P.nakasu,q:"河太郎 中洲本店"},
+ {day:6,cat:"🍜 グルメ",name:"博多の屋台（天神・中洲）",d:"河太郎に行くなら屋台は今回見送り。時間が余ったら、食後に中洲の屋台街を歩いて雰囲気だけ味わうのもアリ。",meta:"17:30ごろから開店",img:P.ramen,q:"博多 屋台 中洲"}
 ];
 
 /* ============ QUIZ (24問・通信不要) ============ */
@@ -906,6 +927,9 @@ const CK_DEFAULT = [
  {id:"gunkan",l:"望遠が効くカメラ・双眼鏡（野母崎から軍艦島を見る）",r:"DAY4の必需品"},
  {id:"ferryplanb",l:"フェリー欠航に備えて仮眠グッズ（アイマスク・ネックピロー・毛布）",r:"陸路2日帰りの保険"},
  {id:"terra",l:"DAY4の夕食どうする？（買い出しか外食か決めておく）",r:"TERRA湯布院は素泊まり"},
+ {id:"kawataro",l:"河太郎（8/27 17:00〜）の予約",r:"旅の最後の晩ごはん"},
+ {id:"rain",l:"4人分のレインウェアか大きめの傘（今回は雨がち）",r:"全日で降水確率が高め"},
+ {id:"haori",l:"薄手の羽織り 4人分（由布院の朝とフェリーのデッキ用）",r:"朝晩と船上は冷える"},
  {id:"charger",l:"車載充電器・モバイルバッテリー",r:"ナビ＆カメラの生命線"}
 ];
 const PACK_THEMES = [
@@ -1188,6 +1212,101 @@ function buildDayTabs(){
     '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
   ).join('');
 }
+/* ============ WEATHER（その日その場所の予報・気温・服装） ============ */
+const WX_SPOT={
+ 1:{n:'姫路〜有馬温泉',lat:34.7952,lon:135.2453,d:'2026-08-22'},
+ 2:{n:'門司港',lat:33.9450,lon:130.9647,d:'2026-08-23'},
+ 3:{n:'志賀島〜長崎',lat:32.7435,lon:129.8730,d:'2026-08-24'},
+ 4:{n:'長崎〜由布院',lat:33.2667,lon:131.3692,d:'2026-08-25'},
+ 5:{n:'由布院〜別府',lat:33.2803,lon:131.5057,d:'2026-08-26'},
+ 6:{n:'太宰府〜博多〜新門司',lat:33.5887,lon:130.4027,d:'2026-08-27'}
+};
+/* 通信できないときの目安。実測でも予報でもなく、8月下旬のその土地の傾向 */
+const WX_GUIDE={
+ 1:{mx:33,mn:26,t:'瀬戸内の内陸。昼の姫路城はとにかく暑い'},
+ 2:{mx:32,mn:26,t:'海峡沿い。風はあるが湿気が強い'},
+ 3:{mx:32,mn:26,t:'坂の街。歩くぶん体感はもっと上がる'},
+ 4:{mx:31,mn:23,t:'由布院は盆地。朝晩だけ驚くほど涼しい'},
+ 5:{mx:32,mn:26,t:'海沿い＋湯けむり。蒸し暑さがこの旅で一番'},
+ 6:{mx:33,mn:26,t:'都市部。夜になっても気温が下がりにくい'}
+};
+const WX_CODE={0:['快晴','☀️'],1:['晴れ','🌤'],2:['薄曇り','⛅️'],3:['曇り','☁️'],45:['霧','🌫'],48:['霧','🌫'],
+ 51:['霧雨','🌦'],53:['弱い雨','🌦'],55:['雨','🌧'],56:['冷たい霧雨','🌦'],57:['冷たい霧雨','🌦'],
+ 61:['小雨','🌦'],63:['雨','🌧'],65:['強い雨','🌧'],66:['冷たい雨','🌧'],67:['冷たい雨','🌧'],
+ 71:['雪','🌨'],73:['雪','🌨'],75:['大雪','🌨'],77:['霧雪','🌨'],
+ 80:['にわか雨','🌦'],81:['にわか雨','🌦'],82:['激しいにわか雨','⛈'],
+ 85:['にわか雪','🌨'],86:['にわか雪','🌨'],95:['雷雨','⛈'],96:['ひょうを伴う雷雨','⛈'],99:['激しい雷雨','⛈']};
+function wxSky(c){ return WX_CODE[c]||['—','🌡'] }
+function wxDress(n,mx,mn,pop,code){
+  const a=[];
+  if(mx>=35) a.push('<b>危険な暑さ。</b>半袖に帽子、日陰を選んで歩く。水と塩分を切らさない');
+  else if(mx>=33) a.push('<b>猛暑日級。</b>半袖＋帽子。ペットボトルは常に手元に');
+  else if(mx>=30) a.push('<b>真夏日。</b>半袖でOK。汗をかくので着替えを1枚多めに');
+  else if(mx>=27) a.push('<b>半袖で快適。</b>動くと汗ばむ程度');
+  else a.push('<b>過ごしやすい。</b>薄手の長袖でもいいくらい');
+  if(mn<=23) a.push('朝晩は冷える。<b>薄手の羽織りを1枚</b>持って出る');
+  if(pop>=60) a.push('<b>雨が本降りになりそう。</b>折りたたみでは足りない。レインウェアか大きめの傘を');
+  else if(pop>=30) a.push('にわか雨がありそう。折りたたみ傘を車から出しておく');
+  if(code>=95) a.push('<b>雷に注意。</b>山と海沿いでは無理をせず、屋根のある場所へ');
+  if(n===1) a.push('姫路城は石段と木の階段。<b>滑りにくい靴</b>で');
+  if(n===3) a.push('長崎は坂と石畳。歩きやすい靴が正解');
+  if(n===4) a.push('野母崎は日陰が少ない。<b>帽子とサングラス</b>を車に置かない');
+  if(n===5) a.push('由布院の朝と大吊橋の上は風がある。羽織りは車ではなく<b>持って歩く</b>');
+  if(n===6) a.push('<b>フェリーのデッキは夜風が強い。</b>星を見るなら羽織りを1枚デッキへ');
+  return a;
+}
+function wxHTML(n,rec,stale){
+  const s=WX_SPOT[n], g=WX_GUIDE[n];
+  if(!rec){
+    return '<div class="wx-top"><div class="wx-ic">🌡</div><div class="wx-main">'+
+      '<p class="wx-place">'+s.n+' ／ '+s.d.replace(/^2026-0?/,'').replace('-','.')+'</p>'+
+      '<p class="wx-sky">まだ予報が出ていません</p></div>'+
+      '<div><div class="wx-temp"><span class="wx-mx">'+g.mx+'</span><span class="wx-unit">℃</span>'+
+      '<span class="wx-mn">'+g.mn+'</span><span class="wx-unit">℃</span></div>'+
+      '<p class="wx-pop">↑ 8月下旬の目安</p></div></div>'+
+      '<div class="wx-dress">'+g.t+'。<br>'+wxDress(n,g.mx,g.mn,20,0).join('<br>')+'</div>'+
+      '<p class="wx-note">※天気予報が出るのは約2週間前から。出発が近づくとこの欄が実際の予報に変わります。上の気温はその土地の8月下旬の目安で、予報ではありません。</p>';
+  }
+  const sk=wxSky(rec.c);
+  return '<div class="wx-top"><div class="wx-ic">'+sk[1]+'</div><div class="wx-main">'+
+    '<p class="wx-place">'+s.n+' ／ '+s.d.replace(/^2026-0?/,'').replace('-','.')+'</p>'+
+    '<p class="wx-sky">'+sk[0]+'</p></div>'+
+    '<div><div class="wx-temp"><span class="wx-mx">'+Math.round(rec.mx)+'</span><span class="wx-unit">℃</span>'+
+    '<span class="wx-mn">'+Math.round(rec.mn)+'</span><span class="wx-unit">℃</span></div>'+
+    '<p class="wx-pop">☔️ 降水確率 '+(rec.pop==null?'—':rec.pop+'%')+'</p></div></div>'+
+    '<div class="wx-dress">'+wxDress(n,rec.mx,rec.mn,rec.pop||0,rec.c).join('<br>')+'</div>'+
+    '<p class="wx-note">'+(stale?'※圏外のため、前回取得した予報を表示しています。':'出典: Open-Meteo（気象庁データを含む）。開くたびに最新を取り直します。')+'</p>';
+}
+const WX_KEY='gc2026_wx';
+function loadWx(n){
+  const el=document.getElementById('wx-'+n), s=WX_SPOT[n];
+  if(!el||!s) return;
+  const cache=LS.get(WX_KEY,{});
+  if(cache[n]) el.innerHTML=wxHTML(n,cache[n],true);
+  else el.innerHTML='<p class="wx-load">天気を確認しています…</p>';
+  const u='https://api.open-meteo.com/v1/forecast?latitude='+s.lat+'&longitude='+s.lon+
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
+    '&timezone=Asia%2FTokyo&start_date='+s.d+'&end_date='+s.d;
+  const ctl=('AbortController' in window)?new AbortController():null;
+  const to=setTimeout(()=>{ try{ctl&&ctl.abort()}catch(e){} },9000);
+  fetch(u,ctl?{signal:ctl.signal}:undefined)
+    .then(r=>r.json())
+    .then(j=>{
+      clearTimeout(to);
+      const dd=j&&j.daily;
+      if(!dd||!dd.time||!dd.time.length||dd.temperature_2m_max[0]==null) throw new Error('no data');
+      const rec={c:dd.weather_code[0],mx:dd.temperature_2m_max[0],mn:dd.temperature_2m_min[0],pop:dd.precipitation_probability_max[0],at:Date.now()};
+      const c2=LS.get(WX_KEY,{}); c2[n]=rec; LS.set(WX_KEY,c2);
+      if(document.getElementById('wx-'+n)) document.getElementById('wx-'+n).innerHTML=wxHTML(n,rec,false);
+    })
+    .catch(()=>{
+      clearTimeout(to);
+      const c2=LS.get(WX_KEY,{});
+      const t=document.getElementById('wx-'+n);
+      if(t&&!c2[n]) t.innerHTML=wxHTML(n,null,false);
+    });
+}
+
 function openDay(n,stay){
   curDay=n; buildDayTabs();
   const d=DAYS[n-1];
@@ -1199,6 +1318,7 @@ function openDay(n,stay){
       '<button class="btn btn-ghost" onclick="go(\'detour\');setDetFilter(\'day'+d.n+'\')">📍 この日の寄り道を見る</button>'+
       '<span class="chip">🏨 '+d.stay+'</span>'+
     '</div>'+
+    '<div class="wx" id="wx-'+d.n+'"></div>'+
     '<div class="tl">'+d.tl.map(it=>
       '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
       '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
@@ -1206,6 +1326,7 @@ function openDay(n,stay){
       (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
       '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
       '</div></div></div>').join('')+'</div>'+columnHTML(n);
+  loadWx(n);
   requestAnimationFrame(()=>{
     document.querySelectorAll('#day-body .tl-item').forEach((el,i)=>{
       setTimeout(()=>el.classList.add('on'), 90*i+120);
