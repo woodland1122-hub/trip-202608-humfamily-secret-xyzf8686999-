@@ -158,6 +158,22 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .gl-n{display:block;font-size:16px;color:#fff;line-height:1.55}
 .gl-w{display:block;font-size:13px;color:#8e8e93;margin-top:4px;line-height:1.6}
 .gl-map{flex:none;color:#0a84ff;font-size:13px;text-decoration:none;line-height:1.9}
+.iv{border:1px solid var(--line2);border-radius:18px;background:var(--card);padding:17px 18px;margin-bottom:12px}
+.iv .sub{font-size:12.5px;color:var(--gold);font-weight:700;letter-spacing:.12em}
+.iv h4{font-size:17px;color:#fff;font-weight:700;line-height:1.5;margin:3px 0 4px}
+.iv .row{display:flex;gap:10px;font-size:14px;color:var(--tx2);padding:8px 0 0;line-height:1.75}
+.iv .row b{flex:none;width:86px;color:var(--tx3);font-weight:700;font-size:13px}
+.iv .row a{color:var(--sea);text-decoration:none;font-weight:700}
+.iv .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;padding-top:12px;border-top:1px dashed var(--line2)}
+.iv .acts a{font-size:13px;font-weight:700;padding:9px 16px;border-radius:12px;border:1px solid var(--line);color:var(--gold-l);text-decoration:none;background:rgba(255,255,255,.03)}
+.sos-a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 17px;border-radius:16px;border:1px solid var(--line2);background:var(--card);margin-bottom:10px;text-decoration:none}
+.sos-a .l{font-size:15px;color:#fff;font-weight:700;line-height:1.5}
+.sos-a .d{font-size:12.5px;color:var(--tx3);margin-top:3px;line-height:1.65}
+.sos-a .num{flex:none;font-size:19px;font-weight:700;color:var(--coral);letter-spacing:-.01em}
+.fy-big{border:1px solid var(--line);border-radius:20px;background:var(--card);padding:20px 18px;margin-bottom:13px;text-align:center}
+.fy-big .k{font-size:12.5px;color:var(--gold);letter-spacing:.2em;font-weight:700}
+.fy-big .v{font-size:clamp(28px,7.5vw,42px);font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif;line-height:1.2;margin:7px 0 4px}
+.fy-big .s{font-size:13.5px;color:var(--tx2);line-height:1.7}
 .gl-stop .gl-t{color:#8e8e93;font-size:15px;font-weight:500}
 .gl-stop .gl-n{color:#c7c7cc;font-size:14.5px}
 .gl-tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;background:#1c1c1e;color:#8e8e93;font-size:11.5px;vertical-align:2px}
@@ -429,8 +445,12 @@ window.addEventListener('load',function(){setTimeout(function(){
       <button id="tt-days" onclick="go('days')">旅程</button>
       <button id="tt-glance" onclick="go('glance')">一覧</button>
       <button id="tt-detour" onclick="go('detour')">寄り道</button>
+      <button id="tt-stay" onclick="go('stay')">宿</button>
+      <button id="tt-ferry" onclick="go('ferry')">フェリー</button>
       <button id="tt-play" onclick="go('play')">あそぶ</button>
       <button id="tt-prep" onclick="go('prep')">準備</button>
+      <button id="tt-learn" onclick="go('learn')">学習</button>
+      <button id="tt-sos" onclick="go('sos')">緊急</button>
     </div>
   </div>
 </header>
@@ -534,6 +554,30 @@ window.addEventListener('load',function(){setTimeout(function(){
   </div>
 </div>
 
+<!-- ================= STAY ================= -->
+<div class="view" id="view-stay">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">Where We Sleep</p>
+      <h2 class="h2">泊まるところ</h2>
+      <p class="d lead">住所・電話・チェックインの時間を1ページに。到着が遅れそうなときは、ここから直接かけられます。</p>
+    </div>
+    <div id="stay-list"></div>
+  </div>
+</div>
+
+<!-- ================= FERRY ================= -->
+<div class="view" id="view-ferry">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">The Last Leg</p>
+      <h2 class="h2">帰りのフェリー</h2>
+      <p class="d lead">この旅で唯一、間に合わないと終わる予定です。8/27の夜だけのページ。</p>
+    </div>
+    <div id="ferry-body"></div>
+  </div>
+</div>
+
 <!-- ================= DETOUR ================= -->
 <div class="view" id="view-detour">
   <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
@@ -574,6 +618,30 @@ window.addEventListener('load',function(){setTimeout(function(){
       <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Kanmon-3.jpg/960px-Kanmon-3.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">高速道路ビンゴ</p><p class="d">「白いトラック」「観覧車」「海」「トンネル3連続」など9マスを決めて先に揃えた人が勝ち。</p></div></div>
       <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg/960px-%E6%A8%AA%E6%89%8B%E5%B1%B1%E3%83%92%E3%83%A5%E3%83%83%E3%83%86%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%9F%E3%80%81%E5%A4%8F%E3%81%AE%E5%A4%A9%E3%81%AE%E5%B7%9D_Pcs34560_IMG3625.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">フェリー星空ミッション</p><p class="d">帰りの洋上デッキで夏の大三角を全員で探す。見つけた人が翌朝の席を最初に選べる。</p></div></div>
     </div>
+  </div>
+</div>
+
+<!-- ================= LEARN ================= -->
+<div class="view" id="view-learn">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">Learning</p>
+      <h2 class="h2">学習</h2>
+      <p class="d lead">6日分のコラムをまとめました。青い言葉から出典（Wikipedia）へ飛べます。旅から帰ったら、そのまま自由研究の材料に。</p>
+    </div>
+    <div id="learn-body"></div>
+  </div>
+</div>
+
+<!-- ================= SOS ================= -->
+<div class="view" id="view-sos">
+  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
+    <div class="sec-head">
+      <p class="kicker">Emergency</p>
+      <h2 class="h2">緊急</h2>
+      <p class="d lead">番号はタップでそのまま発信します。落ち着いて、上から順に。</p>
+    </div>
+    <div id="sos-body"></div>
   </div>
 </div>
 
@@ -619,15 +687,19 @@ window.addEventListener('load',function(){setTimeout(function(){
     <button id="bt-days" onclick="go('days')"><span class="ic">📖</span>旅程</button>
     <button id="bt-glance" onclick="go('glance')"><span class="ic">🕘</span>一覧</button>
     <button id="bt-detour" onclick="go('detour')"><span class="ic">📍</span>寄り道</button>
+    <button id="bt-stay" onclick="go('stay')"><span class="ic">🏨</span>宿</button>
+    <button id="bt-ferry" onclick="go('ferry')"><span class="ic">⛴</span>フェリー</button>
     <button id="bt-play" onclick="go('play')"><span class="ic">🎲</span>あそぶ</button>
     <button id="bt-prep" onclick="go('prep')"><span class="ic">🧳</span>準備</button>
+    <button id="bt-learn" onclick="go('learn')"><span class="ic">📚</span>学習</button>
+    <button id="bt-sos" onclick="go('sos')"><span class="ic">🆘</span>緊急</button>
   </div>
 </nav>
 
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v21 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v22 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -1129,7 +1201,7 @@ function renderNavToggles(){
 }
 
 /* ============ NAV ============ */
-const VIEWS=['home','days','glance','detour','play','prep'];
+const VIEWS=['home','glance','days','detour','stay','ferry','play','prep','learn','sos'];
 function go(v){
   VIEWS.forEach(x=>{
     $('view-'+x).classList.toggle('act',x===v);
@@ -1138,6 +1210,8 @@ function go(v){
     if(b2)b2.classList.toggle('act',x===v);
   });
   if(v==='glance') openGlance(tripToday()||glDay);
+  if(v==='ferry') buildFerry();
+  if(v==='sos') buildSos();
   window.scrollTo({top:0,behavior:'instant'});
 }
 addEventListener('scroll',()=>$('hd').classList.toggle('scrolled',scrollY>30),{passive:true});
@@ -1642,13 +1716,131 @@ function addTheme(i){
   buildCk(); buildThemes(); pop(); toast(PACK_THEMES[i].n+' のセットを追加しました！');
 }
 
+/* ============ STAY（泊まるところ） ============ */
+const STAYINFO=[
+ {day:'DAY 1',date:'8/22（土）',t:'月光園 游月山荘',
+  addr:'〒651-1401 兵庫県神戸市北区有馬町318',tel:'078-904-0366',
+  io:'イン 15:00（最終19:00）／アウト 10:00',
+  note:'駐車場は無料50台。到着が19:00を過ぎそうなときは、必ず先に電話を入れる',
+  link:'https://www.gekkoen.co.jp/yuugetu/'},
+ {day:'DAY 2',date:'8/23（日）',t:'星野リゾート BEB5門司港',
+  addr:'福岡県北九州市門司区西海岸一丁目4-44',tel:'050-3134-8098',
+  io:'イン 15:00〜24:00／アウト 11:00',
+  note:'駐車場は25台・1泊1,100円。素泊まりなので夕食は門司港レトロで',
+  link:'https://hoshinoresorts.com/ja/hotels/beb5mojiko/'},
+ {day:'DAY 3',date:'8/24（月）',t:'スタジアムシティホテル長崎',
+  addr:'〒850-0046 長崎県長崎市幸町7-1',tel:'0120-1014-77',
+  io:'イン 15:00〜24:00／アウト 11:00',
+  note:'同じ敷地の商業施設に天然温泉「YUKULU」。夕食も館内で完結する',
+  link:'https://www.nagasakistadiumcity.com/stadiumcityhotel/plan/'},
+ {day:'DAY 4',date:'8/25（火）',t:'TERRA湯布院',
+  addr:'〒879-5114 大分県由布市湯布院町川北595-6',tel:'092-980-4595',
+  io:'イン 15:00／アウト 10:00',
+  note:'1日1組の貸切ヴィラ。駐車場は敷地内2台・無料。由布院駅まで車で約4分',
+  link:'https://www.terra-yufuin.com/'},
+ {day:'DAY 5',date:'8/26（水）',t:'星野リゾート 界 別府',
+  addr:'大分県別府市北浜2-14-29',tel:'0977-76-5572',
+  io:'イン・アウトの時刻は未確認（旅程では15:00着）',
+  note:'夕食は豊後の創作会席。夜は縁日遊び、朝は海のインフィニティ湯',
+  link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
+ {day:'DAY 6',date:'8/27（木）',t:'東京九州フェリー 船中泊',
+  addr:'〒800-0113 福岡県北九州市門司区新門司北3-1-30（新門司フェリーターミナル）',tel:'093-330-3000',
+  io:'20:50 港着／23:55 出港',
+  note:'くわしくは「フェリー」のページへ。ここだけは遅れが取り返せない',
+  link:'https://tqf.co.jp/'}
+];
+function buildStayPage(){
+  $('stay-list').innerHTML=STAYINFO.map(s=>
+    '<div class="iv"><p class="sub">'+s.day+'　'+s.date+'</p><h4>'+s.t+'</h4>'+
+    '<div class="row"><b>住所</b><span>'+s.addr+'</span></div>'+
+    '<div class="row"><b>電話</b><a href="tel:'+s.tel.replace(/-/g,'')+'">'+s.tel+'</a></div>'+
+    '<div class="row"><b>時間</b><span>'+s.io+'</span></div>'+
+    '<div class="row"><b>メモ</b><span>'+s.note+'</span></div>'+
+    '<div class="acts"><a target="_blank" rel="noopener" href="'+mapsUrl(s.t)+'">📍 地図で開く</a>'+
+    '<a target="_blank" rel="noopener" href="'+s.link+'">公式サイト ↗</a></div></div>').join('');
+}
+
+/* ============ FERRY（帰りのフェリー） ============ */
+function fmtBig(ms){
+  const m=Math.max(0,Math.round(ms/6e4));
+  if(m>=2880) return 'あと'+Math.floor(m/1440)+'日';
+  return fmtLeft(ms);
+}
+function buildFerry(){
+  const el=$('ferry-body'); if(!el) return;
+  const port=itemTime(6,'20:50'), dep=itemTime(6,'23:55'), now=Date.now();
+  const big=now<port
+    ? {k:'PORT ARRIVAL',v:fmtBig(port-now),s:'新門司港に着くまで（8/27 20:50・出航3時間前）'}
+    : (now<dep ? {k:'DEPARTURE',v:fmtBig(dep-now),s:'出港まで（8/27 23:55 新門司港）'}
+               : {k:'AT SEA',v:'航海中',s:'8/28 夜、横須賀港に着きます'});
+  el.innerHTML=
+    '<div class="fy-big"><p class="k">'+big.k+'</p><p class="v">'+big.v+'</p><p class="s">'+big.s+'</p></div>'+
+    '<div class="iv"><p class="sub">TIMELINE</p><h4>8/27（木）の動き</h4>'+
+    '<div class="row"><b>19:30</b><span>天神を出発。夕方の都市高速が混むので、これより遅らせない</span></div>'+
+    '<div class="row"><b>20:50</b><span>新門司フェリーターミナル着。<b style="color:var(--gold-l)">車両乗船は出航3時間前が鉄則</b></span></div>'+
+    '<div class="row"><b>23:55</b><span>出港。「それいゆ／はまゆう」で約21時間の航海</span></div>'+
+    '<div class="row"><b>8/28 夜</b><span>横須賀港着。ここから三鷹まで下道と高速で約1時間30分</span></div></div>'+
+    '<div class="iv"><p class="sub">TERMINAL</p><h4>新門司フェリーターミナル</h4>'+
+    '<div class="row"><b>住所</b><span>〒800-0113 福岡県北九州市門司区新門司北3-1-30</span></div>'+
+    '<div class="row"><b>電話</b><a href="tel:0933303000">093-330-3000</a></div>'+
+    '<div class="row"><b>営業</b><span>ターミナル 月〜土 9:00〜24:00／日 9:00〜22:00</span></div>'+
+    '<div class="row"><b>建物</b><span>1階が乗船受付、2階が待合所（売店・軽食・キッズスペース）、3階が乗下船口</span></div>'+
+    '<div class="acts"><a target="_blank" rel="noopener" href="'+mapsUrl('東京九州フェリー 新門司フェリーターミナル')+'">📍 地図で開く</a>'+
+    '<a target="_blank" rel="noopener" href="https://tqf.co.jp/">公式サイト ↗</a>'+
+    '<a target="_blank" rel="noopener" href="https://tqf.co.jp/facilities/">船内の設備 ↗</a></div></div>'+
+    '<div class="iv"><p class="sub">ON BOARD</p><h4>船に持って上がるもの</h4>'+
+    '<div class="row"><b>手元へ</b><span>着替え・洗面用具・充電器・酔い止め・貴重品。車は出港後さわれません</span></div>'+
+    '<div class="row"><b>お風呂</b><span>展望大浴場。出港直後は混むので、少し時間をずらす</span></div>'+
+    '<div class="row"><b>デッキ</b><span>星を見るなら灯りが減る0時すぎ。夜風が強いので羽織りを1枚</span></div></div>'+
+    '<div class="iv"><p class="sub">IF CANCELLED</p><h4>欠航したら、陸路で2日</h4>'+
+    '<div class="row"><b>距離</b><span>新門司から三鷹まで約1,150km</span></div>'+
+    '<div class="row"><b>初日</b><span>中国道〜名神で神戸〜京都あたりまで（約600km）。SAで仮眠</span></div>'+
+    '<div class="row"><b>2日目</b><span>残り約550km。無理に一気に走らない。眠くなったら次のSAで必ず停まる</span></div></div>';
+}
+
+/* ============ LEARN（学習） ============ */
+function buildLearn(){
+  const el=$('learn-body'); if(!el) return;
+  el.innerHTML=DAYS.map(d=>{
+    const c=COLUMNS[d.n]; if(!c) return '';
+    return '<p class="sub" style="font-size:12.5px;color:var(--gold);font-weight:700;letter-spacing:.12em;margin:22px 0 6px">DAY '+d.n+'　'+d.date+'（'+d.dow+'）</p>'+columnHTML(d.n);
+  }).join('');
+}
+
+/* ============ SOS（緊急） ============ */
+function buildSos(){
+  const el=$('sos-body'); if(!el) return;
+  const td=tripToday(), stay=td?STAYINFO[td-1]:null;
+  const line=(num,l,d)=>'<a class="sos-a" href="tel:'+num.replace(/[-#]/g,m=>m==='#'?'%23':'')+'"><span><span class="l">'+l+'</span><span class="d">'+d+'</span></span><span class="num">'+num+'</span></a>';
+  el.innerHTML=
+    (stay?'<div class="iv"><p class="sub">TONIGHT</p><h4>今夜の宿：'+stay.t+'</h4>'+
+      '<div class="row"><b>電話</b><a href="tel:'+stay.tel.replace(/-/g,'')+'">'+stay.tel+'</a></div>'+
+      '<div class="row"><b>住所</b><span>'+stay.addr+'</span></div></div>':'')+
+    line('119','救急・火事','命に関わるとき。場所は住所か、高速なら上り下りとキロポスト')+
+    line('110','警察','事故を起こした・巻き込まれたときは、けが人の確認のあと必ず通報')+
+    line('#7119','救急相談','救急車を呼ぶか迷ったとき。看護師や医師に相談できる（地域により対応が異なります）')+
+    line('#8000','子ども医療電話相談','夜間や休日に、子どもの症状をどうするか迷ったとき')+
+    line('#9910','道路緊急ダイヤル','落下物・道路の異常。高速で止まってしまったときも')+
+    line('#8139','JAF ロードサービス','故障・バッテリー上がり・脱輪・鍵の閉じ込め')+
+    line('093-330-3000','東京九州フェリー 新門司ターミナル','乗船に遅れそうなとき、欠航を確かめたいとき')+
+    '<div class="iv"><p class="sub">CAR TROUBLE</p><h4>高速で止まってしまったら</h4>'+
+    '<div class="row"><b>1</b><span>ハザードを点けて、できるだけ左の路肩へ寄せる</span></div>'+
+    '<div class="row"><b>2</b><span>全員がガードレールの外へ出る。車内と車の後ろに残らない</span></div>'+
+    '<div class="row"><b>3</b><span>三角表示板か発炎筒を後方に置く（車の後ろに立たない）</span></div>'+
+    '<div class="row"><b>4</b><span>非常電話か #9910 で通報。場所は上り下りとキロポストで伝える</span></div></div>'+
+    '<div class="iv"><p class="sub">DOCUMENTS</p><h4>持っているもの</h4>'+
+    '<div class="row"><b>保険証</b><span>4人分。受診のときに必要。「準備」タブのチェックリストにも入れてあります</span></div>'+
+    '<div class="row"><b>車の書類</b><span>車検証と自動車保険の証券は車内に。任意保険の事故受付番号も確認しておく</span></div>'+
+    '<div class="row"><b>お薬手帳</b><span>常備薬を飲んでいる人がいれば、写真に撮っておくと確実</span></div></div>';
+}
+
 /* ============ REVEAL & INIT ============ */
 const io=new IntersectionObserver(es=>es.forEach((e)=>{if(e.isIntersecting){e.target.style.transitionDelay=(Math.min([...document.querySelectorAll('.reveal')].indexOf(e.target)%4,3)*.12)+'s';e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.querySelectorAll('#ck-in').forEach(el=>el.addEventListener('keydown',e=>{
   if(e.key==='Enter'){ e.preventDefault(); addCk(); }
 }));
-buildHeroSlides(); buildGallery(); buildRibbon(); buildStays(); buildCk(); buildThemes(); applyQuizBanner();
+buildHeroSlides(); buildGallery(); buildRibbon(); buildStays(); buildStayPage(); buildFerry(); buildLearn(); buildSos(); buildCk(); buildThemes(); applyQuizBanner();
 renderNavToggles(); buildDetFilters(); buildDetGrid(); buildQuizFilters(); startQuiz();
 const td=tripToday(); openDay(td||1,true); buildDayTabs();
 go('home');
