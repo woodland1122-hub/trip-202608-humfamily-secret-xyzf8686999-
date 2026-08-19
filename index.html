@@ -699,7 +699,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v23 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v24 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -879,7 +879,7 @@ const DAYS = [
     {t:"11:00",ll:[33.17389,131.22667],tt:"九重“夢”大吊橋を渡る",d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の谷を真下に見ます。",tip:"高さが苦手な人は真ん中を見て歩けば大丈夫。太朗は絶対はしゃぐので手すりに注意。",img:P.yumebridge,link:"https://www.yumeooturihashi.com/"},
     {t:"15:00",ll:[33.28033,131.50573],tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.beppucity,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"16:30",ll:[33.28033,131.50573],tt:"海と一体のインフィニティ大浴場",d:"別府湾と溶け合うような大浴場で、長旅のご褒美湯浴み。",tip:"湯上がりの冷たいかぼすドリンクのサービスも忘れずに。",img:P.beppubay,link:"https://hoshinoresorts.com/ja/sp/onsen/kyushu/beppu/"},
-    {t:"18:30",ll:[33.28033,131.50573],tt:"豊後の創作会席ディナー",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",img:P.kaiseki,link:"https://www.jtb.co.jp/kokunai-hotel/htl/8410122/restaurant/"}
+    {t:"17:30",ll:[33.28033,131.50573],tt:"豊後の創作会席ディナー（予約ずみ）",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。17:30スタートで予約が入っています。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",img:P.kaiseki,link:"https://www.jtb.co.jp/kokunai-hotel/htl/8410122/restaurant/"}
    ]},
  { n:6, date:"8.27-28", dow:"木・金", short:"太宰府→フェリー", stay:"東京九州フェリー 船中泊", photo:P.ferry,
    title:"太宰府と博多 ── イカの活き造りで締めて、太平洋クルーズで帰京",
@@ -887,7 +887,8 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=太宰府天満宮|天神",
    yj:[[33.52153,130.53486,'太宰府天満宮'],[33.58867,130.40272,'天神'],[33.87639,130.99436,'東京九州フェリー 新門司ターミナル']],
    tl:[
-    {t:"09:30",ll:[33.28033,131.50573],tt:"界 別府を出発",d:"朝風呂を楽しんでから、大分道経由で福岡へ。太宰府に寄る分だけ30分だけ早く出ます。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"08:30",ll:[33.28033,131.50573],tt:"界 別府で朝ごはん（予約ずみ）",d:"和朝食で最後の宿の朝。8:30スタートで予約が入っています。",tip:"食べ終わったらすぐ出発できるよう、荷物は朝食前に車へ積んでおく。",img:P.beppubay,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"09:30",ll:[33.28033,131.50573],tt:"界 別府を出発",d:"朝風呂と朝ごはんを済ませてから、大分道経由で福岡へ。太宰府に寄る分だけ30分だけ早く出ます。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"12:00",ll:[33.52153,130.53486],tt:"「太宰府天満宮」で合格祈願",d:"学問の神様・菅原道真を祀る全国天満宮の総本宮。九州道の太宰府ICを降りてすぐです。",tip:"参道の梅ヶ枝餅は焼きたてを1個ずつ。冷めたのを持ち帰るより、その場で食べるのが正解。",img:P.dazaifu,link:"https://www.dazaifutenmangu.or.jp/"},
     {t:"14:30",ll:[33.58867,130.40272],tt:"博多・天神ショッピング",d:"岩田屋や天神地下街を大散策。ランチは濃厚とんこつラーメン！",tip:"『通りもん』と明太子は天神のデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
     {t:"17:00",ll:[33.5898,130.4207],tt:"「河太郎」でイカの活き造り ── 旅の最後の晩ごはん",d:"呼子のイカの活き造り発祥の店。注文を受けてから生け簀のイカを目の前でさばくので、皿の上で透きとおったまま動きます。17:00の開店と同時に入ります。",tip:"ゲソは後から天ぷらか塩焼きにしてもらえる。透明なイカを見た瞬間の太朗の顔が、この旅の最後の一枚になる。要予約。",img:P.ikasashi,link:"https://www.kawataro.jp/hakata/"},
@@ -1740,8 +1741,8 @@ const STAYINFO=[
   link:'https://www.terra-yufuin.com/'},
  {day:'DAY 5',date:'8/26（水）',t:'星野リゾート 界 別府',
   addr:'大分県別府市北浜2-14-29',tel:'0977-76-5572',
-  io:'イン・アウトの時刻は未確認（旅程では15:00着）',
-  note:'夕食は豊後の創作会席。夜は縁日遊び、朝は海のインフィニティ湯',
+  io:'夕食 8/26 17:30（予約ずみ）／朝食 8/27 8:30（予約ずみ）',
+  note:'イン・アウトの時刻は未確認。旅程では15:00着。夜は縁日遊び、朝は海のインフィニティ湯',
   link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
  {day:'DAY 6',date:'8/27（木）',t:'東京九州フェリー 船中泊',
   addr:'〒800-0113 福岡県北九州市門司区新門司北3-1-30（新門司フェリーターミナル）',tel:'093-330-3000',
