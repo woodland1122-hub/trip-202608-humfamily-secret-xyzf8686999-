@@ -701,7 +701,7 @@ window.addEventListener('load',function(){setTimeout(function(){
         <p class="note" id="offline-msg" style="margin-top:8px"></p>
         <p class="note" style="margin-top:8px">ホーム画面に追加しておくと、アプリのように開けます（iPhoneは共有ボタン →「ホーム画面に追加」）。</p>
         <h4 style="margin-top:26px">🖨 紙のしおり</h4>
-        <p class="note">おじいちゃんおばあちゃん用・車内保管用に。</p>
+        <p class="note">おじいちゃんおばあちゃん用・車内保管用に。<br>旅程は<b>いま開いている日だけ</b>印刷されます。6日分ほしいときは、日を切り替えて6回印刷してください。</p>
         <button class="btn btn-ghost" onclick="window.print()">このしおりを印刷する</button>
       </div>
     </div>
@@ -726,7 +726,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v31 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v32 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -1234,7 +1234,7 @@ function go(v){
     if(b1)b1.classList.toggle('act',x===v);
     if(b2)b2.classList.toggle('act',x===v);
   });
-  if(v==='glance') openGlance(tripToday()||glDay);
+  if(v==='glance') openGlance(tripToday()||curDay||glDay);
   if(v==='ferry') buildFerry();
   if(v==='sos') buildSos();
   window.scrollTo({top:0,behavior:'instant'});
@@ -1311,7 +1311,7 @@ function buildStays(){
     {n:'DAY 6',t:'東京九州フェリー',s:'それいゆ／はまゆう・船中泊',img:P.ferry,link:'https://tqf.co.jp/'}
   ];
   $('stay-grid').innerHTML=stays.map(s=>
-    '<a class="stay" target="_blank" rel="noopener" href="'+s.link+'"><img src="'+s.img+'" alt="" loading="lazy">'+
+    '<a class="stay" href="#" onclick="go(\'stay\');return false;"><img src="'+s.img+'" alt="" loading="lazy">'+
     '<div class="in"><p class="n">'+s.n+'</p><p class="t">'+s.t+'</p><p class="s">'+s.s+'</p></div></a>').join('');
 }
 
@@ -1568,7 +1568,7 @@ function paintGlance(n){
     '</div>';
 }
 function openGlance(n){
-  glDay=n; buildGlTabs(); paintGlance(n); loadWx(n);
+  glDay=n; curDay=n; buildGlTabs(); paintGlance(n); loadWx(n);
 }
 
 /* ============ NOW（旅行中の「いま」と「次の予定」） ============ */
@@ -1660,7 +1660,7 @@ function dayTimelineHTML(n){
   return rows.map(r=> r.k==='plan'?tlPlanHTML(n,r.it,r.ix) : (r.k==='stop'?tlStopHTML(r.it):tlDetourHTML(r.it)) ).join('');
 }
 function openDay(n,stay){
-  curDay=n; buildDayTabs();
+  curDay=n; glDay=n; buildDayTabs();
   const d=DAYS[n-1];
   $('day-body').innerHTML=
     '<div class="dayhero"><img src="'+d.photo+'" alt="" loading="lazy">'+
