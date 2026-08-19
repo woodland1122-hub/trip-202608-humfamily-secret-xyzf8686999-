@@ -130,6 +130,15 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .sec-head p.d{color:var(--tx3);font-size:13.5px;margin-top:8px}
 
 /* ---------- stay cards ---------- */
+.stay-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.stay{position:relative;border-radius:var(--rad);overflow:hidden;border:1px solid var(--line);min-height:170px;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
+.stay img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .6s}
+.stay:hover img{transform:scale(1.06)}
+.stay::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 20%,rgba(8,13,24,.92))}
+.stay .in{padding:16px}
+.stay .n{font-size:10px;letter-spacing:.28em;color:var(--gold-l);font-weight:700}
+.stay .t{font-family:'Shippori Mincho B1',serif;font-size:16.5px;font-weight:700;color:#fff;line-height:1.4}
+.stay .s{font-size:12.5px;color:var(--tx2)}
 
 /* ---------- day tabs & itinerary ---------- */
 .day-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 14px;position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:40;background:linear-gradient(180deg,var(--ink) 78%,transparent);margin:0 -4px}
@@ -263,11 +272,8 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .det-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .df{padding:7px 15px;border-radius:99px;border:1px solid var(--line2);font-size:13px;font-weight:700;color:var(--tx2);background:var(--card);transition:.2s}
 .df.act{border-color:var(--gold);color:var(--gold-l);background:rgba(217,181,110,.1)}
-.tl-how{margin-top:11px;padding:11px 13px;border-radius:12px;background:rgba(217,181,110,.06);border:1px solid rgba(217,181,110,.22)}
-.tl-how .sp{font-size:12px;font-weight:700;color:var(--gold-l);letter-spacing:.04em;margin-bottom:5px}
-.tl-how .hw{font-size:13.5px;color:var(--tx2);line-height:1.9}
 .tl-badge{display:inline-block;margin-left:9px;padding:1px 9px;border-radius:99px;background:rgba(255,255,255,.07);color:var(--tx3);font-size:11px;font-weight:700;letter-spacing:.04em;font-family:var(--sys);vertical-align:2px}
-.tl-badge.tb-det{background:rgba(126,178,203,.14);color:var(--sea)}
+.tl-badge.det{background:rgba(126,178,203,.14);color:var(--sea)}
 .tl-stop .tl-card{background:rgba(19,31,51,.55);border-style:dashed}
 .tl-stop .tl-tt{font-size:15px;color:var(--tx)}
 .tl-th-s{flex:none;width:104px}
@@ -384,9 +390,28 @@ body::after{background:radial-gradient(circle,#2a6a8f,transparent 60%);bottom:-2
 .cd .cell{animation:cellGlow 3.2s ease-in-out infinite}
 .cd .cell:nth-child(2){animation-delay:.4s}.cd .cell:nth-child(3){animation-delay:.8s}.cd .cell:nth-child(4){animation-delay:1.2s}
 @keyframes cellGlow{0%,100%{box-shadow:0 0 0 rgba(217,181,110,0)}50%{box-shadow:0 6px 26px -6px rgba(217,181,110,.4)}}
+/* ---------- film strip ---------- */
+.strip{overflow:hidden;margin:0 calc(-1 * clamp(16px,4vw,28px)) 22px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.strip-in{display:flex;gap:12px;width:max-content;animation:filmslide 55s linear infinite}
+.strip:hover .strip-in{animation-play-state:paused}
+@keyframes filmslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.strip img{width:170px;height:110px;object-fit:cover;border-radius:14px;border:1px solid var(--line2);flex-shrink:0;cursor:pointer;transition:transform .3s}
+.strip img:hover{transform:scale(1.05)}
 /* ---------- photo wall ---------- */
-@media(min-width:680px){}
+.gal{columns:2;column-gap:12px}
+@media(min-width:680px){.gal{columns:3}}
+.gal figure{break-inside:avoid;margin:0 0 12px;border-radius:16px;overflow:hidden;border:1px solid var(--line2);position:relative;cursor:pointer;isolation:isolate}
+.gal img{width:100%;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.gal figure:hover img{transform:scale(1.07)}
+.gal figcaption{position:absolute;inset:auto 0 0 0;padding:26px 12px 10px;font-size:12.5px;font-weight:700;color:#fff;background:linear-gradient(180deg,transparent,rgba(8,13,24,.88));display:flex;justify-content:space-between;align-items:flex-end;gap:6px}
+.gal figcaption small{font-size:9px;letter-spacing:.18em;color:var(--gold-l);flex-shrink:0}
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(5,9,16,.92);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out}
+.lb.show{display:flex;animation:fadeIn .3s}
+.lb img{max-width:94vw;max-height:76vh;border-radius:18px;border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.8);animation:lbIn .35s cubic-bezier(.2,.7,.3,1)}
 @keyframes lbIn{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+.lb .cap{margin-top:14px;font-family:'Shippori Mincho B1',serif;font-size:15px;color:var(--gold-l)}
+.lb .hint{font-size:10px;color:var(--tx3);margin-top:4px;letter-spacing:.2em}
 /* ---------- ribbon photo dots ---------- */
 .rb-dot.photo{background-size:cover;background-position:center;border-color:var(--gold-d);font-size:0}
 .rb-node.here .rb-dot{animation:herePulse 2.4s ease-in-out infinite}
@@ -423,7 +448,7 @@ body::after{background:radial-gradient(circle,#2a6a8f,transparent 60%);bottom:-2
 .quiz-shell{background-size:cover;background-position:center;transition:background-image .4s}
 .stay .in,.dayhero .in{position:relative}
 @media (prefers-reduced-motion:reduce){
-  .hero-slide.on,.dayhero img,.btn-gold::after,.rb-car,body::before,body::after,.cd .cell{animation:none!important}
+  .hero-slide.on,.dayhero img,.strip-in,.btn-gold::after,.rb-car,body::before,body::after,.cd .cell{animation:none!important}
   .tl-item{opacity:1;transform:none;transition:none}
 }
 @media print{
@@ -503,6 +528,24 @@ window.addEventListener('load',function(){setTimeout(function(){
       <div style="text-align:center;margin-top:18px">
         <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=姫路城|有馬温泉|門司港レトロ|志賀島|長崎市|由布院温泉|別府市|太宰府天満宮">🗺 Googleマップで全ルートを見る</a>
       </div>
+    </section>
+
+    <section class="blk reveal">
+      <div class="sec-head">
+        <p class="kicker">Stays</p>
+        <h2 class="h2">今宵の宿</h2>
+      </div>
+      <div class="stay-grid" id="stay-grid"></div>
+    </section>
+
+    <section class="blk reveal">
+      <div class="sec-head">
+        <p class="kicker">Photo Preview</p>
+        <h2 class="h2">絶景プレビュー</h2>
+        <p class="d lead">道中で出会う景色とグルメを一足先に。写真をタップすると大きく見られます。</p>
+      </div>
+      <div class="strip"><div class="strip-in" id="strip"></div></div>
+      <div class="gal" id="gal"></div>
     </section>
 
     <section class="blk reveal">
@@ -622,6 +665,7 @@ window.addEventListener('load',function(){setTimeout(function(){
       <h2 class="h2">緊急</h2>
       <p class="d lead">番号はタップでそのまま発信します。落ち着いて、上から順に。</p>
     </div>
+    <div class="pg-hero"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Shikanoshima_Island%2C_enkei.jpg/960px-Shikanoshima_Island%2C_enkei.jpg" alt="" loading="lazy" onerror="this.parentElement.remove()"><div class="pg-cap"><p class="k">KEEP CALM</p><p class="t">まず落ち着く。順番にやれば大丈夫</p></div></div>
     <div id="sos-body"></div>
   </div>
 </div>
@@ -634,6 +678,7 @@ window.addEventListener('load',function(){setTimeout(function(){
       <h2 class="h2">お仕度チェック</h2>
       <p class="d lead">チェック状態は<b style="color:var(--gold-l)">この端末に保存</b>されます。テーマボタンでおすすめの持ち物を一括追加できます。</p>
     </div>
+    <div class="pg-hero"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mt.Inasa_2010.jpg/960px-Mt.Inasa_2010.jpg" alt="" loading="lazy" onerror="this.parentElement.remove()"><div class="pg-cap"><p class="k">BEFORE WE GO</p><p class="t">この景色まで、あと少し</p></div></div>
     <div class="two-col">
       <div class="panel">
         <h4>🧳 チェックリスト</h4>
@@ -684,9 +729,9 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v37 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v38 — 2026.08.19</p>
 </footer>
-
+<div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
@@ -775,7 +820,28 @@ const P = {
   washoku:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/AzumaRyokan_Breakfast_2.JPG/960px-AzumaRyokan_Breakfast_2.JPG"
 };
 const HERO_SLIDES=[P.oura,P.inasa,P.himeji,P.makinoto,P.ferry];
-
+const GALLERY=[
+ {img:P.himeji,cap:"姫路城 大天守",day:"DAY 1"},
+ {img:P.arima,cap:"有馬温泉の街並み",day:"DAY 1"},
+ {img:P.kobe,cap:"神戸牛 — 今夜の主役",day:"DAY 1"},
+ {img:P.mojiko,cap:"門司港レトロ",day:"DAY 2"},
+ {img:P.kanmon,cap:"関門橋 — 九州上陸",day:"DAY 2"},
+ {img:P.yakicurry,cap:"名物・焼きカレー",day:"DAY 2"},
+ {img:P.shikanoshima,cap:"志賀島 — 金印の島",day:"DAY 3"},
+ {img:P.dejima,cap:"出島 — 鎖国の窓口",day:"DAY 3"},
+ {img:P.heiwa,cap:"長崎・平和公園",day:"DAY 3"},
+ {img:P.inasa,cap:"稲佐山からの長崎夜景",day:"DAY 3"},
+ {img:P.gunkan,cap:"軍艦島（端島）",day:"DAY 4"},
+ {img:P.oura,cap:"国宝・大浦天主堂",day:"DAY 4"},
+ {img:P.glover,cap:"グラバー園",day:"DAY 4"},
+ {img:P.champon,cap:"本場の長崎ちゃんぽん",day:"DAY 4"},
+ {img:P.makinoto,cap:"やまなみハイウェイ",day:"DAY 5"},
+ {img:P.kinrin,cap:"由布院・金鱗湖",day:"DAY 5"},
+ {img:P.yumebridge,cap:"九重“夢”大吊橋",day:"DAY 5"},
+ {img:P.kannawa,cap:"別府・鉄輪の湯けむり",day:"DAY 5"},
+ {img:P.ramen,cap:"屋台の博多ラーメン",day:"DAY 6"},
+ {img:P.ferry,cap:"東京九州フェリー それいゆ",day:"DAY 6/7"}
+];
 const DAYPHOTO={all:P.inasa,1:P.himeji,2:P.mojiko,3:P.heiwa,4:P.gunkan,5:P.makinoto,6:P.ferry};
 
 /* ============ ITINERARY DATA ============ */
@@ -1212,6 +1278,46 @@ function buildHeroSlides(){
     sl[cur].classList.add('on');
   },8000);
 }
+/* ============ GALLERY & LIGHTBOX ============ */
+function buildGallery(){
+  const items=GALLERY.map((g,i)=>'<img src="'+g.img+'" alt="'+esc(g.cap)+'" loading="lazy" onclick="openLb('+i+')" onerror="this.remove()">').join('');
+  $('strip').innerHTML=items+items;
+  $('gal').innerHTML=GALLERY.map((g,i)=>
+    '<figure onclick="openLb('+i+')"><img src="'+g.img+'" alt="'+esc(g.cap)+'" loading="lazy" onerror="this.parentElement.remove()">'+
+    '<figcaption>'+esc(g.cap)+'<small>'+g.day+'</small></figcaption></figure>').join('');
+}
+function openLb(i){
+  const g=GALLERY[i];
+  $('lb-img').src=g.img; $('lb-cap').textContent=g.day+' — '+g.cap;
+  $('lb').classList.add('show'); document.body.style.overflow='hidden';
+}
+function closeLb(){ $('lb').classList.remove('show'); document.body.style.overflow=''; }
+addEventListener('keydown',e=>{ if(e.key==='Escape')closeLb(); });
+
+/* ============ HOME: ribbon & stays ============ */
+function buildRibbon(){
+  const stops=[{e:'🏠',img:P.mitaka,day:'START',n:'三鷹 5:00発'}]
+    .concat(DAYS.map(d=>({e:['🏯','⚓','⛪','⛴','♨️','🗾'][d.n-1],img:d.photo,day:'DAY '+d.n,n:d.short,go:d.n})))
+    .concat([{e:'🗼',img:P.ferry,day:'GOAL',n:'横須賀 8/28夜'}]);
+  $('ribbon').innerHTML=stops.map(s=>
+    '<div class="rb-node" '+(s.go?('onclick="openDay('+s.go+')"'):'')+'>'+
+    (s.img?'<div class="rb-dot photo" style="background-image:url('+s.img+')">'+s.e+'</div>':'<div class="rb-dot">'+s.e+'</div>')+
+    '<div class="rb-day">'+s.day+'</div><div class="rb-name">'+s.n+'</div></div>'
+  ).join('');
+}
+function buildStays(){
+  const stays=[
+    {n:'DAY 1',t:'月光園 游月山荘',s:'有馬温泉・金泉掛け流し／神戸牛会席',img:P.arima,link:'https://www.gekkoen.co.jp/yuugetu/'},
+    {n:'DAY 2',t:'星野リゾート BEB5門司港',s:'港町レトロのお洒落アジト',img:P.mojiko,link:'https://hoshinoresorts.com/ja/hotels/beb5mojiko/'},
+    {n:'DAY 3',t:'スタジアムシティホテル長崎',s:'約7割の部屋からピッチが見える／館内に天然温泉',img:P.stadiumcity,link:'https://www.nagasakistadiumcity.com/stadiumcityhotel/plan/'},
+    {n:'DAY 4',t:'TERRA湯布院',s:'1日1組限定の貸切ヴィラ／源泉かけ流しの専用露天',img:P.yufudake,link:'https://www.terra-yufuin.com/'},
+    {n:'DAY 5',t:'星野リゾート 界 別府',s:'隈研吾デザイン・海のインフィニティ湯',img:P.beppu,link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
+    {n:'DAY 6',t:'東京九州フェリー',s:'それいゆ／はまゆう・船中泊',img:P.ferry,link:'https://tqf.co.jp/'}
+  ];
+  $('stay-grid').innerHTML=stays.map(s=>
+    '<a class="stay" href="#" onclick="go(\'stay\');return false;"><img src="'+s.img+'" alt="" loading="lazy">'+
+    '<div class="in"><p class="n">'+s.n+'</p><p class="t">'+s.t+'</p><p class="s">'+s.s+'</p></div></a>').join('');
+}
 
 /* ============ DAYS ============ */
 let curDay=1;
@@ -1222,11 +1328,9 @@ function tripToday(){
 }
 function buildDayTabs(){
   const td=tripToday();
-  const wc=LS.get(WX_KEY,{});
-  $('day-tabs').innerHTML=DAYS.map(d=>{
-    const r=wc[d.n], ic=r?wxSky(r.c)[1]+' '+Math.round(r.mx)+'℃':'';
-    return '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+(ic?'　'+ic:'')+'</small></button>';
-  }).join('');
+  $('day-tabs').innerHTML=DAYS.map(d=>
+    '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
+  ).join('');
 }
 /* ============ WEATHER（その日その場所の予報・気温・服装） ============ */
 const WX_SPOT={
@@ -1401,32 +1505,6 @@ function loadWx(n){
       if(t&&!c1[n]) t.innerHTML=wxHTML(n,null,false,(LS.get(WXH_KEY,{})[n]||{}).sun);
     });
 }
-/* ============ 6日分の日別予報をまとめて1回だけ取る（タブの天気用） ============ */
-const WXALL_KEY='gc2026_wxall';
-function loadAllDayWx(){
-  const last=LS.get(WXALL_KEY,0);
-  if(Date.now()-last<18e5) return;
-  const ns=DAYS.map(d=>d.n).filter(n=>WX_SPOT[n]);
-  const u='https://api.open-meteo.com/v1/forecast?latitude='+ns.map(n=>WX_SPOT[n].lat).join(',')+
-    '&longitude='+ns.map(n=>WX_SPOT[n].lon).join(',')+
-    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
-    '&timezone=Asia%2FTokyo&start_date='+WX_SPOT[ns[0]].d+'&end_date='+WX_SPOT[ns[ns.length-1]].d;
-  const ctl=('AbortController' in window)?new AbortController():null;
-  const to=setTimeout(()=>{ try{ctl&&ctl.abort()}catch(e){} },9000);
-  fetch(u,ctl?{signal:ctl.signal}:undefined).then(r=>r.json()).then(j=>{
-    clearTimeout(to);
-    const arr=Array.isArray(j)?j:[j], c=LS.get(WX_KEY,{});
-    arr.forEach((o,i)=>{
-      const n=ns[i], dd=o&&o.daily; if(!dd||!dd.time) return;
-      const x=dd.time.indexOf(WX_SPOT[n].d); if(x<0||dd.temperature_2m_max[x]==null) return;
-      if(!c[n]) c[n]={c:dd.weather_code[x],mx:dd.temperature_2m_max[x],mn:dd.temperature_2m_min[x],pop:dd.precipitation_probability_max[x],at:Date.now()};
-    });
-    LS.set(WX_KEY,c); LS.set(WXALL_KEY,Date.now());
-    if(document.getElementById('day-tabs')) buildDayTabs();
-    if(document.getElementById('gl-tabs')) buildGlTabs();
-  }).catch(()=>{ clearTimeout(to); });
-}
-
 /* ============ GLANCE（一日の予定が一目でわかる一覧） ============ */
 let glDay=1;
 function glName(t){ return String(t).split('──')[0].replace(/[\s　]+$/,'') }
@@ -1553,7 +1631,6 @@ function startNowTimer(n){
 function tlPlanHTML(n,it,ix){
   return '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
     '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
-    (it.sp||it.how?'<div class="tl-how">'+(it.sp?'<p class="sp">⏱ 滞在の目安　'+it.sp+'</p>':'')+(it.how?'<p class="hw">'+it.how+'</p>':'')+'</div>':'')+
     (it.oh||it.fee?'<div class="tl-fact">'+(it.oh?'<span>🕘 '+it.oh+'</span>':'')+(it.fee?'<span>💴 '+it.fee+'</span>':'')+'</div>':'')+
     (it.ll?'<div id="twx-'+n+'-'+ix+'"></div>':'')+
     (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
@@ -1573,7 +1650,7 @@ function tlStopHTML(s){
 function tlDetourHTML(d){
   const nv=detNav(d);
   return '<div class="tl-item tl-detour"><div class="tl-card"><div class="tl-main">'+
-    '<div class="tl-body"><p class="tl-time">'+d.t+'<span class="tl-badge tb-det">寄り道候補</span></p>'+
+    '<div class="tl-body"><p class="tl-time">'+d.t+'<span class="tl-badge det">寄り道候補</span></p>'+
     '<p class="tl-tt">'+esc(d.name)+'</p><p class="tl-d">'+esc(d.d||'')+'</p>'+
     (d.meta?'<p class="tl-meta">🚗 '+esc(d.meta)+'</p>':'')+
     '<a class="tl-link tl-map" target="_blank" rel="noopener" href="'+nv.href+'">'+nv.label+'</a>'+
@@ -1606,11 +1683,6 @@ function openDay(n,stay){
     document.querySelectorAll('#day-body .tl-item').forEach((el,i)=>{
       setTimeout(()=>el.classList.add('on'), 90*i+120);
     });
-    const I=nowInfo(n);
-    if(I.sameDay&&I.cur>=0&&!stay){
-      const cur=document.querySelectorAll('#day-body .tl-item')[I.cur];
-      if(cur) setTimeout(()=>cur.scrollIntoView({block:'center',behavior:'smooth'}), 700);
-    }
   });
   if(!stay){ go('days'); }
 }
@@ -1846,7 +1918,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.querySelectorAll('#ck-in').forEach(el=>el.addEventListener('keydown',e=>{
   if(e.key==='Enter'){ e.preventDefault(); addCk(); }
 }));
-buildHeroSlides(); buildRibbon(); buildStayPage(); buildFerry(); buildLearn(); buildSos(); buildCk(); buildThemes(); applyQuizBanner();
+buildHeroSlides(); buildGallery(); buildRibbon(); buildStays(); buildStayPage(); buildFerry(); buildLearn(); buildSos(); buildCk(); buildThemes(); applyQuizBanner();
 renderNavToggles(); buildQuizFilters(); startQuiz(); loadAllDayWx();
 const td=tripToday(); openDay(td||1,true); buildDayTabs();
 go('home');
