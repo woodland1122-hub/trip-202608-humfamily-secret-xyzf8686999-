@@ -162,6 +162,24 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .gl-n{display:block;font-size:16px;color:#fff;line-height:1.55}
 .gl-w{display:block;font-size:13px;color:#8e8e93;margin-top:4px;line-height:1.6}
 .gl-map{flex:none;color:#0a84ff;font-size:13px;text-decoration:none;line-height:1.9}
+.iv-photo{padding:0;overflow:hidden}
+.iv-ph{position:relative;height:150px;background:var(--card2)}
+.iv-ph img{width:100%;height:100%;object-fit:cover}
+.iv-b{position:absolute;top:10px;left:10px;font-size:11px;font-weight:900;letter-spacing:.14em;padding:3px 11px;border-radius:99px;background:rgba(10,18,32,.82);color:var(--gold-l);border:1px solid var(--line)}
+.iv-bd{padding:16px 18px 17px}
+.fy-hero{position:relative;border-radius:20px;overflow:hidden;margin-bottom:14px;height:190px;background:var(--card2)}
+.fy-hero img{width:100%;height:100%;object-fit:cover}
+.fy-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(8,13,24,.9))}
+.fy-cap p{font-size:16px;font-weight:800;color:#fff;line-height:1.5}
+.fy-cap p.s{font-size:12.5px;font-weight:400;color:var(--tx2)}
+.learn-day{margin-bottom:30px}
+.learn-ph{position:relative;height:170px;border-radius:18px;overflow:hidden;background:var(--card2);margin-bottom:14px}
+.learn-ph img{width:100%;height:100%;object-fit:cover}
+.learn-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(8,13,24,.92))}
+.learn-cap .k{font-size:11.5px;letter-spacing:.16em;color:var(--gold);font-weight:700}
+.learn-cap .t{font-family:'Shippori Mincho B1',serif;font-size:17px;font-weight:800;color:#fff;line-height:1.45;margin-top:3px}
+.gl-hero{height:150px;border-radius:16px;overflow:hidden;margin-bottom:16px;background:#1c1c1e}
+.gl-hero img{width:100%;height:100%;object-fit:cover}
 .iv{border:1px solid var(--line2);border-radius:18px;background:var(--card);padding:17px 18px;margin-bottom:12px}
 .iv .sub{font-size:12.5px;color:var(--gold);font-weight:700;letter-spacing:.12em}
 .iv h4{font-size:17px;color:#fff;font-weight:700;line-height:1.5;margin:3px 0 4px}
@@ -254,6 +272,9 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .det-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .df{padding:7px 15px;border-radius:99px;border:1px solid var(--line2);font-size:13px;font-weight:700;color:var(--tx2);background:var(--card);transition:.2s}
 .df.act{border-color:var(--gold);color:var(--gold-l);background:rgba(217,181,110,.1)}
+.day-det{margin:30px 0 6px;padding-top:24px;border-top:1px solid var(--line2)}
+.day-det-h{font-family:'Shippori Mincho B1',serif;font-size:clamp(19px,4.6vw,26px);font-weight:800;color:#fff;line-height:1.4;margin:6px 0 4px}
+.day-det-d{font-size:13px;color:var(--tx3);margin-bottom:16px;line-height:1.7}
 .det-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .det{border:1px solid var(--line2);border-radius:18px;background:var(--card);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
 .det:hover{transform:translateY(-3px);border-color:var(--line)}
@@ -452,7 +473,6 @@ window.addEventListener('load',function(){setTimeout(function(){
       <button id="tt-home" onclick="go('home')">ホーム</button>
       <button id="tt-glance" onclick="go('glance')">一覧</button>
       <button id="tt-days" onclick="go('days')">旅程</button>
-      <button id="tt-detour" onclick="go('detour')">寄り道</button>
       <button id="tt-stay" onclick="go('stay')">宿</button>
       <button id="tt-ferry" onclick="go('ferry')">フェリー</button>
       <button id="tt-play" onclick="go('play')">あそぶ</button>
@@ -588,21 +608,6 @@ window.addEventListener('load',function(){setTimeout(function(){
   </div>
 </div>
 
-<!-- ================= DETOUR ================= -->
-<div class="view" id="view-detour">
-  <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
-    <div class="sec-head">
-      <p class="kicker">Detour Ideas</p>
-      <h2 class="h2">寄り道アイデア帳</h2>
-      <p class="d lead">ルート沿いの「行けたら行きたい」候補地。行くかどうかは当日の体力と天気で決めます。</p>
-    </div>
-
-    <div class="nav-toggle"></div>
-    <div class="det-filters" id="det-filters"></div>
-    <div class="det-grid" id="det-grid"></div>
-  </div>
-</div>
-
 <!-- ================= PLAY ================= -->
 <div class="view" id="view-play">
   <div class="wrap" style="padding-top:calc(76px + env(safe-area-inset-top,0px))">
@@ -701,7 +706,6 @@ window.addEventListener('load',function(){setTimeout(function(){
     <button id="bt-home" onclick="go('home')"><span class="ic">⛵</span>ホーム</button>
     <button id="bt-glance" onclick="go('glance')"><span class="ic">🕘</span>一覧</button>
     <button id="bt-days" onclick="go('days')"><span class="ic">📖</span>旅程</button>
-    <button id="bt-detour" onclick="go('detour')"><span class="ic">📍</span>寄り道</button>
     <button id="bt-stay" onclick="go('stay')"><span class="ic">🏨</span>宿</button>
     <button id="bt-ferry" onclick="go('ferry')"><span class="ic">⛴</span>フェリー</button>
     <button id="bt-play" onclick="go('play')"><span class="ic">🎲</span>あそぶ</button>
@@ -714,7 +718,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v27 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v28 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -1208,7 +1212,6 @@ function navApp(){ return LS.get(NAV_KEY,'google') }
 function setNavApp(a){
   LS.set(NAV_KEY,a); renderNavToggles();
   if($('day-body').innerHTML) openDay(curDay,true);
-  buildDetGrid();
   toast(a==='yahoo'?'Yahoo!カーナビ連携に切替（アプリが必要）':'Googleマップ連携に切替');
 }
 function yjRoute(pts){ return 'yjcarnavi://navi/select?point=current&'+pts.map(p=>'point='+p[0]+','+p[1]+','+encodeURIComponent(p[2])).join('&') }
@@ -1228,7 +1231,7 @@ function renderNavToggles(){
 }
 
 /* ============ NAV ============ */
-const VIEWS=['home','glance','days','detour','stay','ferry','play','prep','learn','sos'];
+const VIEWS=['home','glance','days','stay','ferry','play','prep','learn','sos'];
 function go(v){
   VIEWS.forEach(x=>{
     $('view-'+x).classList.toggle('act',x===v);
@@ -1560,6 +1563,7 @@ function paintGlance(n){
   const rec=LS.get(WX_KEY,{})[n], c=LS.get(WXH_KEY,{})[n], sun=c&&c.sun;
   const stats=[['出発',d.tl[0].t],['最高気温',rec?Math.round(rec.mx)+'℃':'—'],['日の入り',(sun&&sun.set)?String(sun.set).slice(11,16):'—']];
   body.innerHTML='<div class="gl">'+
+    '<div class="gl-hero"><img src="'+(DAYPHOTO[d.n]||d.photo)+'" alt="" loading="lazy" onerror="this.remove()"></div>'+
     '<p class="gl-date">DAY '+d.n+'　'+d.date+'（'+d.dow+'）</p>'+
     '<p class="gl-title">'+d.title+'</p>'+
     '<p class="gl-sub">泊まるところ：'+d.stay+'</p>'+
@@ -1632,7 +1636,6 @@ function openDay(n,stay){
     '<div class="in"><p class="date en">DAY '+d.n+' — '+d.date+' '+d.dow+'</p><h3>'+d.title+'</h3><p class="d">'+d.desc+'</p></div></div>'+
     '<div class="day-actions">'+
       '<a class="btn btn-gold" style="font-size:13px;padding:11px 20px" target="_blank" rel="noopener" href="'+dayNav(d)+'">🧭 この日のナビを開く'+(navApp()==='yahoo'&&d.yj?'（Y!カーナビ）':'')+'</a>'+
-      '<button class="btn btn-ghost" onclick="go(\'detour\');setDetFilter(\'day'+d.n+'\')">📍 この日の寄り道を見る</button>'+
       '<span class="chip">🏨 '+d.stay+'</span>'+
     '</div>'+
     '<div id="nowbar-'+d.n+'"></div>'+
@@ -1646,7 +1649,7 @@ function openDay(n,stay){
       (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
       (it.ll?'<a class="tl-link tl-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+it.ll[0]+','+it.ll[1]+'">📍 ここを地図で開く ↗</a>':'')+
       '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
-      '</div></div></div>').join('')+'</div>'+columnHTML(n);
+      '</div></div></div>').join('')+'</div>'+dayDetourHTML(n)+columnHTML(n);
   loadWx(n);
   paintNow(n); startNowTimer(n);
   requestAnimationFrame(()=>{
@@ -1658,28 +1661,26 @@ function openDay(n,stay){
 }
 
 /* ============ DETOURS ============ */
-let detFilter='all';
 function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q) }
 function allDetours(){
   return DETOURS.map((d,i)=>Object.assign({ci:'b'+i},d));
 }
-function setDetFilter(f){ detFilter=f; buildDetFilters(); buildDetGrid(); }
-function buildDetFilters(){
-  const fs=[{k:'all',l:'すべて'}].concat(DAYS.map(d=>({k:'day'+d.n,l:'DAY '+d.n})));
-  $('det-filters').innerHTML=fs.map(f=>'<button class="df'+(detFilter===f.k?' act':'')+'" onclick="setDetFilter(\''+f.k+'\')">'+f.l+'</button>').join('');
-}
-function buildDetGrid(){
-  let list=allDetours();
-  if(detFilter.startsWith('day')) list=list.filter(d=>String(d.day)===detFilter.slice(3));
-  $('det-grid').innerHTML=list.length?list.map(d=>{
-    return '<div class="det">'+
+function detCardHTML(d){
+  return '<div class="det">'+
     '<div class="det-ph">'+(d.img?'<img src="'+d.img+'" alt="" loading="lazy" onerror="this.remove()">':'<div class="emoji">'+(d.e||'💡')+'</div>')+
       '<span class="day-b">DAY '+d.day+'</span><span class="cat-b">'+esc(d.cat)+'</span></div>'+
     '<div class="det-in"><p class="det-tt">'+esc(d.name)+'</p><p class="det-d">'+esc(d.d||'')+'</p>'+
     (d.meta?'<p class="det-meta">🚗 '+esc(d.meta)+'</p>':'')+
     '<div class="det-foot">'+
     (function(){const nv=detNav(d);return '<a class="det-map" target="_blank" rel="noopener" href="'+nv.href+'">'+nv.label+'</a>'})()+'</div></div></div>';
-  }).join(''):'<p class="empty">この日の寄り道はまだありません。</p>';
+}
+function dayDetourHTML(n){
+  const list=allDetours().filter(d=>String(d.day)===String(n));
+  if(!list.length) return '';
+  return '<div class="day-det"><p class="kicker">Detours — DAY '+n+'</p>'+
+    '<h3 class="day-det-h">この日の寄り道</h3>'+
+    '<p class="day-det-d">行けたら行きたい候補。当日の体力と天気で決めます。</p>'+
+    '<div class="det-grid">'+list.map(detCardHTML).join('')+'</div></div>';
 }
 /* ============ QUIZ ============ */
 let qPool=[],qIdx=0,qScore=0,qTry=0,qDay='all';
@@ -1758,44 +1759,51 @@ function addTheme(i){
 const STAYINFO=[
  {day:'DAY 1',date:'8/22（土）',t:'月光園 游月山荘',
   addr:'〒651-1401 兵庫県神戸市北区有馬町318',tel:'078-904-0366',
+  img:P.arima,
   io:'イン 15:00（最終19:00）／アウト 10:00',
   note:'駐車場は無料50台。到着が19:00を過ぎそうなときは、必ず先に電話を入れる',
   link:'https://www.gekkoen.co.jp/yuugetu/'},
  {day:'DAY 2',date:'8/23（日）',t:'星野リゾート BEB5門司港',
   addr:'福岡県北九州市門司区西海岸一丁目4-44',tel:'050-3134-8098',
+  img:P.mojiko,
   io:'イン 15:00〜24:00／アウト 11:00',
   note:'駐車場は25台・1泊1,100円。素泊まりなので夕食は門司港レトロで',
   link:'https://hoshinoresorts.com/ja/hotels/beb5mojiko/'},
  {day:'DAY 3',date:'8/24（月）',t:'スタジアムシティホテル長崎',
   addr:'〒850-0046 長崎県長崎市幸町7-1',tel:'0120-1014-77',
+  img:P.stadiumcity,
   io:'イン 15:00〜24:00／アウト 11:00',
   note:'同じ敷地の商業施設に天然温泉「YUKULU」。夕食も館内で完結する',
   link:'https://www.nagasakistadiumcity.com/stadiumcityhotel/plan/'},
  {day:'DAY 4',date:'8/25（火）',t:'TERRA湯布院',
   addr:'〒879-5114 大分県由布市湯布院町川北595-6',tel:'092-980-4595',
+  img:P.onsenY,
   io:'イン 15:00／アウト 10:00',
   note:'1日1組の貸切ヴィラ。駐車場は敷地内2台・無料。由布院駅まで車で約4分',
   link:'https://www.terra-yufuin.com/'},
  {day:'DAY 5',date:'8/26（水）',t:'星野リゾート 界 別府',
   addr:'大分県別府市北浜2-14-29',tel:'0977-76-5572',
+  img:P.beppucity,
   io:'夕食 8/26 17:30（予約ずみ）／朝食 8/27 8:30（予約ずみ）',
   note:'イン・アウトの時刻は未確認。旅程では15:00着。夜は縁日遊び、朝は海のインフィニティ湯',
   link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
  {day:'DAY 6',date:'8/27（木）',t:'東京九州フェリー 船中泊',
   addr:'〒800-0113 福岡県北九州市門司区新門司北3-1-30（新門司フェリーターミナル）',tel:'093-330-3000',
+  img:P.ferry,
   io:'20:50 港着／23:55 出港',
   note:'くわしくは「フェリー」のページへ。ここだけは遅れが取り返せない',
   link:'https://tqf.co.jp/'}
 ];
 function buildStayPage(){
   $('stay-list').innerHTML=STAYINFO.map(s=>
-    '<div class="iv"><p class="sub">'+s.day+'　'+s.date+'</p><h4>'+s.t+'</h4>'+
+    '<div class="iv iv-photo">'+(s.img?'<div class="iv-ph"><img src="'+s.img+'" alt="" loading="lazy" onerror="this.remove()"><span class="iv-b">'+s.day+'</span></div>':'')+
+    '<div class="iv-bd"><p class="sub">'+s.day+'　'+s.date+'</p><h4>'+s.t+'</h4>'+
     '<div class="row"><b>住所</b><span>'+s.addr+'</span></div>'+
     '<div class="row"><b>電話</b><a href="tel:'+s.tel.replace(/-/g,'')+'">'+s.tel+'</a></div>'+
     '<div class="row"><b>時間</b><span>'+s.io+'</span></div>'+
     '<div class="row"><b>メモ</b><span>'+s.note+'</span></div>'+
     '<div class="acts"><a target="_blank" rel="noopener" href="'+mapsUrl(s.t)+'">📍 地図で開く</a>'+
-    '<a target="_blank" rel="noopener" href="'+s.link+'">公式サイト ↗</a></div></div>').join('');
+    '<a target="_blank" rel="noopener" href="'+s.link+'">公式サイト ↗</a></div></div></div>').join('');
 }
 
 /* ============ FERRY（帰りのフェリー） ============ */
@@ -1812,6 +1820,7 @@ function buildFerry(){
     : (now<dep ? {k:'DEPARTURE',v:fmtBig(dep-now),s:'出港まで（8/27 23:55 新門司港）'}
                : {k:'AT SEA',v:'航海中',s:'8/28 夜、横須賀港に着きます'});
   el.innerHTML=
+    '<div class="fy-hero"><img src="'+P.ferry+'" alt="" loading="lazy" onerror="this.remove()"><div class="fy-cap"><p>それいゆ／はまゆう</p><p class="s">新門司 → 横須賀　約21時間の航海</p></div></div>'+
     '<div class="fy-big"><p class="k">'+big.k+'</p><p class="v">'+big.v+'</p><p class="s">'+big.s+'</p></div>'+
     '<div class="iv"><p class="sub">TIMELINE</p><h4>8/27（木）の動き</h4>'+
     '<div class="row"><b>19:30</b><span>天神を出発。夕方の都市高速が混むので、これより遅らせない</span></div>'+
@@ -1826,10 +1835,10 @@ function buildFerry(){
     '<div class="acts"><a target="_blank" rel="noopener" href="'+mapsUrl('東京九州フェリー 新門司フェリーターミナル')+'">📍 地図で開く</a>'+
     '<a target="_blank" rel="noopener" href="https://tqf.co.jp/">公式サイト ↗</a>'+
     '<a target="_blank" rel="noopener" href="https://tqf.co.jp/facilities/">船内の設備 ↗</a></div></div>'+
-    '<div class="iv"><p class="sub">ON BOARD</p><h4>船に持って上がるもの</h4>'+
+    '<div class="iv iv-photo"><div class="iv-ph"><img src="'+P.milkyway+'" alt="" loading="lazy" onerror="this.remove()"><span class="iv-b">ON BOARD</span></div><div class="iv-bd"><p class="sub">ON BOARD</p><h4>船に持って上がるもの</h4>'+
     '<div class="row"><b>手元へ</b><span>着替え・洗面用具・充電器・酔い止め・貴重品。車は出港後さわれません</span></div>'+
     '<div class="row"><b>お風呂</b><span>展望大浴場。出港直後は混むので、少し時間をずらす</span></div>'+
-    '<div class="row"><b>デッキ</b><span>星を見るなら灯りが減る0時すぎ。夜風が強いので羽織りを1枚</span></div></div>'+
+    '<div class="row"><b>デッキ</b><span>星を見るなら灯りが減る0時すぎ。夜風が強いので羽織りを1枚</span></div></div></div>'+
     '<div class="iv"><p class="sub">IF CANCELLED</p><h4>欠航したら、陸路で2日</h4>'+
     '<div class="row"><b>距離</b><span>新門司から三鷹まで約1,150km</span></div>'+
     '<div class="row"><b>初日</b><span>中国道〜名神で神戸〜京都あたりまで（約600km）。SAで仮眠</span></div>'+
@@ -1841,7 +1850,9 @@ function buildLearn(){
   const el=$('learn-body'); if(!el) return;
   el.innerHTML=DAYS.map(d=>{
     const c=COLUMNS[d.n]; if(!c) return '';
-    return '<p class="sub" style="font-size:12.5px;color:var(--gold);font-weight:700;letter-spacing:.12em;margin:22px 0 6px">DAY '+d.n+'　'+d.date+'（'+d.dow+'）</p>'+columnHTML(d.n);
+    return '<div class="learn-day"><div class="learn-ph"><img src="'+(DAYPHOTO[d.n]||d.photo)+'" alt="" loading="lazy" onerror="this.remove()">'+
+      '<div class="learn-cap"><p class="k">DAY '+d.n+'　'+d.date+'（'+d.dow+'）</p><p class="t">'+esc(c.t)+'</p></div></div>'+
+      columnHTML(d.n)+'</div>';
   }).join('');
 }
 
@@ -1901,7 +1912,7 @@ document.querySelectorAll('#ck-in').forEach(el=>el.addEventListener('keydown',e=
   if(e.key==='Enter'){ e.preventDefault(); addCk(); }
 }));
 buildHeroSlides(); buildGallery(); buildRibbon(); buildStays(); buildStayPage(); buildFerry(); buildLearn(); buildSos(); buildCk(); buildThemes(); applyQuizBanner();
-renderNavToggles(); buildDetFilters(); buildDetGrid(); buildQuizFilters(); startQuiz();
+renderNavToggles(); buildQuizFilters(); startQuiz();
 const td=tripToday(); openDay(td||1,true); buildDayTabs();
 go('home');
 $('build-badge').textContent+=' ｜ ✓ 完全版・全機能OK';

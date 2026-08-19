@@ -1,7 +1,7 @@
 /* GRAND CRUISE 2026 しおり — オフライン用サービスワーカー
    方針: しおり本体と写真はキャッシュ優先で表示し、裏で更新する。
         天気（Open-Meteo）だけは必ずネットワークへ行く。 */
-const CACHE = 'gc2026-v27';
+const CACHE = 'gc2026-v28';
 const CORE = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', e => {
