@@ -267,7 +267,7 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .tl-how .sp{font-size:12px;font-weight:700;color:var(--gold-l);letter-spacing:.04em;margin-bottom:5px}
 .tl-how .hw{font-size:13.5px;color:var(--tx2);line-height:1.9}
 .tl-badge{display:inline-block;margin-left:9px;padding:1px 9px;border-radius:99px;background:rgba(255,255,255,.07);color:var(--tx3);font-size:11px;font-weight:700;letter-spacing:.04em;font-family:var(--sys);vertical-align:2px}
-.tl-badge.det{background:rgba(126,178,203,.14);color:var(--sea)}
+.tl-badge.tb-det{background:rgba(126,178,203,.14);color:var(--sea)}
 .tl-stop .tl-card{background:rgba(19,31,51,.55);border-style:dashed}
 .tl-stop .tl-tt{font-size:15px;color:var(--tx)}
 .tl-th-s{flex:none;width:104px}
@@ -684,7 +684,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v35 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v36 — 2026.08.19</p>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -1222,9 +1222,11 @@ function tripToday(){
 }
 function buildDayTabs(){
   const td=tripToday();
-  $('day-tabs').innerHTML=DAYS.map(d=>
-    '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
-  ).join('');
+  const wc=LS.get(WX_KEY,{});
+  $('day-tabs').innerHTML=DAYS.map(d=>{
+    const r=wc[d.n], ic=r?wxSky(r.c)[1]+' '+Math.round(r.mx)+'℃':'';
+    return '<button class="dt'+(d.n===curDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openDay('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+(ic?'　'+ic:'')+'</small></button>';
+  }).join('');
 }
 /* ============ WEATHER（その日その場所の予報・気温・服装） ============ */
 const WX_SPOT={
@@ -1545,7 +1547,7 @@ function tlStopHTML(s){
 function tlDetourHTML(d){
   const nv=detNav(d);
   return '<div class="tl-item tl-detour"><div class="tl-card"><div class="tl-main">'+
-    '<div class="tl-body"><p class="tl-time">'+d.t+'<span class="tl-badge det">寄り道候補</span></p>'+
+    '<div class="tl-body"><p class="tl-time">'+d.t+'<span class="tl-badge tb-det">寄り道候補</span></p>'+
     '<p class="tl-tt">'+esc(d.name)+'</p><p class="tl-d">'+esc(d.d||'')+'</p>'+
     (d.meta?'<p class="tl-meta">🚗 '+esc(d.meta)+'</p>':'')+
     '<a class="tl-link tl-map" target="_blank" rel="noopener" href="'+nv.href+'">'+nv.label+'</a>'+
@@ -1578,6 +1580,11 @@ function openDay(n,stay){
     document.querySelectorAll('#day-body .tl-item').forEach((el,i)=>{
       setTimeout(()=>el.classList.add('on'), 90*i+120);
     });
+    const I=nowInfo(n);
+    if(I.sameDay&&I.cur>=0&&!stay){
+      const cur=document.querySelectorAll('#day-body .tl-item')[I.cur];
+      if(cur) setTimeout(()=>cur.scrollIntoView({block:'center',behavior:'smooth'}), 700);
+    }
   });
   if(!stay){ go('days'); }
 }
