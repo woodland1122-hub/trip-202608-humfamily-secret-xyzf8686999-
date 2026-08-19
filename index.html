@@ -158,6 +158,10 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .gl-n{display:block;font-size:16px;color:#fff;line-height:1.55}
 .gl-w{display:block;font-size:13px;color:#8e8e93;margin-top:4px;line-height:1.6}
 .gl-map{flex:none;color:#0a84ff;font-size:13px;text-decoration:none;line-height:1.9}
+.gl-stop .gl-t{color:#8e8e93;font-size:15px;font-weight:500}
+.gl-stop .gl-n{color:#c7c7cc;font-size:14.5px}
+.gl-tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;background:#1c1c1e;color:#8e8e93;font-size:11.5px;vertical-align:2px}
+.gl-note{color:#8e8e93;font-size:12.5px;padding:14px 0 4px;line-height:1.7}
 .gl-now{background:rgba(229,192,123,.12);border-radius:14px;margin:6px -12px;padding:15px 12px;border-bottom-color:transparent}
 .dt{flex-shrink:0;padding:9px 17px;border-radius:99px;border:1px solid var(--line);font-size:13.5px;font-weight:700;color:var(--tx2);background:var(--card);transition:.22s;white-space:nowrap}
 .dt small{display:block;font-size:9px;letter-spacing:.12em;color:var(--tx3);font-weight:500}
@@ -623,7 +627,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v20 — 2026.08.18</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v21 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -820,6 +824,18 @@ const DAYS = [
     {t:"23:55",ll:[33.87639,130.99436],tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
    ]}
 ];
+
+/* ============ STOPS（長距離移動の途中休憩。時刻は目安） ============ */
+const STOPS = {
+ 1:[{t:"06:00",name:"EXPASA足柄",ll:[35.314092,138.965625],d:"出発から約1時間。富士山を見ながら朝コーヒー"},
+    {t:"08:30",name:"刈谷ハイウェイオアシス",q:"刈谷ハイウェイオアシス",d:"観覧車と温泉と大型遊具。子どもの体力を抜く休憩"},
+    {t:"10:30",name:"宝塚北SA",ll:[34.86667,135.30353],d:"姫路に入る前の最後の身支度"}],
+ 2:[{t:"13:30",name:"宮島SA",ll:[34.365897,132.316492],d:"駐車場の先に瀬戸内海と宮島"},
+    {t:"14:40",name:"壇之浦PA",ll:[33.964308,130.953694],d:"関門橋の真下。九州に渡る前の1枚はここで"}],
+ 3:[{t:"12:00",name:"金立SA",ll:[33.329139,130.311283],d:"長崎道へ入ってすぐ。長崎まで残り約1時間半"}],
+ 4:[{t:"15:30",name:"金立SA",ll:[33.329139,130.311283],d:"ここを過ぎると一気に山。飲み物とトイレは必ずここで"}],
+ 6:[{t:"10:15",name:"別府湾SA",ll:[33.335361,131.461189],d:"丘の上から別府湾。旅で最後のSA休憩"}]
+};
 
 /* ============ DETOUR IDEAS (curated) ============ */
 const DETOURS = [
@@ -1307,6 +1323,7 @@ function daySpots(n){
   const push=ll=>{ const k=llKey(ll); if(keys.indexOf(k)<0){ keys.push(k); list.push(ll) } };
   push([s.lat,s.lon]);
   DAYS[n-1].tl.forEach(it=>{ if(it.ll) push(it.ll) });
+  (STOPS[n]||[]).forEach(it=>{ if(it.ll) push(it.ll) });
   return {keys:keys,list:list};
 }
 function wxChip(h){
@@ -1401,6 +1418,31 @@ function buildGlTabs(){
     '<button class="dt'+(d.n===glDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openGlance('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
   ).join('');
 }
+function glMin(t){ const a=t.split(':'); return (+a[0])*60+(+a[1]) }
+function glMapLink(it,cls){
+  if(it.ll) return '<a class="'+cls+'" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+it.ll[0]+','+it.ll[1]+'">地図</a>';
+  if(it.q) return '<a class="'+cls+'" target="_blank" rel="noopener" href="'+mapsUrl(it.q)+'">地図</a>';
+  return '';
+}
+function glRows(n,I){
+  const rows=DAYS[n-1].tl.map((it,i)=>({t:it.t,m:glMin(it.t),kind:'plan',i:i,name:glName(it.tt),it:it}))
+    .concat((STOPS[n]||[]).map(s=>({t:s.t,m:glMin(s.t),kind:'stop',name:s.name,note:s.d,it:s})));
+  rows.sort((a,b)=>a.m-b.m);
+  return rows.map(r=>{
+    const w=glWxLine(n,r.it);
+    if(r.kind==='stop'){
+      return '<div class="gl-row gl-stop">'+
+        '<span class="gl-t">'+r.t+'</span>'+
+        '<span class="gl-m"><span class="gl-n">'+r.name+'<span class="gl-tag">休憩</span></span>'+
+        '<span class="gl-w">'+(r.note?r.note+(w?'　／　'+w:''):w)+'</span></span>'+
+        glMapLink(r.it,'gl-map')+'</div>';
+    }
+    return '<div class="gl-row'+(I.sameDay&&r.i===I.cur?' gl-now':'')+'">'+
+      '<span class="gl-t">'+r.t+'</span>'+
+      '<span class="gl-m"><span class="gl-n">'+r.name+'</span>'+(w?'<span class="gl-w">'+w+'</span>':'')+'</span>'+
+      glMapLink(r.it,'gl-map')+'</div>';
+  }).join('');
+}
 function paintGlance(n){
   const body=$('gl-body'); if(!body) return;
   const d=DAYS[n-1], I=nowInfo(n);
@@ -1411,14 +1453,9 @@ function paintGlance(n){
     '<p class="gl-title">'+d.title+'</p>'+
     '<p class="gl-sub">泊まるところ：'+d.stay+'</p>'+
     '<div class="gl-stats">'+stats.map(s=>'<div class="gl-stat"><p class="k">'+s[0]+'</p><p class="v">'+s[1]+'</p></div>').join('')+'</div>'+
-    d.tl.map((it,i)=>{
-      const w=glWxLine(n,it);
-      return '<div class="gl-row'+(I.sameDay&&i===I.cur?' gl-now':'')+'">'+
-        '<span class="gl-t">'+it.t+'</span>'+
-        '<span class="gl-m"><span class="gl-n">'+glName(it.tt)+'</span>'+(w?'<span class="gl-w">'+w+'</span>':'')+'</span>'+
-        (it.ll?'<a class="gl-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+it.ll[0]+','+it.ll[1]+'">地図</a>':'')+
-      '</div>';
-    }).join('')+'</div>';
+    glRows(n,I)+
+    ((STOPS[n]||[]).length?'<p class="gl-note">休憩の時刻は目安です。渋滞と体力しだいで前後します。</p>':'')+
+    '</div>';
 }
 function openGlance(n){
   glDay=n; buildGlTabs(); paintGlance(n); loadWx(n);
