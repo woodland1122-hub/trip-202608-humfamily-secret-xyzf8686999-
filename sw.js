@@ -1,7 +1,9 @@
 /* GRAND CRUISE 2026 しおり — オフライン用サービスワーカー
-   方針: しおり本体と写真はキャッシュ優先で表示し、裏で更新する。
-        天気（Open-Meteo）だけは必ずネットワークへ行く。 */
-const CACHE = 'gc2026-v29';
+   方針:
+     - しおり本体（HTML）は「ネット優先・ダメならキャッシュ」。更新が必ず届く。
+     - 写真は「キャッシュにあれば即返す・なければ普通に取りに行く」。裏での二重取得はしない。
+     - 天気（Open-Meteo）は一切さわらない。 */
+const CACHE = 'gc2026-v30';
 const CORE = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', e => {
@@ -20,42 +22,32 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  const url = new URL(req.url);
+
+  let url;
+  try { url = new URL(req.url); } catch (err) { return; }
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
   if (url.hostname.indexOf('api.open-meteo.com') >= 0) return;
 
-  /* しおり本体（HTML）は「ネット優先・ダメならキャッシュ」。
-     こうしないと、更新したのに古い版が出続ける。 */
-  const isDoc = req.mode === 'navigate' || req.destination === 'document' ||
-                (url.origin === location.origin && /\/(index\.html)?$/.test(url.pathname));
+  const isDoc = req.mode === 'navigate' || req.destination === 'document';
   if (isDoc) {
     e.respondWith(
       fetch(req).then(res => {
         if (res && res.ok) {
           const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+          caches.open(CACHE).then(c => c.put('./index.html', copy)).catch(() => {});
         }
         return res;
-      }).catch(() => caches.match(req, { ignoreSearch: true }).then(hit => hit || caches.match('./index.html')))
+      }).catch(() => caches.match('./index.html').then(hit => hit || caches.match('./')))
     );
     return;
   }
 
-  /* 写真などは「キャッシュ優先・裏で更新」 */
   e.respondWith(
-    caches.match(req, { ignoreSearch: true }).then(hit => {
-      const net = fetch(req).then(res => {
-        if (res && (res.ok || res.type === 'opaque')) {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
-        }
-        return res;
-      }).catch(() => hit);
-      return hit || net;
-    })
+    caches.match(req, { ignoreSearch: true }).then(hit => hit || fetch(req))
   );
 });
 
-/* 「まるごと保存」ボタンから送られてくるURLを先読みしてキャッシュする */
+/* 「この端末にまるごと保存する」から送られてくるURLを先読みしてキャッシュする */
 self.addEventListener('message', e => {
   const d = e.data || {};
   if (d.type !== 'PRECACHE' || !Array.isArray(d.urls)) return;
