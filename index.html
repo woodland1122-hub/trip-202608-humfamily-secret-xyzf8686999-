@@ -130,15 +130,6 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .sec-head p.d{color:var(--tx3);font-size:13.5px;margin-top:8px}
 
 /* ---------- stay cards ---------- */
-.stay-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.stay{position:relative;border-radius:var(--rad);overflow:hidden;border:1px solid var(--line);min-height:170px;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
-.stay img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .6s}
-.stay:hover img{transform:scale(1.06)}
-.stay::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 20%,rgba(8,13,24,.92))}
-.stay .in{padding:16px}
-.stay .n{font-size:10px;letter-spacing:.28em;color:var(--gold-l);font-weight:700}
-.stay .t{font-family:'Shippori Mincho B1',serif;font-size:16.5px;font-weight:700;color:#fff;line-height:1.4}
-.stay .s{font-size:12.5px;color:var(--tx2)}
 
 /* ---------- day tabs & itinerary ---------- */
 .day-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 14px;position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:40;background:linear-gradient(180deg,var(--ink) 78%,transparent);margin:0 -4px}
@@ -272,6 +263,9 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .det-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .df{padding:7px 15px;border-radius:99px;border:1px solid var(--line2);font-size:13px;font-weight:700;color:var(--tx2);background:var(--card);transition:.2s}
 .df.act{border-color:var(--gold);color:var(--gold-l);background:rgba(217,181,110,.1)}
+.tl-how{margin-top:11px;padding:11px 13px;border-radius:12px;background:rgba(217,181,110,.06);border:1px solid rgba(217,181,110,.22)}
+.tl-how .sp{font-size:12px;font-weight:700;color:var(--gold-l);letter-spacing:.04em;margin-bottom:5px}
+.tl-how .hw{font-size:13.5px;color:var(--tx2);line-height:1.9}
 .tl-badge{display:inline-block;margin-left:9px;padding:1px 9px;border-radius:99px;background:rgba(255,255,255,.07);color:var(--tx3);font-size:11px;font-weight:700;letter-spacing:.04em;font-family:var(--sys);vertical-align:2px}
 .tl-badge.det{background:rgba(126,178,203,.14);color:var(--sea)}
 .tl-stop .tl-card{background:rgba(19,31,51,.55);border-style:dashed}
@@ -390,28 +384,9 @@ body::after{background:radial-gradient(circle,#2a6a8f,transparent 60%);bottom:-2
 .cd .cell{animation:cellGlow 3.2s ease-in-out infinite}
 .cd .cell:nth-child(2){animation-delay:.4s}.cd .cell:nth-child(3){animation-delay:.8s}.cd .cell:nth-child(4){animation-delay:1.2s}
 @keyframes cellGlow{0%,100%{box-shadow:0 0 0 rgba(217,181,110,0)}50%{box-shadow:0 6px 26px -6px rgba(217,181,110,.4)}}
-/* ---------- film strip ---------- */
-.strip{overflow:hidden;margin:0 calc(-1 * clamp(16px,4vw,28px)) 22px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.strip-in{display:flex;gap:12px;width:max-content;animation:filmslide 55s linear infinite}
-.strip:hover .strip-in{animation-play-state:paused}
-@keyframes filmslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.strip img{width:170px;height:110px;object-fit:cover;border-radius:14px;border:1px solid var(--line2);flex-shrink:0;cursor:pointer;transition:transform .3s}
-.strip img:hover{transform:scale(1.05)}
 /* ---------- photo wall ---------- */
-.gal{columns:2;column-gap:12px}
-@media(min-width:680px){.gal{columns:3}}
-.gal figure{break-inside:avoid;margin:0 0 12px;border-radius:16px;overflow:hidden;border:1px solid var(--line2);position:relative;cursor:pointer;isolation:isolate}
-.gal img{width:100%;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
-.gal figure:hover img{transform:scale(1.07)}
-.gal figcaption{position:absolute;inset:auto 0 0 0;padding:26px 12px 10px;font-size:12.5px;font-weight:700;color:#fff;background:linear-gradient(180deg,transparent,rgba(8,13,24,.88));display:flex;justify-content:space-between;align-items:flex-end;gap:6px}
-.gal figcaption small{font-size:9px;letter-spacing:.18em;color:var(--gold-l);flex-shrink:0}
-/* ---------- lightbox ---------- */
-.lb{position:fixed;inset:0;z-index:90;background:rgba(5,9,16,.92);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out}
-.lb.show{display:flex;animation:fadeIn .3s}
-.lb img{max-width:94vw;max-height:76vh;border-radius:18px;border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.8);animation:lbIn .35s cubic-bezier(.2,.7,.3,1)}
+@media(min-width:680px){}
 @keyframes lbIn{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
-.lb .cap{margin-top:14px;font-family:'Shippori Mincho B1',serif;font-size:15px;color:var(--gold-l)}
-.lb .hint{font-size:10px;color:var(--tx3);margin-top:4px;letter-spacing:.2em}
 /* ---------- ribbon photo dots ---------- */
 .rb-dot.photo{background-size:cover;background-position:center;border-color:var(--gold-d);font-size:0}
 .rb-node.here .rb-dot{animation:herePulse 2.4s ease-in-out infinite}
@@ -448,7 +423,7 @@ body::after{background:radial-gradient(circle,#2a6a8f,transparent 60%);bottom:-2
 .quiz-shell{background-size:cover;background-position:center;transition:background-image .4s}
 .stay .in,.dayhero .in{position:relative}
 @media (prefers-reduced-motion:reduce){
-  .hero-slide.on,.dayhero img,.strip-in,.btn-gold::after,.rb-car,body::before,body::after,.cd .cell{animation:none!important}
+  .hero-slide.on,.dayhero img,.btn-gold::after,.rb-car,body::before,body::after,.cd .cell{animation:none!important}
   .tl-item{opacity:1;transform:none;transition:none}
 }
 @media print{
@@ -528,24 +503,6 @@ window.addEventListener('load',function(){setTimeout(function(){
       <div style="text-align:center;margin-top:18px">
         <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=横須賀港&waypoints=姫路城|有馬温泉|門司港レトロ|志賀島|長崎市|由布院温泉|別府市|太宰府天満宮">🗺 Googleマップで全ルートを見る</a>
       </div>
-    </section>
-
-    <section class="blk reveal">
-      <div class="sec-head">
-        <p class="kicker">Stays</p>
-        <h2 class="h2">今宵の宿</h2>
-      </div>
-      <div class="stay-grid" id="stay-grid"></div>
-    </section>
-
-    <section class="blk reveal">
-      <div class="sec-head">
-        <p class="kicker">Photo Preview</p>
-        <h2 class="h2">絶景プレビュー</h2>
-        <p class="d lead">道中で出会う景色とグルメを一足先に。写真をタップすると大きく見られます。</p>
-      </div>
-      <div class="strip"><div class="strip-in" id="strip"></div></div>
-      <div class="gal" id="gal"></div>
     </section>
 
     <section class="blk reveal">
@@ -727,9 +684,9 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v34 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v35 — 2026.08.19</p>
 </footer>
-<div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
+
 <div class="toast" id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
@@ -818,28 +775,7 @@ const P = {
   washoku:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/AzumaRyokan_Breakfast_2.JPG/960px-AzumaRyokan_Breakfast_2.JPG"
 };
 const HERO_SLIDES=[P.oura,P.inasa,P.himeji,P.makinoto,P.ferry];
-const GALLERY=[
- {img:P.himeji,cap:"姫路城 大天守",day:"DAY 1"},
- {img:P.arima,cap:"有馬温泉の街並み",day:"DAY 1"},
- {img:P.kobe,cap:"神戸牛 — 今夜の主役",day:"DAY 1"},
- {img:P.mojiko,cap:"門司港レトロ",day:"DAY 2"},
- {img:P.kanmon,cap:"関門橋 — 九州上陸",day:"DAY 2"},
- {img:P.yakicurry,cap:"名物・焼きカレー",day:"DAY 2"},
- {img:P.shikanoshima,cap:"志賀島 — 金印の島",day:"DAY 3"},
- {img:P.dejima,cap:"出島 — 鎖国の窓口",day:"DAY 3"},
- {img:P.heiwa,cap:"長崎・平和公園",day:"DAY 3"},
- {img:P.inasa,cap:"稲佐山からの長崎夜景",day:"DAY 3"},
- {img:P.gunkan,cap:"軍艦島（端島）",day:"DAY 4"},
- {img:P.oura,cap:"国宝・大浦天主堂",day:"DAY 4"},
- {img:P.glover,cap:"グラバー園",day:"DAY 4"},
- {img:P.champon,cap:"本場の長崎ちゃんぽん",day:"DAY 4"},
- {img:P.makinoto,cap:"やまなみハイウェイ",day:"DAY 5"},
- {img:P.kinrin,cap:"由布院・金鱗湖",day:"DAY 5"},
- {img:P.yumebridge,cap:"九重“夢”大吊橋",day:"DAY 5"},
- {img:P.kannawa,cap:"別府・鉄輪の湯けむり",day:"DAY 5"},
- {img:P.ramen,cap:"屋台の博多ラーメン",day:"DAY 6"},
- {img:P.ferry,cap:"東京九州フェリー それいゆ",day:"DAY 6/7"}
-];
+
 const DAYPHOTO={all:P.inasa,1:P.himeji,2:P.mojiko,3:P.heiwa,4:P.gunkan,5:P.makinoto,6:P.ferry};
 
 /* ============ ITINERARY DATA ============ */
@@ -850,11 +786,11 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=三鷹市&destination=有馬温泉+月光園+游月山荘&waypoints=姫路城",
    yj:[[34.83938,134.69410,'姫路城'],[34.79521,135.24526,'月光園 游月山荘']],
    tl:[
-    {t:"05:00",ll:[35.6835,139.5595],tt:"三鷹を出発 ── 暁の東名ハック",d:"東京ICから東名へ。早朝スタートで海老名SA付近の定番渋滞を回避します。",tip:"足柄SAで最初の休憩。富士山を眺めながら朝コーヒーを補給するのがパパの流儀！",img:P.mitaka,link:"https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"},
-    {t:"12:00",ll:[34.83938,134.6941],tt:"世界遺産・国宝「姫路城」大天守を制覇",d:"白亜の天守へ。石垣や急な木造階段を上り、最上階からの絶景を楽しみます。",oh:"9:00〜17:00（閉門16:00／入城は16:00まで）",fee:"一般（18歳以上）2,500円・18歳未満は無料。うちは大人2人で5,000円（2026年3月に改定）",tip:"大天守の階段はとても急。滑りにくい靴で行くと安心です。",img:P.himeji,link:"https://www.city.himeji.lg.jp/castle/"},
-    {t:"15:00",ll:[34.7967,135.2482],tt:"有馬温泉街のレトロそぞろ歩き",d:"『三ツ森』の焼き立て炭酸せんべいを食べ歩き。川のせせらぎを聞きながらお土産探し。",tip:"お土産の『炭酸フレーク』はアイスにかけると絶品！",img:P.senbei,link:"https://arima-onsen.com/"},
-    {t:"16:30",ll:[34.79521,135.24526],tt:"月光園 游月山荘へ ── 川音の露天風呂",d:"有馬名物「金泉」の川沿い露天で、長距離ドライブの疲れをリリース。",tip:"夕方、川沿いの太鼓橋の上で初日の家族記念写真を！",img:P.arima,link:"https://www.gekkoen.co.jp/yuugetu/access/"},
-    {t:"18:30",ll:[34.79521,135.24526],tt:"神戸牛会席をお部屋食で",d:"口の中でとろける神戸牛の陶板焼きなど、贅沢ディナーをお部屋でゆっくり。",tip:"着いたらすぐ浴衣に着替えてリラックスモードに切り替え。",img:P.kobe,link:"https://www.gekkoen.co.jp/yuugetu/cuisine/"}
+    {t:"05:00",ll:[35.6835,139.5595],how:"出る前にトイレとゴミ袋。眠い人は後ろで寝ていい。海老名は素通りして足柄まで一気に走る。",tt:"三鷹を出発 ── 暁の東名ハック",d:"東京ICから東名へ。早朝スタートで海老名SA付近の定番渋滞を回避します。",tip:"足柄SAで最初の休憩。富士山を眺めながら朝コーヒーを補給するのがパパの流儀！",img:P.mitaka,link:"https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"},
+    {t:"12:00",ll:[34.83938,134.6941],sp:"1時間30分",how:"まず大天守まで一気に上がって、降りてから西の丸をゆっくり。最上階の窓から城下町を見下ろす。帰り道は石垣の刻印さがしをすると子どもが飽きない。",tt:"世界遺産・国宝「姫路城」大天守を制覇",d:"白亜の天守へ。石垣や急な木造階段を上り、最上階からの絶景を楽しみます。",oh:"9:00〜17:00（閉門16:00／入城は16:00まで）",fee:"一般（18歳以上）2,500円・18歳未満は無料。うちは大人2人で5,000円（2026年3月に改定）",tip:"大天守の階段はとても急。滑りにくい靴で行くと安心です。",img:P.himeji,link:"https://www.city.himeji.lg.jp/castle/"},
+    {t:"15:00",ll:[34.7967,135.2482],sp:"1時間",how:"金の湯の前から湯本坂を上って、炭酸せんべいの焼きたてを1枚ずつ。途中の無料の足湯で休んでから宿へ。",tt:"有馬温泉街のレトロそぞろ歩き",d:"『三ツ森』の焼き立て炭酸せんべいを食べ歩き。川のせせらぎを聞きながらお土産探し。",tip:"お土産の『炭酸フレーク』はアイスにかけると絶品！",img:P.senbei,link:"https://arima-onsen.com/"},
+    {t:"16:30",ll:[34.79521,135.24526],how:"着いたらまず浴衣に着替える。混む前に金泉の露天へ。夕食前に川沿いの太鼓橋で家族写真。",tt:"月光園 游月山荘へ ── 川音の露天風呂",d:"有馬名物「金泉」の川沿い露天で、長距離ドライブの疲れをリリース。",tip:"夕方、川沿いの太鼓橋の上で初日の家族記念写真を！",img:P.arima,link:"https://www.gekkoen.co.jp/yuugetu/access/"},
+    {t:"18:30",ll:[34.79521,135.24526],sp:"1時間30分",how:"部屋食なので急がない。子どもは先に食べ終わるので、そのあとは卓球かロビーで解散。",tt:"神戸牛会席をお部屋食で",d:"口の中でとろける神戸牛の陶板焼きなど、贅沢ディナーをお部屋でゆっくり。",tip:"着いたらすぐ浴衣に着替えてリラックスモードに切り替え。",img:P.kobe,link:"https://www.gekkoen.co.jp/yuugetu/cuisine/"}
    ]},
  { n:2, date:"8.23", dow:"日", short:"門司港", stay:"星野リゾート BEB5門司港", photo:P.mojiko,
    title:"山陽道を西へ430km ── 星野リゾート「BEB5門司港」",
@@ -862,11 +798,11 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=有馬温泉&destination=星野リゾートBEB5門司港",
    yj:[[33.94504,130.96472,'門司港レトロ（BEB5門司港）']],
    tl:[
-    {t:"09:00",ll:[34.79521,135.24526],tt:"有馬温泉を出発 ── 約430kmの大西征",d:"山陽自動車道へ入り、西へひたすら快走します。",tip:"クルーズコントロールが最高に活きる日。みんなで歌いながら行きましょう！",img:P.arima,link:"https://www.takarazukakita-sa.jp/"},
-    {t:"12:00",ll:[34.69365,133.87291],tt:"吉備SAなどでご当地SAランチ",d:"名物きびだんごや、岡山・広島のご当地メシをカジュアルに満喫。",tip:"岡山名物『デミカツ丼』は食べ応え抜群。運転はしっかり交代を。",img:P.kibisa,link:"https://www.okayama-kanko.jp/spot/detail_1002214.html"},
-    {t:"15:00",ll:[33.96431,130.95369],tt:"関門橋を渡り、感動の九州上陸！",d:"海を隔てた九州の大パノラマを見ながら関門海峡を越えます。",tip:"手前の『壇之浦PA』に寄ると、関門橋がベスト画角で撮れます！",img:P.kanmon,link:"https://yamaguchi-tourism.jp/spot/detail_11103.html"},
-    {t:"15:30",ll:[33.94504,130.96472],tt:"BEB5門司港チェックイン",d:"お菓子を囲んでだらだらできるロビー「TAMARIBA」に到着。ボードゲームも充実。",tip:"お洒落すぎるアジト。チェックイン後はロビー探検から！",img:P.shinmoji,link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
-    {t:"18:00",ll:[33.94504,130.96472],tt:"門司港レトロ夜景さんぽ＆名物「焼きカレー」",d:"大正ロマンの赤煉瓦建築群がライトアップ。夕食は門司港発祥の焼きカレー。",tip:"素泊まりプランなので、今夜何を食べるかは家族会議で自由に！",img:P.yakicurry,link:"https://www.mojiko.info/"}
+    {t:"09:00",ll:[34.79521,135.24526],how:"朝風呂を済ませてから出る。今日は430km。運転は2時間ごとに交代する。",tt:"有馬温泉を出発 ── 約430kmの大西征",d:"山陽自動車道へ入り、西へひたすら快走します。",tip:"クルーズコントロールが最高に活きる日。みんなで歌いながら行きましょう！",img:P.arima,link:"https://www.takarazukakita-sa.jp/"},
+    {t:"12:00",ll:[34.69365,133.87291],sp:"45分",how:"岡山名物のデミカツ丼か、きびだんご。座って食べられる最後のまともな休憩なので、ここで午後の運転当番を決めておく。",tt:"吉備SAなどでご当地SAランチ",d:"名物きびだんごや、岡山・広島のご当地メシをカジュアルに満喫。",tip:"岡山名物『デミカツ丼』は食べ応え抜群。運転はしっかり交代を。",img:P.kibisa,link:"https://www.okayama-kanko.jp/spot/detail_1002214.html"},
+    {t:"15:00",ll:[33.96431,130.95369],sp:"20分",how:"橋の上は停まれないので、写真は手前の壇之浦PAで。渡り切ったら九州上陸の1枚を。",tt:"関門橋を渡り、感動の九州上陸！",d:"海を隔てた九州の大パノラマを見ながら関門海峡を越えます。",tip:"手前の『壇之浦PA』に寄ると、関門橋がベスト画角で撮れます！",img:P.kanmon,link:"https://yamaguchi-tourism.jp/spot/detail_11103.html"},
+    {t:"15:30",ll:[33.94504,130.96472],how:"荷物を置いたらロビーのTAMARIBAへ。お菓子とボードゲームがあるので、夕食までここで持たせる。",tt:"BEB5門司港チェックイン",d:"お菓子を囲んでだらだらできるロビー「TAMARIBA」に到着。ボードゲームも充実。",tip:"お洒落すぎるアジト。チェックイン後はロビー探検から！",img:P.shinmoji,link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
+    {t:"18:00",ll:[33.94504,130.96472],sp:"2時間",how:"日が落ちてからライトアップ。焼きカレーは店ごとに味が違うので、先に1軒決めてから歩く。",tt:"門司港レトロ夜景さんぽ＆名物「焼きカレー」",d:"大正ロマンの赤煉瓦建築群がライトアップ。夕食は門司港発祥の焼きカレー。",tip:"素泊まりプランなので、今夜何を食べるかは家族会議で自由に！",img:P.yakicurry,link:"https://www.mojiko.info/"}
    ]},
  { n:3, date:"8.24", dow:"月", short:"志賀島・長崎", stay:"スタジアムシティホテル長崎", photo:P.heiwa,
    title:"金印の島・志賀島から、坂の街「長崎」へ",
@@ -874,13 +810,13 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾートBEB5門司港&destination=スタジアムシティホテル長崎&waypoints=金印公園|出島|長崎平和公園",
    yj:[[33.67500,130.30000,'志賀島'],[32.74352,129.87302,'出島'],[32.75336,129.84933,'稲佐山展望台（夜景）']],
    tl:[
-    {t:"08:30",ll:[33.94504,130.96472],tt:"BEB5門司港を出発 ── 玄界灘へ",d:"九州道を南西へ。福岡都市高速から海の中道へ抜け、砂の道で志賀島に渡ります。",tip:"月曜の朝。福岡都市高速の混雑を避けるなら8:30発が安全ラインです。",img:P.mojiko,link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
-    {t:"10:00",ll:[33.6606,130.3169],tt:"志賀島「金印公園」で玄界灘を見る",d:"教科書に載っている「漢委奴国王」の金印が江戸時代に見つかった島。展望台から玄界灘と博多湾が一望できます。",tip:"ここは45分で切り上げるのがコツ。粘ると長崎の午後が丸ごと消えます。",img:P.shikanoshima,link:"https://www.crossroadfukuoka.jp/spot/12490"},
-    {t:"13:30",ll:[32.7503,129.8779],tt:"長崎着 ── 坂と海の街へ",d:"九州道から鳥栖JCTで長崎道へ。約250kmを走り切って、いよいよ長崎市内に入ります。",tip:"長崎の道は狭くて一方通行だらけ。ナビの言うことを素直に聞くのが正解。",img:P.inasa,link:"https://www.at-nagasaki.jp/"},
-    {t:"14:00",ll:[32.74352,129.87302],tt:"「出島」── 鎖国250年の、たったひとつの窓",d:"扇形の人工島に、当時の建物が19棟まで復元されています。日本が世界とつながっていた唯一の場所。",oh:"8:00〜21:00（最終入場20:40）・年中無休",fee:"大人1,100円・小中高550円。4人で3,300円",tip:"ミニ出島（15分の1模型）を最初に見ると、全体の形が頭に入って歩きやすい。",img:P.dejima,link:"https://nagasakidejima.jp/"},
-    {t:"15:30",ll:[32.7734,129.8637],tt:"「平和公園」と原爆資料館",d:"平和祈念像と、爆心地公園。資料館では1945年8月9日11時2分に何が起きたのかを、ものと記録で見ます。",oh:"8月は8:30〜18:30",fee:"一般（15歳以上）200円・高校生以下無料。はなまで3人で600円",tip:"はなと太朗には、見終わったあとに感想を聞かないほうがいい。黙って歩く時間を作ろう。",img:P.heiwa,link:"https://nabmuseum.jp/"},
-    {t:"18:00",ll:[32.7593,129.8639],tt:"スタジアムシティホテル長崎チェックイン",d:"2024年開業の長崎スタジアムシティ。14階建て243室の約7割の部屋からサッカーのピッチが見下ろせます。",tip:"窓の外がスタジアム。カーテンを開けた瞬間の顔が見たいので、着くまで写真を見せないでおこう。",img:P.stadiumcity,link:"https://www.nagasakistadiumcity.com/stadiumcityhotel/plan/"},
-    {t:"19:30",ll:[32.7593,129.8639],tt:"商業施設と温泉「YUKULU」",d:"同じ敷地の商業施設6〜7階に、地下1,500mから湧く天然温泉の温浴施設があります。夕食もこの中で完結。",tip:"歩き回った日の締めが館内の温泉。外に出なくていいのが今日のごほうび。",img:P.peacestadium,link:"https://www.nagasaki-tabinet.com/blog/tabibu/milk/202502_yukuru"}
+    {t:"08:30",ll:[33.94504,130.96472],how:"福岡都市高速の朝の混雑を避けるため8:30に出る。海の中道は一本道。窓を開けて走る。",tt:"BEB5門司港を出発 ── 玄界灘へ",d:"九州道を南西へ。福岡都市高速から海の中道へ抜け、砂の道で志賀島に渡ります。",tip:"月曜の朝。福岡都市高速の混雑を避けるなら8:30発が安全ラインです。",img:P.mojiko,link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
+    {t:"10:00",ll:[33.6606,130.3169],sp:"45分",how:"展望台から玄界灘と博多湾を見て、金印のレプリカを確かめる。教科書と同じ角度で撮ると子どもが喜ぶ。45分で切り上げる。",tt:"志賀島「金印公園」で玄界灘を見る",d:"教科書に載っている「漢委奴国王」の金印が江戸時代に見つかった島。展望台から玄界灘と博多湾が一望できます。",tip:"ここは45分で切り上げるのがコツ。粘ると長崎の午後が丸ごと消えます。",img:P.shikanoshima,link:"https://www.crossroadfukuoka.jp/spot/12490"},
+    {t:"13:30",ll:[32.7503,129.8779],how:"長崎は一方通行だらけ。ナビの言うとおりに走って、宿の駐車場に入れてから歩きに切り替える。",tt:"長崎着 ── 坂と海の街へ",d:"九州道から鳥栖JCTで長崎道へ。約250kmを走り切って、いよいよ長崎市内に入ります。",tip:"長崎の道は狭くて一方通行だらけ。ナビの言うことを素直に聞くのが正解。",img:P.inasa,link:"https://www.at-nagasaki.jp/"},
+    {t:"14:00",ll:[32.74352,129.87302],sp:"1時間",how:"最初にミニ出島（15分の1の模型）を見ると全体の形が頭に入る。そのあとカピタン部屋の2階から扇形を見下ろす。",tt:"「出島」── 鎖国250年の、たったひとつの窓",d:"扇形の人工島に、当時の建物が19棟まで復元されています。日本が世界とつながっていた唯一の場所。",oh:"8:00〜21:00（最終入場20:40）・年中無休",fee:"大人1,100円・小中高550円。4人で3,300円",tip:"ミニ出島（15分の1模型）を最初に見ると、全体の形が頭に入って歩きやすい。",img:P.dejima,link:"https://nagasakidejima.jp/"},
+    {t:"15:30",ll:[32.7734,129.8637],sp:"1時間30分",how:"先に爆心地公園、そのあと資料館。11時2分で止まった時計の前では、説明せずに黙って立つ。見終わったあと、感想は聞かない。",tt:"「平和公園」と原爆資料館",d:"平和祈念像と、爆心地公園。資料館では1945年8月9日11時2分に何が起きたのかを、ものと記録で見ます。",oh:"8月は8:30〜18:30",fee:"一般（15歳以上）200円・高校生以下無料。はなまで3人で600円",tip:"はなと太朗には、見終わったあとに感想を聞かないほうがいい。黙って歩く時間を作ろう。",img:P.heiwa,link:"https://nabmuseum.jp/"},
+    {t:"18:00",ll:[32.7593,129.8639],how:"部屋のカーテンは着いてから開ける。ピッチが見えた瞬間の顔が、この日の一枚になる。",tt:"スタジアムシティホテル長崎チェックイン",d:"2024年開業の長崎スタジアムシティ。14階建て243室の約7割の部屋からサッカーのピッチが見下ろせます。",tip:"窓の外がスタジアム。カーテンを開けた瞬間の顔が見たいので、着くまで写真を見せないでおこう。",img:P.stadiumcity,link:"https://www.nagasakistadiumcity.com/stadiumcityhotel/plan/"},
+    {t:"19:30",ll:[32.7593,129.8639],sp:"1時間30分",how:"歩き回った日なので、温泉が先で食事はあと。館内で完結するので靴は履かなくていい。",tt:"商業施設と温泉「YUKULU」",d:"同じ敷地の商業施設6〜7階に、地下1,500mから湧く天然温泉の温浴施設があります。夕食もこの中で完結。",tip:"歩き回った日の締めが館内の温泉。外に出なくていいのが今日のごほうび。",img:P.peacestadium,link:"https://www.nagasaki-tabinet.com/blog/tabibu/milk/202502_yukuru"}
    ]},
  { n:4, date:"8.25", dow:"火", short:"野母崎・湯布院", stay:"TERRA湯布院", photo:P.gunkan,
    title:"野母崎から軍艦島を望む ── 大浦天主堂、そして湯布院へ",
@@ -888,13 +824,13 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=スタジアムシティホテル長崎&destination=TERRA湯布院&waypoints=長崎市軍艦島資料館|大浦天主堂",
    yj:[[32.62778,129.73833,'端島（軍艦島）※海の向こうに見える島'],[32.73417,129.87014,'大浦天主堂'],[33.26667,131.36917,'金鱗湖（由布院）']],
    tl:[
-    {t:"08:00",ll:[32.5847,129.7639],tt:"野母崎へ ── 軍艦島が見える岬",d:"長崎市街から南へ約40分。半島の先端まで走ると、海の向こうに軍艦島（端島）が浮かんで見えます。",tip:"船に乗らないぶん、海と島と空をまるごと写真に入れられる。晴れた朝がいちばんきれい。",img:P.gunkan,link:"https://www.at-nagasaki.jp/spot/61067"},
-    {t:"09:00",ll:[32.5847,129.7639],tt:"軍艦島資料館と長崎市恐竜博物館",d:"資料館では島で暮らした人たちの写真と暮らしの道具が見られます。同じ敷地に恐竜博物館が併設。",tip:"恐竜博物館は完全に太朗の territory。ここだけで1時間持っていかれる覚悟で。",img:P.gunkan,link:"https://www.city.nagasaki.lg.jp/site/kodomo/61024.html"},
-    {t:"11:30",ll:[32.73417,129.87014],tt:"国宝「大浦天主堂」とグラバー園",d:"現存する日本最古の教会建築。すぐ隣のグラバー園からは長崎港が見下ろせます。",oh:"大浦天主堂 8:30〜18:00（最終17:30）／グラバー園 8:00〜21:30（最終21:10）",fee:"天主堂 大人1,000円・高校生400円・小学生300円（博物館込み）／グラバー園 一般1,300円・小中高650円。合わせて6,600円",tip:"『信徒発見』の話を先に読んでから入ると、この建物の意味がまるで変わる。",img:P.oura,link:"https://www.at-nagasaki.jp/spot/102"},
-    {t:"13:00",ll:[32.7422,129.8757],tt:"本場の「長崎ちゃんぽん」ランチ",d:"具だくさんのちゃんぽんと皿うどん。中華街も坂の下ですぐそこです。",tip:"カステラのお土産はここで買っておくと、あとがラク。",img:P.champon,link:"https://www.at-nagasaki.jp/gourmet/"},
-    {t:"14:00",ll:[32.7503,129.8779],tt:"長崎を出発 ── 大分へ250km",d:"長崎道→鳥栖JCT→大分道。旅で最後の長距離ドライブです。",tip:"金立SA（佐賀）で最後の休憩を。ここを過ぎると一気に山です。",img:P.kinryusa,link:"https://www.w-nexco.co.jp/"},
-    {t:"17:00",ll:[33.2667,131.3692],tt:"「TERRA湯布院」チェックイン ── 1棟まるごと貸切",d:"1日1組限定のラグジュアリーヴィラ。地下600mから湧く源泉が24時間かけ流しで、棟ごとに専用の露天風呂やサウナが付いています。湯布院ICから車で約4分。",tip:"他のお客さんがいない。走り回っても、大声で笑っても、誰にも気をつかわなくていい夜です。",img:P.onsenY,link:"https://www.terra-yufuin.com/"},
-    {t:"18:00",ll:[33.2647,131.3549],tt:"夕食は自由 ── 買い出しか、街か",d:"素泊まりでフルオープンキッチン付き。由布院駅までは車で約4分（1.2km）なので、買い出して作るのも、街で食べるのもアリ。",tip:"門司港と同じ「今夜どうする？」の日。買い出して4人で作るほうが、たぶん記憶に残る。",img:P.yunotsubo,link:"https://yufuin.gr.jp/"}
+    {t:"08:00",ll:[32.5847,129.7639],sp:"30分",how:"朝の光がいちばんきれい。展望所から軍艦島を正面に入れて、双眼鏡で建物の形を確かめる。",tt:"野母崎へ ── 軍艦島が見える岬",d:"長崎市街から南へ約40分。半島の先端まで走ると、海の向こうに軍艦島（端島）が浮かんで見えます。",tip:"船に乗らないぶん、海と島と空をまるごと写真に入れられる。晴れた朝がいちばんきれい。",img:P.gunkan,link:"https://www.at-nagasaki.jp/spot/61067"},
+    {t:"09:00",ll:[32.5847,129.7639],sp:"1時間30分",how:"資料館で島の暮らしの道具を見てから恐竜へ。太朗は恐竜で止まるので、出る時間を先に決めておく。",tt:"軍艦島資料館と長崎市恐竜博物館",d:"資料館では島で暮らした人たちの写真と暮らしの道具が見られます。同じ敷地に恐竜博物館が併設。",tip:"恐竜博物館は完全に太朗の territory。ここだけで1時間持っていかれる覚悟で。",img:P.gunkan,link:"https://www.city.nagasaki.lg.jp/site/kodomo/61024.html"},
+    {t:"11:30",ll:[32.73417,129.87014],sp:"1時間30分",how:"『信徒発見』の話を先に読んでから中へ入る。グラバー園は動く歩道で上まで行って、下りながら見るとラク。",tt:"国宝「大浦天主堂」とグラバー園",d:"現存する日本最古の教会建築。すぐ隣のグラバー園からは長崎港が見下ろせます。",oh:"大浦天主堂 8:30〜18:00（最終17:30）／グラバー園 8:00〜21:30（最終21:10）",fee:"天主堂 大人1,000円・高校生400円・小学生300円（博物館込み）／グラバー園 一般1,300円・小中高650円。合わせて6,600円",tip:"『信徒発見』の話を先に読んでから入ると、この建物の意味がまるで変わる。",img:P.oura,link:"https://www.at-nagasaki.jp/spot/102"},
+    {t:"13:00",ll:[32.7422,129.8757],sp:"1時間",how:"中華街まで下りて食べる。カステラの土産はここで買って、先に車へ積んでおく。",tt:"本場の「長崎ちゃんぽん」ランチ",d:"具だくさんのちゃんぽんと皿うどん。中華街も坂の下ですぐそこです。",tip:"カステラのお土産はここで買っておくと、あとがラク。",img:P.champon,link:"https://www.at-nagasaki.jp/gourmet/"},
+    {t:"14:00",ll:[32.7503,129.8779],how:"最後の長距離250km。金立SAで休んだら、そこから一気に山へ入る。",tt:"長崎を出発 ── 大分へ250km",d:"長崎道→鳥栖JCT→大分道。旅で最後の長距離ドライブです。",tip:"金立SA（佐賀）で最後の休憩を。ここを過ぎると一気に山です。",img:P.kinryusa,link:"https://www.w-nexco.co.jp/"},
+    {t:"17:00",ll:[33.2667,131.3692],how:"1棟貸切なので声を出しても大丈夫。着いたらまず、露天とサウナの順番を決める。",tt:"「TERRA湯布院」チェックイン ── 1棟まるごと貸切",d:"1日1組限定のラグジュアリーヴィラ。地下600mから湧く源泉が24時間かけ流しで、棟ごとに専用の露天風呂やサウナが付いています。湯布院ICから車で約4分。",tip:"他のお客さんがいない。走り回っても、大声で笑っても、誰にも気をつかわなくていい夜です。",img:P.onsenY,link:"https://www.terra-yufuin.com/"},
+    {t:"18:00",ll:[33.2647,131.3549],how:"由布院駅前で買い出してキッチンで作るか、街で食べるか。作るほうが、たぶん記憶に残る。",tt:"夕食は自由 ── 買い出しか、街か",d:"素泊まりでフルオープンキッチン付き。由布院駅までは車で約4分（1.2km）なので、買い出して作るのも、街で食べるのもアリ。",tip:"門司港と同じ「今夜どうする？」の日。買い出して4人で作るほうが、たぶん記憶に残る。",img:P.yunotsubo,link:"https://yufuin.gr.jp/"}
    ]},
  { n:5, date:"8.26", dow:"水", short:"由布院・別府", stay:"星野リゾート 界 別府", photo:P.makinoto,
    title:"やまなみハイウェイ ── 由布院さんぽと「界 別府」",
@@ -902,13 +838,13 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=TERRA湯布院&destination=星野リゾート界別府&waypoints=長者原|九重夢大吊橋",
    yj:[[33.26667,131.36917,'金鱗湖（由布院）'],[33.17389,131.22667,'九重“夢”大吊橋'],[33.28033,131.50573,'界 別府（北浜）']],
    tl:[
-    {t:"07:00",ll:[33.26667,131.36917],tt:"朝もやの「金鱗湖」を独り占め",d:"泊まったからこそできる早朝さんぽ。湯気の立つ湖面がいちばん美しく、いちばん空いている時間です。",tip:"7時台の湯の坪街道はまだ店が閉まっている。それでいい。人がいない由布院は別の街です。",img:P.kinrin,link:"https://yufuin.gr.jp/"},
-    {t:"08:30",ll:[33.2647,131.3549],tt:"「湯布院 千家」で由布岳を見ながら朝ごはん",d:"全面ガラス張りの向こうに由布岳と田園。8:30オープンで、モーニングも名物のとり天もあります。宿が素泊まりなので、今日の朝食はここ。",tip:"窓際の席が取れるかどうかで満足度が変わる。開店と同時に入るのが正解です。",img:P.yufudake,link:"https://www.senke.info/"},
-    {t:"09:30",ll:[33.1097,131.2447],tt:"「やまなみハイウェイ」高原絶景ドライブ",d:"九重連山の裾野を走る日本屈指のドライブ道。吹き抜ける高原の風が爽快！",tip:"『長者原』の駐車場で一時停車。硫黄山に吸い込まれる画角で記念撮影を。",img:P.makinoto,link:"https://www.visit-oita.jp/spots/detail/8579"},
-    {t:"11:00",ll:[33.17389,131.22667],tt:"九重“夢”大吊橋を渡る",d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の谷を真下に見ます。",tip:"高さが苦手な人は真ん中を見て歩けば大丈夫。太朗は絶対はしゃぐので手すりに注意。",img:P.yumebridge,link:"https://www.yumeooturihashi.com/"},
-    {t:"15:00",ll:[33.28033,131.50573],tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.beppucity,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
-    {t:"16:30",ll:[33.28033,131.50573],tt:"海と一体のインフィニティ大浴場",d:"別府湾と溶け合うような大浴場で、長旅のご褒美湯浴み。",tip:"湯上がりの冷たいかぼすドリンクのサービスも忘れずに。",img:P.beppubay,link:"https://hoshinoresorts.com/ja/sp/onsen/kyushu/beppu/"},
-    {t:"17:30",ll:[33.28033,131.50573],tt:"豊後の創作会席ディナー（予約ずみ）",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。17:30スタートで予約が入っています。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",img:P.kaiseki,link:"https://www.jtb.co.jp/kokunai-hotel/htl/8410122/restaurant/"}
+    {t:"07:00",ll:[33.26667,131.36917],sp:"45分",how:"人がいない時間。湖面の湯気が立つのは朝いちばんだけ。一周10分なので、ゆっくり2周する。",tt:"朝もやの「金鱗湖」を独り占め",d:"泊まったからこそできる早朝さんぽ。湯気の立つ湖面がいちばん美しく、いちばん空いている時間です。",tip:"7時台の湯の坪街道はまだ店が閉まっている。それでいい。人がいない由布院は別の街です。",img:P.kinrin,link:"https://yufuin.gr.jp/"},
+    {t:"08:30",ll:[33.2647,131.3549],sp:"1時間",how:"窓際の席が取れるかで満足度が変わるので、開店と同時に入る。とり天は1皿を分け合うとちょうどいい。",tt:"「湯布院 千家」で由布岳を見ながら朝ごはん",d:"全面ガラス張りの向こうに由布岳と田園。8:30オープンで、モーニングも名物のとり天もあります。宿が素泊まりなので、今日の朝食はここ。",tip:"窓際の席が取れるかどうかで満足度が変わる。開店と同時に入るのが正解です。",img:P.yufudake,link:"https://www.senke.info/"},
+    {t:"09:30",ll:[33.1097,131.2447],how:"長者原で一度停まる。硫黄山を背にして1枚。窓を開けて高原の風を入れて走る。",tt:"「やまなみハイウェイ」高原絶景ドライブ",d:"九重連山の裾野を走る日本屈指のドライブ道。吹き抜ける高原の風が爽快！",tip:"『長者原』の駐車場で一時停車。硫黄山に吸い込まれる画角で記念撮影を。",img:P.makinoto,link:"https://www.visit-oita.jp/spots/detail/8579"},
+    {t:"11:00",ll:[33.17389,131.22667],sp:"1時間",how:"渡って戻る往復で約40分。真ん中の金網の床から震動の滝が見える。高さが苦手な人は正面だけ見て歩けば大丈夫。",tt:"九重“夢”大吊橋を渡る",d:"高さ173m・長さ390mの歩行者専用吊橋。震動の滝と九酔渓の谷を真下に見ます。",tip:"高さが苦手な人は真ん中を見て歩けば大丈夫。太朗は絶対はしゃぐので手すりに注意。",img:P.yumebridge,link:"https://www.yumeooturihashi.com/"},
+    {t:"15:00",ll:[33.28033,131.50573],how:"着いたら足湯テラス。夕方から縁日遊びがあるので、風呂は早めに済ませる。",tt:"星野リゾート「界 別府」チェックイン",d:"隈研吾氏プロデュースのドラマチックな和モダン。別府湾ビューと足湯テラス。",tip:"夕方からは湯治文化を再現した夜店の縁日遊びを子どもと一緒に。",img:P.beppucity,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"16:30",ll:[33.28033,131.50573],sp:"1時間",how:"日が傾く時間は、海と湯がつながって見える。湯上がりのかぼすドリンクを忘れない。",tt:"海と一体のインフィニティ大浴場",d:"別府湾と溶け合うような大浴場で、長旅のご褒美湯浴み。",tip:"湯上がりの冷たいかぼすドリンクのサービスも忘れずに。",img:P.beppubay,link:"https://hoshinoresorts.com/ja/sp/onsen/kyushu/beppu/"},
+    {t:"17:30",ll:[33.28033,131.50573],sp:"1時間30分",how:"17:30スタートで予約ずみ。旅のアワードディナーなので、ここまでの珍道中を1日ずつ振り返りながら食べる。",tt:"豊後の創作会席ディナー（予約ずみ）",d:"かぼす、豊後牛、関あじ。美しい盛り付けの会席をお洒落な空間で。17:30スタートで予約が入っています。",tip:"今夜は旅のアワードディナー。ここまでの珍道中をみんなで振り返ろう！",img:P.kaiseki,link:"https://www.jtb.co.jp/kokunai-hotel/htl/8410122/restaurant/"}
    ]},
  { n:6, date:"8.27-28", dow:"木・金", short:"太宰府→フェリー", stay:"東京九州フェリー 船中泊", photo:P.ferry,
    title:"太宰府と博多 ── イカの活き造りで締めて、太平洋クルーズで帰京",
@@ -916,14 +852,14 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=太宰府天満宮|天神",
    yj:[[33.52153,130.53486,'太宰府天満宮'],[33.58867,130.40272,'天神'],[33.87639,130.99436,'東京九州フェリー 新門司ターミナル']],
    tl:[
-    {t:"08:30",ll:[33.28033,131.50573],tt:"界 別府で朝ごはん（予約ずみ）",d:"和朝食で最後の宿の朝。8:30スタートで予約が入っています。",tip:"食べ終わったらすぐ出発できるよう、荷物は朝食前に車へ積んでおく。",img:P.washoku,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
-    {t:"09:30",ll:[33.28033,131.50573],tt:"界 別府を出発",d:"朝風呂と朝ごはんを済ませてから、大分道経由で福岡へ。太宰府に寄る分だけ30分だけ早く出ます。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
-    {t:"12:00",ll:[33.52153,130.53486],tt:"「太宰府天満宮」で合格祈願",d:"学問の神様・菅原道真を祀る全国天満宮の総本宮。九州道の太宰府ICを降りてすぐです。",tip:"参道の梅ヶ枝餅は焼きたてを1個ずつ。冷めたのを持ち帰るより、その場で食べるのが正解。",img:P.dazaifu,link:"https://www.dazaifutenmangu.or.jp/"},
-    {t:"14:30",ll:[33.58867,130.40272],tt:"博多・天神ショッピング（屋内で動く）",d:"この日は最高38℃の予報。地上を歩かず、天神地下街→岩田屋のデパ地下→商業施設の順に、冷房の中だけで回ります。",oh:"天神地下街 10:00〜20:00（店舗により異なります・未確認）",tip:"外に出るのは移動の一瞬だけ。『通りもん』と明太子はデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
-    {t:"17:00",ll:[33.5898,130.4207],tt:"「河太郎」でイカの活き造り ── 旅の最後の晩ごはん",d:"呼子のイカの活き造り発祥の店。注文を受けてから生け簀のイカを目の前でさばくので、皿の上で透きとおったまま動きます。17:00の開店と同時に入ります。",tip:"ゲソは後から天ぷらか塩焼きにしてもらえる。透明なイカを見た瞬間の太朗の顔が、この旅の最後の一枚になる。要予約。",img:P.ikasashi,link:"https://www.kawataro.jp/hakata/"},
-    {t:"19:30",ll:[33.58867,130.40272],tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",img:P.nakasu,link:"https://tqf.co.jp/2021/06/17/tqfinformation0530/"},
-    {t:"20:50",ll:[33.87639,130.99436],tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.ferry,link:"https://tqf.co.jp/"},
-    {t:"23:55",ll:[33.87639,130.99436],tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
+    {t:"08:30",ll:[33.28033,131.50573],sp:"45分",how:"荷物は朝食の前に車へ積んでおく。食べ終わったらすぐ出られる形にする。",tt:"界 別府で朝ごはん（予約ずみ）",d:"和朝食で最後の宿の朝。8:30スタートで予約が入っています。",tip:"食べ終わったらすぐ出発できるよう、荷物は朝食前に車へ積んでおく。",img:P.washoku,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"09:30",ll:[33.28033,131.50573],how:"大分道は霧が出やすい。速度控えめで、車間をいつもより広く。",tt:"界 別府を出発",d:"朝風呂と朝ごはんを済ませてから、大分道経由で福岡へ。太宰府に寄る分だけ30分だけ早く出ます。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"12:00",ll:[33.52153,130.53486],sp:"1時間",how:"本殿で合格祈願。参道の梅ヶ枝餅は焼きたてを1個ずつ、その場で食べる。時間があれば裏手の九州国立博物館へ。",tt:"「太宰府天満宮」で合格祈願",d:"学問の神様・菅原道真を祀る全国天満宮の総本宮。九州道の太宰府ICを降りてすぐです。",tip:"参道の梅ヶ枝餅は焼きたてを1個ずつ。冷めたのを持ち帰るより、その場で食べるのが正解。",img:P.dazaifu,link:"https://www.dazaifutenmangu.or.jp/"},
+    {t:"14:30",ll:[33.58867,130.40272],sp:"2時間",how:"地下街→デパ地下→商業施設の順で、外を歩かない。通りもんと明太子はデパ地下でまとめ買い。",tt:"博多・天神ショッピング（屋内で動く）",d:"この日は最高38℃の予報。地上を歩かず、天神地下街→岩田屋のデパ地下→商業施設の順に、冷房の中だけで回ります。",oh:"天神地下街 10:00〜20:00（店舗により異なります・未確認）",tip:"外に出るのは移動の一瞬だけ。『通りもん』と明太子はデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
+    {t:"17:00",ll:[33.5898,130.4207],sp:"1時間30分",how:"開店と同時に入る。イカが透きとおっているうちに写真を撮る。ゲソは後から天ぷらか塩焼きにしてもらう。",tt:"「河太郎」でイカの活き造り ── 旅の最後の晩ごはん",d:"呼子のイカの活き造り発祥の店。注文を受けてから生け簀のイカを目の前でさばくので、皿の上で透きとおったまま動きます。17:00の開店と同時に入ります。",tip:"ゲソは後から天ぷらか塩焼きにしてもらえる。透明なイカを見た瞬間の太朗の顔が、この旅の最後の一枚になる。要予約。",img:P.ikasashi,link:"https://www.kawataro.jp/hakata/"},
+    {t:"19:30",ll:[33.58867,130.40272],how:"都市高速が混む前に抜ける。土産は積み込んでから出発する。",tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",img:P.nakasu,link:"https://tqf.co.jp/2021/06/17/tqfinformation0530/"},
+    {t:"20:50",ll:[33.87639,130.99436],how:"車検証と予約票を手元に。車を離れる前に、船内で使うものだけバッグにまとめる。",tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.ferry,link:"https://tqf.co.jp/"},
+    {t:"23:55",ll:[33.87639,130.99436],how:"風呂は出港直後が混むので少しずらす。0時すぎ、灯りが減ってからデッキで星を見る。",tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
    ]}
 ];
 
@@ -1276,46 +1212,6 @@ function buildHeroSlides(){
     sl[cur].classList.add('on');
   },8000);
 }
-/* ============ GALLERY & LIGHTBOX ============ */
-function buildGallery(){
-  const items=GALLERY.map((g,i)=>'<img src="'+g.img+'" alt="'+esc(g.cap)+'" loading="lazy" onclick="openLb('+i+')" onerror="this.remove()">').join('');
-  $('strip').innerHTML=items+items;
-  $('gal').innerHTML=GALLERY.map((g,i)=>
-    '<figure onclick="openLb('+i+')"><img src="'+g.img+'" alt="'+esc(g.cap)+'" loading="lazy" onerror="this.parentElement.remove()">'+
-    '<figcaption>'+esc(g.cap)+'<small>'+g.day+'</small></figcaption></figure>').join('');
-}
-function openLb(i){
-  const g=GALLERY[i];
-  $('lb-img').src=g.img; $('lb-cap').textContent=g.day+' — '+g.cap;
-  $('lb').classList.add('show'); document.body.style.overflow='hidden';
-}
-function closeLb(){ $('lb').classList.remove('show'); document.body.style.overflow=''; }
-addEventListener('keydown',e=>{ if(e.key==='Escape')closeLb(); });
-
-/* ============ HOME: ribbon & stays ============ */
-function buildRibbon(){
-  const stops=[{e:'🏠',img:P.mitaka,day:'START',n:'三鷹 5:00発'}]
-    .concat(DAYS.map(d=>({e:['🏯','⚓','⛪','⛴','♨️','🗾'][d.n-1],img:d.photo,day:'DAY '+d.n,n:d.short,go:d.n})))
-    .concat([{e:'🗼',img:P.ferry,day:'GOAL',n:'横須賀 8/28夜'}]);
-  $('ribbon').innerHTML=stops.map(s=>
-    '<div class="rb-node" '+(s.go?('onclick="openDay('+s.go+')"'):'')+'>'+
-    (s.img?'<div class="rb-dot photo" style="background-image:url('+s.img+')">'+s.e+'</div>':'<div class="rb-dot">'+s.e+'</div>')+
-    '<div class="rb-day">'+s.day+'</div><div class="rb-name">'+s.n+'</div></div>'
-  ).join('');
-}
-function buildStays(){
-  const stays=[
-    {n:'DAY 1',t:'月光園 游月山荘',s:'有馬温泉・金泉掛け流し／神戸牛会席',img:P.arima,link:'https://www.gekkoen.co.jp/yuugetu/'},
-    {n:'DAY 2',t:'星野リゾート BEB5門司港',s:'港町レトロのお洒落アジト',img:P.mojiko,link:'https://hoshinoresorts.com/ja/hotels/beb5mojiko/'},
-    {n:'DAY 3',t:'スタジアムシティホテル長崎',s:'約7割の部屋からピッチが見える／館内に天然温泉',img:P.stadiumcity,link:'https://www.nagasakistadiumcity.com/stadiumcityhotel/plan/'},
-    {n:'DAY 4',t:'TERRA湯布院',s:'1日1組限定の貸切ヴィラ／源泉かけ流しの専用露天',img:P.yufudake,link:'https://www.terra-yufuin.com/'},
-    {n:'DAY 5',t:'星野リゾート 界 別府',s:'隈研吾デザイン・海のインフィニティ湯',img:P.beppu,link:'https://hoshinoresorts.com/ja/hotels/kaibeppu/'},
-    {n:'DAY 6',t:'東京九州フェリー',s:'それいゆ／はまゆう・船中泊',img:P.ferry,link:'https://tqf.co.jp/'}
-  ];
-  $('stay-grid').innerHTML=stays.map(s=>
-    '<a class="stay" href="#" onclick="go(\'stay\');return false;"><img src="'+s.img+'" alt="" loading="lazy">'+
-    '<div class="in"><p class="n">'+s.n+'</p><p class="t">'+s.t+'</p><p class="s">'+s.s+'</p></div></a>').join('');
-}
 
 /* ============ DAYS ============ */
 let curDay=1;
@@ -1629,6 +1525,7 @@ function startNowTimer(n){
 function tlPlanHTML(n,it,ix){
   return '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
     '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
+    (it.sp||it.how?'<div class="tl-how">'+(it.sp?'<p class="sp">⏱ 滞在の目安　'+it.sp+'</p>':'')+(it.how?'<p class="hw">'+it.how+'</p>':'')+'</div>':'')+
     (it.oh||it.fee?'<div class="tl-fact">'+(it.oh?'<span>🕘 '+it.oh+'</span>':'')+(it.fee?'<span>💴 '+it.fee+'</span>':'')+'</div>':'')+
     (it.ll?'<div id="twx-'+n+'-'+ix+'"></div>':'')+
     (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
@@ -1916,7 +1813,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.querySelectorAll('#ck-in').forEach(el=>el.addEventListener('keydown',e=>{
   if(e.key==='Enter'){ e.preventDefault(); addCk(); }
 }));
-buildHeroSlides(); buildGallery(); buildRibbon(); buildStays(); buildStayPage(); buildFerry(); buildLearn(); buildSos(); buildCk(); buildThemes(); applyQuizBanner();
+buildHeroSlides(); buildRibbon(); buildStayPage(); buildFerry(); buildLearn(); buildSos(); buildCk(); buildThemes(); applyQuizBanner();
 renderNavToggles(); buildQuizFilters(); startQuiz();
 const td=tripToday(); openDay(td||1,true); buildDayTabs();
 go('home');
