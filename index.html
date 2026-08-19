@@ -276,6 +276,7 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .tl-badge.det{background:rgba(126,178,203,.14);color:var(--sea)}
 .tl-stop .tl-card{background:rgba(19,31,51,.55);border-style:dashed}
 .tl-stop .tl-tt{font-size:15px;color:var(--tx)}
+.tl-th-s{flex:none;width:104px}
 .tl-stop::before{background:var(--ink);border-color:var(--tx3);box-shadow:none;width:9px;height:9px;top:16px;left:-25px}
 .tl-detour .tl-card{border-color:rgba(126,178,203,.28)}
 .tl-detour::before{border-color:var(--sea);box-shadow:0 0 0 4px rgba(126,178,203,.12)}
@@ -726,7 +727,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v33 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v34 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -938,14 +939,14 @@ const RAINPLAN={
 
 /* ============ STOPS（長距離移動の途中休憩。時刻は目安） ============ */
 const STOPS = {
- 1:[{t:"06:00",name:"EXPASA足柄",ll:[35.314092,138.965625],d:"出発から約1時間。富士山を見ながら朝コーヒー"},
-    {t:"08:30",name:"刈谷ハイウェイオアシス",q:"刈谷ハイウェイオアシス",d:"観覧車と温泉と大型遊具。子どもの体力を抜く休憩"},
-    {t:"10:30",name:"宝塚北SA",ll:[34.86667,135.30353],d:"姫路に入る前の最後の身支度"}],
- 2:[{t:"13:30",name:"宮島SA",ll:[34.365897,132.316492],d:"駐車場の先に瀬戸内海と宮島"},
-    {t:"14:40",name:"壇之浦PA",ll:[33.964308,130.953694],d:"関門橋の真下。九州に渡る前の1枚はここで"}],
- 3:[{t:"12:00",name:"金立SA",ll:[33.329139,130.311283],d:"長崎道へ入ってすぐ。長崎まで残り約1時間半"}],
- 4:[{t:"15:30",name:"金立SA",ll:[33.329139,130.311283],d:"ここを過ぎると一気に山。飲み物とトイレは必ずここで"}],
- 6:[{t:"10:15",name:"別府湾SA",ll:[33.335361,131.461189],d:"丘の上から別府湾。旅で最後のSA休憩"}]
+ 1:[{t:"06:00",img:P.ashigara,name:"EXPASA足柄",ll:[35.314092,138.965625],d:"出発から約1時間。富士山を見ながら朝コーヒー"},
+    {t:"08:30",img:P.kariya,name:"刈谷ハイウェイオアシス",q:"刈谷ハイウェイオアシス",d:"観覧車と温泉と大型遊具。子どもの体力を抜く休憩"},
+    {t:"10:30",img:P.takarazuka,name:"宝塚北SA",ll:[34.86667,135.30353],d:"姫路に入る前の最後の身支度"}],
+ 2:[{t:"13:30",img:P.miyajimasa,name:"宮島SA",ll:[34.365897,132.316492],d:"駐車場の先に瀬戸内海と宮島"},
+    {t:"14:40",img:P.kanmon,name:"壇之浦PA",ll:[33.964308,130.953694],d:"関門橋の真下。九州に渡る前の1枚はここで"}],
+ 3:[{t:"12:00",img:P.kinryusa,name:"金立SA",ll:[33.329139,130.311283],d:"長崎道へ入ってすぐ。長崎まで残り約1時間半"}],
+ 4:[{t:"15:30",img:P.kinryusa,name:"金立SA",ll:[33.329139,130.311283],d:"ここを過ぎると一気に山。飲み物とトイレは必ずここで"}],
+ 6:[{t:"10:15",img:P.beppuwansa,name:"別府湾SA",ll:[33.335361,131.461189],d:"丘の上から別府湾。旅で最後のSA休憩"}]
 };
 
 /* ============ DETOUR IDEAS (curated) ============ */
@@ -1641,7 +1642,8 @@ function tlStopHTML(s){
     '<div class="tl-body"><p class="tl-time">'+s.t+'<span class="tl-badge">休憩</span></p>'+
     '<p class="tl-tt">'+s.name+'</p><p class="tl-d">'+(s.d||'')+'</p>'+
     glMapLink(s,'tl-link tl-map')+
-    '</div></div></div></div>';
+    '</div>'+(s.img?'<div class="tl-th tl-th-s">'+imgOrEmoji(s.img,'☕')+'</div>':'')+
+    '</div></div></div>';
 }
 function tlDetourHTML(d){
   const nv=detNav(d);
