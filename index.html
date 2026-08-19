@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a1220">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="夏旅2026">
 <title>GRAND CRUISE 2026｜夏の家族旅行しおり</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,6 +178,10 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .fy-big .k{font-size:12.5px;color:var(--gold);letter-spacing:.2em;font-weight:700}
 .fy-big .v{font-size:clamp(28px,7.5vw,42px);font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif;line-height:1.2;margin:7px 0 4px}
 .fy-big .s{font-size:13.5px;color:var(--tx2);line-height:1.7}
+.tl-fact{display:flex;flex-direction:column;gap:4px;margin-top:10px;padding:9px 12px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line2);font-size:12.5px;color:var(--tx2);line-height:1.65}
+.wx-rain{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line2);font-size:12.5px;color:var(--tx2);line-height:1.8}
+.wx-rain b{display:block;color:var(--sea);font-size:12.5px;letter-spacing:.06em;margin-bottom:3px}
+.gl-gap{display:flex;align-items:center;gap:10px;padding:3px 0 3px 62px;font-size:12px;color:#6d6d72;line-height:1.6}
 .gl-stop .gl-t{color:#8e8e93;font-size:15px;font-weight:500}
 .gl-stop .gl-n{color:#c7c7cc;font-size:14.5px}
 .gl-tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;background:#1c1c1e;color:#8e8e93;font-size:11.5px;vertical-align:2px}
@@ -518,9 +526,11 @@ window.addEventListener('load',function(){setTimeout(function(){
       </div>
       <div class="info-grid">
         <div class="info"><p class="t">⛴ 帰りのフェリー（最重要）</p><p class="d">東京九州フェリー「それいゆ／はまゆう」<br>8/27（木）23:55 新門司港 出港 → 8/28（金）夜 横須賀港 着（約21時間）。<br><b>車両乗船は出航3時間前・20:50港着が鉄則。</b><br><a target="_blank" rel="noopener" href="https://tqf.co.jp/">公式サイト ↗</a></p></div>
-        <div class="info"><p class="t">🏯 予約・チケット</p><p class="d">姫路城 大人1,000円。<b>軍艦島は野母崎の対岸から見る方針なので、船の予約は不要。</b>QRコード・予約票は「準備」タブのチェックリストで最終確認を。</p></div>
+        <div class="info"><p class="t">🏯 予約・チケット</p><p class="d">姫路城は一般2,500円・18歳未満無料（2026年3月改定）。大人2人で5,000円。<b>軍艦島は野母崎の対岸から見る方針なので、船の予約は不要。</b>QRコード・予約票は「準備」タブのチェックリストで最終確認を。</p></div>
         <div class="info"><p class="t">🚗 ドライブ心得</p><p class="d">DAY1は5:00発で渋滞回避。大分道は霧に注意。お盆明けでも夕方の都市部は混みます。休憩は2時間毎に。</p></div>
         <div class="info"><p class="t">🌡 天気と服装</p><p class="d">「旅程」タブの各日に、<b>その日その場所の予報・最高最低気温・服装のアドバイス</b>が出ます。さらに<b>予定1つずつに、その場所・その時刻の天気と体感温度・降水確率</b>が並びます（姫路城に着く12時だけの予報、という見方ができます）。<br>日の出・日の入りの時刻も出るので、夜景やデッキの星を見る時間の目安に。圏外のときは前回取った予報を表示するので、宿のWi‑Fiで一度ずつ開いておくと安心です。</p></div>
+        <div class="info"><p class="t">⛽ 給油の目安</p><p class="d"><b>残り3分の1で入れる</b>を今回のルールにします。長い日はDAY1（約610km）とDAY2（約430km）。<br><b>由布院に入る前に必ず満タンに。</b>やまなみハイウェイと九重の山の中は店が少なく、夕方には閉まります。<br>SAのガソリンスタンドは24時間営業でない所があります。有無と営業時間は当日、道路会社の公式サイトで確認を（ここでは未確認）。</p></div>
+        <div class="info"><p class="t">🥵 猛暑の日の動き方</p><p class="d">8/27の博多は<b>最高38℃・14時台の体感43℃</b>の予報。天神は地上を歩かず、地下街とデパ地下だけで回ります。<br>水は1人1本を常に持つ。日陰と冷房に15分ごとに入る。<b>車内に子どもだけを残さない。</b><br>めまい・吐き気・汗が止まったら熱中症を疑い、涼しい場所へ移して水分と塩分。判断に迷ったら #7119。</p></div>
         <div class="info"><p class="t">🌀 フェリーが欠航したら</p><p class="d">台風で8/27の便が飛ばない場合は、<b>陸路で2日かけて帰る</b>。新門司から三鷹まで約1,150km。<br>初日は中国道〜名神で神戸〜京都あたりまで（約600km）。SAで仮眠を取り、翌日に残り約550kmを走る。<br>無理に一気に走らない。眠くなったら次のSAで必ず停まる。</p></div>
         <div class="info"><p class="t">🆘 もしもの時</p><p class="d">道路緊急ダイヤル <b>#9910</b>／JAF <b>#8139</b>／救急相談 <b>#7119</b>。健康保険証を忘れずに。</p></div>
       </div>
@@ -672,6 +682,11 @@ window.addEventListener('load',function(){setTimeout(function(){
         <h4>✨ テーマ別おすすめセット</h4>
         <p class="note">当てはまるテーマをタップすると、リストに一括追加されます。</p>
         <div class="pack-themes" id="pack-themes"></div>
+        <h4 style="margin-top:26px">📵 圏外そなえ</h4>
+        <p class="note">やまなみハイウェイと洋上は電波が届きません。ここで<b>写真ごと端末に保存</b>しておくと、圏外でも全ページ開けます（Wi‑Fiのあるうちに1回）。</p>
+        <button class="btn btn-ghost" id="offline-btn" onclick="precacheAll()">この端末にまるごと保存する</button>
+        <p class="note" id="offline-msg" style="margin-top:8px"></p>
+        <p class="note" style="margin-top:8px">ホーム画面に追加しておくと、アプリのように開けます（iPhoneは共有ボタン →「ホーム画面に追加」）。</p>
         <h4 style="margin-top:26px">🖨 紙のしおり</h4>
         <p class="note">おじいちゃんおばあちゃん用・車内保管用に。</p>
         <button class="btn btn-ghost" onclick="window.print()">このしおりを印刷する</button>
@@ -699,7 +714,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v24 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v25 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -822,7 +837,7 @@ const DAYS = [
    yj:[[34.83938,134.69410,'姫路城'],[34.79521,135.24526,'月光園 游月山荘']],
    tl:[
     {t:"05:00",ll:[35.6835,139.5595],tt:"三鷹を出発 ── 暁の東名ハック",d:"東京ICから東名へ。早朝スタートで海老名SA付近の定番渋滞を回避します。",tip:"足柄SAで最初の休憩。富士山を眺めながら朝コーヒーを補給するのがパパの流儀！",img:P.mitaka,link:"https://sapa.c-nexco.co.jp/sapa?sapainfoid=4"},
-    {t:"12:00",ll:[34.83938,134.6941],tt:"世界遺産・国宝「姫路城」大天守を制覇",d:"白亜の天守へ。石垣や急な木造階段を上り、最上階からの絶景を楽しみます。（大人1,000円）",tip:"大天守の階段はとても急。滑りにくい靴で行くと安心です。",img:P.himeji,link:"https://www.city.himeji.lg.jp/castle/"},
+    {t:"12:00",ll:[34.83938,134.6941],tt:"世界遺産・国宝「姫路城」大天守を制覇",d:"白亜の天守へ。石垣や急な木造階段を上り、最上階からの絶景を楽しみます。",oh:"9:00〜17:00（閉門16:00／入城は16:00まで）",fee:"一般（18歳以上）2,500円・18歳未満は無料。うちは大人2人で5,000円（2026年3月に改定）",tip:"大天守の階段はとても急。滑りにくい靴で行くと安心です。",img:P.himeji,link:"https://www.city.himeji.lg.jp/castle/"},
     {t:"15:00",ll:[34.7967,135.2482],tt:"有馬温泉街のレトロそぞろ歩き",d:"『三ツ森』の焼き立て炭酸せんべいを食べ歩き。川のせせらぎを聞きながらお土産探し。",tip:"お土産の『炭酸フレーク』はアイスにかけると絶品！",img:P.senbei,link:"https://arima-onsen.com/"},
     {t:"16:30",ll:[34.79521,135.24526],tt:"月光園 游月山荘へ ── 川音の露天風呂",d:"有馬名物「金泉」の川沿い露天で、長距離ドライブの疲れをリリース。",tip:"夕方、川沿いの太鼓橋の上で初日の家族記念写真を！",img:P.arima,link:"https://www.gekkoen.co.jp/yuugetu/access/"},
     {t:"18:30",ll:[34.79521,135.24526],tt:"神戸牛会席をお部屋食で",d:"口の中でとろける神戸牛の陶板焼きなど、贅沢ディナーをお部屋でゆっくり。",tip:"着いたらすぐ浴衣に着替えてリラックスモードに切り替え。",img:P.kobe,link:"https://www.gekkoen.co.jp/yuugetu/cuisine/"}
@@ -848,8 +863,8 @@ const DAYS = [
     {t:"08:30",ll:[33.94504,130.96472],tt:"BEB5門司港を出発 ── 玄界灘へ",d:"九州道を南西へ。福岡都市高速から海の中道へ抜け、砂の道で志賀島に渡ります。",tip:"月曜の朝。福岡都市高速の混雑を避けるなら8:30発が安全ラインです。",img:P.mojiko,link:"https://hoshinoresorts.com/ja/hotels/beb5mojiko/"},
     {t:"10:00",ll:[33.6606,130.3169],tt:"志賀島「金印公園」で玄界灘を見る",d:"教科書に載っている「漢委奴国王」の金印が江戸時代に見つかった島。展望台から玄界灘と博多湾が一望できます。",tip:"ここは45分で切り上げるのがコツ。粘ると長崎の午後が丸ごと消えます。",img:P.shikanoshima,link:"https://www.crossroadfukuoka.jp/spot/12490"},
     {t:"13:30",ll:[32.7503,129.8779],tt:"長崎着 ── 坂と海の街へ",d:"九州道から鳥栖JCTで長崎道へ。約250kmを走り切って、いよいよ長崎市内に入ります。",tip:"長崎の道は狭くて一方通行だらけ。ナビの言うことを素直に聞くのが正解。",img:P.inasa,link:"https://www.at-nagasaki.jp/"},
-    {t:"14:00",ll:[32.74352,129.87302],tt:"「出島」── 鎖国250年の、たったひとつの窓",d:"扇形の人工島に、当時の建物が19棟まで復元されています。日本が世界とつながっていた唯一の場所。",tip:"ミニ出島（15分の1模型）を最初に見ると、全体の形が頭に入って歩きやすい。",img:P.dejima,link:"https://nagasakidejima.jp/"},
-    {t:"15:30",ll:[32.7734,129.8637],tt:"「平和公園」と原爆資料館",d:"平和祈念像と、爆心地公園。資料館では1945年8月9日11時2分に何が起きたのかを、ものと記録で見ます。",tip:"はなと太朗には、見終わったあとに感想を聞かないほうがいい。黙って歩く時間を作ろう。",img:P.heiwa,link:"https://nabmuseum.jp/"},
+    {t:"14:00",ll:[32.74352,129.87302],tt:"「出島」── 鎖国250年の、たったひとつの窓",d:"扇形の人工島に、当時の建物が19棟まで復元されています。日本が世界とつながっていた唯一の場所。",oh:"8:00〜21:00（最終入場20:40）・年中無休",fee:"大人1,100円・小中高550円。4人で3,300円",tip:"ミニ出島（15分の1模型）を最初に見ると、全体の形が頭に入って歩きやすい。",img:P.dejima,link:"https://nagasakidejima.jp/"},
+    {t:"15:30",ll:[32.7734,129.8637],tt:"「平和公園」と原爆資料館",d:"平和祈念像と、爆心地公園。資料館では1945年8月9日11時2分に何が起きたのかを、ものと記録で見ます。",oh:"8月は8:30〜18:30",fee:"一般（15歳以上）200円・高校生以下無料。はなまで3人で600円",tip:"はなと太朗には、見終わったあとに感想を聞かないほうがいい。黙って歩く時間を作ろう。",img:P.heiwa,link:"https://nabmuseum.jp/"},
     {t:"18:00",ll:[32.7593,129.8639],tt:"スタジアムシティホテル長崎チェックイン",d:"2024年開業の長崎スタジアムシティ。14階建て243室の約7割の部屋からサッカーのピッチが見下ろせます。",tip:"窓の外がスタジアム。カーテンを開けた瞬間の顔が見たいので、着くまで写真を見せないでおこう。",img:P.stadiumcity,link:"https://www.nagasakistadiumcity.com/stadiumcityhotel/plan/"},
     {t:"19:30",ll:[32.7593,129.8639],tt:"商業施設と温泉「YUKULU」",d:"同じ敷地の商業施設6〜7階に、地下1,500mから湧く天然温泉の温浴施設があります。夕食もこの中で完結。",tip:"歩き回った日の締めが館内の温泉。外に出なくていいのが今日のごほうび。",img:P.peacestadium,link:"https://www.nagasaki-tabinet.com/blog/tabibu/milk/202502_yukuru"}
    ]},
@@ -861,7 +876,7 @@ const DAYS = [
    tl:[
     {t:"08:00",ll:[32.5847,129.7639],tt:"野母崎へ ── 軍艦島が見える岬",d:"長崎市街から南へ約40分。半島の先端まで走ると、海の向こうに軍艦島（端島）が浮かんで見えます。",tip:"船に乗らないぶん、海と島と空をまるごと写真に入れられる。晴れた朝がいちばんきれい。",img:P.gunkan,link:"https://www.at-nagasaki.jp/spot/61067"},
     {t:"09:00",ll:[32.5847,129.7639],tt:"軍艦島資料館と長崎市恐竜博物館",d:"資料館では島で暮らした人たちの写真と暮らしの道具が見られます。同じ敷地に恐竜博物館が併設。",tip:"恐竜博物館は完全に太朗の territory。ここだけで1時間持っていかれる覚悟で。",img:P.gunkan,link:"https://www.city.nagasaki.lg.jp/site/kodomo/61024.html"},
-    {t:"11:30",ll:[32.73417,129.87014],tt:"国宝「大浦天主堂」とグラバー園",d:"現存する日本最古の教会建築。すぐ隣のグラバー園からは長崎港が見下ろせます。",tip:"『信徒発見』の話を先に読んでから入ると、この建物の意味がまるで変わる。",img:P.oura,link:"https://www.at-nagasaki.jp/spot/102"},
+    {t:"11:30",ll:[32.73417,129.87014],tt:"国宝「大浦天主堂」とグラバー園",d:"現存する日本最古の教会建築。すぐ隣のグラバー園からは長崎港が見下ろせます。",oh:"大浦天主堂 8:30〜18:00（最終17:30）／グラバー園 8:00〜21:30（最終21:10）",fee:"天主堂 大人1,000円・高校生400円・小学生300円（博物館込み）／グラバー園 一般1,300円・小中高650円。合わせて6,600円",tip:"『信徒発見』の話を先に読んでから入ると、この建物の意味がまるで変わる。",img:P.oura,link:"https://www.at-nagasaki.jp/spot/102"},
     {t:"13:00",ll:[32.7422,129.8757],tt:"本場の「長崎ちゃんぽん」ランチ",d:"具だくさんのちゃんぽんと皿うどん。中華街も坂の下ですぐそこです。",tip:"カステラのお土産はここで買っておくと、あとがラク。",img:P.champon,link:"https://www.at-nagasaki.jp/gourmet/"},
     {t:"14:00",ll:[32.7503,129.8779],tt:"長崎を出発 ── 大分へ250km",d:"長崎道→鳥栖JCT→大分道。旅で最後の長距離ドライブです。",tip:"金立SA（佐賀）で最後の休憩を。ここを過ぎると一気に山です。",img:P.kinryusa,link:"https://www.w-nexco.co.jp/"},
     {t:"17:00",ll:[33.2667,131.3692],tt:"「TERRA湯布院」チェックイン ── 1棟まるごと貸切",d:"1日1組限定のラグジュアリーヴィラ。地下600mから湧く源泉が24時間かけ流しで、棟ごとに専用の露天風呂やサウナが付いています。湯布院ICから車で約4分。",tip:"他のお客さんがいない。走り回っても、大声で笑っても、誰にも気をつかわなくていい夜です。",img:P.onsenY,link:"https://www.terra-yufuin.com/"},
@@ -890,13 +905,23 @@ const DAYS = [
     {t:"08:30",ll:[33.28033,131.50573],tt:"界 別府で朝ごはん（予約ずみ）",d:"和朝食で最後の宿の朝。8:30スタートで予約が入っています。",tip:"食べ終わったらすぐ出発できるよう、荷物は朝食前に車へ積んでおく。",img:P.beppubay,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"09:30",ll:[33.28033,131.50573],tt:"界 別府を出発",d:"朝風呂と朝ごはんを済ませてから、大分道経由で福岡へ。太宰府に寄る分だけ30分だけ早く出ます。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"12:00",ll:[33.52153,130.53486],tt:"「太宰府天満宮」で合格祈願",d:"学問の神様・菅原道真を祀る全国天満宮の総本宮。九州道の太宰府ICを降りてすぐです。",tip:"参道の梅ヶ枝餅は焼きたてを1個ずつ。冷めたのを持ち帰るより、その場で食べるのが正解。",img:P.dazaifu,link:"https://www.dazaifutenmangu.or.jp/"},
-    {t:"14:30",ll:[33.58867,130.40272],tt:"博多・天神ショッピング",d:"岩田屋や天神地下街を大散策。ランチは濃厚とんこつラーメン！",tip:"『通りもん』と明太子は天神のデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
+    {t:"14:30",ll:[33.58867,130.40272],tt:"博多・天神ショッピング（屋内で動く）",d:"この日は最高38℃の予報。地上を歩かず、天神地下街→岩田屋のデパ地下→商業施設の順に、冷房の中だけで回ります。",oh:"天神地下街 10:00〜20:00（店舗により異なります・未確認）",tip:"外に出るのは移動の一瞬だけ。『通りもん』と明太子はデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
     {t:"17:00",ll:[33.5898,130.4207],tt:"「河太郎」でイカの活き造り ── 旅の最後の晩ごはん",d:"呼子のイカの活き造り発祥の店。注文を受けてから生け簀のイカを目の前でさばくので、皿の上で透きとおったまま動きます。17:00の開店と同時に入ります。",tip:"ゲソは後から天ぷらか塩焼きにしてもらえる。透明なイカを見た瞬間の太朗の顔が、この旅の最後の一枚になる。要予約。",img:P.ikasashi,link:"https://www.kawataro.jp/hakata/"},
     {t:"19:30",ll:[33.58867,130.40272],tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",img:P.nakasu,link:"https://tqf.co.jp/2021/06/17/tqfinformation0530/"},
     {t:"20:50",ll:[33.87639,130.99436],tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.shinmoji,link:"https://tqf.co.jp/"},
     {t:"23:55",ll:[33.87639,130.99436],tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
    ]}
 ];
+
+/* ============ RAINPLAN（雨ならこうする。日別） ============ */
+const RAINPLAN={
+ 1:'姫路城は雨でも入れますが、石段と木の階段が滑ります。滑りにくい靴で、手すりを使ってゆっくり。雷が鳴ったら天守を出て、三の丸広場のような開けた場所を避けて屋内へ。城のあとは屋根のある好古園の回廊が使えます。',
+ 2:'ほぼ移動日なので影響は小さい。門司港レトロの夜さんぽが降られたら、関門海峡ミュージアム（5階まで吹き抜けの屋内施設）に振り替え。焼きカレーの店は駅前に集まっているので、傘1本で回れます。',
+ 3:'志賀島の金印公園は展望だけなので、雨なら降りずに車から見て切り上げる。長崎は出島も原爆資料館も屋内なので予定どおり。中華街の食べ歩きは軒下を選んで。',
+ 4:'野母崎は「海の向こうに軍艦島が見える」ことが目的なので、視界が悪ければ軍艦島デジタルミュージアム（長崎市街）に振り替える。大浦天主堂とグラバー園は屋内と屋根つき動線が多く、雨でも成立します。',
+ 5:'九重“夢”大吊橋は雨風が強いと通行止めになることがあります。当日の朝に公式サイトで運行状況を確認。渡れないときは別府へ直行して、海地獄（遊歩道に屋根あり）と地獄めぐりに振り替え。やまなみは霧が出たら速度を落として、無理に停まらない。',
+ 6:'太宰府の参道は軒が続いているので傘なしでも歩けます。天神は地下街とデパ地下だけで完結。フェリーは荒天でも欠航の判断が出るのは当日夕方なので、公式サイトと093-330-3000で確認してから港へ向かう。'
+};
 
 /* ============ STOPS（長距離移動の途中休憩。時刻は目安） ============ */
 const STOPS = {
@@ -1373,6 +1398,7 @@ function wxHTML(n,rec,stale,sun){
       '<p class="wx-pop">↑ 8月下旬の目安</p></div></div>'+
       '<div class="wx-dress">'+g.t+'。<br>'+wxDress(n,g.mx,g.mn,20,0).join('<br>')+'</div>'+
       wxSunHTML(n,sun)+
+      (RAINPLAN[n]?'<div class="wx-rain"><b>☔️ 雨ならこうする</b>'+RAINPLAN[n]+'</div>':'')+
       '<p class="wx-note">※天気予報が出るのは約2週間前から。出発が近づくとこの欄が実際の予報に変わり、下の各予定にもその時刻の天気が並びます。上の気温はその土地の8月下旬の目安で、予報ではありません。</p>';
   }
   const sk=wxSky(rec.c);
@@ -1384,6 +1410,7 @@ function wxHTML(n,rec,stale,sun){
     '<p class="wx-pop">☔️ 降水確率 '+(rec.pop==null?'—':rec.pop+'%')+'</p></div></div>'+
     '<div class="wx-dress">'+wxDress(n,rec.mx,rec.mn,rec.pop||0,rec.c).join('<br>')+'</div>'+
     wxSunHTML(n,sun)+
+    (RAINPLAN[n]?'<div class="wx-rain"><b>☔️ 雨ならこうする</b>'+RAINPLAN[n]+'</div>':'')+
     '<p class="wx-note">'+(stale?('※前回取得'+(rec.at?'（'+wxWhen(rec.at)+'）':'')+'の予報です。電波が届くと自動で新しくなります。'):'出典: Open-Meteo（気象庁データを含む）。30分ごとに取り直します。')+'</p>';
 }
 function wxWhen(ts){
@@ -1503,7 +1530,15 @@ function glRows(n,I){
   const rows=DAYS[n-1].tl.map((it,i)=>({t:it.t,m:glMin(it.t),kind:'plan',i:i,name:glName(it.tt),it:it}))
     .concat((STOPS[n]||[]).map(s=>({t:s.t,m:glMin(s.t),kind:'stop',name:s.name,note:s.d,it:s})));
   rows.sort((a,b)=>a.m-b.m);
-  return rows.map(r=>{
+  return rows.map((r,idx)=>{
+    const prev=rows[idx-1];
+    const gapMin=prev?r.m-prev.m:0;
+    const gap=(gapMin>=90)?'<div class="gl-gap">↓ '+(gapMin>=120?Math.floor(gapMin/60)+'時間'+(gapMin%60?gapMin%60+'分':''):gapMin+'分')+'あく</div>':'';
+    return gap+glRow(n,I,r);
+  }).join('');
+}
+function glRow(n,I,r){
+  {
     const w=glWxLine(n,r.it);
     if(r.kind==='stop'){
       return '<div class="gl-row gl-stop">'+
@@ -1516,7 +1551,7 @@ function glRows(n,I){
       '<span class="gl-t">'+r.t+'</span>'+
       '<span class="gl-m"><span class="gl-n">'+r.name+'</span>'+(w?'<span class="gl-w">'+w+'</span>':'')+'</span>'+
       glMapLink(r.it,'gl-map')+'</div>';
-  }).join('');
+  }
 }
 function paintGlance(n){
   const body=$('gl-body'); if(!body) return;
@@ -1604,6 +1639,7 @@ function openDay(n,stay){
     '<div class="tl">'+d.tl.map((it,ix)=>
       '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
       '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
+      (it.oh||it.fee?'<div class="tl-fact">'+(it.oh?'<span>🕘 '+it.oh+'</span>':'')+(it.fee?'<span>💴 '+it.fee+'</span>':'')+'</div>':'')+
       (it.ll?'<div id="twx-'+d.n+'-'+ix+'"></div>':'')+
       (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
       (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
@@ -1833,6 +1869,28 @@ function buildSos(){
     '<div class="row"><b>保険証</b><span>4人分。受診のときに必要。「準備」タブのチェックリストにも入れてあります</span></div>'+
     '<div class="row"><b>車の書類</b><span>車検証と自動車保険の証券は車内に。任意保険の事故受付番号も確認しておく</span></div>'+
     '<div class="row"><b>お薬手帳</b><span>常備薬を飲んでいる人がいれば、写真に撮っておくと確実</span></div></div>';
+}
+
+/* ============ OFFLINE（圏外そなえ） ============ */
+function swReady(){ return ('serviceWorker' in navigator) ? navigator.serviceWorker.ready : Promise.reject() }
+function precacheAll(){
+  const msg=$('offline-msg'), btn=$('offline-btn');
+  if(!('serviceWorker' in navigator)){ if(msg) msg.textContent='この端末では保存できません。ホーム画面に追加だけしておいてください。'; return; }
+  const urls=[location.href.split('?')[0],'index.html','manifest.json'].concat(Object.keys(P).map(k=>P[k]));
+  if(msg) msg.textContent='保存しています…（写真'+Object.keys(P).length+'枚）';
+  if(btn) btn.disabled=true;
+  swReady().then(reg=>{
+    navigator.serviceWorker.addEventListener('message',ev=>{
+      if(ev.data&&ev.data.type==='PRECACHE_DONE'){
+        if(msg) msg.textContent='保存しました。これで圏外でも開けます。';
+        if(btn) btn.disabled=false;
+      }
+    });
+    (reg.active||navigator.serviceWorker.controller).postMessage({type:'PRECACHE',urls:urls});
+  }).catch(()=>{ if(msg) msg.textContent='保存に失敗しました。電波のある場所でもう一度お試しください。'; if(btn) btn.disabled=false; });
+}
+if('serviceWorker' in navigator){
+  addEventListener('load',()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}) });
 }
 
 /* ============ REVEAL & INIT ============ */
