@@ -714,7 +714,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v25 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v26 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -792,7 +792,7 @@ const P = {
   shochu:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Shochu_001.jpg/960px-Shochu_001.jpg",
   oura:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Oura_Catholic_Church_-_Nagasaki%2CJapan.JPG/960px-Oura_Catholic_Church_-_Nagasaki%2CJapan.JPG",
   heiwa:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Nagasaki_%284696131594%29.jpg/960px-Nagasaki_%284696131594%29.jpg",
-  dejima:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Plattegrond_van_Deshima.jpg/960px-Plattegrond_van_Deshima.jpg",
+  dejima:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Nagasaki-Dejima-1770.jpg/960px-Nagasaki-Dejima-1770.jpg",
   gunkan:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Nagasaki_Hashima_01.png/960px-Nagasaki_Hashima_01.png",
   shikanoshima:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Shikanoshima_Island%2C_enkei.jpg/960px-Shikanoshima_Island%2C_enkei.jpg",
   inasa:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mt.Inasa_2010.jpg/960px-Mt.Inasa_2010.jpg",
@@ -801,7 +801,8 @@ const P = {
   castella:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Castella_002.jpg/960px-Castella_002.jpg",
   kinin:"https://upload.wikimedia.org/wikipedia/commons/a/af/King_of_Na_gold_seal.jpg",
   ikasashi:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ika-sashi_01.JPG/960px-Ika-sashi_01.JPG",
-  matchagelato:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Matcha_Gelato_in_Kurashiki%2C_Okayama_01.jpg/960px-Matcha_Gelato_in_Kurashiki%2C_Okayama_01.jpg"
+  matchagelato:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Matcha_Gelato_in_Kurashiki%2C_Okayama_01.jpg/960px-Matcha_Gelato_in_Kurashiki%2C_Okayama_01.jpg",
+  washoku:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/AzumaRyokan_Breakfast_2.JPG/960px-AzumaRyokan_Breakfast_2.JPG"
 };
 const HERO_SLIDES=[P.oura,P.inasa,P.himeji,P.makinoto,P.ferry];
 const GALLERY=[
@@ -902,13 +903,13 @@ const DAYS = [
    nav:"https://www.google.com/maps/dir/?api=1&origin=星野リゾート界別府&destination=新門司港フェリーターミナル&waypoints=太宰府天満宮|天神",
    yj:[[33.52153,130.53486,'太宰府天満宮'],[33.58867,130.40272,'天神'],[33.87639,130.99436,'東京九州フェリー 新門司ターミナル']],
    tl:[
-    {t:"08:30",ll:[33.28033,131.50573],tt:"界 別府で朝ごはん（予約ずみ）",d:"和朝食で最後の宿の朝。8:30スタートで予約が入っています。",tip:"食べ終わったらすぐ出発できるよう、荷物は朝食前に車へ積んでおく。",img:P.beppubay,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
+    {t:"08:30",ll:[33.28033,131.50573],tt:"界 別府で朝ごはん（予約ずみ）",d:"和朝食で最後の宿の朝。8:30スタートで予約が入っています。",tip:"食べ終わったらすぐ出発できるよう、荷物は朝食前に車へ積んでおく。",img:P.washoku,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"09:30",ll:[33.28033,131.50573],tt:"界 別府を出発",d:"朝風呂と朝ごはんを済ませてから、大分道経由で福岡へ。太宰府に寄る分だけ30分だけ早く出ます。",tip:"大分道は霧が出やすいので、速度控えめの安全運転で。",img:P.beppuTower,link:"https://hoshinoresorts.com/ja/hotels/kaibeppu/"},
     {t:"12:00",ll:[33.52153,130.53486],tt:"「太宰府天満宮」で合格祈願",d:"学問の神様・菅原道真を祀る全国天満宮の総本宮。九州道の太宰府ICを降りてすぐです。",tip:"参道の梅ヶ枝餅は焼きたてを1個ずつ。冷めたのを持ち帰るより、その場で食べるのが正解。",img:P.dazaifu,link:"https://www.dazaifutenmangu.or.jp/"},
     {t:"14:30",ll:[33.58867,130.40272],tt:"博多・天神ショッピング（屋内で動く）",d:"この日は最高38℃の予報。地上を歩かず、天神地下街→岩田屋のデパ地下→商業施設の順に、冷房の中だけで回ります。",oh:"天神地下街 10:00〜20:00（店舗により異なります・未確認）",tip:"外に出るのは移動の一瞬だけ。『通りもん』と明太子はデパ地下でまとめ買いが一番スムーズ。",img:P.tenjin,link:"https://yokanavi.com/"},
     {t:"17:00",ll:[33.5898,130.4207],tt:"「河太郎」でイカの活き造り ── 旅の最後の晩ごはん",d:"呼子のイカの活き造り発祥の店。注文を受けてから生け簀のイカを目の前でさばくので、皿の上で透きとおったまま動きます。17:00の開店と同時に入ります。",tip:"ゲソは後から天ぷらか塩焼きにしてもらえる。透明なイカを見た瞬間の太朗の顔が、この旅の最後の一枚になる。要予約。",img:P.ikasashi,link:"https://www.kawataro.jp/hakata/"},
     {t:"19:30",ll:[33.58867,130.40272],tt:"天神を出発 ── 新門司港へラストラン",d:"お土産を積み込み、夜の高速を新門司港へ。",tip:"夕方の都市高速は混みやすい。19:30前に天神を抜けるのが安心。",img:P.nakasu,link:"https://tqf.co.jp/2021/06/17/tqfinformation0530/"},
-    {t:"20:50",ll:[33.87639,130.99436],tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.shinmoji,link:"https://tqf.co.jp/"},
+    {t:"20:50",ll:[33.87639,130.99436],tt:"★出航3時間前！新門司港に到着",d:"23:55出航に対し20:50港着。車両の乗船手続きを余裕をもって完了。",tip:"車両手続きは徒歩乗船より早く動きます。3時間前到着が鉄則。",img:P.ferry,link:"https://tqf.co.jp/"},
     {t:"23:55",ll:[33.87639,130.99436],tt:"出港！豪華フェリーで太平洋クルーズ",d:"「それいゆ／はまゆう」で約21時間の船旅。露天風呂や映画上映も。翌8/28夜、横須賀港へ。",tip:"風呂上がりにデッキへ。太平洋のど真ん中で見る星空は一生モノ！",img:P.ferry,link:"https://tqf.co.jp/facilities/"}
    ]}
 ];
