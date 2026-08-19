@@ -172,6 +172,11 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .fy-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(8,13,24,.9))}
 .fy-cap p{font-size:16px;font-weight:800;color:#fff;line-height:1.5}
 .fy-cap p.s{font-size:12.5px;font-weight:400;color:var(--tx2)}
+.pg-hero{position:relative;height:170px;border-radius:18px;overflow:hidden;background:var(--card2);margin:0 0 22px}
+.pg-hero img{width:100%;height:100%;object-fit:cover}
+.pg-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(8,13,24,.92))}
+.pg-cap .k{font-size:11.5px;letter-spacing:.16em;color:var(--gold);font-weight:700}
+.pg-cap .t{font-family:'Shippori Mincho B1',serif;font-size:17px;font-weight:800;color:#fff;line-height:1.45;margin-top:3px}
 .learn-day{margin-bottom:30px}
 .learn-ph{position:relative;height:170px;border-radius:18px;overflow:hidden;background:var(--card2);margin-bottom:14px}
 .learn-ph img{width:100%;height:100%;object-fit:cover}
@@ -625,6 +630,7 @@ window.addEventListener('load',function(){setTimeout(function(){
       <h2 class="h2">車内であそぶ</h2>
       <p class="d lead">通信圏外でも動くご当地3択クイズ全24問。ネタバレ厳禁、ドライバーも口頭参加OK。</p>
     </div>
+    <div class="pg-hero"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Makinoto_Pass_-_01.jpg/960px-Makinoto_Pass_-_01.jpg" alt="" loading="lazy" onerror="this.parentElement.remove()"><div class="pg-cap"><p class="k">ON THE ROAD</p><p class="t">車の中の時間も、旅のうち</p></div></div>
     <div class="det-filters" id="quiz-day-filters"></div>
     <div class="quiz-shell">
       <div class="q-meta">
@@ -729,7 +735,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v38 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v39 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -819,7 +825,7 @@ const P = {
   matchagelato:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Matcha_Gelato_in_Kurashiki%2C_Okayama_01.jpg/960px-Matcha_Gelato_in_Kurashiki%2C_Okayama_01.jpg",
   washoku:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/AzumaRyokan_Breakfast_2.JPG/960px-AzumaRyokan_Breakfast_2.JPG"
 };
-const HERO_SLIDES=[P.oura,P.inasa,P.himeji,P.makinoto,P.ferry];
+const HERO_SLIDES=[P.oura,P.inasa,P.himeji,P.makinoto,P.ferry,P.kinrin,P.gunkan,P.mojiko,P.kanmon];
 const GALLERY=[
  {img:P.himeji,cap:"姫路城 大天守",day:"DAY 1"},
  {img:P.arima,cap:"有馬温泉の街並み",day:"DAY 1"},
