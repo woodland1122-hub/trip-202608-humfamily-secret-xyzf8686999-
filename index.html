@@ -684,7 +684,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v36 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v37 — 2026.08.19</p>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -1401,6 +1401,32 @@ function loadWx(n){
       if(t&&!c1[n]) t.innerHTML=wxHTML(n,null,false,(LS.get(WXH_KEY,{})[n]||{}).sun);
     });
 }
+/* ============ 6日分の日別予報をまとめて1回だけ取る（タブの天気用） ============ */
+const WXALL_KEY='gc2026_wxall';
+function loadAllDayWx(){
+  const last=LS.get(WXALL_KEY,0);
+  if(Date.now()-last<18e5) return;
+  const ns=DAYS.map(d=>d.n).filter(n=>WX_SPOT[n]);
+  const u='https://api.open-meteo.com/v1/forecast?latitude='+ns.map(n=>WX_SPOT[n].lat).join(',')+
+    '&longitude='+ns.map(n=>WX_SPOT[n].lon).join(',')+
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
+    '&timezone=Asia%2FTokyo&start_date='+WX_SPOT[ns[0]].d+'&end_date='+WX_SPOT[ns[ns.length-1]].d;
+  const ctl=('AbortController' in window)?new AbortController():null;
+  const to=setTimeout(()=>{ try{ctl&&ctl.abort()}catch(e){} },9000);
+  fetch(u,ctl?{signal:ctl.signal}:undefined).then(r=>r.json()).then(j=>{
+    clearTimeout(to);
+    const arr=Array.isArray(j)?j:[j], c=LS.get(WX_KEY,{});
+    arr.forEach((o,i)=>{
+      const n=ns[i], dd=o&&o.daily; if(!dd||!dd.time) return;
+      const x=dd.time.indexOf(WX_SPOT[n].d); if(x<0||dd.temperature_2m_max[x]==null) return;
+      if(!c[n]) c[n]={c:dd.weather_code[x],mx:dd.temperature_2m_max[x],mn:dd.temperature_2m_min[x],pop:dd.precipitation_probability_max[x],at:Date.now()};
+    });
+    LS.set(WX_KEY,c); LS.set(WXALL_KEY,Date.now());
+    if(document.getElementById('day-tabs')) buildDayTabs();
+    if(document.getElementById('gl-tabs')) buildGlTabs();
+  }).catch(()=>{ clearTimeout(to); });
+}
+
 /* ============ GLANCE（一日の予定が一目でわかる一覧） ============ */
 let glDay=1;
 function glName(t){ return String(t).split('──')[0].replace(/[\s　]+$/,'') }
@@ -1821,7 +1847,7 @@ document.querySelectorAll('#ck-in').forEach(el=>el.addEventListener('keydown',e=
   if(e.key==='Enter'){ e.preventDefault(); addCk(); }
 }));
 buildHeroSlides(); buildRibbon(); buildStayPage(); buildFerry(); buildLearn(); buildSos(); buildCk(); buildThemes(); applyQuizBanner();
-renderNavToggles(); buildQuizFilters(); startQuiz();
+renderNavToggles(); buildQuizFilters(); startQuiz(); loadAllDayWx();
 const td=tripToday(); openDay(td||1,true); buildDayTabs();
 go('home');
 $('build-badge').textContent+=' ｜ ✓ 完全版・全機能OK';
