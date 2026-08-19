@@ -272,6 +272,14 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .det-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .df{padding:7px 15px;border-radius:99px;border:1px solid var(--line2);font-size:13px;font-weight:700;color:var(--tx2);background:var(--card);transition:.2s}
 .df.act{border-color:var(--gold);color:var(--gold-l);background:rgba(217,181,110,.1)}
+.tl-badge{display:inline-block;margin-left:9px;padding:1px 9px;border-radius:99px;background:rgba(255,255,255,.07);color:var(--tx3);font-size:11px;font-weight:700;letter-spacing:.04em;font-family:var(--sys);vertical-align:2px}
+.tl-badge.det{background:rgba(126,178,203,.14);color:var(--sea)}
+.tl-stop .tl-card{background:rgba(19,31,51,.55);border-style:dashed}
+.tl-stop .tl-tt{font-size:15px;color:var(--tx)}
+.tl-stop::before{background:var(--ink);border-color:var(--tx3);box-shadow:none;width:9px;height:9px;top:16px;left:-25px}
+.tl-detour .tl-card{border-color:rgba(126,178,203,.28)}
+.tl-detour::before{border-color:var(--sea);box-shadow:0 0 0 4px rgba(126,178,203,.12)}
+.tl-meta{font-size:12.5px;color:var(--tx3);margin-top:6px}
 .day-det{margin:30px 0 6px;padding-top:24px;border-top:1px solid var(--line2)}
 .day-det-h{font-family:'Shippori Mincho B1',serif;font-size:clamp(19px,4.6vw,26px);font-weight:800;color:#fff;line-height:1.4;margin:6px 0 4px}
 .day-det-d{font-size:13px;color:var(--tx3);margin-bottom:16px;line-height:1.7}
@@ -718,7 +726,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v30 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v31 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -942,42 +950,29 @@ const STOPS = {
 
 /* ============ DETOUR IDEAS (curated) ============ */
 const DETOURS = [
- {day:1,cat:"☕ 休憩",name:"EXPASA足柄（下り）",d:"5:00に三鷹を出れば、着くころにちょうど朝日が富士山に当たっています。パン工房とフードコートが早朝から開いていて、旅の一杯目のコーヒーはここで。",meta:"東名・出発から約1時間",img:P.ashigara,q:"EXPASA足柄下り"},
- {day:1,cat:"🎡 体験",name:"刈谷ハイウェイオアシス",d:"高速のSAに観覧車と天然温泉と大型遊具が全部ある、日本有数の変な場所。太朗は観覧車、はなは市場の食べ歩き、で必ず割れます。",meta:"伊勢湾岸道・刈谷PA直結",img:P.kariya,q:"刈谷ハイウェイオアシス"},
- {day:1,cat:"📸 絶景",name:"好古園",d:"姫路城の西隣。かつての西御屋敷跡に9つの庭園が作られていて、大天守を借景にした池と滝がある。城の石段で疲れた足には、ここの回廊がちょうどいい。",meta:"姫路城のすぐ隣",img:P.kokoen,q:"好古園 姫路"},
- {day:1,cat:"🛍 買い物",name:"有馬温泉・湯本坂",d:"金の湯の前から続く細い坂道。炭酸せんべいを焼いている音と匂いで進めなくなります。無料の足湯もこの通り沿い。",meta:"月光園から歩いてすぐ",img:P.senbei,q:"有馬温泉 湯本坂"},
- {day:1,cat:"☕ 休憩",name:"宝塚北SA",ll:[34.86667,135.30353],d:"宝塚歌劇の街らしい大階段つきの内装で「日本一美しいSA」と言われる。姫路・有馬へ入る前の最後の身支度に。",meta:"新名神",img:P.takarazuka,q:"宝塚北サービスエリア"},
- {day:2,cat:"🍜 グルメ",name:"吉備SA（下り）",ll:[34.69365,133.87291],d:"桃太郎の国のSA。きびだんごより、岡山名物のデミカツ丼を頼むほうが失敗しません。ここが今日いちばんまともに座れる場所です。",meta:"山陽道・岡山",img:P.kibisa,q:"吉備サービスエリア下り"},
- {day:2,cat:"📸 絶景",name:"宮島SA（下り）",ll:[34.36590,132.31649],d:"駐車場のすぐ先に瀬戸内海と宮島が広がる。大鳥居を模したモニュメント越しに撮ると、島まで行かなくても行った顔ができます。",meta:"山陽道・広島",img:P.miyajimasa,q:"宮島サービスエリア下り"},
- {day:2,cat:"📸 絶景",name:"壇之浦PA（下り）",ll:[33.96431,130.95369],d:"関門橋の真下。2021年のリニューアルで展望デッキができ、橋を真正面から見上げられます。九州に渡る前の最後の1枚はここで。",meta:"関門橋の本州側たもと",img:P.kanmon,q:"壇之浦PA"},
- {day:2,cat:"🎡 体験",name:"関門海峡ミュージアム",d:"5階まで吹き抜けの巨大アトリウムに帆船が浮かび、大正時代の門司港の街並みが原寸で再現されています。雨でも夜でも強い、門司港の切り札。",meta:"BEB5から歩いて数分",img:P.dramaship,q:"関門海峡ミュージアム"},
- {day:2,cat:"📸 絶景",name:"門司港レトロ展望室",d:"黒川紀章が設計したマンションの31階が、そのまま展望室になっている。関門橋と海峡を渡る船の灯りが一望で、夕食前の30分にちょうどいい。",meta:"門司港レトロ地区",img:P.mojiko,q:"門司港レトロ展望室"},
- {day:3,cat:"📸 絶景",name:"海の中道",d:"左が玄界灘、右が博多湾。砂州の上を8kmまっすぐ走る道で、車が海の上を走っているようにしか見えません。志賀島へ渡る一本道です。",meta:"志賀島の手前・約8km",img:P.shikanoshima,q:"海の中道"},
- {day:3,cat:"🎡 体験",name:"志賀海神社",d:"海の神様を祀る古社。長い石段を上りきると博多湾が真下に開けます。金印公園から車で5分なので、セットで寄るのが効率的。",meta:"志賀島",img:P.shikaumi,q:"志賀海神社"},
- {day:3,cat:"🎡 体験",name:"スタジアムシティのジップライン",d:"サッカースタジアムの上空を滑走する日本初のジップライン。長さ258m・地上約60m・最高時速50km、1回2,500円。泊まる建物の中にこれがあります。",meta:"泊まる施設の中",img:P.peacestadium,q:"長崎スタジアムシティ ジップライン"},
- {day:3,cat:"📸 絶景",name:"稲佐山 山頂展望台",ll:[32.75336,129.84933],d:"「1000万ドルの夜景」の本家。宿から車で15分。展望台の床がガラス張りで、足元にも夜景が広がります。夕食後に体力が残っていたら。",meta:"長崎市・宿から車15分",img:P.inasa,q:"稲佐山展望台"},
- {day:3,cat:"🛍 買い物",name:"長崎新地中華街",d:"日本三大中華街のひとつだが、実は東西南北わずか250mの正方形。角煮まんじゅうを1個ずつ買って歩けば端まで着きます。玄武門の朱色が目印。",meta:"出島のすぐ隣",img:P.chinatown,q:"長崎新地中華街"},
- {day:4,cat:"🎡 体験",name:"長崎市恐竜博物館",d:"軍艦島資料館と同じ敷地。長崎半島から実際に見つかったティラノサウルス科の歯の化石が展示されていて、全身骨格の下を歩けます。太朗はここで1時間持っていかれる。",meta:"長崎市野母町",img:P.dino,q:"長崎市恐竜博物館"},
- {day:4,cat:"📸 絶景",name:"のもざき水仙の里公園",d:"軍艦島を正面に望む岬の公園。夏は水仙こそ咲いていないが、海と島と空だけの景色は変わりません。恐竜博物館の隣なので流れで寄れます。",meta:"野母崎・資料館のとなり",img:P.gunkan,q:"のもざき水仙の里公園"},
- {day:4,cat:"🎡 体験",name:"軍艦島デジタルミュージアム",d:"30mの巨大スクリーンとVRで、上陸ツアーでも入れない立入禁止区域の中を歩けます。船に乗らない今回の代わりとしては、むしろこちらのほうが島の中身を見られる。",meta:"大浦天主堂から車で数分",img:P.gunkan,q:"軍艦島デジタルミュージアム"},
- {day:4,cat:"📸 絶景",name:"眼鏡橋",d:"1634年架橋、日本最古のアーチ石橋。川沿いの石垣にハート形の石が20個ほど埋まっていて、探し始めると全員が本気になります。",meta:"長崎市中心部",img:P.meganebashi,q:"眼鏡橋 長崎"},
- {day:4,cat:"☕ 休憩",name:"金立SA（下り）",d:"長崎から大分へ渡る途中の最後の大きな休憩所。ここを過ぎると一気に山道に入るので、飲み物とトイレはここで済ませておく。",meta:"長崎道・佐賀",img:P.kinryusa,q:"金立サービスエリア下り"},
- {day:4,cat:"📸 絶景",name:"狭霧台",d:"由布院盆地を丸ごと見下ろす峠の展望台。朝は盆地に霧が溜まって、街が雲海の下に沈みます。宿に入る前にひと停まりする価値あり。",meta:"由布院の手前",img:P.yufudake,q:"狭霧台"},
- {day:5,cat:"📸 絶景",name:"牧ノ戸峠",ll:[33.09639,131.20833],d:"やまなみハイウェイの最高地点（標高約1,330m）。駐車場から展望台まで5分の登りで、九重連山が一列に並ぶ景色が出てきます。",meta:"九重町",img:P.makinoto,q:"牧ノ戸峠"},
- {day:5,cat:"🎡 体験",name:"九重“夢”大吊橋",ll:[33.17389,131.22667],d:"高さ173m・長さ390mの歩行者専用としては日本最大級の吊橋。床の一部が金網で、真下に震動の滝が見えます。渡り切るだけで家族の性格が分かる。",meta:"やまなみから約15分",img:P.yumebridge,q:"九重夢大吊橋"},
- {day:5,cat:"☕ 休憩",name:"湯の坪街道",d:"由布院のメインストリート。10時を過ぎると人だらけになるので、宿を出る前の朝いちばんに歩くのが正解。金鱗湖まで歩いてつながっています。",meta:"金鱗湖のすぐそば",img:P.yunotsubo,q:"湯の坪街道"},
- {day:5,cat:"☕ 休憩",name:"由布岳一望のカフェ「湯布院 千家」",d:"全面ガラス張りの向こうに由布岳と田園が広がります。朝8:30から開いていて、モーニングも名物のとり天ランチもある。TERRAは素泊まりなので、ここが朝ごはんの本命。",meta:"由布院駅から車3分／8:30〜17:00・木曜と第2金曜が休み",img:P.yufudake,q:"湯布院 千家 カフェ"},
- {day:5,cat:"☕ 休憩",name:"抹茶ジェラート専門店 telato",ll:[33.263689,131.356974],d:"1976年からこの街でお茶を売ってきた麻生茶舗が作ったジェラート屋。抹茶の濃さを5段階から自分で選べて、いちばん濃いのは大人でも「濃い」と言うくらい。茶葉のジェラートも合わせて全12種類。開店は10:30。今の旅程は9:30に由布院を出るので、寄るなら朝の出発を1時間うしろにずらす必要があります。店に駐車場はないので、駅前のコインパーキングに停めて歩くことになります。",meta:"由布院駅から歩いて3分／10:30〜16:30・不定休／600円〜・駐車場なし",img:P.matchagelato,q:"抹茶ジェラート telato 由布院"},
- {day:5,cat:"🎡 体験",name:"別府地獄めぐり（海地獄）",ll:[33.31589,131.46968],d:"98度のコバルトブルーが煮え立つ国指定名勝。7つ全部回ると半日かかるので、界別府に入る前に海地獄だけつまむのが現実的です。",meta:"別府市鉄輪",img:P.jigoku,q:"海地獄"},
- {day:6,cat:"📸 絶景",name:"別府湾SA（下り）",d:"別府湾を丘の上から見下ろす絶景SA。朝の光で海が白く光る時間に通ります。ここのコーヒーが旅で最後のSA休憩になる。",meta:"大分道",img:P.beppuwansa,q:"別府湾サービスエリア"},
- {day:6,cat:"🎡 体験",name:"太宰府天満宮",ll:[33.52153,130.53486],d:"学問の神様に、はなと太朗の合格祈願。参道の梅ヶ枝餅は焼きたてを1個ずつ、その場で食べるのが正解です。",meta:"福岡へ向かう途中・太宰府IC",img:P.dazaifu,q:"太宰府天満宮"},
- {day:6,cat:"🎡 体験",name:"九州国立博物館",d:"太宰府天満宮の裏手から、エスカレーターと動く歩道のトンネルで直結しています。日本で4番目の国立博物館。参拝ついでに国宝が見られるのは、ここだけ。",meta:"太宰府天満宮から徒歩",img:P.kyuhaku,q:"九州国立博物館"},
- {day:6,cat:"🛍 買い物",name:"キャナルシティ博多",ll:[33.59111,130.41056],d:"建物の真ん中を運河が流れ、10分おきに噴水ショーが上がる大型モール。屋根があるので、雨でも最後のお土産をここで片づけられます。",meta:"博多・中洲近く",img:P.canal,q:"キャナルシティ博多"},
- {day:6,cat:"🍜 グルメ",name:"櫛田神社",ll:[33.59311,130.41069],d:"博多祇園山笠の飾り山が一年中立てられている博多の総鎮守。高さ10m超の山笠を間近で見上げてから夕食に向かうと、博多の夜の解像度が上がります。",meta:"博多旧市街",img:P.kushida,q:"櫛田神社 博多"},
- {day:6,cat:"🍜 グルメ",name:"河太郎 博多駅前店",d:"呼子のイカの活き造り発祥の店。カウンターに座ると、生け簀から上げたイカを目の前でさばくところが見られます。ランチは活き造り御膳2,800円（税抜）。",meta:"ランチ12:00〜13:30／ディナー17:00〜21:30",img:P.ikasashi,q:"河太郎 博多駅前店"},
- {day:6,cat:"🍜 グルメ",name:"河太郎 中洲本店",d:"創業60年の本店。ディナーは月〜土17:30〜。中洲の屋台街がすぐそばなので、食後に少しだけ夜の中洲を歩ける。",meta:"ランチ11:45〜14:00／ディナー17:30〜22:00",img:P.ikasashi,q:"河太郎 中洲本店"},
- {day:6,cat:"🍜 グルメ",name:"博多の屋台（天神・中洲）",d:"河太郎に行くなら屋台は今回見送り。時間が余ったら、食後に中洲の屋台街を歩いて雰囲気だけ味わうのもアリ。",meta:"17:30ごろから開店",img:P.ramen,q:"博多 屋台 中洲"}
+ {day:1,t:"13:30",cat:"📸 絶景",name:"好古園",d:"姫路城の西隣。かつての西御屋敷跡に9つの庭園が作られていて、大天守を借景にした池と滝がある。城の石段で疲れた足には、ここの回廊がちょうどいい。",meta:"姫路城のすぐ隣",img:P.kokoen,q:"好古園 姫路"},
+ {day:2,t:"17:30",cat:"🎡 体験",name:"関門海峡ミュージアム",d:"5階まで吹き抜けの巨大アトリウムに帆船が浮かび、大正時代の門司港の街並みが原寸で再現されています。雨でも夜でも強い、門司港の切り札。",meta:"BEB5から歩いて数分",img:P.dramaship,q:"関門海峡ミュージアム"},
+ {day:2,t:"17:00",cat:"📸 絶景",name:"門司港レトロ展望室",d:"黒川紀章が設計したマンションの31階が、そのまま展望室になっている。関門橋と海峡を渡る船の灯りが一望で、夕食前の30分にちょうどいい。",meta:"門司港レトロ地区",img:P.mojiko,q:"門司港レトロ展望室"},
+ {day:3,t:"09:30",cat:"📸 絶景",name:"海の中道",d:"左が玄界灘、右が博多湾。砂州の上を8kmまっすぐ走る道で、車が海の上を走っているようにしか見えません。志賀島へ渡る一本道です。",meta:"志賀島の手前・約8km",img:P.shikanoshima,q:"海の中道"},
+ {day:3,t:"10:45",cat:"🎡 体験",name:"志賀海神社",d:"海の神様を祀る古社。長い石段を上りきると博多湾が真下に開けます。金印公園から車で5分なので、セットで寄るのが効率的。",meta:"志賀島",img:P.shikaumi,q:"志賀海神社"},
+ {day:3,t:"19:00",cat:"🎡 体験",name:"スタジアムシティのジップライン",d:"サッカースタジアムの上空を滑走する日本初のジップライン。長さ258m・地上約60m・最高時速50km、1回2,500円。泊まる建物の中にこれがあります。",meta:"泊まる施設の中",img:P.peacestadium,q:"長崎スタジアムシティ ジップライン"},
+ {day:3,t:"20:30",cat:"📸 絶景",name:"稲佐山 山頂展望台",ll:[32.75336,129.84933],d:"「1000万ドルの夜景」の本家。宿から車で15分。展望台の床がガラス張りで、足元にも夜景が広がります。夕食後に体力が残っていたら。",meta:"長崎市・宿から車15分",img:P.inasa,q:"稲佐山展望台"},
+ {day:3,t:"15:15",cat:"🛍 買い物",name:"長崎新地中華街",d:"日本三大中華街のひとつだが、実は東西南北わずか250mの正方形。角煮まんじゅうを1個ずつ買って歩けば端まで着きます。玄武門の朱色が目印。",meta:"出島のすぐ隣",img:P.chinatown,q:"長崎新地中華街"},
+ {day:4,t:"09:30",cat:"🎡 体験",name:"長崎市恐竜博物館",d:"軍艦島資料館と同じ敷地。長崎半島から実際に見つかったティラノサウルス科の歯の化石が展示されていて、全身骨格の下を歩けます。太朗はここで1時間持っていかれる。",meta:"長崎市野母町",img:P.dino,q:"長崎市恐竜博物館"},
+ {day:4,t:"08:30",cat:"📸 絶景",name:"のもざき水仙の里公園",d:"軍艦島を正面に望む岬の公園。夏は水仙こそ咲いていないが、海と島と空だけの景色は変わりません。恐竜博物館の隣なので流れで寄れます。",meta:"野母崎・資料館のとなり",img:P.gunkan,q:"のもざき水仙の里公園"},
+ {day:4,t:"12:30",cat:"🎡 体験",name:"軍艦島デジタルミュージアム",d:"30mの巨大スクリーンとVRで、上陸ツアーでも入れない立入禁止区域の中を歩けます。船に乗らない今回の代わりとしては、むしろこちらのほうが島の中身を見られる。",meta:"大浦天主堂から車で数分",img:P.gunkan,q:"軍艦島デジタルミュージアム"},
+ {day:4,t:"13:45",cat:"📸 絶景",name:"眼鏡橋",d:"1634年架橋、日本最古のアーチ石橋。川沿いの石垣にハート形の石が20個ほど埋まっていて、探し始めると全員が本気になります。",meta:"長崎市中心部",img:P.meganebashi,q:"眼鏡橋 長崎"},
+ {day:4,t:"16:30",cat:"📸 絶景",name:"狭霧台",d:"由布院盆地を丸ごと見下ろす峠の展望台。朝は盆地に霧が溜まって、街が雲海の下に沈みます。宿に入る前にひと停まりする価値あり。",meta:"由布院の手前",img:P.yufudake,q:"狭霧台"},
+ {day:5,t:"10:00",cat:"📸 絶景",name:"牧ノ戸峠",ll:[33.09639,131.20833],d:"やまなみハイウェイの最高地点（標高約1,330m）。駐車場から展望台まで5分の登りで、九重連山が一列に並ぶ景色が出てきます。",meta:"九重町",img:P.makinoto,q:"牧ノ戸峠"},
+ {day:5,t:"07:45",cat:"☕ 休憩",name:"湯の坪街道",d:"由布院のメインストリート。10時を過ぎると人だらけになるので、宿を出る前の朝いちばんに歩くのが正解。金鱗湖まで歩いてつながっています。",meta:"金鱗湖のすぐそば",img:P.yunotsubo,q:"湯の坪街道"},
+ {day:5,t:"10:30",cat:"☕ 休憩",name:"抹茶ジェラート専門店 telato",ll:[33.263689,131.356974],d:"1976年からこの街でお茶を売ってきた麻生茶舗が作ったジェラート屋。抹茶の濃さを5段階から自分で選べて、いちばん濃いのは大人でも「濃い」と言うくらい。茶葉のジェラートも合わせて全12種類。開店は10:30。今の旅程は9:30に由布院を出るので、寄るなら朝の出発を1時間うしろにずらす必要があります。店に駐車場はないので、駅前のコインパーキングに停めて歩くことになります。",meta:"由布院駅から歩いて3分／10:30〜16:30・不定休／600円〜・駐車場なし",img:P.matchagelato,q:"抹茶ジェラート telato 由布院"},
+ {day:5,t:"14:00",cat:"🎡 体験",name:"別府地獄めぐり（海地獄）",ll:[33.31589,131.46968],d:"98度のコバルトブルーが煮え立つ国指定名勝。7つ全部回ると半日かかるので、界別府に入る前に海地獄だけつまむのが現実的です。",meta:"別府市鉄輪",img:P.jigoku,q:"海地獄"},
+ {day:6,t:"12:45",cat:"🎡 体験",name:"九州国立博物館",d:"太宰府天満宮の裏手から、エスカレーターと動く歩道のトンネルで直結しています。日本で4番目の国立博物館。参拝ついでに国宝が見られるのは、ここだけ。",meta:"太宰府天満宮から徒歩",img:P.kyuhaku,q:"九州国立博物館"},
+ {day:6,t:"15:30",cat:"🛍 買い物",name:"キャナルシティ博多",ll:[33.59111,130.41056],d:"建物の真ん中を運河が流れ、10分おきに噴水ショーが上がる大型モール。屋根があるので、雨でも最後のお土産をここで片づけられます。",meta:"博多・中洲近く",img:P.canal,q:"キャナルシティ博多"},
+ {day:6,t:"16:00",cat:"🍜 グルメ",name:"櫛田神社",ll:[33.59311,130.41069],d:"博多祇園山笠の飾り山が一年中立てられている博多の総鎮守。高さ10m超の山笠を間近で見上げてから夕食に向かうと、博多の夜の解像度が上がります。",meta:"博多旧市街",img:P.kushida,q:"櫛田神社 博多"},
+ {day:6,t:"17:00",cat:"🍜 グルメ",name:"河太郎 中洲本店",d:"創業60年の本店。ディナーは月〜土17:30〜。中洲の屋台街がすぐそばなので、食後に少しだけ夜の中洲を歩ける。",meta:"ランチ11:45〜14:00／ディナー17:30〜22:00",img:P.ikasashi,q:"河太郎 中洲本店"},
 ];
+
 
 /* ============ QUIZ (24問・通信不要) ============ */
 const QUIZ = [
@@ -1628,6 +1623,42 @@ function startNowTimer(n){
   if(nowTimer) clearInterval(nowTimer);
   nowTimer=setInterval(()=>{ if(document.getElementById('nowbar-'+n)) paintNow(n); else clearInterval(nowTimer); },60000);
 }
+/* ============ 1日ぶんを時系列に1本化（予定＋休憩＋寄り道） ============ */
+function tlPlanHTML(n,it,ix){
+  return '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
+    '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
+    (it.oh||it.fee?'<div class="tl-fact">'+(it.oh?'<span>🕘 '+it.oh+'</span>':'')+(it.fee?'<span>💴 '+it.fee+'</span>':'')+'</div>':'')+
+    (it.ll?'<div id="twx-'+n+'-'+ix+'"></div>':'')+
+    (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
+    (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
+    (it.ll?'<a class="tl-link tl-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+it.ll[0]+','+it.ll[1]+'">📍 ここを地図で開く ↗</a>':'')+
+    '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
+    '</div></div></div>';
+}
+function tlStopHTML(s){
+  return '<div class="tl-item tl-stop"><div class="tl-card"><div class="tl-main">'+
+    '<div class="tl-body"><p class="tl-time">'+s.t+'<span class="tl-badge">休憩</span></p>'+
+    '<p class="tl-tt">'+s.name+'</p><p class="tl-d">'+(s.d||'')+'</p>'+
+    glMapLink(s,'tl-link tl-map')+
+    '</div></div></div></div>';
+}
+function tlDetourHTML(d){
+  const nv=detNav(d);
+  return '<div class="tl-item tl-detour"><div class="tl-card"><div class="tl-main">'+
+    '<div class="tl-body"><p class="tl-time">'+d.t+'<span class="tl-badge det">寄り道候補</span></p>'+
+    '<p class="tl-tt">'+esc(d.name)+'</p><p class="tl-d">'+esc(d.d||'')+'</p>'+
+    (d.meta?'<p class="tl-meta">🚗 '+esc(d.meta)+'</p>':'')+
+    '<a class="tl-link tl-map" target="_blank" rel="noopener" href="'+nv.href+'">'+nv.label+'</a>'+
+    '</div><div class="tl-th">'+imgOrEmoji(d.img,d.e||'💡')+'</div>'+
+    '</div></div></div>';
+}
+function dayTimelineHTML(n){
+  const rows=DAYS[n-1].tl.map((it,ix)=>({m:glMin(it.t),k:'plan',it:it,ix:ix}))
+    .concat((STOPS[n]||[]).map(s=>({m:glMin(s.t),k:'stop',it:s})))
+    .concat(DETOURS.filter(d=>String(d.day)===String(n)&&d.t).map(d=>({m:glMin(d.t),k:'det',it:d})));
+  rows.sort((a,b)=>a.m-b.m);
+  return rows.map(r=> r.k==='plan'?tlPlanHTML(n,r.it,r.ix) : (r.k==='stop'?tlStopHTML(r.it):tlDetourHTML(r.it)) ).join('');
+}
 function openDay(n,stay){
   curDay=n; buildDayTabs();
   const d=DAYS[n-1];
@@ -1640,16 +1671,7 @@ function openDay(n,stay){
     '</div>'+
     '<div id="nowbar-'+d.n+'"></div>'+
     '<div class="wx" id="wx-'+d.n+'"></div>'+
-    '<div class="tl">'+d.tl.map((it,ix)=>
-      '<div class="tl-item"><div class="tl-card"><div class="tl-main">'+
-      '<div class="tl-body"><p class="tl-time">'+it.t+'</p><p class="tl-tt">'+it.tt+'</p><p class="tl-d">'+it.d+'</p>'+
-      (it.oh||it.fee?'<div class="tl-fact">'+(it.oh?'<span>🕘 '+it.oh+'</span>':'')+(it.fee?'<span>💴 '+it.fee+'</span>':'')+'</div>':'')+
-      (it.ll?'<div id="twx-'+d.n+'-'+ix+'"></div>':'')+
-      (it.tip?'<div class="tl-tip">💡 '+it.tip+'</div>':'')+
-      (it.link?'<a class="tl-link" target="_blank" rel="noopener" href="'+it.link+'">公式・詳細を見る ↗</a>':'')+
-      (it.ll?'<a class="tl-link tl-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+it.ll[0]+','+it.ll[1]+'">📍 ここを地図で開く ↗</a>':'')+
-      '</div><div class="tl-th">'+imgOrEmoji(it.img,it.e)+'</div>'+
-      '</div></div></div>').join('')+'</div>'+dayDetourHTML(n)+columnHTML(n);
+    '<div class="tl">'+dayTimelineHTML(n)+'</div>'+columnHTML(n);
   loadWx(n);
   paintNow(n); startNowTimer(n);
   requestAnimationFrame(()=>{
@@ -1662,26 +1684,6 @@ function openDay(n,stay){
 
 /* ============ DETOURS ============ */
 function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q) }
-function allDetours(){
-  return DETOURS.map((d,i)=>Object.assign({ci:'b'+i},d));
-}
-function detCardHTML(d){
-  return '<div class="det">'+
-    '<div class="det-ph">'+(d.img?'<img src="'+d.img+'" alt="" loading="lazy" onerror="this.remove()">':'<div class="emoji">'+(d.e||'💡')+'</div>')+
-      '<span class="day-b">DAY '+d.day+'</span><span class="cat-b">'+esc(d.cat)+'</span></div>'+
-    '<div class="det-in"><p class="det-tt">'+esc(d.name)+'</p><p class="det-d">'+esc(d.d||'')+'</p>'+
-    (d.meta?'<p class="det-meta">🚗 '+esc(d.meta)+'</p>':'')+
-    '<div class="det-foot">'+
-    (function(){const nv=detNav(d);return '<a class="det-map" target="_blank" rel="noopener" href="'+nv.href+'">'+nv.label+'</a>'})()+'</div></div></div>';
-}
-function dayDetourHTML(n){
-  const list=allDetours().filter(d=>String(d.day)===String(n));
-  if(!list.length) return '';
-  return '<div class="day-det"><p class="kicker">Detours — DAY '+n+'</p>'+
-    '<h3 class="day-det-h">この日の寄り道</h3>'+
-    '<p class="day-det-d">行けたら行きたい候補。当日の体力と天気で決めます。</p>'+
-    '<div class="det-grid">'+list.map(detCardHTML).join('')+'</div></div>';
-}
 /* ============ QUIZ ============ */
 let qPool=[],qIdx=0,qScore=0,qTry=0,qDay='all';
 function setQuizDay(d){ qDay=d; buildQuizFilters(); startQuiz(); applyQuizBanner(); }
