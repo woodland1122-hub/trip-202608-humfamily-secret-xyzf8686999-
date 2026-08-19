@@ -726,7 +726,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v32 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v33 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -1234,6 +1234,7 @@ function go(v){
     if(b1)b1.classList.toggle('act',x===v);
     if(b2)b2.classList.toggle('act',x===v);
   });
+  if(v==='days') openDay(curDay||tripToday()||1,true);
   if(v==='glance') openGlance(tripToday()||curDay||glDay);
   if(v==='ferry') buildFerry();
   if(v==='sos') buildSos();
