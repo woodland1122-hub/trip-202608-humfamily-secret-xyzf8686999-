@@ -3,7 +3,7 @@
      - しおり本体（HTML）は「ネット優先・ダメならキャッシュ」。更新が必ず届く。
      - 写真は「キャッシュにあれば即返す・なければ普通に取りに行く」。裏での二重取得はしない。
      - 天気（Open-Meteo）は一切さわらない。 */
-const CACHE = 'gc2026-v42';
+const CACHE = 'gc2026-v43';
 const CORE = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', e => {

@@ -260,15 +260,15 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .tl-item::before{content:'';position:absolute;left:-27px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--ink);border:3px solid var(--gold);box-shadow:0 0 0 4px rgba(217,181,110,.14)}
 .tl-card{border:1px solid var(--line2);border-radius:16px;background:var(--card);overflow:hidden;transition:border-color .25s}
 .tl-card:hover{border-color:var(--line)}
-.tl-main{display:flex;gap:0;align-items:stretch}
+.tl-main{display:flex;flex-direction:column-reverse;gap:0}
 .tl-body{padding:15px 17px;flex:1;min-width:0}
 .tl-time{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--gold);letter-spacing:.1em}
 .tl-tt{font-weight:900;font-size:15px;color:#fff;line-height:1.5;margin:3px 0 5px}
 .tl-d{font-size:13.5px;color:var(--tx2)}
-.tl-th{width:104px;flex-shrink:0;position:relative;display:none}
+.tl-th{width:100%;height:172px;flex-shrink:0;position:relative;display:block}
 .tl-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .tl-th .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;background:linear-gradient(150deg,var(--card2),var(--ink2))}
-@media(min-width:480px){.tl-th{display:block}}
+@media(min-width:480px){.tl-main{flex-direction:row;align-items:stretch}.tl-th{width:104px;height:auto}.tl-th-s{width:104px;height:auto}}
 .tl-tip{margin:10px 0 0;padding:10px 13px;border-radius:12px;background:rgba(217,181,110,.07);border:1px dashed rgba(217,181,110,.3);font-size:13px;color:var(--gold-l)}
 .tl-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:13px;font-weight:700;color:var(--sea);text-decoration:none}
 .tl-link:hover{text-decoration:underline}
@@ -281,7 +281,7 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .tl-badge.det{background:rgba(126,178,203,.14);color:var(--sea)}
 .tl-stop .tl-card{background:rgba(19,31,51,.55);border-style:dashed}
 .tl-stop .tl-tt{font-size:15px;color:var(--tx)}
-.tl-th-s{flex:none;width:104px}
+.tl-th-s{flex:none;width:100%;height:136px}
 .tl-stop::before{background:var(--ink);border-color:var(--tx3);box-shadow:none;width:9px;height:9px;top:16px;left:-25px}
 .tl-detour .tl-card{border-color:rgba(126,178,203,.28)}
 .tl-detour::before{border-color:var(--sea);box-shadow:0 0 0 4px rgba(126,178,203,.12)}
@@ -333,7 +333,7 @@ select.f-in option{background:var(--ink2)}
 .q-next.show{display:inline-flex}
 .game-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:26px}
 .game{border:1px solid var(--line2);border-radius:16px;background:var(--card);overflow:hidden}
-.game-ph{height:104px;overflow:hidden}
+.game-ph{height:104px;overflow:hidden;position:relative;background:var(--card2)}
 .game-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .game:hover .game-ph img{transform:scale(1.07)}
 .game-in{padding:16px}
@@ -735,7 +735,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v42 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v43 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
