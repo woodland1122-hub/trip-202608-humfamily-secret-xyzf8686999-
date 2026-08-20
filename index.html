@@ -644,9 +644,9 @@ window.addEventListener('load',function(){setTimeout(function(){
     </div>
     <div class="game-grid">
       <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Japanese_green_on_white_license_plate.png" alt="" loading="lazy"></div><div class="game-in"><p class="t">ナンバープレート県つなぎ</p><p class="d">見つけたナンバーの地名でしりとり。「熊本→とちぎ→…」振り出しは出発地・多摩！</p></div></div>
-      <div class="game"><div class="game-ph"><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:44px;background:linear-gradient(150deg,var(--card2),var(--ink2))">🎵</div></div><div class="game-in"><p class="t">ご当地イントロクイズ</p><p class="d">通過中の県にゆかりのある曲を1人が流して早押し。DJはパパの隣の人。</p></div></div>
-      <div class="game"><div class="game-ph"><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:44px;background:linear-gradient(150deg,var(--card2),var(--ink2))">🚗</div></div><div class="game-in"><p class="t">高速道路ビンゴ</p><p class="d">「白いトラック」「観覧車」「海」「トンネル3連続」など9マスを決めて先に揃えた人が勝ち。</p></div></div>
-      <div class="game"><div class="game-ph"><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:44px;background:linear-gradient(150deg,var(--card2),var(--ink2))">✨</div></div><div class="game-in"><p class="t">フェリー星空ミッション</p><p class="d">帰りの洋上デッキで夏の大三角を全員で探す。見つけた人が翌朝の席を最初に選べる。</p></div></div>
+      <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Ch%C5%ABgoku_Expressway_-01.jpg/960px-Ch%C5%ABgoku_Expressway_-01.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">ご当地イントロクイズ</p><p class="d">通過中の県にゆかりのある曲を1人が流して早押し。DJはパパの隣の人。</p></div></div>
+      <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Kyushu-expressway-kiyama.jpg/960px-Kyushu-expressway-kiyama.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">高速道路ビンゴ</p><p class="d">「白いトラック」「観覧車」「海」「トンネル3連続」など9マスを決めて先に揃えた人が勝ち。</p></div></div>
+      <div class="game"><div class="game-ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Summer_Triangle2.jpg/960px-Summer_Triangle2.jpg" alt="" loading="lazy"></div><div class="game-in"><p class="t">フェリー星空ミッション</p><p class="d">帰りの洋上デッキで夏の大三角を全員で探す。見つけた人が翌朝の席を最初に選べる。</p></div></div>
     </div>
   </div>
 </div>
@@ -735,7 +735,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v43 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v44 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -856,7 +856,9 @@ const P = {
   gloverNight:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Nagasaki_from_Glover_Garden_Aug_22_806pm.jpg/960px-Nagasaki_from_Glover_Garden_Aug_22_806pm.jpg",
   beppuBay2:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Beppu_Bay02n4272.jpg/960px-Beppu_Bay02n4272.jpg",
   deckSunset:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Sunset_at_Sea_%2813987985104%29.jpg/960px-Sunset_at_Sea_%2813987985104%29.jpg",
-  mojiTerminal:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/New_Moji_Port_Ferry_Terminal_of_Meimon_Taiyo_Ferry_at_night_2.jpg/960px-New_Moji_Port_Ferry_Terminal_of_Meimon_Taiyo_Ferry_at_night_2.jpg"
+  mojiTerminal:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/New_Moji_Port_Ferry_Terminal_of_Meimon_Taiyo_Ferry_at_night_2.jpg/960px-New_Moji_Port_Ferry_Terminal_of_Meimon_Taiyo_Ferry_at_night_2.jpg",
+  tyranno:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/%E3%83%86%E3%82%A3%E3%83%A9%E3%83%8E%E3%82%B5%E3%82%A6%E3%83%AB%E3%82%B9_%E5%85%A8%E8%BA%AB%E9%AA%A8%E6%A0%BC.jpg/960px-%E3%83%86%E3%82%A3%E3%83%A9%E3%83%8E%E3%82%B5%E3%82%A6%E3%83%AB%E3%82%B9_%E5%85%A8%E8%BA%AB%E9%AA%A8%E6%A0%BC.jpg",
+  peaceStadium2:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/PEACE-STADIUM-Connected-by-SoftBank-from-Inasa-Bridge.jpg/960px-PEACE-STADIUM-Connected-by-SoftBank-from-Inasa-Bridge.jpg"
 };
 const HERO_SLIDES=[P.himejiNishi,P.setouchiSunset,P.genkai,P.chinoike,P.tsurumi,P.himejiStone];
 const GALLERY=[
@@ -924,7 +926,7 @@ const DAYS = [
    yj:[[32.62778,129.73833,'端島（軍艦島）※海の向こうに見える島'],[32.73417,129.87014,'大浦天主堂'],[33.26667,131.36917,'金鱗湖（由布院）']],
    tl:[
     {t:"08:00",ll:[32.5847,129.7639],sp:"30分",how:"朝の光がいちばんきれい。展望所から軍艦島を正面に入れて、双眼鏡で建物の形を確かめる。",tt:"野母崎へ ── 軍艦島が見える岬",d:"長崎市街から南へ約40分。半島の先端まで走ると、海の向こうに軍艦島（端島）が浮かんで見えます。",tip:"船に乗らないぶん、海と島と空をまるごと写真に入れられる。晴れた朝がいちばんきれい。",img:P.gunkan,link:"https://www.at-nagasaki.jp/spot/61067"},
-    {t:"09:00",ll:[32.5847,129.7639],sp:"1時間30分",how:"資料館で島の暮らしの道具を見てから恐竜へ。太朗は恐竜で止まるので、出る時間を先に決めておく。",tt:"軍艦島資料館と長崎市恐竜博物館",d:"資料館では島で暮らした人たちの写真と暮らしの道具が見られます。同じ敷地に恐竜博物館が併設。",tip:"恐竜博物館は完全に太朗の territory。ここだけで1時間持っていかれる覚悟で。",img:P.dino,link:"https://www.city.nagasaki.lg.jp/site/kodomo/61024.html"},
+    {t:"09:00",ll:[32.5847,129.7639],sp:"1時間30分",how:"資料館で島の暮らしの道具を見てから恐竜へ。太朗は恐竜で止まるので、出る時間を先に決めておく。",tt:"軍艦島資料館と長崎市恐竜博物館",d:"資料館では島で暮らした人たちの写真と暮らしの道具が見られます。同じ敷地に恐竜博物館が併設。",tip:"恐竜博物館は完全に太朗の territory。ここだけで1時間持っていかれる覚悟で。",img:P.tyranno,link:"https://www.city.nagasaki.lg.jp/site/kodomo/61024.html"},
     {t:"11:30",ll:[32.73417,129.87014],sp:"1時間30分",how:"『信徒発見』の話を先に読んでから中へ入る。グラバー園は動く歩道で上まで行って、下りながら見るとラク。",tt:"国宝「大浦天主堂」とグラバー園",d:"現存する日本最古の教会建築。すぐ隣のグラバー園からは長崎港が見下ろせます。",oh:"大浦天主堂 8:30〜18:00（最終17:30）／グラバー園 8:00〜21:30（最終21:10）",fee:"天主堂 大人1,000円・高校生400円・小学生300円（博物館込み）／グラバー園 一般1,300円・小中高650円。合わせて6,600円",tip:"『信徒発見』の話を先に読んでから入ると、この建物の意味がまるで変わる。",img:P.oura,link:"https://www.at-nagasaki.jp/spot/102"},
     {t:"13:00",ll:[32.7422,129.8757],sp:"1時間",how:"中華街まで下りて食べる。カステラの土産はここで買って、先に車へ積んでおく。",tt:"本場の「長崎ちゃんぽん」ランチ",d:"具だくさんのちゃんぽんと皿うどん。中華街も坂の下ですぐそこです。",tip:"カステラのお土産はここで買っておくと、あとがラク。",img:P.champon,link:"https://www.at-nagasaki.jp/gourmet/"},
     {t:"14:00",ll:[32.7503,129.8779],how:"最後の長距離250km。金立SAで休んだら、そこから一気に山へ入る。",tt:"長崎を出発 ── 大分へ250km",d:"長崎道→鳥栖JCT→大分道。旅で最後の長距離ドライブです。",tip:"金立SA（佐賀）で最後の休憩を。ここを過ぎると一気に山です。",img:P.nagaExpwy,link:"https://www.w-nexco.co.jp/"},
@@ -991,10 +993,10 @@ const DETOURS = [
  {day:2,t:"17:00",cat:"📸 絶景",name:"門司港レトロ展望室",d:"黒川紀章が設計したマンションの31階が、そのまま展望室になっている。関門橋と海峡を渡る船の灯りが一望で、夕食前の30分にちょうどいい。",meta:"門司港レトロ地区",img:P.mojikoNight,q:"門司港レトロ展望室"},
  {day:3,t:"09:30",cat:"📸 絶景",name:"海の中道",d:"左が玄界灘、右が博多湾。砂州の上を8kmまっすぐ走る道で、車が海の上を走っているようにしか見えません。志賀島へ渡る一本道です。",meta:"志賀島の手前・約8km",img:P.uminonaka,q:"海の中道"},
  {day:3,t:"10:45",cat:"🎡 体験",name:"志賀海神社",d:"海の神様を祀る古社。長い石段を上りきると博多湾が真下に開けます。金印公園から車で5分なので、セットで寄るのが効率的。",meta:"志賀島",img:P.shikaumi,q:"志賀海神社"},
- {day:3,t:"19:00",cat:"🎡 体験",name:"スタジアムシティのジップライン",d:"サッカースタジアムの上空を滑走する日本初のジップライン。長さ258m・地上約60m・最高時速50km、1回2,500円。泊まる建物の中にこれがあります。",meta:"泊まる施設の中",e:"🎢",q:"長崎スタジアムシティ ジップライン"},
+ {day:3,t:"19:00",cat:"🎡 体験",name:"スタジアムシティのジップライン",img:P.peaceStadium2,d:"サッカースタジアムの上空を滑走する日本初のジップライン。長さ258m・地上約60m・最高時速50km、1回2,500円。泊まる建物の中にこれがあります。",meta:"泊まる施設の中",q:"長崎スタジアムシティ ジップライン"},
  {day:3,t:"20:30",cat:"📸 絶景",name:"稲佐山 山頂展望台",ll:[32.75336,129.84933],d:"「1000万ドルの夜景」の本家。宿から車で15分。展望台の床がガラス張りで、足元にも夜景が広がります。夕食後に体力が残っていたら。",meta:"長崎市・宿から車15分",img:P.inasa,q:"稲佐山展望台"},
  {day:3,t:"15:15",cat:"🛍 買い物",name:"長崎新地中華街",d:"日本三大中華街のひとつだが、実は東西南北わずか250mの正方形。角煮まんじゅうを1個ずつ買って歩けば端まで着きます。玄武門の朱色が目印。",meta:"出島のすぐ隣",img:P.chinatown,q:"長崎新地中華街"},
- {day:4,t:"09:30",cat:"🎡 体験",name:"長崎市恐竜博物館",d:"軍艦島資料館と同じ敷地。長崎半島から実際に見つかったティラノサウルス科の歯の化石が展示されていて、全身骨格の下を歩けます。太朗はここで1時間持っていかれる。",meta:"長崎市野母町",e:"🦖",q:"長崎市恐竜博物館"},
+ {day:4,t:"09:30",cat:"🎡 体験",name:"長崎市恐竜博物館",img:P.dino,d:"軍艦島資料館と同じ敷地。長崎半島から実際に見つかったティラノサウルス科の歯の化石が展示されていて、全身骨格の下を歩けます。太朗はここで1時間持っていかれる。",meta:"長崎市野母町",q:"長崎市恐竜博物館"},
  {day:4,t:"08:30",cat:"📸 絶景",name:"のもざき水仙の里公園",d:"軍艦島を正面に望む岬の公園。夏は水仙こそ咲いていないが、海と島と空だけの景色は変わりません。恐竜博物館の隣なので流れで寄れます。",meta:"野母崎・資料館のとなり",img:P.hashima2,q:"のもざき水仙の里公園"},
  {day:4,t:"12:30",cat:"🎡 体験",name:"軍艦島デジタルミュージアム",d:"30mの巨大スクリーンとVRで、上陸ツアーでも入れない立入禁止区域の中を歩けます。船に乗らない今回の代わりとしては、むしろこちらのほうが島の中身を見られる。",meta:"大浦天主堂から車で数分",img:P.hashima70,q:"軍艦島デジタルミュージアム"},
  {day:4,t:"13:45",cat:"📸 絶景",name:"眼鏡橋",d:"1634年架橋、日本最古のアーチ石橋。川沿いの石垣にハート形の石が20個ほど埋まっていて、探し始めると全員が本気になります。",meta:"長崎市中心部",img:P.meganebashi,q:"眼鏡橋 長崎"},
