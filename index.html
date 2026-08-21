@@ -149,7 +149,7 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .nt-lab{font-size:12.5px;color:var(--tx3)}
 .gl{background:#000;border:1px solid rgba(255,255,255,.11);border-radius:22px;padding:22px 18px 12px;font-family:var(--sys)}
 .gl-date{font-size:13px;color:#8e8e93;letter-spacing:.02em}
-.gl-title{font-size:clamp(25px,6.2vw,34px);font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.3;margin:3px 0 5px}
+.gl-title{font-size:clamp(19px,4.6vw,24px);font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.3;margin:3px 0 5px}
 .gl-sub{font-size:14px;color:#8e8e93;margin-bottom:18px}
 .gl-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:9px;margin-bottom:6px}
 .gl-stat{background:#1c1c1e;border-radius:13px;padding:10px 13px}
@@ -183,8 +183,17 @@ section.blk{padding:clamp(44px,9vw,86px) 0 0}
 .learn-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(8,13,24,.92))}
 .learn-cap .k{font-size:11.5px;letter-spacing:.16em;color:var(--gold);font-weight:700}
 .learn-cap .t{font-family:'Shippori Mincho B1',serif;font-size:17px;font-weight:800;color:#fff;line-height:1.45;margin-top:3px}
-.gl-hero{height:150px;border-radius:16px;overflow:hidden;margin-bottom:16px;background:#1c1c1e}
-.gl-hero img{width:100%;height:100%;object-fit:cover}
+.gl{margin-bottom:16px;scroll-margin-top:118px}
+.gl-jump{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 14px;position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:40;background:linear-gradient(180deg,var(--ink) 78%,transparent);margin:0 -4px}
+.gl-jump::-webkit-scrollbar{display:none}
+.gj{flex-shrink:0;padding:8px 15px;border-radius:99px;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--tx2);background:var(--card);white-space:nowrap;display:flex;flex-direction:column;line-height:1.25}
+.gj small{font-size:10.5px;color:var(--tx3);font-weight:400}
+.gj.act{background:linear-gradient(135deg,var(--gold-l),var(--gold));color:#241a08;border-color:transparent}
+.gl-head{display:flex;gap:13px;align-items:center;margin-bottom:14px}
+.gl-thumb{width:74px;height:74px;flex:none;border-radius:14px;overflow:hidden;background:#1c1c1e}
+.gl-thumb img{width:100%;height:100%;object-fit:cover}
+.gl-headin{min-width:0}
+.gl-more{display:block;width:100%;margin-top:14px;padding:11px 0;border-radius:12px;border:1px solid #2c2c2e;background:#1c1c1e;color:#e5c07b;font-size:13.5px;font-weight:700}
 .iv{border:1px solid var(--line2);border-radius:18px;background:var(--card);padding:17px 18px;margin-bottom:12px}
 .iv .sub{font-size:12.5px;color:var(--gold);font-weight:700;letter-spacing:.12em}
 .iv h4{font-size:17px;color:#fff;font-weight:700;line-height:1.5;margin:3px 0 4px}
@@ -591,9 +600,9 @@ window.addEventListener('load',function(){setTimeout(function(){
     <div class="sec-head">
       <p class="kicker">At a Glance</p>
       <h2 class="h2">一日の予定</h2>
-      <p class="d lead">時間と場所だけを並べた一覧。今日どこへ何時に行くのかを、スクロールなしで確かめられます。</p>
+      <p class="d lead">6日間の全行程を1ページに。時刻と場所と休憩だけの早見表です。写真つきの詳しい旅程は「旅程」タブへ。</p>
     </div>
-    <div class="day-tabs" id="gl-tabs"></div>
+    <div class="gl-jump" id="gl-jump"></div>
     <div id="gl-body"></div>
   </div>
 </div>
@@ -735,7 +744,7 @@ window.addEventListener('load',function(){setTimeout(function(){
 <footer>
   <p class="f1">GRAND CRUISE 2026</p>
   <p class="f2">Safe Drive & Beautiful Cruise — Family Road Trip Project</p>
-  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v44 — 2026.08.19</p>
+  <p class="f2" id="build-badge" style="margin-top:10px;letter-spacing:.2em;color:var(--gold-d)">build v45 — 2026.08.19</p>
 </footer>
 <div class="lb" id="lb" onclick="closeLb()"><img id="lb-img" src="" alt=""><p class="cap" id="lb-cap"></p><p class="hint">タップで閉じる</p></div>
 <div class="toast" id="toast"></div>
@@ -1273,7 +1282,7 @@ function go(v){
     if(b2)b2.classList.toggle('act',x===v);
   });
   if(v==='days') openDay(curDay||tripToday()||1,true);
-  if(v==='glance') openGlance(tripToday()||curDay||glDay);
+  if(v==='glance') openGlance(tripToday()||0);
   if(v==='ferry') buildFerry();
   if(v==='sos') buildSos();
   window.scrollTo({top:0,behavior:'instant'});
@@ -1532,7 +1541,7 @@ function loadWx(n){
         document.getElementById('wx-'+n).innerHTML=wxHTML(n,rec,false,sun);
       }
       paintTlWx(n);
-      if(glDay===n) paintGlance(n);
+      if(document.getElementById('gl-body')&&$('gl-body').innerHTML) paintGlance();
     })
     .catch(()=>{
       clearTimeout(to);
@@ -1540,8 +1549,34 @@ function loadWx(n){
       if(t&&!c1[n]) t.innerHTML=wxHTML(n,null,false,(LS.get(WXH_KEY,{})[n]||{}).sun);
     });
 }
-/* ============ GLANCE（一日の予定が一目でわかる一覧） ============ */
-let glDay=1;
+/* ============ 6日分の日別予報をまとめて1回だけ取る（タブと一覧用） ============ */
+const WXALL_KEY='gc2026_wxall', SUN_KEY='gc2026_sun';
+function loadAllDayWx(){
+  const last=LS.get(WXALL_KEY,0);
+  if(Date.now()-last<18e5) return;
+  const ns=DAYS.map(function(d){return d.n}).filter(function(n){return WX_SPOT[n]});
+  const u='https://api.open-meteo.com/v1/forecast?latitude='+ns.map(function(n){return WX_SPOT[n].lat}).join(',')+
+    '&longitude='+ns.map(function(n){return WX_SPOT[n].lon}).join(',')+
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunset'+
+    '&timezone=Asia%2FTokyo&start_date='+WX_SPOT[ns[0]].d+'&end_date='+WX_SPOT[ns[ns.length-1]].d;
+  const ctl=('AbortController' in window)?new AbortController():null;
+  const to=setTimeout(function(){ try{ctl&&ctl.abort()}catch(e){} },9000);
+  fetch(u,ctl?{signal:ctl.signal}:undefined).then(function(r){return r.json()}).then(function(j){
+    clearTimeout(to);
+    const arr=Array.isArray(j)?j:[j], c=LS.get(WX_KEY,{}), sc=LS.get(SUN_KEY,{});
+    arr.forEach(function(o,i){
+      const n=ns[i], dd=o&&o.daily; if(!dd||!dd.time) return;
+      const x=dd.time.indexOf(WX_SPOT[n].d); if(x<0||dd.temperature_2m_max[x]==null) return;
+      if(!c[n]) c[n]={c:dd.weather_code[x],mx:dd.temperature_2m_max[x],mn:dd.temperature_2m_min[x],pop:dd.precipitation_probability_max[x],at:Date.now()};
+      if(dd.sunset&&dd.sunset[x]) sc[n]=dd.sunset[x];
+    });
+    LS.set(WX_KEY,c); LS.set(SUN_KEY,sc); LS.set(WXALL_KEY,Date.now());
+    if(document.getElementById('day-tabs')) buildDayTabs();
+    if(document.getElementById('gl-body')&&$('gl-body').innerHTML) paintGlance();
+  }).catch(function(){ clearTimeout(to); });
+}
+
+/* ============ GLANCE（全行程の早見表） ============ */
 function glName(t){ return String(t).split('──')[0].replace(/[\s　]+$/,'') }
 function glWxLine(n,it){
   const c=LS.get(WXH_KEY,{})[n];
@@ -1552,11 +1587,15 @@ function glWxLine(n,it){
   if(!r||r.t==null) return '';
   return wxSky(r.c)[1]+' '+Math.round(r.t)+'℃　体感'+Math.round(r.a)+'℃　降水'+(r.p==null?'—':r.p+'%');
 }
-function buildGlTabs(){
+function buildGlJump(){
   const td=tripToday();
-  $('gl-tabs').innerHTML=DAYS.map(d=>
-    '<button class="dt'+(d.n===glDay?' act':'')+(d.n===td?' today-mark':'')+'" onclick="openGlance('+d.n+')">DAY '+d.n+'<small>'+d.date+' '+d.dow+'</small></button>'
+  $('gl-jump').innerHTML=DAYS.map(d=>
+    '<button class="gj'+(d.n===td?' act':'')+'" onclick="jumpGl('+d.n+')">DAY '+d.n+'<small>'+d.date+'</small></button>'
   ).join('');
+}
+function jumpGl(n){
+  const el=document.getElementById('glday-'+n);
+  if(el) el.scrollIntoView({block:'start',behavior:'smooth'});
 }
 function glMin(t){ const a=t.split(':'); return (+a[0])*60+(+a[1]) }
 function glMapLink(it,cls){
@@ -1568,7 +1607,7 @@ function glRows(n,I){
   const rows=DAYS[n-1].tl.map((it,i)=>({t:it.t,m:glMin(it.t),kind:'plan',i:i,name:glName(it.tt),it:it}))
     .concat((STOPS[n]||[]).map(s=>({t:s.t,m:glMin(s.t),kind:'stop',name:s.name,note:s.d,it:s})));
   rows.sort((a,b)=>a.m-b.m);
-  return rows.map((r,idx)=>{
+  return rows.map(function(r,idx){
     const prev=rows[idx-1];
     const gapMin=prev?r.m-prev.m:0;
     const gap=(gapMin>=90)?'<div class="gl-gap">↓ '+(gapMin>=120?Math.floor(gapMin/60)+'時間'+(gapMin%60?gapMin%60+'分':''):gapMin+'分')+'あく</div>':'';
@@ -1576,38 +1615,42 @@ function glRows(n,I){
   }).join('');
 }
 function glRow(n,I,r){
-  {
-    const w=glWxLine(n,r.it);
-    if(r.kind==='stop'){
-      return '<div class="gl-row gl-stop">'+
-        '<span class="gl-t">'+r.t+'</span>'+
-        '<span class="gl-m"><span class="gl-n">'+r.name+'<span class="gl-tag">休憩</span></span>'+
-        '<span class="gl-w">'+(r.note?r.note+(w?'　／　'+w:''):w)+'</span></span>'+
-        glMapLink(r.it,'gl-map')+'</div>';
-    }
-    return '<div class="gl-row'+(I.sameDay&&r.i===I.cur?' gl-now':'')+'">'+
+  if(r.kind==='stop'){
+    return '<div class="gl-row gl-stop">'+
       '<span class="gl-t">'+r.t+'</span>'+
-      '<span class="gl-m"><span class="gl-n">'+r.name+'</span>'+(w?'<span class="gl-w">'+w+'</span>':'')+'</span>'+
+      '<span class="gl-m"><span class="gl-n">'+r.name+'<span class="gl-tag">休憩</span></span>'+
+      (r.note?'<span class="gl-w">'+r.note+'</span>':'')+'</span>'+
       glMapLink(r.it,'gl-map')+'</div>';
   }
+  return '<div class="gl-row'+(I.sameDay&&r.i===I.cur?' gl-now':'')+'">'+
+    '<span class="gl-t">'+r.t+'</span>'+
+    '<span class="gl-m"><span class="gl-n">'+r.name+'</span></span>'+
+    glMapLink(r.it,'gl-map')+'</div>';
 }
-function paintGlance(n){
-  const body=$('gl-body'); if(!body) return;
+function glDayBlock(n){
   const d=DAYS[n-1], I=nowInfo(n);
-  const rec=LS.get(WX_KEY,{})[n], c=LS.get(WXH_KEY,{})[n], sun=c&&c.sun;
-  const stats=[['出発',d.tl[0].t],['最高気温',rec?Math.round(rec.mx)+'℃':'—'],['日の入り',(sun&&sun.set)?String(sun.set).slice(11,16):'—']];
-  body.innerHTML='<div class="gl">'+
-    '<div class="gl-hero"><img src="'+(DAYPHOTO[d.n]||d.photo)+'" alt="" loading="lazy" onerror="this.remove()"></div>'+
-    '<p class="gl-date">DAY '+d.n+'　'+d.date+'（'+d.dow+'）</p>'+
-    '<p class="gl-title">'+d.title+'</p>'+
-    '<p class="gl-sub">泊まるところ：'+d.stay+'</p>'+
-    '<div class="gl-stats">'+stats.map(s=>'<div class="gl-stat"><p class="k">'+s[0]+'</p><p class="v">'+s[1]+'</p></div>').join('')+'</div>'+
+  const rec=LS.get(WX_KEY,{})[n], sun=(LS.get(SUN_KEY,{})||{})[n];
+  const stats=[['出発',d.tl[0].t],['最高気温',rec?Math.round(rec.mx)+'℃':'—'],['日の入り',sun?String(sun).slice(11,16):'—']];
+  return '<div class="gl" id="glday-'+n+'">'+
+    '<div class="gl-head">'+
+      '<div class="gl-thumb"><img src="'+(DAYPHOTO[n]||d.photo)+'" alt="" loading="lazy" onerror="this.remove()"></div>'+
+      '<div class="gl-headin"><p class="gl-date">DAY '+d.n+'　'+d.date+'（'+d.dow+'）</p>'+
+      '<p class="gl-title">'+d.title+'</p>'+
+      '<p class="gl-sub">泊まるところ：'+d.stay+'</p></div>'+
+    '</div>'+
+    '<div class="gl-stats">'+stats.map(function(x){return '<div class="gl-stat"><p class="k">'+x[0]+'</p><p class="v">'+x[1]+'</p></div>'}).join('')+'</div>'+
     glRows(n,I)+
-    ((STOPS[n]||[]).length?'<p class="gl-note">休憩の時刻は目安です。渋滞と体力しだいで前後します。</p>':'')+
+    '<button class="gl-more" onclick="curDay='+n+';go(\'days\')">DAY '+n+' の旅程をくわしく見る →</button>'+
     '</div>';
 }
+function paintGlance(){
+  const body=$('gl-body'); if(!body) return;
+  body.innerHTML=DAYS.map(function(d){return glDayBlock(d.n)}).join('')+
+    '<p class="gl-note">休憩の時刻は目安です。渋滞と体力しだいで前後します。各予定の写真・過ごし方・その時刻の天気は「旅程」に入っています。</p>';
+}
 function openGlance(n){
-  glDay=n; curDay=n; buildGlTabs(); paintGlance(n); loadWx(n);
+  buildGlJump(); paintGlance();
+  if(n) setTimeout(function(){ jumpGl(n) },60);
 }
 
 /* ============ NOW（旅行中の「いま」と「次の予定」） ============ */
@@ -1700,7 +1743,7 @@ function dayTimelineHTML(n){
   return rows.map(r=> r.k==='plan'?tlPlanHTML(n,r.it,r.ix) : (r.k==='stop'?tlStopHTML(r.it):tlDetourHTML(r.it)) ).join('');
 }
 function openDay(n,stay){
-  curDay=n; glDay=n; buildDayTabs();
+  curDay=n; buildDayTabs();
   const d=DAYS[n-1];
   $('day-body').innerHTML=
     '<div class="dayhero"><img src="'+d.photo+'" alt="" loading="lazy">'+
